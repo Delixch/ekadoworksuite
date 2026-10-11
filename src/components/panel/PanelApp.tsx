@@ -127,14 +127,40 @@ export function PanelApp() {
 
   return (
     <PanelContext.Provider value={{ hotel, hotels, setHotelId, tab, goTo, aiOn, setAiOn }}>
-      <div className="min-h-screen bg-era-cloud/40">
+      <div
+        className="panel-root relative min-h-screen bg-era-cloud/40"
+        onPointerMove={(e) => {
+          const el = (e.target as Element).closest<HTMLElement>(".punn-panel, .punn-feature");
+          if (!el) return;
+          const r = el.getBoundingClientRect();
+          el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+          el.style.setProperty("--my", `${e.clientY - r.top}px`);
+        }}
+      >
+        {/* arkada süzülen renkli ışıklar */}
+        <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <span className="era-aurora absolute -top-40 right-[8%] h-[460px] w-[600px] rounded-full bg-era-primary/20 blur-[120px]" />
+          <span className="era-aurora absolute bottom-[-12%] left-[24%] h-[420px] w-[560px] rounded-full bg-era-accent/15 blur-[120px] [animation-delay:-8s]" />
+          <span className="era-aurora absolute top-[40%] right-[-6%] h-[320px] w-[420px] rounded-full bg-era-primary/15 blur-[110px] [animation-delay:-4s]" />
+        </div>
+        {/* sekme değişince üstten geçen ışık çizgisi */}
+        <span key={tab} aria-hidden className="panel-bar pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px] bg-gradient-to-r from-era-primary via-era-accent to-era-primary" />
         {/* yan menü (masaüstü) */}
-        <aside className="fixed inset-y-0 left-0 z-30 flex w-[264px] flex-col gap-6 bg-era-dark px-4 py-6 text-era-on-dark tab:hidden">
+        <aside className="fixed inset-y-0 left-0 z-30 flex w-[264px] flex-col gap-6 overflow-hidden bg-era-dark px-4 py-6 text-era-on-dark tab:hidden">
+          <span aria-hidden className="era-aurora pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-era-primary/50 blur-[80px]" />
+          <span aria-hidden className="era-aurora pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-era-accent/25 blur-[80px] [animation-delay:-7s]" />
           <Link href="/" aria-label="Punn Digital" className="px-2">
             <Logo onDark className="h-9 w-auto" />
           </Link>
 
-          <nav className="flex flex-col gap-1.5" aria-label="Panel">
+          <nav className="relative flex flex-col gap-1.5" aria-label="Panel">
+            <span
+              aria-hidden
+              className="absolute inset-x-0 top-0 h-12 rounded-(--r-s1) bg-era-primary shadow-[0_10px_26px_var(--c-shadow)] transition-transform duration-500 ease-[cubic-bezier(.34,1.45,.64,1)]"
+              style={{ transform: `translateY(${tabs.findIndex((x) => x.id === tab) * 54}px)` }}
+            >
+              <span className="absolute inset-y-2 left-0 w-1 rounded-full bg-era-accent" />
+            </span>
             {tabs.map(({ id, icon: Icon }) => {
               const on = tab === id;
               return (
@@ -143,12 +169,11 @@ export function PanelApp() {
                   type="button"
                   onClick={() => goTo(id)}
                   aria-current={on ? "page" : undefined}
-                  className={`group relative flex h-12 items-center gap-3 overflow-hidden rounded-(--r-s1) px-3.5 text-[15px] font-semibold transition-colors duration-300 ${
-                    on ? "bg-era-primary text-era-on-dark" : "text-era-on-dark/70 hover:bg-era-on-dark/10 hover:text-era-on-dark"
+                  className={`group relative z-[1] flex h-12 items-center gap-3 rounded-(--r-s1) px-3.5 text-[15px] font-semibold transition-colors duration-300 ${
+                    on ? "text-era-on-dark" : "text-era-on-dark/70 hover:bg-era-on-dark/10 hover:text-era-on-dark"
                   }`}
                 >
-                  {on && <span className="absolute inset-y-2 left-0 w-1 rounded-full bg-era-accent" />}
-                  <Icon size={19} strokeWidth={1.9} className="transition-transform duration-300 group-hover:scale-110" />
+                  <Icon size={19} strokeWidth={1.9} className="transition-transform duration-300 group-hover:scale-110 group-hover:[animation:era-wiggle_.9s]" />
                   {c.nav[id]}
                 </button>
               );
@@ -173,7 +198,7 @@ export function PanelApp() {
         </aside>
 
         {/* içerik */}
-        <div className="pl-[264px] tab:pl-0">
+        <div className="relative z-[1] pl-[264px] tab:pl-0">
           <header className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-era-line bg-era-nav px-8 py-3.5 backdrop-blur-xl tab:px-4 mob:py-2.5">
             <Link href="/" aria-label="Punn Digital" className="hidden flex-none tab:block">
               <Logo className="h-8 w-auto" />

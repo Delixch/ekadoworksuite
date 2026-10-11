@@ -58,7 +58,7 @@ export function LiveDot({ tone = "success" }: { tone?: "success" | "danger" | "p
 type BtnProps = ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "soft" | "ghost" | "danger"; size?: "sm" | "md" };
 export function Btn({ variant = "primary", size = "md", className = "", ...p }: BtnProps) {
   const v = {
-    primary: "bg-era-primary text-era-on-dark hover:brightness-110",
+    primary: "relative overflow-hidden bg-era-primary text-era-on-dark hover:brightness-110 before:pointer-events-none before:absolute before:inset-y-0 before:-left-1/2 before:w-1/2 before:-skew-x-[18deg] before:bg-era-on-dark/25 before:blur-[2px] before:transition-transform before:duration-700 hover:before:translate-x-[320%]",
     soft: "bg-era-coolblue text-era-primary-ink hover:brightness-95",
     ghost: "border border-era-lightgray bg-era-white text-era-black hover:bg-era-secondary",
     danger: "bg-[color-mix(in_oklab,var(--c-danger)_14%,transparent)] text-era-danger hover:brightness-95",

@@ -366,3 +366,49 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   .panel-draw { animation: none; stroke-dashoffset: 0; }
   .panel-fade, .panel-grow-x, .panel-grow-y { animation: none; }
 }
+
+/* ===== Panel: ana sitedeki efekt dili (giriş, imleç ışığı, sürüklenen ışıklar) ===== */
+@keyframes panel-rise { from { opacity: 0; transform: translateY(28px) scale(0.985); } to { opacity: 1; transform: none; } }
+@keyframes panel-bar { 0% { transform: scaleX(0); opacity: 1; } 70% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
+.panel-root .punn-panel,
+.panel-root .punn-feature {
+  animation: panel-rise 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  transition: box-shadow 0.5s, border-color 0.4s;
+}
+.panel-root .punn-panel:nth-child(2), .panel-root .punn-feature:nth-child(2) { animation-delay: 0.09s; }
+.panel-root .punn-panel:nth-child(3), .panel-root .punn-feature:nth-child(3) { animation-delay: 0.18s; }
+.panel-root .punn-panel:nth-child(4), .panel-root .punn-feature:nth-child(4) { animation-delay: 0.27s; }
+.panel-root .punn-panel:nth-child(5), .panel-root .punn-feature:nth-child(5) { animation-delay: 0.36s; }
+.panel-root .punn-panel:nth-child(n+6) { animation-delay: 0.45s; }
+/* imleç üstünde yumuşak ışık ve belirginleşen kenar */
+.panel-root .punn-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--c-primary) 13%, transparent), transparent 65%);
+}
+.panel-root .punn-panel:hover::after { opacity: 1; }
+.panel-root .punn-panel:hover {
+  border-color: color-mix(in oklab, var(--c-primary) 50%, var(--c-panel-border));
+  box-shadow: 0 20px 50px var(--c-shadow);
+}
+.panel-root .punn-feature::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--c-glow-soft), transparent 65%);
+}
+.panel-root .punn-feature:hover::after { opacity: 1; }
+.panel-bar { transform-origin: left; animation: panel-bar 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .panel-root .punn-panel, .panel-root .punn-feature { animation: none; }
+  .panel-bar { animation: none; opacity: 0; }
+}

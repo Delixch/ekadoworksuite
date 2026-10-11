@@ -116,6 +116,10 @@ export function AreaChart({ data, aName, bName }: { data: AreaPoint[]; aName: st
           <path d={`${lineA} L${x(data.length - 1)},${pad.t + ih} L${x(0)},${pad.t + ih} Z`} fill={`url(#${gid}a)`} className="panel-fade" />
           <path d={smooth(ptsB)} pathLength={1} fill="none" stroke="var(--c-accent)" strokeWidth="2.2" strokeLinecap="round" strokeDasharray="1" className="panel-draw" style={{ animationDelay: ".25s" }} />
           <path d={lineA} pathLength={1} fill="none" stroke="var(--c-primary)" strokeWidth="2.8" strokeLinecap="round" className="panel-draw" />
+          <g className="panel-fade" style={{ animationDelay: "1.3s" }}>
+            <circle cx={x(data.length - 1)} cy={yA(data[data.length - 1].a)} r="5" fill="var(--c-primary)" />
+            <circle cx={x(data.length - 1)} cy={yA(data[data.length - 1].a)} r="5" fill="var(--c-primary)" className="era-pulse" style={{ transformBox: "fill-box", transformOrigin: "center" }} />
+          </g>
           {hover !== null && (
             <g>
               <line x1={x(hover)} x2={x(hover)} y1={pad.t} y2={pad.t + ih} stroke="var(--c-primary)" strokeOpacity="0.35" />

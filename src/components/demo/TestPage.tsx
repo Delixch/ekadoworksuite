@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, BedDouble, Building2, Check, ChevronRight, FileText, Info, MapPin, MessageCircle, Phone, PhoneCall, Utensils, type LucideIcon } from "lucide-react";
 import { Navbar } from "@/components/sites/era/Navbar";
+import { Spot } from "@/components/sites/era/Spot";
+import { Heading, Reveal } from "@/components/sites/era/ui";
 import { Footer } from "@/components/sites/era/Footer";
 import { ChannelIcon, Spinner } from "@/components/panel/ui";
 import { demoT } from "@/i18n/demo";
@@ -245,15 +247,15 @@ export function TestPage() {
       <main className="relative bg-[radial-gradient(60%_40%_at_50%_0%,var(--c-sky),transparent)] pt-[130px] pb-20 tab:pt-[110px] mob:pb-14">
         <div className="mx-auto flex w-full max-w-[1470px] flex-col gap-8 px-[15px]">
           <div className="mx-auto flex max-w-[1100px] flex-col items-center gap-3 text-center [animation:era-pop-in_.7s_both]">
-            <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-tight text-era-black tab:text-[42px] mob:text-[32px]">{t.title}</h1>
-            <p className="text-[22px] text-era-primary-ink/80 mob:text-[17px]">{t.lead}</p>
+            <Heading as="h2" wrapClass="text-center" className="!text-[52px] !leading-[1.08] !font-extrabold tracking-tight text-era-black tab:!text-[42px] mob:!text-[32px]">{t.title}</Heading>
+            <Reveal variant="up" delay={250}><p className="text-[22px] text-era-primary-ink/80 mob:text-[17px]">{t.lead}</p></Reveal>
           </div>
 
-          <Stepper step={step} labels={t.steps} />
+          <Reveal variant="fade"><Stepper step={step} labels={t.steps} /></Reveal>
 
           <div className="grid grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-start gap-6 tab:grid-cols-1">
             {/* sol: form -> hazırlanıyor -> sohbet / sonuç */}
-            <section className="punn-panel rounded-(--r-x) p-8 mob:p-5">
+            <Spot className="punn-panel rounded-(--r-x) p-8 mob:p-5">
               {phase === "form" && (
                 <form onSubmit={submit} noValidate className="flex flex-col gap-5 [animation:era-pop-in_.5s_both]">
                   <div>
@@ -287,11 +289,11 @@ export function TestPage() {
               {phase === "preparing" && <Preparing labels={t.form.preparing} />}
               {ready && mode === "chat" && <DemoChat info={info} onTalk={setTalk} onEdit={edit} onDone={() => setMode(null)} />}
               {ready && mode !== "chat" && <Result info={info} talk={talk} onEdit={edit} />}
-            </section>
+            </Spot>
 
             {/* sağ: nasıl test etmek istersiniz + bilgi kartı */}
             <div className="flex flex-col gap-5">
-              <section className="punn-panel flex flex-col gap-4 rounded-(--r-x) p-7 mob:p-5">
+              <Spot className="punn-panel flex flex-col gap-4 rounded-(--r-x) p-7 mob:p-5">
                 <h2 className="text-[26px] leading-tight font-extrabold tracking-tight text-era-black">{t.how.title}</h2>
                 <Option icon={MessageCircle} title={t.how.chat} onClick={() => setMode(mode === "chat" ? null : "chat")} disabled={!ready} active={mode === "chat"} tip={t.how.locked} delay={0} />
                 <Option icon={Phone} title={t.how.call} onClick={() => setMode(mode === "call" ? null : "call")} disabled={!ready} active={mode === "call"} tip={t.how.locked} delay={90} />
@@ -347,9 +349,10 @@ export function TestPage() {
                   </label>
                   {waSent && <p className="mt-2 flex items-center gap-1.5 text-[14px] font-semibold text-era-success [animation:era-pop-in_.4s_both]"><Check size={16} strokeWidth={3} /> {t.how.summarySent}</p>}
                 </div>
-              </section>
+              </Spot>
 
-              <section className="punn-feature relative overflow-hidden rounded-(--r-x) p-7 text-era-on-dark mob:p-5">
+              <Spot className="punn-feature punn-spot relative overflow-hidden rounded-(--r-x) p-7 text-era-on-dark mob:p-5">
+                <span aria-hidden className="era-aurora pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-era-on-dark/20 blur-[60px]" />
                 <div className="mb-3 flex items-center gap-3">
                   <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-era-on-dark text-era-primary-ink">
                     <Info size={22} strokeWidth={2.4} />
@@ -359,7 +362,7 @@ export function TestPage() {
                 <p className="text-[16px] leading-[1.5] text-era-on-dark/90">{t.info.text}</p>
                 <div className="my-4 h-px w-full bg-era-on-dark/30" />
                 <p className="text-[15px] leading-snug font-bold text-era-on-dark">{t.info.note}</p>
-              </section>
+              </Spot>
             </div>
           </div>
         </div>
