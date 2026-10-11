@@ -5,11 +5,9 @@ import { ChevronDown } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
+import { linkHrefs, solutionHrefs } from "./nav-links";
 import { ThemeToggle } from "./ThemeToggle";
 
-/** Menü ağacı (PUNN menü ağacı.pdf). Metinler src/i18n içinde, burada sadece bağlantılar var. */
-const solutionHrefs = ["#dijital-resepsiyon", "#telefon-asistani", "#pms", "#akilli-kapi"];
-const linkHrefs = ["#test-et", "#teknolojimiz", "#musterilerimiz", "#bize-ulasin", "#blog"];
 
 /** Açılışta sırayla büyüyerek gelen öğe */
 const pop = (i: number) => ({ animationDelay: `${0.3 + i * 0.07}s` });

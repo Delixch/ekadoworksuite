@@ -9,6 +9,7 @@ import { Voice } from "@/components/sites/era/Voice";
 import { Pricing } from "@/components/sites/era/Pricing";
 import { Testimonials } from "@/components/sites/era/Testimonials";
 import { Faq } from "@/components/sites/era/Faq";
+import { Cta } from "@/components/sites/era/Cta";
 import { Footer } from "@/components/sites/era/Footer";
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
         <Pricing />
         <Testimonials />
         <Faq />
+        <Cta />
       </main>
       <Footer />
     </div>

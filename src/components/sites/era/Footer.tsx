@@ -1,126 +1,72 @@
 "use client";
 
-import { a } from "./assets";
-import { useState } from "react";
-import { Line, Reveal, RollLink } from "./ui";
+import { Globe, Mail, Phone } from "lucide-react";
+import { useLocale } from "@/i18n/useLocale";
+import { Logo } from "./Logo";
+import { linkHrefs, solutionHrefs } from "./nav-links";
+import { Reveal, RollLink } from "./ui";
 
-const quick = [
-  ["Home", "#"],
-  ["About", "#About"],
-  ["Testimonials", "#Testimonials"],
-  ["FAQ", "#Faq"],
-];
-const other = ["Style Guide", "License", "Changelog", "404"];
-const socials = [
-  ["Facebook", "699531-frame-2147239570-3-.svg", "https://facebook.com"],
-  ["Instagram", "699531-frame-2147239564.svg", "https://www.instagram.com/"],
-  ["LinkedIn", "699531-frame-12-.svg", "https://www.linkedin.com/"],
-  ["X", "699531-frame-13-.svg", "https://x.com/"],
+/** İletişim bilgileri (PDF sayfa 4) */
+const contact = [
+  { icon: Globe, label: "punndigital.com", href: "https://punndigital.com" },
+  { icon: Mail, label: "info@punndigital.com", href: "mailto:info@punndigital.com" },
+  { icon: Phone, label: "+90 533 401 90 35", href: "tel:+905334019035" },
 ];
 
 export function Footer() {
-  const [sent, setSent] = useState(false);
-  const linkText = "text-era-on-dark";
-  return (
-    <footer className="bg-era-dark pt-[100px] pb-8 tab:pt-[60px] mob:overflow-hidden mob:pt-10">
-      <div className="mx-auto w-full max-w-[1470px] px-[15px]">
-        <div className="mb-[50px] flex items-start justify-between tab:mb-8 tab:flex-col tab:gap-[50px] sm2:mb-5">
-          <div className="flex flex-col gap-[46px] tab:gap-5">
-            <Reveal className="flex flex-col gap-[15px] tab:gap-2.5" delay={0}>
-              <a href="#" className="block h-[31px] w-full max-w-[153px]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={a("699451-frame-5-1-.svg")} alt="I’m Era" className="h-full w-full object-cover" />
-              </a>
-              <div className="text-era-on-dark">Transform AI to fit your vision</div>
-            </Reveal>
-            <Reveal className="h-[50px]" delay={150}>
-              {sent ? (
-                <div className="text-era-on-dark">Thank you! Your submission has been received!</div>
-              ) : (
-                <form
-                  className="relative"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSent(true);
-                  }}
-                >
-                  <input
-                    type="email"
-                    required
-                    maxLength={256}
-                    placeholder="Email address"
-                    className="h-[50px] w-[305px] rounded-(--r-s1) border border-era-on-dark bg-transparent p-4 text-(length:--t-r) leading-[120%] text-era-on-dark placeholder:text-era-on-dark/70 focus:outline-none sm2:w-[250px]"
-                  />
-                  <button
-                    type="submit"
-                    aria-label="Subscribe"
-                    className="absolute top-[13%] right-[2%] flex h-9 w-9 items-center justify-center rounded-lg bg-era-primary"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={a("699454-arrow-4.svg")} alt="" />
-                  </button>
-                </form>
-              )}
-            </Reveal>
-          </div>
+  const { t } = useLocale();
+  const f = t.footer;
+  const heading = "text-[18px] font-semibold text-era-on-dark";
 
-          <div className="grid w-full max-w-[715px] grid-cols-3 items-start justify-between tab:max-w-none sm2:grid-cols-[.35fr_.25fr] sm2:gap-x-4 sm2:gap-y-[50px]">
-            <Reveal className="flex w-[111px] flex-col gap-[30px] tab:w-auto sm2:gap-5" delay={150}>
-              <div className="text-(length:--t-mxl) leading-[120%] font-medium whitespace-nowrap text-era-on-dark">Quick Links</div>
-              {quick.map(([l, h]) => (
-                <RollLink key={l} href={h} textClass={`${linkText} whitespace-nowrap`}>{l}</RollLink>
-              ))}
-            </Reveal>
-            <Reveal className="flex w-[112px] flex-col gap-[30px] tab:w-auto sm2:gap-5" delay={300}>
-              <div className="text-(length:--t-mxl) leading-[120%] font-medium whitespace-nowrap text-era-on-dark">Other Pages</div>
-              {other.map((l) => (
-                <RollLink key={l} href="#" textClass={`${linkText} whitespace-nowrap`}>{l}</RollLink>
-              ))}
-            </Reveal>
-            <Reveal className="flex w-[229px] flex-col gap-[30px] tab:w-auto sm2:gap-5" delay={450}>
-              <div className="text-(length:--t-mxl) leading-[120%] font-medium text-era-on-dark">Contact</div>
-              {[
-                ["69945b-frame-2147239570.svg", "+1 (234) 567-890", "tel:+1234567890"],
-                ["69945c-frame-2147239570-2-.svg", "hello@i’mera.com", "mailto:hello@imera.com"],
-                ["69945c-frame-2147239570-1-.svg", "123 Creative Street, Innovation City, NY 10001", "#"],
-              ].map(([icon, text, href]) => (
-                <a key={text} href={href} className="flex items-center gap-3 no-underline">
-                  <span className="block h-7 w-full max-w-7 flex-none">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={a(icon)} alt="" className="h-full w-full object-cover" />
-                  </span>
-                  <span className={`text-era-on-dark ${text.startsWith("123") ? "w-full max-w-[187px] tab:w-auto tab:max-w-none sm2:w-[150px]" : "whitespace-nowrap"}`}>{text}</span>
-                </a>
-              ))}
-            </Reveal>
-          </div>
+  return (
+    <footer id="bize-ulasin" className="scroll-mt-0 bg-era-dark pt-[90px] pb-8 text-era-on-dark tab:pt-[60px] mob:pt-10">
+      <div className="mx-auto w-full max-w-[1470px] px-[15px]">
+        <div className="grid grid-cols-[1.3fr_1fr_1fr_1.1fr] gap-12 tab:grid-cols-2 tab:gap-10 sm2:grid-cols-1">
+          <Reveal variant="up" className="flex flex-col gap-5">
+            <a href="#" aria-label={t.ui.homeAria} className="block h-[52px] w-fit">
+              <Logo onDark className="h-full w-auto" />
+            </a>
+            <p className="max-w-[320px] text-[16px] leading-[1.55] text-era-on-dark/75">{f.tagline}</p>
+          </Reveal>
+
+          <Reveal variant="up" delay={120} className="flex flex-col gap-5">
+            <div className={heading}>{f.solutions}</div>
+            {t.nav.solutionItems.map((label, i) => (
+              <RollLink key={solutionHrefs[i]} href={solutionHrefs[i]} height={22} textClass="text-era-on-dark/85">
+                {label}
+              </RollLink>
+            ))}
+          </Reveal>
+
+          <Reveal variant="up" delay={240} className="flex flex-col gap-5">
+            <div className={heading}>{f.menu}</div>
+            {t.nav.links.map((label, i) => (
+              <RollLink key={linkHrefs[i]} href={linkHrefs[i]} height={22} textClass="text-era-on-dark/85">
+                {label}
+              </RollLink>
+            ))}
+          </Reveal>
+
+          <Reveal variant="up" delay={360} className="flex flex-col gap-5">
+            <div className={heading}>{f.contact}</div>
+            {contact.map((c) => (
+              <a
+                key={c.label}
+                href={c.href}
+                className="group/c flex items-center gap-3 text-era-on-dark/85 no-underline transition-colors hover:text-era-on-dark"
+              >
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-era-on-dark/10 transition-all duration-300 group-hover/c:scale-110 group-hover/c:bg-era-primary">
+                  <c.icon size={17} strokeWidth={1.9} />
+                </span>
+                <span className="break-all">{c.label}</span>
+              </a>
+            ))}
+          </Reveal>
         </div>
 
-        <Line />
-        <Reveal className="mt-8 flex items-start justify-between tab:flex-col tab:gap-5 sm2:mt-5 sm2:gap-2.5" delay={200}>
-          <div className="flex gap-4 sm2:flex-col sm2:gap-2.5">
-            <div className="whitespace-nowrap text-era-on-dark">© 2026 All rights reserved.</div>
-            <div className="whitespace-nowrap text-era-on-dark">
-              Design by{" "}
-              <a href="https://webflow.com/templates/designers/flowoly" target="_blank" rel="noreferrer" className="text-era-on-dark no-underline transition-colors hover:text-era-primary">
-                Flowoly
-              </a>{" "}
-              Prowered by{" "}
-              <a href="https://webflow.com" target="_blank" rel="noreferrer" className="text-era-on-dark no-underline transition-colors hover:text-era-primary">
-                Webflow
-              </a>
-            </div>
-          </div>
-          <div className="flex items-start gap-5">
-            <div className="text-era-on-dark">Social Media</div>
-            <div className="flex items-start gap-4">
-              {socials.map(([name, icon, href]) => (
-                <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={name} className="block h-5 w-5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={a(icon)} alt="" className="h-full w-full" />
-                </a>
-              ))}
-            </div>
+        <Reveal variant="fade" delay={300}>
+          <div className="mt-14 flex items-center justify-between gap-4 border-t border-era-on-dark/15 pt-6 text-[14px] text-era-on-dark/65 mob:flex-col mob:items-start">
+            <span>{f.rights}</span>
           </div>
         </Reveal>
       </div>

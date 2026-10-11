@@ -153,6 +153,105 @@ export const en: Dict = {
         }
       ]
     },
+    "pricing": {
+      "eyebrow": "Packages",
+      "heading": "Choose the package that fits your hotel.",
+      "lead": "Setup, training and year-round technical support are included in every package.",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "save": "Save up to 30%",
+      "perMonth": "/ month",
+      "perYear": "/ year",
+      "off": "off",
+      "yearlyHint": "If you pay yearly",
+      "monthlyHint": "Monthly payment",
+      "popular": "Most popular",
+      "cta": "Request a Demo",
+      "vat": "Prices exclude VAT.",
+      "plans": [
+        {
+          "name": "Standard",
+          "sub": "Ideal for basic needs",
+          "features": [
+            "30+ languages",
+            "Instagram DM",
+            "Website",
+            "WhatsApp",
+            "Facebook Messenger",
+            "Basic reporting",
+            "Holiday assistant feature",
+            "Email notifications"
+          ],
+          "note": ""
+        },
+        {
+          "name": "Plus",
+          "sub": "More features, more benefits",
+          "features": [
+            "All Standard features",
+            "Room sales with virtual POS",
+            "Reservation management",
+            "Advanced reporting",
+            "Analytics and CRM support",
+            "Review and rating message after check-out"
+          ],
+          "note": ""
+        },
+        {
+          "name": "Premium",
+          "sub": "The most complete solution, maximum efficiency",
+          "features": [
+            "All Plus features",
+            "Phone assistant",
+            "150 minutes of calls per month"
+          ],
+          "note": "When your call minutes run out, you can buy an extra minute package."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "heading": "What people ask before they start.",
+      "stillTitle": "Anything else on your mind?",
+      "stillText": "Our team is happy to answer your questions.",
+      "stillCta": "Contact Us",
+      "items": [
+        {
+          "q": "Which channels does the Digital Receptionist work on?",
+          "a": "It manages messages from WhatsApp, Instagram DM, Messenger and web chat in a single panel. In the Premium package the assistant also answers phone calls."
+        },
+        {
+          "q": "What happens if the assistant gives a wrong answer?",
+          "a": "The system only works with the information you define. When needed, the conversation is handed over to your team, and the assistant's behavior can be tailored to your hotel."
+        },
+        {
+          "q": "How long does setup take?",
+          "a": "If your hotel information is ready, the basic setup is completed quickly. Use cases are clarified together during the demo."
+        },
+        {
+          "q": "Which languages does it reply in?",
+          "a": "It replies in more than 30 languages. Guests get an answer in the language they write in, in a natural and professional tone."
+        },
+        {
+          "q": "Is there technical support during the demo?",
+          "a": "Yes. Setup, basic training and technical support are included in the demo."
+        }
+      ]
+    },
+    "cta": {
+      "badge": "Free demo",
+      "title": "Start your hotel's digital reception today.",
+      "text": "Try it and see the difference. With the free demo, test the Digital Receptionist in your own guest communication.",
+      "primary": "Request a Free Demo",
+      "secondary": "Contact Us"
+    },
+    "footer": {
+      "tagline": "Manage guest communication from before the booking to after the holiday.",
+      "solutions": "Our solutions",
+      "menu": "Menu",
+      "contact": "Contact",
+      "rights": "© 2026 Punn Digital. All rights reserved."
+    },
   features: {
     eyebrow: "What it does",
     heading: "Reduces front-desk workload, grows sales opportunities.",

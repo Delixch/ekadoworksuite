@@ -1,122 +1,200 @@
 "use client";
 
-import { a } from "./assets";
-import { useState } from "react";
-import { Heading, Reveal } from "./ui";
+import { useEffect, useRef, useState } from "react";
+import { Check } from "lucide-react";
+import { useLocale, type Locale } from "@/i18n/useLocale";
+import { Spot } from "./Spot";
+import { Heading, Reveal, type Variant } from "./ui";
 
-const plans = [
-  { name: "Starter Plan", price: "$25" },
-  { name: "Growth", price: "$59", popular: true },
-  { name: "Business Plan", price: "$89" },
+/** Fiyatlar (PDF sayfa 4). Metinler src/i18n içinde. KDV hariç, euro. */
+const prices = [
+  { m: 65, y: 550, off: 30 },
+  { m: 85, y: 750, off: 27 },
+  { m: 150, y: 1350, off: 25 },
 ];
+const variants: Variant[] = ["left", "up", "right"];
+const FEATURED = 1;
 
-const features = [
-  "Access to 100 million stock images",
-  "Upload custom icons and fonts",
-  "Unlimited Sharing",
-  "Upload graphics & video in up to 4k",
-  "Unlimited Projects",
-  "Instant Access to our design system",
-  "Create teams to collaborate on designs",
-];
+const tags: Record<Locale, string> = { tr: "tr-TR", en: "en-GB", de: "de-DE" };
+
+function money(n: number, locale: Locale) {
+  const v = new Intl.NumberFormat(tags[locale], { maximumFractionDigits: 0 }).format(n);
+  return locale === "en" ? `€${v}` : `${v} €`;
+}
+
+function offLabel(n: number, off: string, locale: Locale) {
+  if (locale === "tr") return `%${n} ${off}`;
+  if (locale === "de") return `${n} % ${off}`;
+  return `${n}% ${off}`;
+}
+
+/** Fiyat değişince rakamlar akarak yeni değere gider */
+function Money({ value, locale }: { value: number; locale: Locale }) {
+  const [shown, setShown] = useState(value);
+  const from = useRef(value);
+  useEffect(() => {
+    const dur = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 1 : 650;
+    const start = performance.now();
+    const a = from.current;
+    let raf = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / dur);
+      const v = a + (value - a) * (1 - Math.pow(1 - p, 3));
+      from.current = v;
+      setShown(v);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [value]);
+  return <>{money(Math.round(shown), locale)}</>;
+}
 
 export function Pricing() {
-  const [active, setActive] = useState(1);
+  const { t, locale } = useLocale();
+  const p = t.pricing;
+  const [yearly, setYearly] = useState(false);
+
   return (
-    <section className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
+    <section id="paketler" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
-        <div className="flex flex-col gap-11 sm2:gap-[26px]">
-          <div className="mx-auto flex w-full max-w-[581px] flex-col items-center gap-4 text-center">
-            <div className="flex flex-col">
-              <Heading>Choose the Perfect Plan&nbsp;</Heading>
-              <Heading>&nbsp;for Your Needs</Heading>
-            </div>
-            <Reveal>
-              <p className="text-era-gray">
-                Flexible pricing options designed for everyone from individual creators to large enterprises. Pay only
-                for what you use and scale as you grow.
-              </p>
+        <div className="flex flex-col gap-12 mob:gap-9">
+          <div className="mx-auto flex w-full max-w-[760px] flex-col items-center gap-4 text-center">
+            <span className="flex items-center gap-2 rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">
+              <i className="block h-1.5 w-1.5 rounded-full bg-era-accent" /> {p.eyebrow}
+            </span>
+            <Heading>{p.heading}</Heading>
+            <Reveal variant="fade">
+              <p className="text-era-gray">{p.lead}</p>
+            </Reveal>
+
+            {/* aylık / yıllık seçici */}
+            <Reveal variant="up" className="mt-2 flex flex-wrap items-center justify-center gap-3">
+              <div role="tablist" className="relative grid grid-cols-2 rounded-full bg-era-secondary p-1 ring-1 ring-era-line">
+                <span
+                  aria-hidden
+                  className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-era-primary shadow-[0_6px_16px_var(--c-shadow)] transition-transform duration-500 ease-out"
+                  style={{ transform: yearly ? "translateX(100%)" : "translateX(0)" }}
+                />
+                {[
+                  [false, p.monthly],
+                  [true, p.yearly],
+                ].map(([val, label]) => (
+                  <button
+                    key={String(label)}
+                    type="button"
+                    role="tab"
+                    aria-selected={yearly === val}
+                    onClick={() => setYearly(val as boolean)}
+                    className={`relative z-[1] rounded-full px-7 py-2.5 text-[15px] font-semibold transition-colors duration-300 ${
+                      yearly === val ? "text-era-on-dark" : "text-era-gray"
+                    }`}
+                  >
+                    {label as string}
+                  </button>
+                ))}
+              </div>
+              <span
+                className={`rounded-full bg-era-secondary px-3 py-1.5 text-[13px] font-semibold text-era-success ring-1 ring-era-line transition-transform duration-500 ${
+                  yearly ? "scale-110" : "scale-100"
+                }`}
+              >
+                {p.save}
+              </span>
             </Reveal>
           </div>
 
-          <div
-            className="flex gap-6 tab:grid tab:grid-cols-2 mob:grid-cols-1"
-            onMouseLeave={() => setActive(1)}
-          >
-            {plans.map((p, i) => {
-              const on = active === i;
+          <div className="mx-auto grid w-full max-w-[1200px] grid-cols-3 items-stretch gap-6 tab:max-w-[520px] tab:grid-cols-1 tab:gap-8">
+            {p.plans.map((plan, i) => {
+              const featured = i === FEATURED;
+              const pr = prices[i];
               return (
-                <Reveal key={p.name} variant="fade" delay={i * 150} className="flex-1">
-                  <div
-                    onMouseEnter={() => setActive(i)}
-                    className="flex h-full flex-col gap-[25px] rounded-(--r-x) border border-era-cute transition-all duration-200"
+                <Reveal
+                  key={plan.name}
+                  variant={variants[i]}
+                  delay={i * 120}
+                  className={`h-full ${featured ? "min-[992px]:-my-4" : ""}`}
+                >
+                  <Spot
+                    className={`relative flex h-full flex-col gap-6 rounded-(--r-x) px-8 py-9 mob:px-6 ${
+                      featured ? "punn-feature text-era-on-dark" : "punn-panel"
+                    }`}
                   >
-                    <div className="relative isolate flex flex-col gap-5 rounded-(--r-x) px-9 pt-9 pb-[15px] tab:gap-2.5 tab:px-7 tab:pt-8 sm2:p-3">
-                      <div className="flex h-10 items-center justify-between">
-                        <div className="text-(length:--t-mx) font-medium">{p.name}</div>
-                        {p.popular && (
-                          <div className="flex items-center justify-center rounded-(--r-x) bg-era-white px-3 py-2">
-                            <p className="text-era-ink">Most Popular</p>
-                          </div>
-                        )}
+                    {featured && (
+                      <span className="absolute -top-3.5 left-1/2 z-[2] -translate-x-1/2 rounded-full bg-era-accent px-4 py-1 text-[12px] font-bold tracking-wide whitespace-nowrap text-era-dark uppercase shadow-[0_6px_16px_var(--c-shadow)]">
+                        {p.popular}
+                      </span>
+                    )}
+
+                    <div className="relative z-[1] flex flex-col gap-1.5">
+                      <h3 className="text-[26px] leading-tight font-extrabold tracking-[-0.02em]">{plan.name}</h3>
+                      <p className={`text-[15px] ${featured ? "text-era-on-dark/75" : "text-era-gray"}`}>{plan.sub}</p>
+                    </div>
+
+                    <div className="relative z-[1] flex flex-col gap-2">
+                      <div className="flex items-end gap-2">
+                        <span className="text-[54px] leading-none font-extrabold tracking-[-0.03em] tabular-nums">
+                          <Money value={yearly ? pr.y : pr.m} locale={locale} />
+                        </span>
+                        <span className={`pb-1.5 text-[16px] ${featured ? "text-era-on-dark/75" : "text-era-gray"}`}>
+                          {yearly ? p.perYear : p.perMonth}
+                        </span>
                       </div>
-                      <div className="flex items-center gap-6 tab:flex-col tab:items-start tab:gap-2.5 mob:flex-row mob:items-center mob:gap-3">
-                        <h2 className="text-(length:--h2) leading-[140%] font-semibold">{p.price}</h2>
-                        <p className="text-era-gray">Ideal for individuals who who need advanced</p>
-                      </div>
-                      <a
-                        href="#"
-                        className={`flex items-center justify-center rounded-(--r-s1) border border-era-gray px-[27px] py-[18px] no-underline transition-colors duration-300 ${
-                          on ? "bg-era-btn text-era-on-btn" : "bg-era-white text-era-black"
+                      <button
+                        type="button"
+                        onClick={() => setYearly((v) => !v)}
+                        className={`w-fit text-left text-[14px] font-medium underline decoration-dotted underline-offset-4 ${
+                          featured ? "text-era-on-dark/85" : "text-era-primary-ink"
                         }`}
                       >
-                        <span className="inline-flex items-center gap-4">
-                          <span className="text-(length:--t-rx) leading-[124%] font-semibold uppercase">Started</span>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={a("6996a3-arrow-1-1-.svg")}
-                            alt=""
-                            className={`h-[15px] w-[37px] ${on ? "invert dark:invert-0" : "dark:invert"}`}
-                          />
-                        </span>
-                      </a>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={a("6996ac-rectangle-36.svg")}
-                        alt=""
-                        className={`absolute top-0 left-0 -z-[2] transition-opacity duration-300 ${on ? "opacity-100" : "opacity-0"}`}
-                      />
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={a("6996ae-rectangle-37.svg")}
-                        alt=""
-                        className={`absolute top-0 right-0 -z-[2] transition-opacity duration-300 ${on ? "opacity-100" : "opacity-0"}`}
-                      />
-                      <div
-                        className={`absolute inset-0 -z-[5] rounded-(--r-x) transition-colors duration-300 ${
-                          on ? "bg-era-coolblue" : "bg-era-bright"
+                        {yearly
+                          ? `${p.monthlyHint}: ${money(pr.m, locale)} ${p.perMonth}`
+                          : `${p.yearlyHint}: ${money(pr.y, locale)} (${offLabel(pr.off, p.off, locale)})`}
+                      </button>
+                    </div>
+
+                    <a
+                      href="#demo"
+                      className={`relative z-[1] flex h-14 items-center justify-center rounded-(--r-s1) text-[17px] font-semibold no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 ${
+                        featured ? "bg-era-on-dark text-era-dark" : "bg-era-primary text-era-on-dark"
+                      }`}
+                    >
+                      {p.cta}
+                    </a>
+
+                    <ul className="relative z-[1] flex flex-col gap-3">
+                      {plan.features.map((f) => (
+                        <li key={f} className="flex gap-3 text-[15px] leading-[1.45]">
+                          <span
+                            className={`mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full ${
+                              featured ? "bg-era-on-dark/15 text-era-on-dark" : "bg-era-secondary text-era-success"
+                            }`}
+                          >
+                            <Check size={12} strokeWidth={3} />
+                          </span>
+                          <span className={featured ? "" : "text-era-black"}>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {plan.note && (
+                      <p
+                        className={`relative z-[1] mt-auto rounded-(--r-s1) px-4 py-3 text-[14px] leading-[1.45] ${
+                          featured ? "bg-era-on-dark/12 text-era-on-dark" : "bg-era-secondary text-era-gray"
                         }`}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-6 px-9 pb-9 tab:px-7 tab:pb-8 sm2:p-3 sm2:pt-0">
-                      <div className="text-(length:--t-mxl) leading-[140%]">Features Includes:</div>
-                      <div className="flex flex-col gap-4">
-                        {features.map((f) => (
-                          <div key={f} className="flex items-start gap-[17px] sm2:gap-2.5">
-                            <div className="flex h-6 w-full max-w-6 items-center justify-center rounded-full bg-era-secondary p-2 mob:h-5 mob:max-w-5 sm2:h-[18px] sm2:max-w-[18px]">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img src={a("6996a5-icons.svg")} alt="" className="w-[14px] max-w-[14px] object-cover sm2:w-3 sm2:max-w-3" />
-                            </div>
-                            <p className="text-era-ink">{f}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                      >
+                        {plan.note}
+                      </p>
+                    )}
+                  </Spot>
                 </Reveal>
               );
             })}
           </div>
+
+          <Reveal variant="fade">
+            <p className="text-center text-[14px] text-era-gray">{p.vat}</p>
+          </Reveal>
         </div>
       </div>
     </section>

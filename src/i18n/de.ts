@@ -155,6 +155,105 @@ export const de: Dict = {
         }
       ]
     },
+    "pricing": {
+      "eyebrow": "Pakete",
+      "heading": "Wählen Sie das passende Paket für Ihr Hotel.",
+      "lead": "Einrichtung, Schulung und ganzjähriger technischer Support sind in allen Paketen enthalten.",
+      "monthly": "Monatlich",
+      "yearly": "Jährlich",
+      "save": "Bis zu 30 % sparen",
+      "perMonth": "/ Monat",
+      "perYear": "/ Jahr",
+      "off": "Rabatt",
+      "yearlyHint": "Bei jährlicher Zahlung",
+      "monthlyHint": "Monatliche Zahlung",
+      "popular": "Am beliebtesten",
+      "cta": "Demo anfragen",
+      "vat": "Preise zzgl. MwSt.",
+      "plans": [
+        {
+          "name": "Standard",
+          "sub": "Ideal für die Grundbedürfnisse",
+          "features": [
+            "Über 30 Sprachen",
+            "Instagram DM",
+            "Website",
+            "WhatsApp",
+            "Facebook Messenger",
+            "Basis-Berichte",
+            "Urlaubsassistent-Funktion",
+            "E-Mail-Benachrichtigungen"
+          ],
+          "note": ""
+        },
+        {
+          "name": "Plus",
+          "sub": "Mehr Funktionen, mehr Vorteile",
+          "features": [
+            "Alle Standard-Funktionen",
+            "Zimmerverkauf per virtuellem POS",
+            "Reservierungsverwaltung",
+            "Erweiterte Berichte",
+            "Analyse und CRM-Unterstützung",
+            "Bewertungsnachricht nach dem Check-out"
+          ],
+          "note": ""
+        },
+        {
+          "name": "Premium",
+          "sub": "Die umfassendste Lösung, maximale Effizienz",
+          "features": [
+            "Alle Plus-Funktionen",
+            "Telefonassistent",
+            "150 Gesprächsminuten pro Monat"
+          ],
+          "note": "Sind Ihre Gesprächsminuten aufgebraucht, können Sie ein Zusatzpaket kaufen."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Häufige Fragen",
+      "heading": "Was man vor dem Start wissen möchte.",
+      "stillTitle": "Noch etwas offen?",
+      "stillText": "Unser Team beantwortet Ihre Fragen gerne.",
+      "stillCta": "Kontakt aufnehmen",
+      "items": [
+        {
+          "q": "Auf welchen Kanälen arbeitet die Digitale Rezeption?",
+          "a": "Sie verwaltet Nachrichten von WhatsApp, Instagram DM, Messenger und Web-Chat in einem Panel. Im Premium-Paket nimmt der Assistent auch Telefonanrufe an."
+        },
+        {
+          "q": "Was passiert, wenn der Assistent falsch antwortet?",
+          "a": "Das System arbeitet nur mit den Informationen, die Sie festlegen. Bei Bedarf wird das Gespräch an Ihr Team übergeben, und das Verhalten des Assistenten lässt sich auf Ihr Hotel abstimmen."
+        },
+        {
+          "q": "Wie lange dauert die Einrichtung?",
+          "a": "Liegen Ihre Hoteldaten vor, ist die Grundeinrichtung schnell erledigt. Die Anwendungsfälle klären wir gemeinsam in der Demo."
+        },
+        {
+          "q": "In welchen Sprachen antwortet sie?",
+          "a": "Sie antwortet in über 30 Sprachen. Gäste erhalten die Antwort in der Sprache, in der sie schreiben, natürlich und professionell."
+        },
+        {
+          "q": "Gibt es technischen Support während der Demo?",
+          "a": "Ja. Einrichtung, Grundschulung und technischer Support sind in der Demo enthalten."
+        }
+      ]
+    },
+    "cta": {
+      "badge": "Kostenlose Demo",
+      "title": "Starten Sie die Digitale Rezeption Ihres Hotels noch heute.",
+      "text": "Jetzt ausprobieren und den Unterschied sehen. Testen Sie die Digitale Rezeption mit der kostenlosen Demo in Ihrer eigenen Gästekommunikation.",
+      "primary": "Kostenlose Demo anfragen",
+      "secondary": "Kontakt aufnehmen"
+    },
+    "footer": {
+      "tagline": "Steuern Sie die Gästekommunikation von vor der Buchung bis nach dem Urlaub.",
+      "solutions": "Unsere Lösungen",
+      "menu": "Menü",
+      "contact": "Kontakt",
+      "rights": "© 2026 Punn Digital. Alle Rechte vorbehalten."
+    },
   features: {
     eyebrow: "Was es kann",
     heading: "Entlastet die Rezeption, steigert Ihre Verkaufschancen.",

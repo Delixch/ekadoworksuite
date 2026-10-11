@@ -153,6 +153,105 @@ export const tr = {
         }
       ]
     },
+    "pricing": {
+      "eyebrow": "Paketler",
+      "heading": "Otelinize uygun paketi seçin.",
+      "lead": "Tüm paketlerde kurulum, eğitim ve yıl boyu teknik destek dahildir.",
+      "monthly": "Aylık",
+      "yearly": "Yıllık",
+      "save": "%30'a kadar tasarruf",
+      "perMonth": "/ ay",
+      "perYear": "/ yıl",
+      "off": "indirimli",
+      "yearlyHint": "Yıllık öderseniz",
+      "monthlyHint": "Aylık ödeme",
+      "popular": "En çok tercih edilen",
+      "cta": "Demo Talep Et",
+      "vat": "Fiyatlara KDV dahil değildir.",
+      "plans": [
+        {
+          "name": "Standart",
+          "sub": "Temel ihtiyaçlar için ideal",
+          "features": [
+            "30+ dil",
+            "Instagram DM",
+            "Web sitesi",
+            "WhatsApp",
+            "Facebook Messenger",
+            "Temel raporlama",
+            "Tatil asistanı özelliği",
+            "E-posta bildirimleri"
+          ],
+          "note": ""
+        },
+        {
+          "name": "Plus",
+          "sub": "Daha fazla özellik, daha fazla avantaj",
+          "features": [
+            "Tüm Standart özellikleri",
+            "Sanal POS ile oda satışı",
+            "Rezervasyon yönetimi",
+            "Gelişmiş raporlama",
+            "Analiz ve CRM desteği",
+            "Check-out sonrası yorum ve puan mesajı gönderimi"
+          ],
+          "note": ""
+        },
+        {
+          "name": "Premium",
+          "sub": "En kapsamlı çözüm, maksimum verimlilik",
+          "features": [
+            "Tüm Plus özellikleri",
+            "Telefon asistanı",
+            "Aylık 150 dakika konuşma süresi"
+          ],
+          "note": "Konuşma süreniz dolduğunda ek dakika paketi satın alabilirsiniz."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Sık sorulan sorular",
+      "heading": "Başlamadan önce merak edilenler.",
+      "stillTitle": "Aklınıza takılan başka bir şey mi var?",
+      "stillText": "Ekibimiz sorularınızı yanıtlamaktan memnuniyet duyar.",
+      "stillCta": "Bize Ulaşın",
+      "items": [
+        {
+          "q": "Dijital Resepsiyonist hangi kanallarda çalışır?",
+          "a": "WhatsApp, Instagram DM, Messenger ve Web Chat üzerinden gelen mesajları tek panelde yönetir. Premium pakette telefon aramaları da asistan tarafından karşılanır."
+        },
+        {
+          "q": "Asistan yanlış cevap verirse ne olur?",
+          "a": "Sistem yalnızca sizin tanımladığınız bilgilerle çalışır. Gerekli durumlarda konuşma ekibinize aktarılır ve asistanın davranışı otelinize göre düzenlenebilir."
+        },
+        {
+          "q": "Kurulum ne kadar sürer?",
+          "a": "Otel bilgileriniz hazırsa temel kurulum kısa sürede tamamlanır. Demo sürecinde kullanım senaryoları birlikte netleştirilir."
+        },
+        {
+          "q": "Hangi dillerde yanıt veriyor?",
+          "a": "30'dan fazla dilde yanıt verir. Misafir hangi dilde yazarsa aynı dilde, doğal ve profesyonel bir üslupla cevap alır."
+        },
+        {
+          "q": "Demo sürecinde teknik destek var mı?",
+          "a": "Evet. Kurulum, temel eğitim ve teknik destek demo sürecine dahildir."
+        }
+      ]
+    },
+    "cta": {
+      "badge": "Ücretsiz demo",
+      "title": "Otelinizin dijital resepsiyonunu bugün başlatın.",
+      "text": "Hemen deneyin, farkı görün. Ücretsiz demo ile Dijital Resepsiyonist'i kendi misafir iletişim süreçlerinizde deneyin.",
+      "primary": "Ücretsiz Demo Talep Et",
+      "secondary": "Bize Ulaşın"
+    },
+    "footer": {
+      "tagline": "Rezervasyon öncesinden tatil sonrasına kadar misafir iletişimini yönetin.",
+      "solutions": "Çözümlerimiz",
+      "menu": "Menü",
+      "contact": "İletişim",
+      "rights": "© 2026 Punn Digital. Tüm hakları saklıdır."
+    },
   features: {
     eyebrow: "Neler yapar?",
     heading: "Resepsiyon yükünü azaltır, satış fırsatlarını artırır.",

@@ -302,3 +302,5 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 .punn-dark-card { background: var(--c-dark-card); border: 1px solid var(--c-glow-soft); }
 .punn-dark-card.punn-spot::after { background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), var(--c-glow-soft), transparent 65%); }
 @media (prefers-reduced-motion: reduce) { .era-travel, .era-room, .era-lock-a, .era-lock-b { animation: none; } .era-lock-b { opacity: 0; } }
+
+.logo-on-dark { --c-logo-from: var(--c-logo-dark-from); --c-logo-to: var(--c-logo-dark-to); }

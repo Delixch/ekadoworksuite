@@ -1,73 +1,86 @@
 "use client";
 
-import { a } from "./assets";
 import { useState } from "react";
+import { MessageCircleQuestion, Plus } from "lucide-react";
+import { useLocale } from "@/i18n/useLocale";
 import { Heading, Reveal } from "./ui";
 
-const faqs = [
-  ["What is a Voice AI Agent?", "A Voice AI Agent is a smart virtual assistant that listens to your voice, understands what you say, and replies or performs actions automatically."],
-  ["Does it sound robotic?", "Older Voice AI sounded robotic, but modern Voice AI sounds much more natural and human-like."],
-  ["Can I customize responses?", "Yes, Voice AI responses can be customized based on user needs and business requirements."],
-  ["Does it support my language?", "Many Voice AI Agents support multiple languages, but support for your language depends on the specific system. You should check the platform you plan to use to confirm language support."],
-  ["How fast is setup?", "Setting up a basic Voice AI Agent can be very quick — often within minutes to a few hours — while more customized systems may take longer."],
-];
-
+/** SSS: sorular ve cevaplar eski siteden, üç dilde (src/i18n) */
 export function Faq() {
-  const [open, setOpen] = useState<number | null>(null);
+  const { t } = useLocale();
+  const f = t.faq;
+  const [open, setOpen] = useState<number | null>(0);
+
   return (
-    <section id="Faq" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
+    <section id="sss" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
-        <div className="flex items-start justify-between gap-10 tab:flex-col tab:gap-[50px]">
-          <div className="flex flex-col items-start justify-start gap-9">
-            <div className="flex flex-col gap-4">
-              <Heading>Frequently Asked Questions</Heading>
-              <Reveal>
-                <p className="w-full max-w-[569px] text-era-gray">
-                  Got questions? We’ve got answers. Explore common queries about our Voice AI Agent and how it can help
-                  you.
-                </p>
-              </Reveal>
+        <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[minmax(0,.85fr)_minmax(0,1.15fr)] items-start gap-14 tab:grid-cols-1 tab:gap-10">
+          <div className="flex flex-col gap-6 tab:items-center tab:text-center">
+            <div className="flex flex-col gap-4 tab:items-center">
+              <span className="flex w-fit items-center gap-2 rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">
+                <i className="block h-1.5 w-1.5 rounded-full bg-era-accent" /> {f.eyebrow}
+              </span>
+              <Heading>{f.heading}</Heading>
             </div>
-            <Reveal variant="scale0" className="sm2:w-full">
-              <div className="overflow-hidden rounded-(--r-x) tab:h-[264px] tab:w-[350px] sm2:w-auto">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={a("699c26-rectangle-50-1-.webp")} alt="" className="h-full w-full object-cover" />
+            <Reveal variant="up" className="w-full max-w-[420px]">
+              <div className="punn-panel flex flex-col gap-3 rounded-(--r-x) p-6 text-left">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line">
+                  <MessageCircleQuestion size={21} strokeWidth={1.8} />
+                </span>
+                <h3 className="text-[19px] font-bold text-era-black">{f.stillTitle}</h3>
+                <p className="text-[15px] text-era-gray">{f.stillText}</p>
+                <a
+                  href="#bize-ulasin"
+                  className="mt-1 flex h-12 w-fit items-center rounded-(--r-s1) bg-era-primary px-6 text-[16px] font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
+                >
+                  {f.stillCta}
+                </a>
               </div>
             </Reveal>
           </div>
 
-          <div className="flex w-full max-w-[670px] flex-col gap-4 tab:max-w-none">
-            {faqs.map(([q, ans], i) => {
+          <div className="flex flex-col gap-3">
+            {f.items.map((it, i) => {
               const isOpen = open === i;
               return (
-                <div
-                  key={q}
-                  className="w-full rounded-(--r-r) border border-era-cute px-6 pb-6 mob:px-4 mob:pb-4 sm2:px-3 sm2:pb-3"
-                >
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full cursor-pointer items-center justify-between pt-6 text-left mob:pt-4 sm2:pt-3"
-                  >
-                    <span className="text-(length:--t-mxl) leading-[140%] sm2:whitespace-pre-wrap">{q}</span>
-                    <span className="flex h-2.5 w-[17px] items-center justify-center sm2:w-3">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={a("6996cc-icon.svg")}
-                        alt=""
-                        className={`h-full w-full transition-transform duration-300 dark:invert ${isOpen ? "rotate-180" : ""}`}
-                      />
-                    </span>
-                  </button>
+                <Reveal key={it.q} variant="up" delay={i * 90}>
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                    className={`rounded-(--r-r) border transition-colors duration-300 ${
+                      isOpen ? "border-era-primary bg-era-white shadow-[0_10px_30px_var(--c-shadow-soft)]" : "border-era-cute bg-transparent"
+                    }`}
                   >
-                    <div className="overflow-hidden">
-                      <p className="pt-4 text-era-gray sm2:pt-2">{ans}</p>
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      onClick={() => setOpen(isOpen ? null : i)}
+                      className="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left mob:px-4 mob:py-4"
+                    >
+                      <span className="text-[18px] leading-[1.35] font-semibold text-era-black">{it.q}</span>
+                      <span
+                        className={`flex h-8 w-8 flex-none items-center justify-center rounded-full transition-all duration-300 ${
+                          isOpen ? "rotate-45 bg-era-primary text-era-on-dark" : "bg-era-secondary text-era-primary-ink"
+                        }`}
+                      >
+                        <Plus size={17} strokeWidth={2.4} />
+                      </span>
+                    </button>
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-500 ease-out ${
+                        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p
+                          className={`px-6 pb-5 text-[16px] leading-[1.6] text-era-gray transition-all duration-500 mob:px-4 ${
+                            isOpen ? "translate-y-0 opacity-100 delay-100" : "-translate-y-2 opacity-0"
+                          }`}
+                        >
+                          {it.a}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               );
             })}
           </div>

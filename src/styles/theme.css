@@ -13,6 +13,8 @@
   --c-primary-ink: #0044f0;    /* açık mavi zemin üstündeki mavi yazı (menü hapları) */
   --c-logo-from: #0a17ff;      /* logo geçişi başlangıç */
   --c-logo-to: #00086b;        /* logo geçişi bitiş */
+  --c-logo-dark-from: #ffffff; /* koyu zeminde logo yazısı (footer) başlangıç */
+  --c-logo-dark-to: #b7c3ff;   /* koyu zeminde logo yazısı bitiş */
 
   /* ===== Koyu tonlar ===== */
   --c-ink: #0b1033;            /* ana metin, koyu buton */
