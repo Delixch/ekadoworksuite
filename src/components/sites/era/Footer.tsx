@@ -20,9 +20,9 @@ const socials = [
 
 export function Footer() {
   const [sent, setSent] = useState(false);
-  const linkText = "text-white";
+  const linkText = "text-era-on-dark";
   return (
-    <footer className="bg-era-black pt-[100px] pb-8 tab:pt-[60px] mob:overflow-hidden mob:pt-10">
+    <footer className="bg-era-dark pt-[100px] pb-8 tab:pt-[60px] mob:overflow-hidden mob:pt-10">
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="mb-[50px] flex items-start justify-between tab:mb-8 tab:flex-col tab:gap-[50px] sm2:mb-5">
           <div className="flex flex-col gap-[46px] tab:gap-5">
@@ -31,11 +31,11 @@ export function Footer() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={a("699451-frame-5-1-.svg")} alt="I’m Era" className="h-full w-full object-cover" />
               </a>
-              <div className="text-white">Transform AI to fit your vision</div>
+              <div className="text-era-on-dark">Transform AI to fit your vision</div>
             </Reveal>
             <Reveal className="h-[50px]" delay={150}>
               {sent ? (
-                <div className="text-white">Thank you! Your submission has been received!</div>
+                <div className="text-era-on-dark">Thank you! Your submission has been received!</div>
               ) : (
                 <form
                   className="relative"
@@ -49,7 +49,7 @@ export function Footer() {
                     required
                     maxLength={256}
                     placeholder="Email address"
-                    className="h-[50px] w-[305px] rounded-(--r-s1) border border-white bg-transparent p-4 text-(length:--t-r) leading-[120%] text-white placeholder:text-white/70 focus:outline-none sm2:w-[250px]"
+                    className="h-[50px] w-[305px] rounded-(--r-s1) border border-era-on-dark bg-transparent p-4 text-(length:--t-r) leading-[120%] text-era-on-dark placeholder:text-era-on-dark/70 focus:outline-none sm2:w-[250px]"
                   />
                   <button
                     type="submit"
@@ -66,19 +66,19 @@ export function Footer() {
 
           <div className="grid w-full max-w-[715px] grid-cols-3 items-start justify-between tab:max-w-none sm2:grid-cols-[.35fr_.25fr] sm2:gap-x-4 sm2:gap-y-[50px]">
             <Reveal className="flex w-[111px] flex-col gap-[30px] tab:w-auto sm2:gap-5" delay={150}>
-              <div className="text-(length:--t-mxl) leading-[120%] font-medium whitespace-nowrap text-white">Quick Links</div>
+              <div className="text-(length:--t-mxl) leading-[120%] font-medium whitespace-nowrap text-era-on-dark">Quick Links</div>
               {quick.map(([l, h]) => (
                 <RollLink key={l} href={h} textClass={`${linkText} whitespace-nowrap`}>{l}</RollLink>
               ))}
             </Reveal>
             <Reveal className="flex w-[112px] flex-col gap-[30px] tab:w-auto sm2:gap-5" delay={300}>
-              <div className="text-(length:--t-mxl) leading-[120%] font-medium whitespace-nowrap text-white">Other Pages</div>
+              <div className="text-(length:--t-mxl) leading-[120%] font-medium whitespace-nowrap text-era-on-dark">Other Pages</div>
               {other.map((l) => (
                 <RollLink key={l} href="#" textClass={`${linkText} whitespace-nowrap`}>{l}</RollLink>
               ))}
             </Reveal>
             <Reveal className="flex w-[229px] flex-col gap-[30px] tab:w-auto sm2:gap-5" delay={450}>
-              <div className="text-(length:--t-mxl) leading-[120%] font-medium text-white">Contact</div>
+              <div className="text-(length:--t-mxl) leading-[120%] font-medium text-era-on-dark">Contact</div>
               {[
                 ["69945b-frame-2147239570.svg", "+1 (234) 567-890", "tel:+1234567890"],
                 ["69945c-frame-2147239570-2-.svg", "hello@i’mera.com", "mailto:hello@imera.com"],
@@ -89,7 +89,7 @@ export function Footer() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={a(icon)} alt="" className="h-full w-full object-cover" />
                   </span>
-                  <span className={`text-white ${text.startsWith("123") ? "w-full max-w-[187px] tab:w-auto tab:max-w-none sm2:w-[150px]" : "whitespace-nowrap"}`}>{text}</span>
+                  <span className={`text-era-on-dark ${text.startsWith("123") ? "w-full max-w-[187px] tab:w-auto tab:max-w-none sm2:w-[150px]" : "whitespace-nowrap"}`}>{text}</span>
                 </a>
               ))}
             </Reveal>
@@ -99,20 +99,20 @@ export function Footer() {
         <Line />
         <Reveal className="mt-8 flex items-start justify-between tab:flex-col tab:gap-5 sm2:mt-5 sm2:gap-2.5" delay={200}>
           <div className="flex gap-4 sm2:flex-col sm2:gap-2.5">
-            <div className="whitespace-nowrap text-white">© 2026 All rights reserved.</div>
-            <div className="whitespace-nowrap text-white">
+            <div className="whitespace-nowrap text-era-on-dark">© 2026 All rights reserved.</div>
+            <div className="whitespace-nowrap text-era-on-dark">
               Design by{" "}
-              <a href="https://webflow.com/templates/designers/flowoly" target="_blank" rel="noreferrer" className="text-white no-underline transition-colors hover:text-era-primary">
+              <a href="https://webflow.com/templates/designers/flowoly" target="_blank" rel="noreferrer" className="text-era-on-dark no-underline transition-colors hover:text-era-primary">
                 Flowoly
               </a>{" "}
               Prowered by{" "}
-              <a href="https://webflow.com" target="_blank" rel="noreferrer" className="text-white no-underline transition-colors hover:text-era-primary">
+              <a href="https://webflow.com" target="_blank" rel="noreferrer" className="text-era-on-dark no-underline transition-colors hover:text-era-primary">
                 Webflow
               </a>
             </div>
           </div>
           <div className="flex items-start gap-5">
-            <div className="text-white">Social Media</div>
+            <div className="text-era-on-dark">Social Media</div>
             <div className="flex items-start gap-4">
               {socials.map(([name, icon, href]) => (
                 <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={name} className="block h-5 w-5">

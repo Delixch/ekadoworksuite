@@ -6,7 +6,7 @@ const card =
   "flex flex-col gap-[30px] rounded-(--r-x) border-4 border-era-secondary bg-era-bright px-8 pt-8 tab:gap-5 tab:p-[26px] mob:gap-10 mob:px-[22px] mob:pt-[22px] mob:pb-0";
 const cardBottom =
   "flex flex-col gap-[30px] rounded-(--r-x) border-4 border-era-secondary bg-era-bright p-8 tab:justify-between tab:gap-5 tab:p-[26px] mob:gap-5 mob:p-[22px] sm2:p-2.5";
-const shadow = "shadow-[0_4px_22px_#cacaca40]";
+const shadow = "shadow-[0_4px_22px_var(--c-shadow)]";
 
 const Text = ({ title, sub }: { title: string; sub: string }) => (
   <div className="flex w-full max-w-[391px] flex-col gap-3 tab:max-w-none">
@@ -33,7 +33,7 @@ const duncans = [
 function Voices() {
   return (
     <div className="mx-auto flex flex-col items-start justify-center gap-3 rounded-(--r-x) tab:mx-auto sm2:w-full">
-      <div className={`mx-auto flex w-full max-w-[510px] flex-col items-center justify-between gap-3.5 rounded-(--r-x) border border-era-brightgray bg-white p-5 tab:max-w-none sm2:p-2.5 ${shadow}`}>
+      <div className={`mx-auto flex w-full max-w-[510px] flex-col items-center justify-between gap-3.5 rounded-(--r-x) border border-era-brightgray bg-era-white p-5 tab:max-w-none sm2:p-2.5 ${shadow}`}>
         <div className="flex w-full items-center justify-between">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={a("69958a-ellipse-13.svg")} alt="" className="h-[49px] w-full max-w-[49px] object-cover" />
@@ -41,7 +41,7 @@ function Voices() {
             <div>EN</div>
             <div className="h-[7px] w-[11px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={a("69958a-vector-4.svg")} alt="" className="h-full w-full" />
+              <img src={a("69958a-vector-4.svg")} alt="" className="h-full w-full dark:invert" />
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@ function Voices() {
           </div>
           <div className="flex h-[52px] w-full max-w-[52px] items-center justify-center rounded-[26px] border border-era-lightgray pl-1 mob:h-[45px] mob:max-w-[45px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={a("69958d-polygon-1.svg")} alt="" className="max-h-[22px] w-5" />
+            <img src={a("69958d-polygon-1.svg")} alt="" className="max-h-[22px] w-5 dark:invert" />
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@ function Voices() {
         {duncans.map(([src, name]) => (
           <div
             key={name}
-            className={`flex h-full max-h-[108px] w-full max-w-[102px] flex-col items-center rounded-(--r-s1) border border-era-brightgray bg-white px-4 py-3 mob:items-start mob:px-3 mob:py-2 ${shadow}`}
+            className={`flex h-full max-h-[108px] w-full max-w-[102px] flex-col items-center rounded-(--r-s1) border border-era-brightgray bg-era-white px-4 py-3 mob:items-start mob:px-3 mob:py-2 ${shadow}`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={a(src)} alt="" className="h-10 w-10 object-cover mob:mx-auto" />

@@ -27,7 +27,7 @@ export function Marquee() {
               >
                 {logos.map((l) => (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img key={l} src={a(l)} alt="" className="max-w-none sm2:min-w-[100px]" />
+                  <img key={l} src={a(l)} alt="" className="max-w-none dark:invert sm2:min-w-[100px]" />
                 ))}
               </div>
             ))}

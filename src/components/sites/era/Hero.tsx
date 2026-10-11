@@ -18,7 +18,7 @@ export function Hero() {
     <section className="relative overflow-hidden p-0">
       <div className="relative h-[1110px] bg-era-cloud xl2:h-[1130px] min-[1920px]:h-[1159px] tab:h-[772px] mob:h-[720px] sm2:h-[540px]">
         {/* alt beyaz geçiş */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-50">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-50 dark:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={a("699d73-4e0afdb11fbf25944e7fe5040cbd15bb-group-2087329864.webp")}
@@ -52,7 +52,7 @@ export function Hero() {
 
             <div className="relative top-[44px] flex flex-col items-end justify-end justify-self-end gap-[205px] min-[1280px]:top-[38px] min-[1280px]:gap-0 xl2:top-[86px] xl2:gap-[200px] min-[1920px]:top-[68px]">
               <div className="era-in-drop relative z-[5]">
-                <div className="flex flex-col gap-2 rounded-(--t-r) border-2 border-white bg-white/60 p-4 backdrop-blur-[12px]">
+                <div className="flex flex-col gap-2 rounded-(--t-r) border-2 border-era-white bg-era-white/60 p-4 backdrop-blur-[12px]">
                   <div className="text-(length:--t-mxl) leading-[124%] font-medium">Members Joined</div>
                   <div className="flex items-center gap-2.5">
                     <div className="relative z-[5] inline-flex">
@@ -71,7 +71,7 @@ export function Hero() {
 
           {/* tablet / mobil içerik */}
           <div className="relative z-50 hidden pt-[360px] tab:block mob:pt-[355px] sm2:pt-[210px]">
-            <div className="flex items-end justify-between mob:mx-auto mob:h-[302px] mob:w-[450px] mob:max-w-full mob:flex-col mob:items-center mob:justify-between mob:gap-6 mob:rounded-(--r-r) mob:bg-white/60 mob:p-5 mob:backdrop-blur-[4px] sm2:h-auto sm2:w-auto sm2:items-start">
+            <div className="flex items-end justify-between mob:mx-auto mob:h-[302px] mob:w-[450px] mob:max-w-full mob:flex-col mob:items-center mob:justify-between mob:gap-6 mob:rounded-(--r-r) mob:bg-era-white/60 mob:p-5 mob:backdrop-blur-[4px] sm2:h-auto sm2:w-auto sm2:items-start">
               <div className="flex flex-col gap-[60px] mob:flex-row mob:gap-5 sm2:gap-2.5">
                 <h1 className="era-in-left text-(length:--h1) leading-(--lh-h1) font-bold uppercase">I’M</h1>
                 <h1 className="era-in-right text-(length:--h1) leading-(--lh-h1) font-bold uppercase">ERA</h1>

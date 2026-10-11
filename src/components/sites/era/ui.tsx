@@ -109,10 +109,10 @@ const btnBase =
 export function PrimaryButton({ children, href = "#" }: { children: ReactNode; href?: string }) {
   return (
     <a href={href} className={`group ${btnBase}`}>
-      <span className="relative z-[1] flex h-full items-center rounded-(--r-s1) bg-era-black px-[27px] text-(length:--t-rx) leading-[124%] font-semibold text-white uppercase">
+      <span className="relative z-[1] flex h-full items-center rounded-(--r-s1) bg-era-btn px-[27px] text-(length:--t-rx) leading-[124%] font-semibold text-era-on-btn uppercase">
         {children}
       </span>
-      <span className="absolute inset-0 flex translate-y-full items-center justify-center rounded-(--r-s1) border border-era-black bg-white text-(length:--t-rx) leading-[124%] font-semibold text-era-black uppercase transition-transform duration-300 group-hover:translate-y-0">
+      <span className="absolute inset-0 flex translate-y-full items-center justify-center rounded-(--r-s1) border border-era-btn bg-era-white text-(length:--t-rx) leading-[124%] font-semibold text-era-black uppercase transition-transform duration-300 group-hover:translate-y-0">
         {children}
       </span>
     </a>
@@ -124,13 +124,13 @@ export function SecondaryButton({ children, href = "#" }: { children: ReactNode;
   const inner = (black: boolean) => (
     <>
       <span
-        className={`text-(length:--t-rx) leading-[124%] font-semibold uppercase ${black ? "text-era-black" : "text-white"}`}
+        className={`text-(length:--t-rx) leading-[124%] font-semibold uppercase ${black ? "text-era-black" : "text-era-on-dark"}`}
       >
         {children}
       </span>
       <span className="block h-[15px] w-[37px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={a("69944d-arrow-1.svg")} alt="" className={`h-full w-full ${black ? "invert" : ""}`} />
+        <img src={a("69944d-arrow-1.svg")} alt="" className={`h-full w-full ${black ? "invert dark:invert-0" : ""}`} />
       </span>
     </>
   );
@@ -139,7 +139,7 @@ export function SecondaryButton({ children, href = "#" }: { children: ReactNode;
       <span className="flex h-full items-center justify-center gap-4 rounded-(--r-s1) bg-era-primary px-[27px] py-[18px]">
         {inner(false)}
       </span>
-      <span className="absolute inset-0 flex translate-y-full items-center justify-center gap-4 rounded-(--r-s1) border border-era-primary bg-white px-[27px] py-[18px] transition-transform duration-300 group-hover:translate-y-0">
+      <span className="absolute inset-0 flex translate-y-full items-center justify-center gap-4 rounded-(--r-s1) border border-era-primary bg-era-white px-[27px] py-[18px] transition-transform duration-300 group-hover:translate-y-0">
         {inner(true)}
       </span>
     </a>

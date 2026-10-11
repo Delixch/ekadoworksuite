@@ -56,7 +56,7 @@ export function Faq() {
                       <img
                         src={a("6996cc-icon.svg")}
                         alt=""
-                        className={`h-full w-full transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                        className={`h-full w-full transition-transform duration-300 dark:invert ${isOpen ? "rotate-180" : ""}`}
                       />
                     </span>
                   </button>

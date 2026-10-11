@@ -55,8 +55,8 @@ export function Pricing() {
                       <div className="flex h-10 items-center justify-between">
                         <div className="text-(length:--t-mx) font-medium">{p.name}</div>
                         {p.popular && (
-                          <div className="flex items-center justify-center rounded-(--r-x) bg-white px-3 py-2">
-                            <p className="text-era-chinese">Most Popular</p>
+                          <div className="flex items-center justify-center rounded-(--r-x) bg-era-white px-3 py-2">
+                            <p className="text-era-ink">Most Popular</p>
                           </div>
                         )}
                       </div>
@@ -67,7 +67,7 @@ export function Pricing() {
                       <a
                         href="#"
                         className={`flex items-center justify-center rounded-(--r-s1) border border-era-gray px-[27px] py-[18px] no-underline transition-colors duration-300 ${
-                          on ? "bg-era-black text-white" : "bg-white text-era-black"
+                          on ? "bg-era-btn text-era-on-btn" : "bg-era-white text-era-black"
                         }`}
                       >
                         <span className="inline-flex items-center gap-4">
@@ -76,7 +76,7 @@ export function Pricing() {
                           <img
                             src={a("6996a3-arrow-1-1-.svg")}
                             alt=""
-                            className={`h-[15px] w-[37px] ${on ? "invert" : ""}`}
+                            className={`h-[15px] w-[37px] ${on ? "invert dark:invert-0" : "dark:invert"}`}
                           />
                         </span>
                       </a>
@@ -107,7 +107,7 @@ export function Pricing() {
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img src={a("6996a5-icons.svg")} alt="" className="w-[14px] max-w-[14px] object-cover sm2:w-3 sm2:max-w-3" />
                             </div>
-                            <p className="text-era-chinese">{f}</p>
+                            <p className="text-era-ink">{f}</p>
                           </div>
                         ))}
                       </div>

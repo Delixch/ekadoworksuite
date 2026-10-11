@@ -1,0 +1,92 @@
+/*
+ * TEMA DOSYASI: sitedeki TÜM renkler ve yazı tipi burada.
+ * Başka hiçbir yerde renk kodu yazılmaz; bileşenler sadece bu değişkenleri kullanır.
+ *
+ *  - Rengi değiştirmek: aşağıdaki --c-* değerini değiştir.
+ *  - Yazı tipini değiştirmek: src/styles/fonts.ts içindeki tek satırı değiştir.
+ */
+
+:root {
+  /* ===== Marka renkleri (Punn Digital) ===== */
+  --c-primary: #0044f0;        /* ana mavi: buton, vurgulu başlık, bağlantı */
+  --c-primary-soft: #d2e2fb;   /* açık mavi: hap, seçili kart zemini */
+  --c-logo-from: #0a17ff;      /* logo geçişi başlangıç */
+  --c-logo-to: #00086b;        /* logo geçişi bitiş */
+
+  /* ===== Koyu tonlar ===== */
+  --c-ink: #0b1033;            /* ana metin, koyu buton */
+  --c-dark: #0f1857;           /* koyu bölüm zemini (hizmetler, footer) */
+  --c-dark-card: #18236e;      /* koyu bölüm içindeki kart */
+
+  /* ===== Metin ===== */
+  --c-muted: #5b6185;          /* yardımcı metin, açıklama */
+  --c-muted-light: #afb4d2;    /* koyu zeminde yardımcı metin */
+  --c-muted-soft: #7b82aa;     /* en sessiz metin, alt yazı */
+
+  /* ===== Zeminler ===== */
+  --c-white: #ffffff;
+  --c-bg: #fafbfd;             /* sayfa zemini */
+  --c-sky: #e4f0fc;            /* hero zemini */
+  --c-tint: #eef0ff;           /* kart ve çerçeve zemini */
+  --c-bright: #fdfdff;         /* kart içi çok açık zemin */
+  --c-line: #d5d8f0;           /* ince çizgi, kart kenarı */
+  --c-line-strong: #b4b9d6;    /* belirgin çizgi, dropdown kenarı */
+  --c-line-soft: #e9ecf8;      /* en hafif kenar */
+
+  /* ===== Vurgu ===== */
+  --c-accent: #02bdbf;         /* turkuaz: aktif menü çizgisi, küçük vurgular */
+  --c-success: #12a150;        /* onay */
+  --c-danger: #d92d20;         /* hata */
+
+  /* ===== Roller (gece temasında değişen yüzeyler ve butonlar) ===== */
+  --c-page: #ffffff;           /* sayfa zemini */
+  --c-surface: #ffffff;        /* kart, kutu, hap zemini */
+  --c-on-dark: #ffffff;        /* koyu bölüm ve mavi buton üstündeki yazı (iki temada da beyaz) */
+  --c-btn: #0b1033;            /* koyu buton zemini */
+  --c-on-btn: #ffffff;         /* koyu buton yazısı */
+
+  /* ===== Yüzeyler ===== */
+  --c-nav: rgb(255 255 255 / 0.72);       /* kaydırınca menü zemini */
+  --c-shadow: rgb(46 58 140 / 0.14);      /* kart gölgesi */
+  --c-shadow-soft: rgb(46 58 140 / 0.1);  /* hafif gölge */
+
+  /* ===== Yazı tipi: gerçek tanım src/styles/fonts.ts içinde ===== */
+  --font-main: var(--font-app), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ===== GECE TEMASI: html[data-theme="dark"] iken bu değerler geçerli olur ===== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --c-primary: #3d6bff;
+  --c-primary-soft: #1a2870;
+
+  --c-ink: #eef1ff;
+  --c-dark: #0b1240;
+  --c-dark-card: #141d58;
+
+  --c-muted: #a6aed9;
+  --c-muted-light: #8e97c8;
+  --c-muted-soft: #8088bc;
+
+  --c-page: #070b24;
+  --c-surface: #0e1438;
+  --c-bg: #070b24;
+  --c-sky: #0c1550;
+  --c-tint: #141c55;
+  --c-bright: #0e1438;
+  --c-line: #262f6e;
+  --c-line-strong: #34408a;
+  --c-line-soft: #1b2362;
+
+  --c-accent: #2ad1d3;
+  --c-success: #34c77b;
+  --c-danger: #f97066;
+
+  --c-btn: #eef1ff;
+  --c-on-btn: #0b1033;
+
+  --c-nav: rgb(7 11 36 / 0.72);
+  --c-shadow: rgb(0 0 0 / 0.45);
+  --c-shadow-soft: rgb(0 0 0 / 0.3);
+}

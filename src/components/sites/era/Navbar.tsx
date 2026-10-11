@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { a } from "./assets";
 import { PrimaryButton, RollLink } from "./ui";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { label: "Home", href: "#" },
@@ -38,13 +39,13 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-[100] w-full transition-[transform,background-color] duration-500 ease-out ${
         hidden && !open ? "-translate-y-full" : "translate-y-0"
-      } ${scrolled ? "bg-[#b9b9b9b9] backdrop-blur-md" : "bg-transparent"}`}
+      } ${scrolled ? "bg-era-nav backdrop-blur-md" : "bg-transparent"}`}
     >
       <div className="relative mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="flex items-center justify-between py-5 tab:pb-2.5 mob:py-4">
           <a href="#" className="era-in-pop block h-[31px] w-[154px]" style={pop(0)}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={a("699427-frame-5.svg")} alt="I’m Era" className="h-full w-full" />
+            <img src={a("699427-frame-5.svg")} alt="I’m Era" className="h-full w-full dark:invert" />
           </a>
 
           <nav
@@ -67,6 +68,9 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center">
+            <div className="era-in-pop flex" style={pop(5)}>
+              <ThemeToggle />
+            </div>
             <div className="era-in-pop tab:hidden" style={pop(6)}>
               <PrimaryButton>Get Started</PrimaryButton>
             </div>

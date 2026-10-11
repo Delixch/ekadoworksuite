@@ -173,8 +173,8 @@ export function Testimonials() {
                     type="button"
                     aria-label={`Slide ${n + 1}`}
                     onClick={() => go(n)}
-                    className={`mx-[3px] h-4 w-4 rounded-full shadow-[0_0_3px_#33333366] transition-colors ${
-                      n === i ? "bg-black" : "bg-black/40"
+                    className={`mx-[3px] h-4 w-4 rounded-full shadow-[0_0_3px_var(--c-shadow)] transition-colors ${
+                      n === i ? "bg-era-ink" : "bg-era-ink/40"
                     }`}
                   />
                 ))}

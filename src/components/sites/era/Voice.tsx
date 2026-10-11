@@ -7,7 +7,7 @@ const flag = (src: string) => (
 );
 const play = (
   // eslint-disable-next-line @next/next/no-img-element
-  <img src={a("69968f-polygon-2.svg")} alt="" className="h-5 w-full max-w-5 mob:h-[18px] mob:max-w-[18px]" />
+  <img src={a("69968f-polygon-2.svg")} alt="" className="dark:invert h-5 w-full max-w-5 mob:h-[18px] mob:max-w-[18px]" />
 );
 
 function Lang({ src, name }: { src: string; name: string }) {
@@ -21,7 +21,7 @@ function Lang({ src, name }: { src: string; name: string }) {
 
 function Single({ src, name }: { src: string; name: string }) {
   return (
-    <div className="flex w-full max-w-[546px] items-center justify-between rounded-(--r-s1) border border-[#f2f2f2] py-[22px] pr-6 pl-3 shadow-[0_2px_15px_#bcbcbc00] tab:max-w-none sm2:py-4">
+    <div className="flex w-full max-w-[546px] items-center justify-between rounded-(--r-s1) border border-era-line py-[22px] pr-6 pl-3 shadow-[0_2px_15px_transparent] tab:max-w-none sm2:py-4">
       <Lang src={src} name={name} />
       {play}
     </div>
@@ -40,13 +40,13 @@ function Pair({
   rg: string;
 }) {
   return (
-    <div className="flex items-center justify-between rounded-(--r-s1) border border-[#f2f2f2] py-[22px] pr-6 pl-3 shadow-[0_2px_15px_#bcbcbc40] sm2:flex-col sm2:gap-3 sm2:py-4">
+    <div className="flex items-center justify-between rounded-(--r-s1) border border-era-line py-[22px] pr-6 pl-3 shadow-[0_2px_15px_var(--c-shadow-soft)] sm2:flex-col sm2:gap-3 sm2:py-4">
       <div className={`flex items-center justify-start ${lg} sm2:w-full sm2:!justify-between`}>
         <Lang src={l[0]} name={l[1]} />
         {play}
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={a("699697-group-2087329788.svg")} alt="" className="h-[15px] w-full max-w-5 sm2:rotate-90" />
+      <img src={a("699697-group-2087329788.svg")} alt="" className="h-[15px] w-full max-w-5 dark:invert sm2:rotate-90" />
       <div className={`flex items-center justify-start ${rg} sm2:w-full sm2:!justify-between`}>
         <Lang src={r[0]} name={r[1]} />
         {play}
