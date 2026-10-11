@@ -1,5 +1,6 @@
 import { appFont } from "@/styles/fonts";
 import { LocaleSync } from "@/components/sites/era/LocaleSync";
+import { BackToTop } from "@/components/sites/era/BackToTop";
 import "./globals.css";
 
 // Sayfa çizilmeden önce kayıtlı ya da sistem temasını uygular (yanıp sönmeyi önler)
@@ -16,6 +17,7 @@ export default function RootLayout({
       <body className="era">
         <LocaleSync />
         {children}
+        <BackToTop />
       </body>
     </html>
   );
