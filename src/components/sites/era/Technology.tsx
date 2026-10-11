@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import { Check, EyeOff, Fingerprint, Gem, Package, Play, Smartphone, Timer } from "lucide-react";
-import { useLocale } from "@/i18n/useLocale";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Check, EyeOff, Fingerprint, Gem, Package, Play, Smartphone, Timer, Volume2, VolumeX } from "lucide-react";
+import { locales, useLocale, type Locale } from "@/i18n/useLocale";
 import { Chaser } from "./Chaser";
 import { Spot } from "./Spot";
 import { Heading, Reveal } from "./ui";
@@ -15,22 +15,105 @@ const spots = [
   { x: "38%", y: "71%" },
 ];
 
-/** Video: dosya henüz yoksa şık bir "hazırlanıyor" kartı gösterir */
+/** Video sessiz; ses dosyası seçilen dile göre ayrıca çalınır ve videoyla eşlenir. */
 function PromoVideo({ title, soon }: { title: string; soon: string }) {
+  const { locale } = useLocale();
   const [ok, setOk] = useState(true);
+  const [lang, setLang] = useState<Locale | null>(null);
+  const [muted, setMuted] = useState(false);
+  const video = useRef<HTMLVideoElement>(null);
+  const audio = useRef<HTMLAudioElement>(null);
+  const cur = lang ?? locale;
+
+  // ses ve video aynı yerde dursun
+  const sync = useCallback((force = false) => {
+    const v = video.current;
+    const a = audio.current;
+    if (!v || !a) return;
+    if (force || Math.abs(a.currentTime - v.currentTime) > 0.25) a.currentTime = v.currentTime;
+  }, []);
+
+  useEffect(() => {
+    const v = video.current;
+    const a = audio.current;
+    if (!v || !a) return;
+    const play = () => {
+      sync(true);
+      a.play().catch(() => {});
+    };
+    const pause = () => a.pause();
+    const seek = () => sync(true);
+    const tick = () => sync();
+    v.addEventListener("play", play);
+    v.addEventListener("playing", play);
+    v.addEventListener("pause", pause);
+    v.addEventListener("waiting", pause);
+    v.addEventListener("seeked", seek);
+    v.addEventListener("timeupdate", tick);
+    v.addEventListener("ended", pause);
+    return () => {
+      v.removeEventListener("play", play);
+      v.removeEventListener("playing", play);
+      v.removeEventListener("pause", pause);
+      v.removeEventListener("waiting", pause);
+      v.removeEventListener("seeked", seek);
+      v.removeEventListener("timeupdate", tick);
+      v.removeEventListener("ended", pause);
+    };
+  }, [sync]);
+
+  // dil değişince yeni ses aynı saniyeden devam etsin
+  useEffect(() => {
+    const v = video.current;
+    const a = audio.current;
+    if (!v || !a) return;
+    a.load();
+    a.currentTime = v.currentTime;
+    if (!v.paused) a.play().catch(() => {});
+  }, [cur]);
+
   return (
     <div className="relative aspect-video overflow-hidden rounded-(--r-x) bg-era-dark ring-1 ring-era-line">
       {ok ? (
-        <video
-          className="h-full w-full object-cover"
-          src="/videos/akilli-kapi.mp4"
-          poster="/sites/punn/lock-product.jpg"
-          controls
-          playsInline
-          preload="metadata"
-          aria-label={title}
-          onError={() => setOk(false)}
-        />
+        <>
+          <video
+            ref={video}
+            className="h-full w-full object-cover"
+            src="/videos/akilli-kapi.mp4"
+            poster="/sites/punn/lock-product.jpg"
+            controls
+            muted
+            playsInline
+            preload="metadata"
+            aria-label={title}
+            onError={() => setOk(false)}
+          />
+          <audio ref={audio} src={`/videos/ses-${cur}.mp3`} preload="auto" muted={muted} />
+          <div className="absolute top-3 right-3 z-[3] flex items-center gap-1 rounded-full bg-era-dark/70 p-1 backdrop-blur-md mob:top-2 mob:right-2">
+            {locales.map((l) => (
+              <button
+                key={l.code}
+                type="button"
+                onClick={() => setLang(l.code)}
+                aria-pressed={cur === l.code}
+                aria-label={l.label}
+                className={`rounded-full px-3 py-1 text-[12px] font-bold tracking-wide uppercase transition-colors ${
+                  cur === l.code ? "bg-era-btn text-era-on-btn" : "text-era-on-dark/80 hover:text-era-on-dark"
+                }`}
+              >
+                {l.code}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => setMuted((m) => !m)}
+              aria-label={muted ? "Sesi aç" : "Sesi kapat"}
+              className="flex h-7 w-7 items-center justify-center rounded-full text-era-on-dark/80 hover:text-era-on-dark"
+            >
+              {muted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+            </button>
+          </div>
+        </>
       ) : (
         <div className="punn-feature relative flex h-full w-full flex-col items-center justify-center gap-5 text-era-on-dark">
           <span className="relative flex h-20 w-20 items-center justify-center rounded-full bg-era-on-dark/15">
