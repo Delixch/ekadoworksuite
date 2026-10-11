@@ -33,6 +33,8 @@
   --c-line: #d5d8f0;           /* ince çizgi, kart kenarı */
   --c-line-strong: #b4b9d6;    /* belirgin çizgi, dropdown kenarı */
   --c-line-soft: #e9ecf8;      /* en hafif kenar */
+  --c-panel: #f4f6ff;          /* panel/kart gövde zemini (beyaz sayfadan ayrışır) */
+  --c-panel-border: #c3cdf0;   /* panel/kart kenar çizgisi */
 
   /* ===== Vurgu ===== */
   --c-accent: #02bdbf;         /* turkuaz: aktif menü çizgisi, küçük vurgular */
@@ -91,6 +93,8 @@
   --c-line: #262f6e;
   --c-line-strong: #34408a;
   --c-line-soft: #1b2362;
+  --c-panel: #0e1438;
+  --c-panel-border: #2f3a85;
 
   --c-accent: #2ad1d3;
   --c-success: #34c77b;

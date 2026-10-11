@@ -220,3 +220,51 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
     radial-gradient(70% 120% at 100% 0%, rgb(255 255 255 / 0.16) 0%, transparent 60%),
     linear-gradient(135deg, var(--c-primary) 0%, var(--c-dark) 100%);
 }
+
+/* ===== Panel / kart: iki temada da sayfadan ayrışır (renkler theme.css) ===== */
+.punn-panel {
+  position: relative;
+  background:
+    radial-gradient(70% 45% at 100% 0%, color-mix(in oklab, var(--c-primary) 9%, transparent) 0%, transparent 70%),
+    var(--c-panel);
+  border: 1.5px solid var(--c-panel-border);
+  box-shadow: 0 10px 32px var(--c-shadow-soft);
+}
+/* üst kenarda ince ışıklı çizgi */
+.punn-panel::before {
+  content: "";
+  position: absolute;
+  top: -1.5px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--c-primary), var(--c-accent), transparent);
+  opacity: 0.85;
+}
+/* öne çıkan kart: mavi geçiş */
+.punn-feature {
+  position: relative;
+  background:
+    radial-gradient(80% 50% at 100% 0%, rgb(255 255 255 / 0.2) 0%, transparent 65%),
+    linear-gradient(160deg, var(--c-primary) 0%, var(--c-dark) 100%);
+  box-shadow: 0 18px 44px var(--c-shadow);
+}
+/* imleç ışığı + yükselme */
+.punn-spot { isolation: isolate; transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s; }
+.punn-spot:hover { transform: translateY(-6px); }
+.punn-spot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--c-primary) 14%, transparent), transparent 65%);
+}
+.punn-feature.punn-spot::after {
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgb(255 255 255 / 0.14), transparent 65%);
+}
+.punn-spot:hover::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .punn-spot:hover { transform: none; } }
