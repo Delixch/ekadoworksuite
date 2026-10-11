@@ -304,3 +304,19 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 @media (prefers-reduced-motion: reduce) { .era-travel, .era-room, .era-lock-a, .era-lock-b { animation: none; } .era-lock-b { opacity: 0; } }
 
 .logo-on-dark { --c-logo-from: var(--c-logo-dark-from); --c-logo-to: var(--c-logo-dark-to); }
+
+/* ===== Footer: kayan renkli ışıklar ===== */
+@keyframes era-aurora {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(70px, 40px, 0) scale(1.15); }
+  100% { transform: translate3d(-50px, -20px, 0) scale(0.95); }
+}
+@keyframes era-sheen { from { background-position: -40% 0; } to { background-position: 140% 0; } }
+.era-aurora { animation: era-aurora 18s ease-in-out infinite alternate; }
+.era-sheen {
+  background: linear-gradient(90deg, transparent, var(--c-accent), var(--c-primary), transparent);
+  background-size: 40% 100%;
+  background-repeat: no-repeat;
+  animation: era-sheen 7s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) { .era-aurora, .era-sheen { animation: none; } }

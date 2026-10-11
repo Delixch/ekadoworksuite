@@ -19,8 +19,15 @@ export function Footer() {
   const heading = "text-[18px] font-semibold text-era-on-dark";
 
   return (
-    <footer id="bize-ulasin" className="scroll-mt-0 bg-era-dark pt-[90px] pb-8 text-era-on-dark tab:pt-[60px] mob:pt-10">
-      <div className="mx-auto w-full max-w-[1470px] px-[15px]">
+    <footer id="bize-ulasin" className="relative scroll-mt-0 overflow-hidden bg-era-dark pt-[90px] pb-8 text-era-on-dark tab:pt-[60px] mob:pt-10">
+      {/* kayan renkli ışık bulutları ve üst kenarda süzülen ışık çizgisi */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <span className="era-aurora absolute -top-40 left-[8%] h-[420px] w-[560px] rounded-full bg-era-primary/45 blur-[110px]" />
+        <span className="era-aurora absolute -right-[6%] -bottom-52 h-[480px] w-[600px] rounded-full bg-era-accent/25 blur-[120px] [animation-delay:-9s]" />
+        <span className="era-aurora absolute top-[30%] left-[48%] h-[260px] w-[360px] rounded-full bg-era-primary/25 blur-[100px] [animation-delay:-4s]" />
+        <span className="era-sheen absolute inset-x-0 top-0 h-px" />
+      </div>
+      <div className="relative z-[1] mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="grid grid-cols-[1.3fr_1fr_1fr_1.1fr] gap-12 tab:grid-cols-2 tab:gap-10 sm2:grid-cols-1">
           <Reveal variant="up" className="flex flex-col gap-5">
             <a href="#" aria-label={t.ui.homeAria} className="block h-[52px] w-fit">
