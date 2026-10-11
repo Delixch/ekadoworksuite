@@ -87,7 +87,7 @@ export function ClockDivider() {
   const { locale } = useLocale();
   const now = useNow();
   return (
-    <div className="hidden w-full items-center gap-6 tab:flex mob:gap-3" role="group" aria-label={zones.map((z) => z.name[locale]).join(" / ")}>
+    <div className="flex w-full items-center gap-6 min-[1280px]:hidden mob:gap-3" role="group" aria-label={zones.map((z) => z.name[locale]).join(" / ")}>
       <span className="h-px flex-1 bg-gradient-to-r from-transparent to-era-cute mob:hidden" />
       <div className="flex items-start justify-center gap-10 mob:w-full mob:gap-6">
         {zones.map((z, i) => {
@@ -116,11 +116,11 @@ export function ClockDivider() {
 }
 
 /** Hero'da kanal ikonlarının altında: küçük iki yuvarlak saat (Türkiye, Zürih). Yalnızca masaüstünde; mobilde bölüm arasındaki saatler görünür. */
-export function ClockRow() {
+export function ClockRow({ className = "" }: { className?: string }) {
   const { locale } = useLocale();
   const now = useNow();
   return (
-    <div className="flex items-center gap-6 pt-1 tab:hidden">
+    <div className={`flex-col items-start gap-5 ${className}`}>
       {zones.map((z, i) => {
         const p = now ? parts(now, z.tz) : null;
         return (

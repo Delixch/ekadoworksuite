@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Heading, Reveal, type Variant } from "./ui";
-import { ClockDivider } from "./Clock";
+import { ClockDivider, ClockRow } from "./Clock";
 import { Spot } from "./Spot";
 
 /** Metinler src/i18n içinde; burada sadece ikon ve animasyon yönü var (sıra sözlükle aynı). */
@@ -52,7 +52,8 @@ export function Features() {
     <section id="dijital-resepsiyon" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="flex flex-col gap-14 mob:gap-9">
-          <div className="mx-auto flex w-full max-w-[820px] flex-col items-center gap-4 text-center">
+          <div className="relative mx-auto flex w-full max-w-[820px] flex-col items-center gap-4 text-center">
+            <ClockRow className="absolute top-0 right-full mr-12 hidden min-[1280px]:flex" />
             <span className="flex items-center gap-2 rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">
               <i className="block h-1.5 w-1.5 rounded-full bg-era-accent" /> {c.eyebrow}
             </span>
@@ -97,10 +98,21 @@ export function Features() {
                       {g.items.map((it, i) => (
                         <li
                           key={it.title}
-                          className={`group/item py-5 first:pt-0 last:pb-0 ${
-                            i > 0 ? (featured ? "border-t border-era-on-dark/15" : "border-t border-era-line") : ""
-                          }`}
+                          className="group/item relative py-5 first:pt-0 last:pb-0"
                         >
+                          {i < g.items.length - 1 && (
+                            <span
+                              aria-hidden
+                              className={`absolute left-[21.5px] w-px ${i === 0 ? "top-[50px]" : "top-[70px]"} -bottom-3.5 ${
+                                featured ? "bg-era-on-dark/30" : "bg-era-line"
+                              }`}
+                            >
+                              <i
+                                className={`line-dot ${featured ? "ring-1 ring-white/80" : ""}`}
+                                style={{ animationDelay: `${i * 1.2}s` }}
+                              />
+                            </span>
+                          )}
                           <Reveal variant="fade" delay={200 + i * 130} className="flex gap-4">
                             <IconBox icon={meta.icons[i]} featured={featured} />
                             <div className="min-w-0">

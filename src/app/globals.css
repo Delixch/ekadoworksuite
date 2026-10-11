@@ -431,3 +431,48 @@ html, * { scrollbar-width: thin; scrollbar-color: var(--c-primary) var(--c-tint)
 
 /* ===== Panel biraz daha küçük: her şey %92 ölçekte ===== */
 .panel-root { zoom: 0.92; }
+
+/* ===== Demo butonu: kenarlarda logo renginde yanıp sönen ışıma ===== */
+@keyframes demo-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--c-logo-from) 45%, transparent),
+      0 0 18px 4px color-mix(in srgb, var(--c-logo-from) 70%, transparent);
+  }
+}
+.demo-glow {
+  animation: demo-glow 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-glow {
+    animation: none;
+  }
+}
+
+/* ===== Özellik kartları: ikonlar arası çizgide süzülen logo renkli nokta ===== */
+@keyframes line-dot {
+  0% { top: 0; opacity: 0; }
+  3% { opacity: 1; }
+  30% { opacity: 1; }
+  33.3% { top: calc(100% - 6px); opacity: 0; }
+  100% { top: calc(100% - 6px); opacity: 0; }
+}
+.line-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 9999px;
+  background: var(--c-logo-from);
+  box-shadow: 0 0 8px 1px color-mix(in srgb, var(--c-logo-from) 70%, transparent);
+  opacity: 0;
+  animation: line-dot 3.6s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .line-dot { animation: none; }
+}

@@ -4,7 +4,6 @@ import { ArrowRight, Globe, Phone } from "lucide-react";
 import { siInstagram, siMessenger, siWhatsapp } from "simple-icons";
 import { useLocale } from "@/i18n/useLocale";
 import { HeroMockup } from "./HeroMockup";
-import { ClockRow } from "./Clock";
 
 const delay = (s: number) => ({ animationDelay: `${s}s` });
 
@@ -42,7 +41,7 @@ export function Hero() {
               </a>
               <a
                 href="#demo"
-                className="flex h-14 items-center rounded-(--r-s1) border-2 border-era-black px-8 text-[18px] whitespace-nowrap sm2:px-4 font-semibold text-era-black no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-era-secondary sm2:flex-1 sm2:justify-center"
+                className="demo-glow flex h-14 items-center rounded-(--r-s1) border-2 border-era-black px-8 text-[18px] whitespace-nowrap sm2:px-4 font-semibold text-era-black no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-era-secondary sm2:flex-1 sm2:justify-center"
               >
                 {t.hero.demo}
               </a>
@@ -78,12 +77,11 @@ export function Hero() {
                 <Globe size={30} strokeWidth={2} />
               </span>
             </div>
-            <div className="era-in-up" style={delay(1.4)}>
-              <ClockRow />
-            </div>
           </div>
 
-          <HeroMockup />
+          <div className="flex min-w-0 flex-col items-center gap-6">
+            <HeroMockup />
+          </div>
         </div>
       </div>
     </section>

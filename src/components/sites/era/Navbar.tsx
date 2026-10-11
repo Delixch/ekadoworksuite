@@ -112,7 +112,7 @@ export function Navbar() {
             </div>
             <Link
               href="/#demo"
-              className="era-in-pop flex h-12 items-center rounded-(--r-s1) bg-era-primary px-6 text-[17px] font-medium whitespace-nowrap text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 tab:hidden"
+              className="demo-glow era-in-pop flex h-12 items-center rounded-(--r-s1) bg-era-primary px-6 text-[17px] font-medium whitespace-nowrap text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 tab:hidden"
               style={pop(8)}
             >
               {t.nav.demo}
