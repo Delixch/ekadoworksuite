@@ -1,6 +1,6 @@
 # Punn Digital sitesi: eksikler ve yapılacaklar
 
-Son güncelleme: 2026-10-12. Bu dosya projede **ne var, ne eksik, kimin neyi bağlayacağı** sorularına tek yerden cevap verir.
+Son güncelleme: 2026-10-12 (son push: `dada5c9`, her şey GitHub'da). Bu dosya projede **ne var, ne eksik, kimin neyi bağlayacağı** sorularına tek yerden cevap verir.
 Kod: `D:\repos\Zafer` (Next.js 16, Tailwind v4). Çalıştırma: `npm run dev` → http://localhost:3000
 
 ---
@@ -9,7 +9,7 @@ Kod: `D:\repos\Zafer` (Next.js 16, Tailwind v4). Çalıştırma: `npm run dev` �
 
 | Adres | Ne | Durum |
 |---|---|---|
-| `/` | Ana sayfa: Hero (canlı saatler dahil), Neler yapar, Yolculuk, Çözümlerimiz (4 kart), Akıllı Kapı bölümü (video + galeri), Paketler, SSS, Demo bandı, Footer | Çalışıyor, 3 dil, gece/gündüz |
+| `/` | Ana sayfa: Hero (yatık telefon + laptop + canlı arama kartı, altta Türkiye/Zürih saatleri), Neler yapar (mobilde iki yuvarlak saat), Yolculuk, Çözümlerimiz (4 kart), Akıllı Kapı bölümü (video + 4 resimlik galeri), Paketler, SSS, Demo bandı, Footer (saat dahil) | Çalışıyor, 3 dil, gece/gündüz |
 | `/test-et` | "Otelinizin asistanını hemen deneyin" sayfası (bilgi formu, deneme sohbeti, arama seçenekleri) | Çalışıyor ama **sahte yanıtlarla** |
 | `/panel` | Otel paneli: Genel bakış, Konuşmalar, Kurulum (7 adım), Akıllı kilitler | Çalışıyor ama **örnek verilerle**; sitede hiçbir yerden linklenmiyor (gizli) |
 | `docs/db/schema.sql` | Veritabanı tabloları (MySQL / phpMyAdmin) | Hazır, henüz çalıştırılmadı |
@@ -140,4 +140,18 @@ Menü: **Çözümlerimiz** (Dijital Resepsiyon, Yapay Zekâ Telefon Asistanı, P
 - Git commit e-postası **adnan.aydin@bluewin.ch** olmalı (xanadu.ch@gmail.com kullanma: Vercel deploy'u bloke olur).
 - Push sadece sahibi "push" deyince yapılıyor.
 - Panel `.panel-root` içinde `zoom: 0.92` ile %8 küçük çiziliyor (`globals.css`).
-- Kaydırma çubuğu, saat, yukarı çık kilidi, favicon: `globals.css`, `Clock.tsx`, `BackToTop.tsx`, `src/app/icon.svg`.
+- Kaydırma çubuğu (mavi, temaya uyar), saatler, yukarı çık kilidi, favicon: `globals.css`, `Clock.tsx`, `BackToTop.tsx`, `src/app/icon.svg`.
+- Hero mockup (`HeroMockup.tsx`): telefon 8,5° yatık; 992 px ve üstünde sola kayık (-92 px, 1280 px ve üstünde -150 px) ve "Canlı arama" kartı sola alınmış; dar ekranlarda ikisi de eski yerinde. Laptop ekranı %12 büyütülmüş. Saatler: masaüstünde hero'da, tablet ve mobilde "Neler yapar" başlığının altında (`ClockDivider`).
+- Saatler sabit Türkiye ve Zürih saat dilimlerini gösteriyor (otel sahibine göre değişmiyor).
+
+---
+
+## 9. Önerilen sıra (neyi önce yapmalı)
+
+1. **Veritabanı ve yapay zeka bağlantısı** (bölüm 2): en büyük iş, karşı tarafla ortak. Önce sunucu tarafının nerede duracağına karar verin (Next.js içinde mi, ayrı servis mi) ve uzak MySQL erişimini açın.
+2. **Panelin girişi ve yetkisi** (bölüm 5): bağlantıdan önce yoksa herkes `/panel` açabilir.
+3. **Cevap bekleyen sorular** (bölüm 7): özellikle 1, 3, 4 ve 9. Cevaplar videoyu, resimleri ve metinleri etkiliyor.
+4. **Boş menüler** (bölüm 3): Demo Talep Et formu, Bize Ulaşın formu, Teknolojimiz içeriği; Müşterilerimiz ve Blog için içerik gelince.
+5. **Kapalı Era bölümleri** (bölüm 4): gerçek logo, rakam ve yorum gelince açın; gelmezse silin.
+6. **Videonun yazıları ve resimlerin İngilizce etiketleri** (bölüm 6): karar verilince.
+7. Üretime çıkmadan: `npm run build` temiz geçiyor; alan adı, Vercel ayarı, e-posta bildirimleri, Google Analytics / çerez bildirimi, KVKK / gizlilik metni (henüz hiçbiri yok).
