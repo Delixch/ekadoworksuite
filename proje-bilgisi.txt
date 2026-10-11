@@ -1,0 +1,8 @@
+PROJE BİLGİSİ - site-klonlayici
+Yazıldığı tarih: 2026-10-10 (repos temizliği sırasında; kullanıcı "kalsın" dedi)
+
+Ne bu: "ai-website-clone-template" ana şablonu (sürüm 0.5.1, Next.js). Bir siteyi URL'den birebir klonlamak için kullanılır.
+ÖNEMLİ: C:\Users\xdd\.claude\skills\klonla\SKILL.md bu klasörü ANA ŞABLON olarak kullanıyor ve her klonlamada buradan kopyalıyor (robocopy). Klasör silinirse skill şablonu git clone ile yeniden indirir (internet gerekir). Bu klasöre dokunma, içinde klonlama yapma.
+Git: var. Uzak depo: github.com/Delixch/site-klonlayici.
+Yer açmak gerekirse: .next ve node_modules silinebilir (skill bunları kopyalamıyor).
+Son kullanım: 2026-09-27. Boyut ~589 MB.
