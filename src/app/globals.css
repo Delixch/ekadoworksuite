@@ -128,3 +128,91 @@
     @apply font-sans;
   }
 }
+/* ===== Era (Voice AI) tema ===== */
+@custom-variant tab (@media (max-width: 991px));
+@custom-variant mob (@media (max-width: 767px));
+@custom-variant sm2 (@media (max-width: 479px));
+@custom-variant xl2 (@media (min-width: 1440px));
+
+@theme inline {
+  --color-era-primary: #0079ff;
+  --color-era-secondary: #e9f3ff;
+  --color-era-black: #0d0d0d;
+  --color-era-chinese: #171719;
+  --color-era-gray: #606060;
+  --color-era-cute: #b4b4b4;
+  --color-era-bright: #fdfdff;
+  --color-era-brightgray: #efefef;
+  --color-era-lightgray: #d4d4d4;
+  --color-era-silver: #afafaf;
+  --color-era-matte: #7b7b7b;
+  --color-era-old: #848484;
+  --color-era-cloud: #d9eaff;
+  --color-era-coolblue: #d6eaff;
+}
+
+:root {
+  --h1: 230px; --h2: 54px; --h3: 48px; --h4: 36px; --h5: 32px; --h6: 28px;
+  --t-mx: 24px; --t-mxl: 20px; --t-rx: 18px; --t-r: 16px; --t-tx: 14px; --t-t: 11px;
+  --lh-h1: 78%;
+  --r-s1: 12px; --r-m: 32px; --r-x: 24px; --r-r: 20px; --r-s: 16px; --r-mx: 28px;
+}
+@media (min-width: 1440px) { :root { --h1: 280px; } }
+@media (min-width: 1920px) { :root { --h1: 300px; } }
+@media (max-width: 991px) { :root { --h1: 150px; --h4: 33px; --t-mx: 22px; } }
+@media (max-width: 767px) {
+  :root {
+    --h1: 120px; --h2: 34px; --h3: 40px; --h4: 24px; --h5: 28px; --h6: 20px;
+    --t-mx: 20px; --t-mxl: 18px; --t-rx: 16px; --t-r: 14px; --t-t: 7px; --lh-h1: 74%;
+    --r-s1: 6px; --r-m: 12px; --r-x: 12px; --r-r: 12px; --r-s: 12px; --r-mx: 12px;
+  }
+}
+@media (max-width: 479px) {
+  :root {
+    --h1: 72px; --h2: 30px; --h3: 26px; --h5: 22px; --t-mx: 16px; --t-rx: 14px; --t-t: 11px;
+    --r-s1: 12px; --r-m: 10px; --r-x: 10px; --r-r: 10px; --r-s: 16px; --r-mx: 10px;
+  }
+}
+
+html { scroll-behavior: smooth; }
+body.era { font-family: var(--font-figtree), sans-serif; font-size: var(--t-r); line-height: 148%; color: #0d0d0d; background: #fff; }
+.era h1, .era h2, .era h3, .era h4, .era h5, .era h6, .era p { margin: 0; }
+
+@keyframes era-marquee { to { transform: translateX(calc(-100% - 67px)); } }
+.era-marquee-list { animation: era-marquee 35s linear infinite; }
+@media (max-width: 767px) { @keyframes era-marquee { to { transform: translateX(calc(-100% - 40px)); } } }
+@media (max-width: 479px) { @keyframes era-marquee { to { transform: translateX(calc(-100% - 35px)); } } }
+
+.era-reveal { opacity: 0; transform: var(--from, translateY(100px)); transition: opacity .9s cubic-bezier(.215,.61,.355,1), transform .9s cubic-bezier(.215,.61,.355,1); }
+.era-reveal.in { opacity: 1; transform: none; }
+.era-reveal[data-v="left"] { --from: translateX(-100px); }
+.era-reveal[data-v="right"] { --from: translateX(100px); }
+.era-reveal[data-v="scale"] { --from: scale(.75); }
+.era-reveal[data-v="scale0"] { --from: scale(.25); }
+.era-reveal[data-v="fade"] { --from: none; transition-duration: 1.1s; }
+.era-line { transform: scaleX(0); transform-origin: left; transition: transform 1.2s cubic-bezier(.215,.61,.355,1); }
+.era-line.in { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .era-reveal, .era-mask > * { opacity: 1; transform: none; transition: none; }
+  .era-marquee-list { animation: none; }
+}
+
+/* ===== Orijinal Webflow/GSAP animasyon sekansı (ölçülen değerler) ===== */
+@keyframes era-in-img { from { transform: scale(1.2); } to { transform: none; } }
+@keyframes era-in-left { from { transform: translateX(-100%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes era-in-right { from { transform: translateX(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes era-in-drop { from { transform: translateY(-80px); } to { transform: none; } }
+@keyframes era-in-pop { from { transform: scale(.2); opacity: 0; } to { transform: none; opacity: 1; } }
+.era-in-img { animation: era-in-img .9s cubic-bezier(.22,.61,.36,1) .15s both; }
+.era-in-left { animation: era-in-left .8s cubic-bezier(.215,.61,.355,1) .3s both; }
+.era-in-right { animation: era-in-right .8s cubic-bezier(.215,.61,.355,1) .5s both; }
+.era-in-drop { animation: era-in-drop .8s cubic-bezier(.215,.61,.355,1) .8s both; }
+.era-in-pop { animation: era-in-pop .6s cubic-bezier(.34,1.56,.64,1) both; }
+
+/* Başlık: harf harf yukarıdan gelen metin (SplitText benzeri) */
+.era-letter { display: inline-block; opacity: 0; transform: translateY(80px); transition: opacity .6s cubic-bezier(.215,.61,.355,1), transform .6s cubic-bezier(.215,.61,.355,1); }
+.era-split.in .era-letter { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .era-in-img, .era-in-left, .era-in-right, .era-in-drop, .era-in-pop { animation: none; }
+  .era-letter { opacity: 1; transform: none; transition: none; }
+}
