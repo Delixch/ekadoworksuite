@@ -126,7 +126,7 @@ export const tr = {
     },
     "solutions": {
       "eyebrow": "Çözümlerimiz",
-      "heading": "Oteliniz için üç çözüm.",
+      "heading": "Oteliniz için dört çözüm.",
       "lead": "Misafir iletişiminden otel yönetimine, ihtiyacınıza uygun olanı seçin.",
       "more": "Detaylar",
       "cards": [
@@ -141,6 +141,10 @@ export const tr = {
         {
           "title": "PMS / Otel Yönetim Sistemi",
           "text": "Otel programınızla bağlanır; oda durumunu görür, bilgi verir ve rezervasyon oluşturur."
+        },
+        {
+          "title": "Akıllı Kapı / Kilit Sistemleri",
+          "text": "Parmak izi, uygulama, şifre, kart ya da anahtarla giriş; her misafire özel geçici şifre."
         }
       ]
     },
@@ -244,8 +248,8 @@ export const tr = {
       "rights": "© 2026 Punn Digital. Tüm hakları saklıdır."
     },
     "technology": {
-      "eyebrow": "Teknolojimiz",
-      "sub": "Akıllı Kilit Sistemleri",
+      "eyebrow": "Çözümlerimiz",
+      "sub": "Akıllı Kapı / Kilit Sistemleri",
       "heading": "Anahtar taşımaya son!",
       "lead": "Unutulan anahtarlar, kaybolan kartlar ya da kapıda kalma derdi tarihe karışıyor. Modern tasarımı ve güçlü güvenlik teknolojisiyle bu 5’i 1 arada akıllı kapı kilidi, otel odaları ve iş yerleri için kusursuz bir giriş çözümü sunar.",
       "featuresTitle": "Öne çıkan özellikler",

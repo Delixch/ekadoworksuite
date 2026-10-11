@@ -1,14 +1,14 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Lock, LockOpen } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Spot } from "./Spot";
 import { Heading, Reveal } from "./ui";
 
 /** Kart başına bağlantı: ilk kart özellikler bölümüne, diğerleri ileride açılacak sayfalara gider */
-const ids = [undefined, "telefon-asistani", "pms"];
-const hrefs = ["#dijital-resepsiyon", "#bize-ulasin", "#bize-ulasin"];
+const ids = [undefined, "telefon-asistani", "pms", undefined];
+const hrefs = ["#dijital-resepsiyon", "#bize-ulasin", "#bize-ulasin", "#akilli-kilit"];
 
 /* ---- mini canlı görseller ---- */
 function ChatViz() {
@@ -51,7 +51,17 @@ function RoomsViz() {
   );
 }
 
-const visuals: ReactNode[] = [<ChatViz key="c" />, <WaveViz key="w" />, <RoomsViz key="r" />];
+function LockViz() {
+  return (
+    <div className="relative flex h-14 w-14 items-center justify-center text-era-on-dark" aria-hidden>
+      <span className="era-ring absolute inset-0 rounded-full bg-era-primary/40" />
+      <Lock size={30} strokeWidth={1.8} className="era-lock-a absolute" />
+      <LockOpen size={30} strokeWidth={1.8} className="era-lock-b absolute text-era-accent" />
+    </div>
+  );
+}
+
+const visuals: ReactNode[] = [<ChatViz key="c" />, <WaveViz key="w" />, <RoomsViz key="r" />, <LockViz key="l" />];
 
 /** Çözümlerimiz (menü ağacındaki 4 çözüm). Bölüm iki temada da koyu kalır. */
 export function Solutions() {
@@ -72,7 +82,7 @@ export function Solutions() {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-3 gap-6 tab:grid-cols-2 mob:grid-cols-1">
+          <div className="grid grid-cols-4 gap-6 tab:grid-cols-2 mob:grid-cols-1">
             {s.cards.map((c, i) => (
               <Reveal key={c.title} variant="up" delay={i * 110} className="h-full">
                 <Spot className="punn-dark-card flex h-full scroll-mt-28 flex-col gap-5 rounded-(--r-x) p-6">

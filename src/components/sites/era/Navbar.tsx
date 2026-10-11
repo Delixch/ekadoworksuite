@@ -23,12 +23,15 @@ function Dropdown({
   hrefs,
   solid,
   delay,
+  suppress,
 }: {
   label: string;
   items: string[];
   hrefs: string[];
   solid?: boolean;
   delay: number;
+  /** üst çubuk gizliyken menü açık kalmasın */
+  suppress?: boolean;
 }) {
   return (
     <div className="era-in-pop group relative" style={pop(delay)}>
@@ -40,7 +43,7 @@ function Dropdown({
         {label}
         <ChevronDown size={18} className="transition-transform duration-300 group-focus-within:rotate-180 group-hover:rotate-180" />
       </button>
-      <div className="invisible absolute top-full left-0 z-10 w-[300px] pt-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+      <div className={`invisible absolute top-full left-0 z-10 w-[300px] pt-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 ${suppress ? "!invisible !opacity-0" : ""}`}>
         <ul className="flex flex-col gap-1 rounded-(--r-x) border border-era-line bg-era-white p-2 shadow-[0_12px_40px_var(--c-shadow)]">
           {items.map((it, i) => (
             <li key={hrefs[i]}>
@@ -92,7 +95,7 @@ export function Navbar() {
 
           {/* masaüstü menü */}
           <nav className="flex items-center gap-3 tab:hidden" aria-label="Ana menü">
-            <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} solid delay={1} />
+            <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} solid delay={1} suppress={hidden && !open} />
             {t.nav.links.map((label, i) => (
               <a key={linkHrefs[i]} href={linkHrefs[i]} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
                 {label}

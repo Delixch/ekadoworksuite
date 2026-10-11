@@ -128,7 +128,7 @@ export const de: Dict = {
     },
     "solutions": {
       "eyebrow": "Unsere Lösungen",
-      "heading": "Drei Lösungen für Ihr Hotel.",
+      "heading": "Vier Lösungen für Ihr Hotel.",
       "lead": "Von der Gästekommunikation bis zur Hotelverwaltung: wählen Sie, was zu Ihnen passt.",
       "more": "Details",
       "cards": [
@@ -143,6 +143,10 @@ export const de: Dict = {
         {
           "title": "PMS / Hotelmanagementsystem",
           "text": "Verbindet sich mit Ihrer Hotelsoftware, sieht den Zimmerstatus, gibt Auskunft und legt Reservierungen an."
+        },
+        {
+          "title": "Smarte Tür- / Schließsysteme",
+          "text": "Zutritt per Fingerabdruck, App, Code, Karte oder Schlüssel, mit einem temporären Code für jeden Gast."
         }
       ]
     },
@@ -246,8 +250,8 @@ export const de: Dict = {
       "rights": "© 2026 Punn Digital. Alle Rechte vorbehalten."
     },
     "technology": {
-      "eyebrow": "Technologie",
-      "sub": "Smarte Schließsysteme",
+      "eyebrow": "Unsere Lösungen",
+      "sub": "Smarte Tür- / Schließsysteme",
       "heading": "Schluss mit dem Schlüsselbund!",
       "lead": "Vergessene Schlüssel, verlorene Karten und Gäste vor verschlossener Tür gehören der Vergangenheit an. Mit modernem Design und starker Sicherheitstechnik bietet dieses smarte 5-in-1-Türschloss eine makellose Zutrittslösung für Hotelzimmer und Arbeitsplätze.",
       "featuresTitle": "Highlights",

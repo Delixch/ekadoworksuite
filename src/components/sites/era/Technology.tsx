@@ -151,8 +151,8 @@ export function Technology() {
   const next = useCallback(() => setActive((v) => (v + 1) % 5), []);
 
   return (
-    <section id="teknolojimiz" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
-      <span id="akilli-kilit" aria-hidden className="absolute -top-24 block h-0" />
+    <section id="akilli-kilit" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
+      <span aria-hidden className="absolute -top-24 block h-0" />
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="flex flex-col gap-14 mob:gap-10">
           <div className="mx-auto flex w-full max-w-[860px] flex-col items-center gap-4 text-center">

@@ -126,7 +126,7 @@ export const en: Dict = {
     },
     "solutions": {
       "eyebrow": "Our solutions",
-      "heading": "Three solutions for your hotel.",
+      "heading": "Four solutions for your hotel.",
       "lead": "From guest communication to hotel management, choose what fits your needs.",
       "more": "Details",
       "cards": [
@@ -141,6 +141,10 @@ export const en: Dict = {
         {
           "title": "PMS / Hotel Management System",
           "text": "Connects to your hotel software; sees room status, gives information and creates reservations."
+        },
+        {
+          "title": "Smart Door / Lock Systems",
+          "text": "Entry by fingerprint, app, passcode, card or key, with a temporary passcode for each guest."
         }
       ]
     },
@@ -244,8 +248,8 @@ export const en: Dict = {
       "rights": "© 2026 Punn Digital. All rights reserved."
     },
     "technology": {
-      "eyebrow": "Technology",
-      "sub": "Smart Lock Systems",
+      "eyebrow": "Our solutions",
+      "sub": "Smart Door / Lock Systems",
       "heading": "No more carrying keys!",
       "lead": "Forgotten keys, lost cards and guests stuck at the door are history. With its modern design and strong security technology, this 5-in-1 smart door lock offers a flawless entry solution for hotel rooms and workplaces.",
       "featuresTitle": "Key features",
