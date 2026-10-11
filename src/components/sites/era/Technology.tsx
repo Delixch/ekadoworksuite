@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Check, EyeOff, Fingerprint, Gem, Package, Play, Smartphone, Timer } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
+import { Chaser } from "./Chaser";
 import { Spot } from "./Spot";
 import { Heading, Reveal } from "./ui";
 
@@ -58,6 +59,9 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
 export function Technology() {
   const { t } = useLocale();
   const k = t.technology;
+  // ışıklı kare sırayla bir sonraki kartın kenarına geçer (en üstten başlar, sondan sonra başa döner)
+  const [active, setActive] = useState(0);
+  const next = useCallback(() => setActive((v) => (v + 1) % 5), []);
 
   return (
     <section id="teknolojimiz" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
@@ -84,6 +88,7 @@ export function Technology() {
                 return (
                   <Reveal key={f.title} variant="up" delay={i * 90}>
                     <Spot className="punn-panel group/f flex gap-4 rounded-(--r-r) px-5 py-4">
+                      <Chaser run={active === i} onDone={next} />
                       <span className="relative z-[1] flex h-12 w-12 flex-none items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line transition-transform duration-500 group-hover/f:scale-110">
                         <Icon size={22} strokeWidth={1.8} />
                       </span>
