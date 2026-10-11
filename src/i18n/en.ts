@@ -69,6 +69,13 @@ export const en: Dict = {
     guestMsg: "Hello, do you have a double room?",
     botMsg: "Hello! Which dates are you considering? Please tell me the number of adults and any children's ages.",
     typeMsg: "Type a message...",
+    liveCall: "Live call",
+    detected: "Language detected",
+    translated: "How much is a double room?",
+    replying: "Replying…",
+    bookingTitle: "New reservation",
+    bookingNote: "Double room · 3 nights",
+    chatAria: "Multilingual sample chat",
   },
   features: {
     eyebrow: "What it does",

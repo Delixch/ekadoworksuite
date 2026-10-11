@@ -69,6 +69,13 @@ export const tr = {
     botMsg:
       "Merhaba! Hangi tarihlerde konaklamayı düşünüyorsunuz? Yetişkin sayısı ve varsa çocuk yaşlarını rica edeceğim.",
     typeMsg: "Mesaj yazın...",
+    liveCall: "Canlı arama",
+    detected: "Dil algılandı",
+    translated: "İki kişilik oda ne kadar?",
+    replying: "Yanıtlıyor…",
+    bookingTitle: "Yeni rezervasyon",
+    bookingNote: "Çift kişilik · 3 gece",
+    chatAria: "Çok dilli örnek sohbet",
   },
   features: {
     eyebrow: "Neler yapar?",

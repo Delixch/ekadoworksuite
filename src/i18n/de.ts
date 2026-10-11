@@ -71,6 +71,13 @@ export const de: Dict = {
     botMsg:
       "Guten Tag! Für welche Daten möchten Sie buchen? Bitte nennen Sie mir die Zahl der Erwachsenen und ggf. das Alter der Kinder.",
     typeMsg: "Nachricht schreiben...",
+    liveCall: "Live-Anruf",
+    detected: "Sprache erkannt",
+    translated: "Was kostet ein Doppelzimmer?",
+    replying: "Antwortet…",
+    bookingTitle: "Neue Reservierung",
+    bookingNote: "Doppelzimmer · 3 Nächte",
+    chatAria: "Mehrsprachiger Beispiel-Chat",
   },
   features: {
     eyebrow: "Was es kann",
