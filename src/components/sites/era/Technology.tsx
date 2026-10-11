@@ -62,6 +62,11 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
     };
   }, [sync]);
 
+  // ses aç-kapa düğmesi hem konuşmayı hem videonun müziğini/efektlerini kapatır
+  useEffect(() => {
+    if (video.current) video.current.muted = muted;
+  }, [muted]);
+
   // dil değişince yeni ses aynı saniyeden devam etsin
   useEffect(() => {
     const v = video.current;
@@ -82,7 +87,6 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
             src="/videos/akilli-kapi.mp4"
             poster="/sites/punn/lock-product.jpg"
             controls
-            muted
             playsInline
             preload="metadata"
             aria-label={title}
