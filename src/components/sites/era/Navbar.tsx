@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
-import { linkHrefs, solutionHrefs, techHrefs } from "./nav-links";
+import { linkHrefs, solutionHrefs } from "./nav-links";
 import { ThemeToggle } from "./ThemeToggle";
 
 /** Açılışta sırayla büyüyerek gelen öğe */
@@ -93,15 +93,11 @@ export function Navbar() {
           {/* masaüstü menü */}
           <nav className="flex items-center gap-3 tab:hidden" aria-label="Ana menü">
             <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} solid delay={1} />
-            {t.nav.links.map((label, i) =>
-              i === 1 ? (
-                <Dropdown key={linkHrefs[i]} label={label} items={t.nav.techItems} hrefs={techHrefs} delay={i + 2} />
-              ) : (
-                <a key={linkHrefs[i]} href={linkHrefs[i]} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
-                  {label}
-                </a>
-              )
-            )}
+            {t.nav.links.map((label, i) => (
+              <a key={linkHrefs[i]} href={linkHrefs[i]} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
+                {label}
+              </a>
+            ))}
           </nav>
 
           <div className="flex items-center gap-2.5">
@@ -147,20 +143,12 @@ export function Navbar() {
                 {label}
               </a>
             ))}
-            <div className="mt-2 px-3 pb-1 text-[13px] font-semibold tracking-wide text-era-gray uppercase">{t.nav.links[1]}</div>
-            {t.nav.techItems.map((label, i) => (
-              <a key={techHrefs[i]} href={techHrefs[i]} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
+            <div className="my-2 h-px bg-era-line" />
+            {t.nav.links.map((label, i) => (
+              <a key={linkHrefs[i]} href={linkHrefs[i]} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
                 {label}
               </a>
             ))}
-            <div className="my-2 h-px bg-era-line" />
-            {t.nav.links.map((label, i) =>
-              i === 1 ? null : (
-                <a key={linkHrefs[i]} href={linkHrefs[i]} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
-                  {label}
-                </a>
-              )
-            )}
             <Link href="/#demo" onClick={() => setOpen(false)} className="mt-3 flex h-12 items-center justify-center rounded-(--r-s1) bg-era-primary text-[17px] font-medium text-era-on-dark no-underline">
               {t.nav.demo}
             </Link>

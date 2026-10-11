@@ -17,8 +17,7 @@ export const de: Dict = {
   },
   nav: {
     solutions: "Lösungen",
-    solutionItems: ["Digitale Rezeption", "KI-Telefonassistent", "PMS / Hotelmanagementsystem"],
-    techItems: ["Smarte Schließsysteme"],
+    solutionItems: ["Digitale Rezeption", "KI-Telefonassistent", "PMS / Hotelmanagementsystem", "Smarte Tür- / Schließsysteme"],
     links: ["Testen", "Technologie", "Kunden", "Kontakt", "Blog"],
     demo: "Demo anfragen",
   },

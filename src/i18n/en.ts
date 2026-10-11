@@ -16,8 +16,7 @@ export const en: Dict = {
   },
   nav: {
     solutions: "Solutions",
-    solutionItems: ["Digital Reception", "AI Phone Assistant", "PMS / Hotel Management System"],
-    techItems: ["Smart Lock Systems"],
+    solutionItems: ["Digital Reception", "AI Phone Assistant", "PMS / Hotel Management System", "Smart Door / Lock Systems"],
     links: ["Try It", "Technology", "Customers", "Contact Us", "Blog"],
     demo: "Request a Demo",
   },

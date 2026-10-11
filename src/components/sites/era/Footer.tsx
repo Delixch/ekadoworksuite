@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Globe, Mail, Phone } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Logo } from "./Logo";
-import { linkHrefs, solutionHrefs, techHrefs } from "./nav-links";
+import { linkHrefs, solutionHrefs } from "./nav-links";
 import { Reveal, RollLink } from "./ui";
 
 /** İletişim bilgileri (PDF sayfa 4) */
@@ -41,11 +41,6 @@ export function Footer() {
             <div className={heading}>{f.solutions}</div>
             {t.nav.solutionItems.map((label, i) => (
               <RollLink key={solutionHrefs[i]} href={solutionHrefs[i]} height={22} textClass="text-era-on-dark/85">
-                {label}
-              </RollLink>
-            ))}
-            {t.nav.techItems.map((label, i) => (
-              <RollLink key={techHrefs[i]} href={techHrefs[i]} height={22} textClass="text-era-on-dark/85">
                 {label}
               </RollLink>
             ))}

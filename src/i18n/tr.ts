@@ -15,8 +15,7 @@ export const tr = {
   },
   nav: {
     solutions: "Çözümlerimiz",
-    solutionItems: ["Dijital Resepsiyon", "Yapay Zekâ Telefon Asistanı", "PMS / Otel Yönetim Sistemi"],
-    techItems: ["Akıllı Kilit Sistemleri"],
+    solutionItems: ["Dijital Resepsiyon", "Yapay Zekâ Telefon Asistanı", "PMS / Otel Yönetim Sistemi", "Akıllı Kapı / Kilit Sistemleri"],
     links: ["Test Et", "Teknolojimiz", "Müşterilerimiz", "Bize Ulaşın", "Blog"],
     demo: "Demo Talep Et",
   },
