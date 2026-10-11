@@ -20,9 +20,9 @@ export function Journey() {
             <span className="flex items-center gap-2 rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">
               <i className="block h-1.5 w-1.5 rounded-full bg-era-accent" /> {j.eyebrow}
             </span>
-            <Heading>{j.heading}</Heading>
-            <Reveal variant="fade">
-              <p className="text-era-gray">{j.lead}</p>
+            <Heading>{j.heading.replace(/ (\S+) (\S+)$/, " $1 $2")}</Heading>
+            <Reveal variant="fade" className="w-full">
+              <p className="mx-auto w-fit max-w-full border-x-2 border-era-primary px-5 text-era-gray mob:px-4">{j.lead}</p>
             </Reveal>
           </div>
 
