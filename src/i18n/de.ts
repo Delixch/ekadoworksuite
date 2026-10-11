@@ -283,6 +283,7 @@ export const de: Dict = {
         "Notschlüssel"
       ],
       "appCaption": "Tuya- und TTLock-App",
+      "gallery": ["Smartes Türschloss", "5 Zutrittsarten", "Code-Verbergung und temporäre Codes", "Tuya- und TTLock-App"],
       "boxTitle": "Lieferumfang",
       "box": [
         "1 smarter Türgriff mit Schließmechanismus",

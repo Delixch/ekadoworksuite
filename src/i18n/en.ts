@@ -281,6 +281,7 @@ export const en: Dict = {
         "Backup key"
       ],
       "appCaption": "Tuya & TTLock app support",
+      "gallery": ["Smart door lock", "5 ways to enter", "Passcode hiding and temporary passcodes", "Tuya and TTLock app"],
       "boxTitle": "What's in the box",
       "box": [
         "1 smart door handle and lock mechanism",

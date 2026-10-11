@@ -281,6 +281,7 @@ export const tr = {
         "Yedek anahtar"
       ],
       "appCaption": "Tuya ve TTLock uygulama desteği",
+      "gallery": ["Akıllı kapı kilidi", "5 farklı giriş seçeneği", "Şifre gizleme ve geçici şifre", "Tuya ve TTLock uygulaması"],
       "boxTitle": "Paket içeriği",
       "box": [
         "1 adet akıllı kapı kolu ve kilit mekanizması",

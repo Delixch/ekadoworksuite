@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Check, EyeOff, Fingerprint, Gem, Package, Play, Smartphone, Timer, Volume2, VolumeX } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, EyeOff, Fingerprint, Gem, Package, Play, Smartphone, Timer, Volume2, VolumeX } from "lucide-react";
 import { locales, useLocale, type Locale } from "@/i18n/useLocale";
 import { Chaser } from "./Chaser";
 import { Spot } from "./Spot";
@@ -85,7 +85,7 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
             ref={video}
             className="h-full w-full object-cover"
             src="/videos/akilli-kapi.mp4"
-            poster="/sites/punn/lock-product.jpg"
+            poster="/videos/akilli-kapi-kapak.jpg"
             controls
             playsInline
             preload="metadata"
@@ -143,6 +143,80 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
   );
 }
 
+/** Galeri: ürünün dört görseli (küçük, ileri-geri). Noktalar yalnızca ilk görselde. */
+const slides = ["/sites/punn/lock-product.jpg", "/sites/punn/lock-options.jpg", "/sites/punn/lock-security.jpg", "/sites/punn/lock-app.jpg"];
+
+function Gallery({ captions, hotspotLabels, alt }: { captions: string[]; hotspotLabels: string[]; alt: string }) {
+  const [idx, setIdx] = useState(0);
+  const go = useCallback((d: number) => setIdx((v) => (v + d + slides.length) % slides.length), []);
+  return (
+    <div className="punn-panel flex flex-col gap-3 rounded-(--r-x) p-3">
+      <div className="relative overflow-hidden rounded-[18px] bg-era-on-dark">
+        <div className="flex transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)]" style={{ transform: `translateX(-${idx * 100}%)` }}>
+          {slides.map((src, n) => (
+            <div key={src} className="flex aspect-square w-full flex-none items-center justify-center">
+              {n === 0 ? (
+                <div className="relative w-full">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt={captions[n] ?? alt} className="block h-auto w-full" />
+                  {spots.map((sp, i) => (
+                    <span key={i} className="group/hs absolute -translate-x-1/2 -translate-y-1/2" style={{ left: sp.x, top: sp.y }}>
+                      <span className="relative flex h-5 w-5 items-center justify-center">
+                        <span className="era-ring absolute inset-0 rounded-full bg-era-primary/50" style={{ animationDelay: `${i * 0.6}s` }} />
+                        <span className="relative block h-3 w-3 rounded-full bg-era-primary ring-2 ring-era-on-dark" />
+                      </span>
+                      <span
+                        className="era-hs-label absolute top-1/2 left-7 -translate-y-1/2 rounded-full bg-era-dark px-3 py-1 text-[12px] font-semibold whitespace-nowrap text-era-on-dark shadow-[0_6px_16px_var(--c-shadow)] group-hover/hs:!animate-none group-hover/hs:!opacity-100"
+                        style={{ animationDelay: `${i * 3}s` }}
+                      >
+                        {hotspotLabels[i]}
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={src} alt={captions[n] ?? alt} className="block h-full w-full object-cover" />
+              )}
+            </div>
+          ))}
+        </div>
+        {[-1, 1].map((d) => (
+          <button
+            key={d}
+            type="button"
+            onClick={() => go(d)}
+            aria-label={d < 0 ? "←" : "→"}
+            className={`absolute top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-era-dark/75 text-era-on-dark backdrop-blur-sm transition hover:scale-110 hover:bg-era-primary active:scale-95 ${d < 0 ? "left-2.5" : "right-2.5"}`}
+          >
+            {d < 0 ? <ChevronLeft size={22} /> : <ChevronRight size={22} />}
+          </button>
+        ))}
+      </div>
+      <div className="flex items-center gap-3 px-1">
+        <div className="flex gap-2">
+          {slides.map((src, n) => (
+            <button
+              key={src}
+              type="button"
+              onClick={() => setIdx(n)}
+              aria-label={captions[n]}
+              aria-current={idx === n}
+              className={`h-12 w-12 flex-none overflow-hidden rounded-xl bg-era-on-dark ring-2 transition duration-300 ${idx === n ? "ring-era-primary" : "opacity-60 ring-transparent hover:opacity-100"}`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={src} alt="" className="h-full w-full object-cover" />
+            </button>
+          ))}
+        </div>
+        <p key={idx} className="min-w-0 flex-1 text-right text-[14px] leading-tight font-semibold text-era-black [animation:era-pop-in_.4s_both]">
+          {captions[idx]}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function Technology() {
   const { t } = useLocale();
   const k = t.technology;
@@ -154,7 +228,7 @@ export function Technology() {
     <section id="akilli-kilit" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
       <span aria-hidden className="absolute -top-24 block h-0" />
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
-        <div className="flex flex-col gap-14 mob:gap-10">
+        <div className="flex flex-col gap-10 mob:gap-8">
           <div className="mx-auto flex w-full max-w-[860px] flex-col items-center gap-4 text-center">
             <span className="flex items-center gap-2 rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">
               <i className="block h-1.5 w-1.5 rounded-full bg-era-accent" /> {k.eyebrow}
@@ -166,94 +240,60 @@ export function Technology() {
             </Reveal>
           </div>
 
-          <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-12 tab:grid-cols-1">
-            {/* özellikler */}
-            <div className="flex flex-col gap-3">
+          {/* video en üstte */}
+          <Reveal variant="scale" className="mx-auto w-full max-w-[760px]">
+            <PromoVideo title={k.videoTitle} soon={k.videoSoon} />
+          </Reveal>
+
+          {/* sol: küçük galeri, sağ: öne çıkan özellikler (dar kartlar) */}
+          <div className="mx-auto grid w-full max-w-[1060px] grid-cols-[minmax(0,.95fr)_minmax(0,1fr)] items-start gap-8 tab:max-w-[560px] tab:grid-cols-1">
+            <Reveal variant="left">
+              <Gallery captions={k.gallery} hotspotLabels={k.hotspots} alt={k.sub} />
+            </Reveal>
+
+            <div className="flex flex-col gap-2.5">
               <span className="px-1 text-[13px] font-semibold tracking-[0.12em] text-era-gray uppercase">{k.featuresTitle}</span>
               {k.features.map((f, i) => {
                 const Icon = featureIcons[i];
                 return (
                   <Reveal key={f.title} variant="up" delay={i * 90}>
-                    <Spot className="punn-panel group/f flex gap-4 rounded-(--r-r) px-5 py-4">
+                    <Spot className="punn-panel group/f flex gap-3.5 rounded-(--r-r) px-4 py-3">
                       <Chaser run={active === i} onDone={next} />
-                      <span className="relative z-[1] flex h-12 w-12 flex-none items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line transition-transform duration-500 group-hover/f:scale-110">
-                        <Icon size={22} strokeWidth={1.8} />
+                      <span className="relative z-[1] flex h-10 w-10 flex-none items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line transition-transform duration-500 group-hover/f:scale-110">
+                        <Icon size={19} strokeWidth={1.8} />
                       </span>
                       <div className="relative z-[1] min-w-0">
-                        <h3 className="text-[17px] leading-snug font-bold text-era-black">{f.title}</h3>
-                        <p className="mt-1 text-[15px] leading-[1.55] text-era-gray">{f.text}</p>
+                        <h3 className="text-[15.5px] leading-snug font-bold text-era-black">{f.title}</h3>
+                        <p className="mt-0.5 text-[13.5px] leading-[1.5] text-era-gray">{f.text}</p>
                       </div>
                     </Spot>
                   </Reveal>
                 );
               })}
             </div>
-
-            {/* ürün görseli ve noktalar */}
-            <div className="flex flex-col gap-5">
-              <Reveal variant="scale">
-                <div className="punn-panel rounded-(--r-x) p-4">
-                  <div className="era-float relative overflow-hidden rounded-[18px] bg-era-on-dark">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/sites/punn/lock-product.jpg" alt={k.sub} className="block h-auto w-full" />
-                    {spots.map((s, i) => (
-                      <span
-                        key={i}
-                        className="group/hs absolute -translate-x-1/2 -translate-y-1/2"
-                        style={{ left: s.x, top: s.y }}
-                      >
-                        <span className="relative flex h-5 w-5 items-center justify-center">
-                          <span className="era-ring absolute inset-0 rounded-full bg-era-primary/50" style={{ animationDelay: `${i * 0.6}s` }} />
-                          <span className="relative block h-3 w-3 rounded-full bg-era-primary ring-2 ring-era-on-dark" />
-                        </span>
-                        <span
-                          className="era-hs-label absolute top-1/2 left-7 -translate-y-1/2 rounded-full bg-era-dark px-3 py-1 text-[12px] font-semibold whitespace-nowrap text-era-on-dark shadow-[0_6px_16px_var(--c-shadow)] group-hover/hs:!animate-none group-hover/hs:!opacity-100"
-                          style={{ animationDelay: `${i * 3}s` }}
-                        >
-                          {k.hotspots[i]}
-                        </span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-
-              <Reveal variant="up" delay={120}>
-                <div className="punn-panel flex items-center gap-4 rounded-(--r-r) p-3 pr-6">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/sites/punn/lock-app.jpg" alt="" className="h-24 w-24 flex-none rounded-2xl bg-era-on-dark object-cover" />
-                  <p className="text-[16px] leading-snug font-semibold text-era-black">{k.appCaption}</p>
-                </div>
-              </Reveal>
-            </div>
           </div>
 
-          {/* paket içeriği ve video */}
-          <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)] items-stretch gap-6 tab:grid-cols-1">
-            <Reveal variant="left" className="h-full">
-              <div className="punn-panel flex h-full flex-col gap-5 rounded-(--r-x) p-7">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line">
-                    <Package size={20} strokeWidth={1.8} />
-                  </span>
-                  <h3 className="text-[21px] font-bold text-era-black">{k.boxTitle}</h3>
-                </div>
-                <ul className="flex flex-col gap-3">
-                  {k.box.map((b) => (
-                    <li key={b} className="flex gap-3 text-[16px] leading-[1.45] text-era-black">
-                      <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-era-secondary text-era-success">
-                        <Check size={12} strokeWidth={3} />
-                      </span>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+          {/* paket içeriği: ince şerit */}
+          <Reveal variant="up" className="mx-auto w-full max-w-[1060px]">
+            <div className="punn-panel flex flex-wrap items-center gap-x-8 gap-y-3 rounded-(--r-r) px-5 py-4 mob:flex-col mob:items-start">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line">
+                  <Package size={19} strokeWidth={1.8} />
+                </span>
+                <h3 className="text-[17px] font-bold text-era-black">{k.boxTitle}</h3>
               </div>
-            </Reveal>
-            <Reveal variant="right" className="h-full">
-              <PromoVideo title={k.videoTitle} soon={k.videoSoon} />
-            </Reveal>
-          </div>
+              <ul className="flex flex-1 flex-wrap gap-x-6 gap-y-2 mob:flex-col">
+                {k.box.map((b) => (
+                  <li key={b} className="flex items-center gap-2 text-[14.5px] text-era-black">
+                    <span className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-era-secondary text-era-success">
+                      <Check size={12} strokeWidth={3} />
+                    </span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
