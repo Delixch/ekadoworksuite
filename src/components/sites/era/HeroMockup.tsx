@@ -391,7 +391,7 @@ function VoiceCard() {
     <div className="era-float absolute rounded-2xl border border-era-line bg-era-white/85 p-3 text-era-black shadow-[0_18px_40px_-14px_var(--c-shadow)] backdrop-blur-md" style={{ left: 232, top: 444, width: 330 }}>
       <div className="flex items-center gap-2.5">
         <span className="relative flex h-8 w-8 flex-none items-center justify-center rounded-full bg-era-primary text-era-on-dark">
-          <span className="era-ring absolute inset-0 rounded-full bg-era-primary" />
+          <span className="era-ring absolute inset-0 rounded-full border-2 border-era-primary" />
           <PhoneCall size={14} className="relative" />
         </span>
         <div className="leading-tight">
