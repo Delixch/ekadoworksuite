@@ -10,6 +10,7 @@
   /* ===== Marka renkleri (Punn Digital) ===== */
   --c-primary: #0044f0;        /* ana mavi: buton, vurgulu başlık, bağlantı */
   --c-primary-soft: #d2e2fb;   /* açık mavi: hap, seçili kart zemini */
+  --c-primary-ink: #0044f0;    /* açık mavi zemin üstündeki mavi yazı (menü hapları) */
   --c-logo-from: #0a17ff;      /* logo geçişi başlangıç */
   --c-logo-to: #00086b;        /* logo geçişi bitiş */
 
@@ -45,6 +46,14 @@
   --c-btn: #0b1033;            /* koyu buton zemini */
   --c-on-btn: #ffffff;         /* koyu buton yazısı */
 
+  /* ===== Cihaz ve marka ikonları (üçüncü taraf marka renkleri) ===== */
+  --c-device: #0b1033;         /* laptop ve telefon çerçevesi */
+  --c-whatsapp: #25d366;
+  --c-messenger: #0a7cff;
+  --c-ig-1: #feda75;
+  --c-ig-2: #d62976;
+  --c-ig-3: #4f5bd5;
+
   /* ===== Yüzeyler ===== */
   --c-nav: rgb(255 255 255 / 0.72);       /* kaydırınca menü zemini */
   --c-shadow: rgb(46 58 140 / 0.14);      /* kart gölgesi */
@@ -60,6 +69,10 @@
 
   --c-primary: #3d6bff;
   --c-primary-soft: #1a2870;
+  --c-primary-ink: #a9bdff;
+  --c-logo-from: #7d98ff;
+  --c-logo-to: #3d56e6;
+  --c-device: #2a3380;
 
   --c-ink: #eef1ff;
   --c-dark: #0b1240;

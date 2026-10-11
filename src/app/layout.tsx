@@ -6,16 +6,16 @@ import "./globals.css";
 const themeInit = `try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){}`;
 
 export const metadata: Metadata = {
-  title: "I’m Era – Voice AI Agent",
+  title: "Punn Digital | Dijital Resepsiyon",
   description:
-    "Intelligent Voice AI Agents that talk naturally, think intelligently, and act instantly so businesses can communicate better at scale.",
+    "Otelinizin mesaj ve aramalarını 7/24, 30’dan fazla dilde cevaplayan Dijital Resepsiyonist.",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={appFont.variable} suppressHydrationWarning>
+    <html lang="tr" className={appFont.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>

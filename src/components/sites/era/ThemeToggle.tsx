@@ -32,9 +32,9 @@ export function ThemeToggle() {
       onClick={toggle}
       aria-label={dark ? "Gündüz temasına geç" : "Gece temasına geç"}
       title={dark ? "Gündüz teması" : "Gece teması"}
-      className="mr-3 flex h-[60px] w-[60px] flex-none items-center justify-center rounded-(--r-s1) border border-era-lightgray bg-era-white text-era-black transition-transform duration-300 hover:scale-[.94] mob:mr-1 mob:h-12 mob:w-12"
+      className="flex h-12 w-12 flex-none items-center justify-center rounded-(--r-s1) border border-era-lightgray bg-era-white text-era-black transition-transform duration-300 hover:scale-[.94]"
     >
-      {dark ? <Sun size={22} /> : <Moon size={22} />}
+      {dark ? <Sun size={20} /> : <Moon size={20} />}
     </button>
   );
 }

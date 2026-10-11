@@ -121,6 +121,10 @@
   --color-era-white: var(--c-surface);
   --color-era-on-dark: var(--c-on-dark);
   --color-era-btn: var(--c-btn);
+  --color-era-primary-ink: var(--c-primary-ink);
+  --color-era-device: var(--c-device);
+  --color-era-whatsapp: var(--c-whatsapp);
+  --color-era-messenger: var(--c-messenger);
   --color-era-on-btn: var(--c-on-btn);
   --color-era-ink: var(--c-ink);
   --color-era-line: var(--c-line-soft);
@@ -194,3 +198,18 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   .era-in-img, .era-in-left, .era-in-right, .era-in-drop, .era-in-pop { animation: none; }
   .era-letter { opacity: 1; transform: none; transition: none; }
 }
+
+/* ===== Punn hero ===== */
+:root { --hero-title: clamp(1.8rem, 4.2vw, 5.2rem); --hero-lead: clamp(1.05rem, 1.6vw, 1.55rem); }
+@media (max-width: 991px) { :root { --hero-title: clamp(1.8rem, 7vw, 3.6rem); } }
+.punn-hero-bg {
+  background:
+    radial-gradient(60% 55% at 82% 38%, var(--c-sky) 0%, transparent 70%),
+    radial-gradient(45% 40% at 8% 90%, var(--c-tint) 0%, transparent 70%),
+    var(--c-page);
+}
+@keyframes era-in-up { from { transform: translateY(46px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes era-in-rise { from { transform: translateY(70px) scale(.96); opacity: 0; } to { transform: none; opacity: 1; } }
+.era-in-up { animation: era-in-up .9s cubic-bezier(.215,.61,.355,1) both; }
+.era-in-rise { animation: era-in-rise 1.1s cubic-bezier(.22,.61,.36,1) .35s both; }
+@media (prefers-reduced-motion: reduce) { .era-in-up, .era-in-rise { animation: none; } }
