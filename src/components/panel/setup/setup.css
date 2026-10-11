@@ -1,0 +1,72 @@
+/* Kurulum ekranı animasyonları. Renkler yalnızca theme.css değişkenlerinden gelir. */
+
+@keyframes setup-draw {
+  to { stroke-dashoffset: 0; }
+}
+.setup-draw {
+  stroke-dasharray: 26;
+  stroke-dashoffset: 26;
+  animation: setup-draw 0.55s 0.08s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* yayın başarısı: halkadan dışarı saçılan küçük kareler */
+@keyframes setup-burst {
+  0% { transform: rotate(var(--a)) translateY(0) scale(0.4); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: rotate(var(--a)) translateY(calc(var(--d) * -1)) scale(1); opacity: 0; }
+}
+.setup-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: setup-burst 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes setup-ring-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.setup-ring-pop { animation: setup-ring-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+@keyframes setup-typing {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.35; }
+  40% { transform: translateY(-3px); opacity: 1; }
+}
+.setup-typing i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+  animation: setup-typing 1s infinite;
+}
+.setup-typing i:nth-child(2) { animation-delay: 0.15s; }
+.setup-typing i:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes setup-bubble {
+  from { transform: translateY(8px) scale(0.97); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.setup-bubble { animation: setup-bubble 0.35s both; }
+
+@keyframes setup-step {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.setup-step { animation: setup-step 0.4s both; }
+
+.setup-strip { scrollbar-width: none; }
+.setup-strip::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .setup-draw { animation: none; stroke-dashoffset: 0; }
+  .setup-burst { display: none; }
+  .setup-ring-pop, .setup-bubble, .setup-step { animation: none; }
+  .setup-typing i { animation: none; opacity: 0.7; }
+}

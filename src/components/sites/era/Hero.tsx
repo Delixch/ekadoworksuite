@@ -34,7 +34,7 @@ export function Hero() {
 
             <div className="era-in-up flex flex-wrap gap-4" style={delay(0.8)}>
               <a
-                href="#test-et"
+                href="/test-et"
                 className="flex h-14 items-center gap-3 rounded-(--r-s1) bg-era-primary px-8 text-[18px] whitespace-nowrap sm2:px-4 font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm2:flex-1 sm2:justify-center"
               >
                 {t.hero.test} <ArrowRight size={20} />

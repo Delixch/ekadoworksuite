@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
@@ -85,9 +86,9 @@ export function Navbar() {
     >
       <div className="relative mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="flex items-center justify-between gap-3 py-4 tab:py-3">
-          <a href="#" aria-label={t.ui.homeAria} className="era-in-pop block h-[52px] flex-none tab:h-11" style={pop(0)}>
+          <Link href="/" aria-label={t.ui.homeAria} className="era-in-pop block h-[52px] flex-none tab:h-11" style={pop(0)}>
             <Logo className="h-full w-auto" />
-          </a>
+          </Link>
 
           {/* masaüstü menü */}
           <nav className="flex items-center gap-3 tab:hidden" aria-label="Ana menü">
@@ -110,13 +111,13 @@ export function Navbar() {
             <div className="era-in-pop flex" style={pop(7.5)}>
               <ThemeToggle />
             </div>
-            <a
-              href="#demo"
+            <Link
+              href="/#demo"
               className="era-in-pop flex h-12 items-center rounded-(--r-s1) bg-era-primary px-6 text-[17px] font-medium whitespace-nowrap text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 tab:hidden"
               style={pop(8)}
             >
               {t.nav.demo}
-            </a>
+            </Link>
             <button
               type="button"
               aria-label={t.ui.menu}
@@ -160,9 +161,9 @@ export function Navbar() {
                 </a>
               )
             )}
-            <a href="#demo" onClick={() => setOpen(false)} className="mt-3 flex h-12 items-center justify-center rounded-(--r-s1) bg-era-primary text-[17px] font-medium text-era-on-dark no-underline">
+            <Link href="/#demo" onClick={() => setOpen(false)} className="mt-3 flex h-12 items-center justify-center rounded-(--r-s1) bg-era-primary text-[17px] font-medium text-era-on-dark no-underline">
               {t.nav.demo}
-            </a>
+            </Link>
           </div>
         </nav>
       </div>
