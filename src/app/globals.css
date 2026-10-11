@@ -158,7 +158,6 @@
 
 html { scroll-behavior: smooth; }
 body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 148%; color: var(--c-ink); background: var(--c-page); }
-.era h1, .era h2, .era h3, .era h4, .era h5, .era h6, .era p { margin: 0; }
 
 @keyframes era-marquee { to { transform: translateX(calc(-100% - 67px)); } }
 .era-marquee-list { animation: era-marquee 35s linear infinite; }
@@ -217,7 +216,7 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 /* ===== Özellik kartı başlığı (mavi geçiş) ===== */
 .punn-card-head {
   background:
-    radial-gradient(70% 120% at 100% 0%, rgb(255 255 255 / 0.16) 0%, transparent 60%),
+    radial-gradient(70% 120% at 100% 0%, var(--c-glow) 0%, transparent 60%),
     linear-gradient(135deg, var(--c-primary) 0%, var(--c-dark) 100%);
 }
 
@@ -246,7 +245,7 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 .punn-feature {
   position: relative;
   background:
-    radial-gradient(80% 50% at 100% 0%, rgb(255 255 255 / 0.2) 0%, transparent 65%),
+    radial-gradient(80% 50% at 100% 0%, var(--c-glow) 0%, transparent 65%),
     linear-gradient(160deg, var(--c-primary) 0%, var(--c-dark) 100%);
   box-shadow: 0 18px 44px var(--c-shadow);
 }
@@ -264,7 +263,7 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--c-primary) 14%, transparent), transparent 65%);
 }
 .punn-feature.punn-spot::after {
-  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgb(255 255 255 / 0.14), transparent 65%);
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), var(--c-glow-soft), transparent 65%);
 }
 .punn-spot:hover::after { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .punn-spot:hover { transform: none; } }
@@ -286,3 +285,20 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   .era-wave > i, .era-float, .era-ring, .era-dot > i { animation: none; }
   .era-bubble, .era-pop-in { animation: none; }
 }
+
+/* ===== Yolculuk çizgisinde süzülen ışık ===== */
+@keyframes era-travel { 0% { left: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+@keyframes era-travel-y { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+.era-travel { animation: era-travel 6s ease-in-out infinite; }
+@media (max-width: 991px) { .era-travel { animation-name: era-travel-y; left: -3px !important; } }
+
+/* ===== Çözüm kartları: mini canlı görseller ===== */
+@keyframes era-room { 0%, 100% { background: var(--c-success); } 35% { background: var(--c-primary); } 70% { background: var(--c-line-strong); } }
+@keyframes era-lock-a { 0%, 42% { opacity: 1; transform: scale(1); } 50%, 92% { opacity: 0; transform: scale(0.7); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes era-lock-b { 0%, 42% { opacity: 0; transform: scale(0.7); } 50%, 92% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.7); } }
+.era-room { animation: era-room 5s ease-in-out infinite; }
+.era-lock-a { animation: era-lock-a 5s ease-in-out infinite; }
+.era-lock-b { animation: era-lock-b 5s ease-in-out infinite; }
+.punn-dark-card { background: var(--c-dark-card); border: 1px solid var(--c-glow-soft); }
+.punn-dark-card.punn-spot::after { background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), var(--c-glow-soft), transparent 65%); }
+@media (prefers-reduced-motion: reduce) { .era-travel, .era-room, .era-lock-a, .era-lock-b { animation: none; } .era-lock-b { opacity: 0; } }

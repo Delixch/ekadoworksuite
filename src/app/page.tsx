@@ -3,8 +3,8 @@ import { Hero } from "@/components/sites/era/Hero";
 import { Marquee } from "@/components/sites/era/Marquee";
 import { About } from "@/components/sites/era/About";
 import { Features } from "@/components/sites/era/Features";
-import { Process } from "@/components/sites/era/Process";
-import { Services } from "@/components/sites/era/Services";
+import { Journey } from "@/components/sites/era/Journey";
+import { Solutions } from "@/components/sites/era/Solutions";
 import { Voice } from "@/components/sites/era/Voice";
 import { Pricing } from "@/components/sites/era/Pricing";
 import { Testimonials } from "@/components/sites/era/Testimonials";
@@ -20,8 +20,8 @@ export default function Home() {
         <Marquee />
         <About />
         <Features />
-        <Process />
-        <Services />
+        <Journey />
+        <Solutions />
         <Voice />
         <Pricing />
         <Testimonials />

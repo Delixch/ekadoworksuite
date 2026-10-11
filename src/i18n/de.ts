@@ -79,6 +79,82 @@ export const de: Dict = {
     bookingNote: "Doppelzimmer · 3 Nächte",
     chatAria: "Mehrsprachiger Beispiel-Chat",
   },
+    "journey": {
+      "eyebrow": "Gästereise",
+      "heading": "Nicht nur die Buchung: begleitet die gesamte Gästereise.",
+      "lead": "Die Digitale Rezeption macht vor dem Aufenthalt aus Anfragen Umsatz, bleibt während des Aufenthalts wie ein Urlaubsassistent in Kontakt und unterstützt danach Bewertungen.",
+      "stages": [
+        {
+          "when": "Vor dem Aufenthalt",
+          "title": "Macht aus Anfragen Umsatz",
+          "items": [
+            "Teilt Verfügbarkeit und Preise sofort mit",
+            "Überführt die Anfrage direkt in eine Reservierung",
+            "Nimmt Vorautorisierung oder Zahlung per virtuellem POS an"
+          ]
+        },
+        {
+          "when": "Während des Aufenthalts",
+          "title": "Wie ein Urlaubsassistent an der Seite",
+          "items": [
+            "Beantwortet Fragen zu Transfer, Gastronomie und Ausflügen",
+            "Hilft weiter bei Bedürfnissen im Hotel",
+            "In über 30 Sprachen rund um die Uhr erreichbar"
+          ]
+        },
+        {
+          "when": "Nach dem Aufenthalt",
+          "title": "Unterstützt die Bewertung",
+          "items": [
+            "Bittet den Gast um eine Bewertung",
+            "Leitet zu Google-, Booking- und ETS-Bewertungen",
+            "Zeigt in Berichten, was funktioniert"
+          ]
+        }
+      ],
+      "tagline": "Steuern Sie die Gästekommunikation von vor der Buchung bis nach dem Urlaub.",
+      "setupEyebrow": "Einrichtung",
+      "setupTitle": "In drei Schritten live.",
+      "setupLead": "Unser Team richtet alles gemeinsam mit Ihnen ein. Einrichtung, Schulung und ganzjähriger technischer Support sind in allen Paketen enthalten.",
+      "steps": [
+        {
+          "title": "Wir erfassen Ihre Hoteldaten",
+          "text": "Zimmertypen, Preispolitik, Transfers und häufige Fragen hinterlegen wir im System."
+        },
+        {
+          "title": "Wir verbinden Ihre Kanäle",
+          "text": "WhatsApp, Instagram, Messenger, Web-Chat und Ihre Telefonleitung in einem Panel."
+        },
+        {
+          "title": "Ihre Digitale Rezeption ist startklar",
+          "text": "Gäste erhalten rund um die Uhr Antworten, relevante Gespräche gehen an Ihr Team."
+        }
+      ]
+    },
+    "solutions": {
+      "eyebrow": "Unsere Lösungen",
+      "heading": "Vier Lösungen für Ihr Hotel.",
+      "lead": "Von der Gästekommunikation bis zur Hotelverwaltung: wählen Sie, was zu Ihnen passt.",
+      "more": "Details",
+      "cards": [
+        {
+          "title": "Digitale Rezeption",
+          "text": "Beantwortet alle Nachrichten und Anrufe rund um die Uhr und macht aus Anfragen Reservierungen."
+        },
+        {
+          "title": "KI-Telefonassistent",
+          "text": "Nimmt Anrufe in über 30 Sprachen an, nennt Zimmer- und Preisinfos und sendet die Zusammenfassung an Ihr Team."
+        },
+        {
+          "title": "PMS / Hotelmanagementsystem",
+          "text": "Verbindet sich mit Ihrer Hotelsoftware, sieht den Zimmerstatus, gibt Auskunft und legt Reservierungen an."
+        },
+        {
+          "title": "Smarte Türen / Schließsysteme",
+          "text": "Smarte Tür- und Schließlösungen, die den Gästezugang erleichtern."
+        }
+      ]
+    },
   features: {
     eyebrow: "Was es kann",
     heading: "Entlastet die Rezeption, steigert Ihre Verkaufschancen.",

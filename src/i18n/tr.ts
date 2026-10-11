@@ -77,6 +77,82 @@ export const tr = {
     bookingNote: "Çift kişilik · 3 gece",
     chatAria: "Çok dilli örnek sohbet",
   },
+    "journey": {
+      "eyebrow": "Misafir yolculuğu",
+      "heading": "Sadece rezervasyona değil, tüm misafir yolculuğuna eşlik eder.",
+      "lead": "Dijital Resepsiyon; rezervasyon öncesinde talebi satışa dönüştürür, konaklama sırasında tatil asistanı gibi iletişime devam eder, konaklama sonrasında ise değerlendirme ve puanlama sürecini destekler.",
+      "stages": [
+        {
+          "when": "Konaklama öncesi",
+          "title": "Talebi satışa dönüştürür",
+          "items": [
+            "Müsaitlik ve fiyat bilgisini anında paylaşır",
+            "Talebi doğrudan rezervasyona taşır",
+            "Sanal POS ile ön provizyon veya ödeme alır"
+          ]
+        },
+        {
+          "when": "Konaklama sırasında",
+          "title": "Tatil asistanı gibi yanınızda",
+          "items": [
+            "Ulaşım, yeme-içme ve gezi sorularını yanıtlar",
+            "Otel içi ihtiyaçlarda iletişime devam eder",
+            "30+ dilde, 7/24 ulaşılabilir"
+          ]
+        },
+        {
+          "when": "Konaklama sonrası",
+          "title": "Değerlendirmeyi destekler",
+          "items": [
+            "Misafirden değerlendirme ister",
+            "Google, Booking ve ETS puanlamasına yönlendirir",
+            "Raporlarla neyin işe yaradığını gösterir"
+          ]
+        }
+      ],
+      "tagline": "Rezervasyon öncesinden tatil sonrasına kadar misafir iletişimini yönetin.",
+      "setupEyebrow": "Kurulum",
+      "setupTitle": "Üç adımda yayında.",
+      "setupLead": "Kurulumu ekibimiz sizinle birlikte yapar. Tüm paketlerde kurulum, eğitim ve yıl boyu teknik destek dahildir.",
+      "steps": [
+        {
+          "title": "Otel bilgilerini ekliyoruz",
+          "text": "Oda tipleri, fiyat politikası, transfer ve sık sorulan soruları sisteme biz tanımlıyoruz."
+        },
+        {
+          "title": "Kanalları bağlıyoruz",
+          "text": "WhatsApp, Instagram, Messenger, Web Chat ve telefon hattınızı tek panelde topluyoruz."
+        },
+        {
+          "title": "Dijital resepsiyon çalışmaya hazır",
+          "text": "Misafirleriniz 7/24 yanıt alır, gereken konuşmalar ekibinize aktarılır."
+        }
+      ]
+    },
+    "solutions": {
+      "eyebrow": "Çözümlerimiz",
+      "heading": "Oteliniz için dört çözüm.",
+      "lead": "Misafir iletişiminden otel yönetimine, ihtiyacınıza uygun olanı seçin.",
+      "more": "Detaylar",
+      "cards": [
+        {
+          "title": "Dijital Resepsiyon",
+          "text": "Tüm mesaj ve aramaları 7/24 cevaplar, talebi rezervasyona dönüştürür."
+        },
+        {
+          "title": "Yapay Zekâ Telefon Asistanı",
+          "text": "Gelen aramaları 30+ dilde karşılar, oda ve fiyat bilgisi verir, görüşme özetini ekibinize iletir."
+        },
+        {
+          "title": "PMS / Otel Yönetim Sistemi",
+          "text": "Otel programınızla bağlanır; oda durumunu görür, bilgi verir ve rezervasyon oluşturur."
+        },
+        {
+          "title": "Akıllı Kapı / Kilit Sistemleri",
+          "text": "Misafir girişini kolaylaştıran akıllı kapı ve kilit çözümleri."
+        }
+      ]
+    },
   features: {
     eyebrow: "Neler yapar?",
     heading: "Resepsiyon yükünü azaltır, satış fırsatlarını artırır.",

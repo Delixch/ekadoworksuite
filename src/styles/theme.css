@@ -60,6 +60,8 @@
   --c-nav: rgb(255 255 255 / 0.72);       /* kaydırınca menü zemini */
   --c-shadow: rgb(46 58 140 / 0.14);      /* kart gölgesi */
   --c-shadow-soft: rgb(46 58 140 / 0.1);  /* hafif gölge */
+  --c-glow: rgb(255 255 255 / 0.2);       /* koyu/mavi yüzeylerde parlama */
+  --c-glow-soft: rgb(255 255 255 / 0.12); /* daha hafif parlama */
 
   /* ===== Yazı tipi: gerçek tanım src/styles/fonts.ts içinde ===== */
   --font-main: var(--font-app), system-ui, -apple-system, "Segoe UI", sans-serif;

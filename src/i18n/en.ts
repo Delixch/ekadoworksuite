@@ -77,6 +77,82 @@ export const en: Dict = {
     bookingNote: "Double room · 3 nights",
     chatAria: "Multilingual sample chat",
   },
+    "journey": {
+      "eyebrow": "Guest journey",
+      "heading": "Not just the booking: it accompanies the whole guest journey.",
+      "lead": "Digital Reception turns requests into sales before the stay, keeps in touch like a holiday assistant during the stay, and supports reviews and ratings afterwards.",
+      "stages": [
+        {
+          "when": "Before the stay",
+          "title": "Turns requests into sales",
+          "items": [
+            "Shares availability and prices instantly",
+            "Carries the request straight into a reservation",
+            "Takes a pre-authorization or payment by virtual POS"
+          ]
+        },
+        {
+          "when": "During the stay",
+          "title": "A holiday assistant by their side",
+          "items": [
+            "Answers questions on transport, dining and sightseeing",
+            "Keeps helping with needs inside the hotel",
+            "Available in 30+ languages, 24/7"
+          ]
+        },
+        {
+          "when": "After the stay",
+          "title": "Supports the review",
+          "items": [
+            "Asks the guest for a review",
+            "Guides them to Google, Booking and ETS ratings",
+            "Shows what works through reports"
+          ]
+        }
+      ],
+      "tagline": "Manage guest communication from before the booking to after the holiday.",
+      "setupEyebrow": "Setup",
+      "setupTitle": "Live in three steps.",
+      "setupLead": "Our team does the setup with you. Setup, training and year-round technical support are included in every package.",
+      "steps": [
+        {
+          "title": "We add your hotel information",
+          "text": "We enter room types, pricing policy, transfers and frequently asked questions into the system."
+        },
+        {
+          "title": "We connect your channels",
+          "text": "WhatsApp, Instagram, Messenger, web chat and your phone line, all in a single panel."
+        },
+        {
+          "title": "Your digital reception is ready",
+          "text": "Guests get answers 24/7 and conversations that need your team are handed over."
+        }
+      ]
+    },
+    "solutions": {
+      "eyebrow": "Our solutions",
+      "heading": "Four solutions for your hotel.",
+      "lead": "From guest communication to hotel management, choose what fits your needs.",
+      "more": "Details",
+      "cards": [
+        {
+          "title": "Digital Reception",
+          "text": "Answers every message and call 24/7 and turns requests into reservations."
+        },
+        {
+          "title": "AI Phone Assistant",
+          "text": "Answers incoming calls in 30+ languages, shares room and price info and sends the call summary to your team."
+        },
+        {
+          "title": "PMS / Hotel Management System",
+          "text": "Connects to your hotel software; sees room status, gives information and creates reservations."
+        },
+        {
+          "title": "Smart Door / Lock Systems",
+          "text": "Smart door and lock solutions that make guest entry easier."
+        }
+      ]
+    },
   features: {
     eyebrow: "What it does",
     heading: "Reduces front-desk workload, grows sales opportunities.",
