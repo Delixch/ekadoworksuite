@@ -25,7 +25,7 @@ import { locales, useLocale } from "@/i18n/useLocale";
 
 /** Tasarım boyutu (px). Gerçek genişliğe göre ölçeklenir. */
 const W = 820;
-const H = 600;
+const H = 650;
 
 function useScale() {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,7 +47,7 @@ function Laptop() {
   const m = t.mockup;
   const langName = locales.find((l) => l.code === locale)?.label ?? "";
   return (
-    <div className="absolute top-0 right-0" style={{ width: 640, height: 470 }}>
+    <div className="absolute top-0 right-0" style={{ width: 640, height: 470, transform: "scale(1.12)", transformOrigin: "97% 0%" }}>
       {/* ekran çerçevesi */}
       <div
         className="absolute inset-x-0 top-0 overflow-hidden rounded-[18px] border-[7px] border-era-device bg-era-device shadow-[0_30px_60px_-20px_var(--c-shadow)]"
@@ -285,7 +285,7 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
   }, [confirmVisible, onBooking]);
 
   return (
-    <div className="absolute left-0 overflow-hidden rounded-[30px] border-[7px] border-era-device bg-era-device shadow-[0_30px_60px_-18px_var(--c-shadow)]" style={{ width: 200, height: 410, top: 150 }}>
+    <div className="absolute left-0 rotate-[8.5deg] overflow-hidden rounded-[30px] border-[7px] border-era-device bg-era-device shadow-[0_30px_60px_-18px_var(--c-shadow)] min-[992px]:-translate-x-[92px] min-[1280px]:-translate-x-[150px]" style={{ width: 200, height: 410, top: 124, transformOrigin: "50% 100%" }}>
       <div className="flex h-full flex-col overflow-hidden rounded-[22px] bg-era-secondary text-era-black">
         <div className="relative flex-none bg-era-dark px-2 pt-1.5 pb-2 text-era-on-dark">
           <div className="mx-auto mb-1 h-2.5 w-14 rounded-full bg-era-device" />
@@ -358,7 +358,7 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
 /** Telefonun altındaki dil çipleri */
 function LangChips({ active }: { active: number }) {
   return (
-    <div className="absolute left-0 flex gap-1" style={{ top: 570, width: 200 }}>
+    <div className="absolute left-0 flex rotate-[8.5deg] gap-1 min-[992px]:-translate-x-[92px] min-[1280px]:-translate-x-[150px]" style={{ top: 548, width: 200, transformOrigin: "50% -14px" }}>
       {scenes.map((s, i) => (
         <span
           key={s.code}
@@ -388,7 +388,7 @@ function VoiceCard() {
   const ss = String(sec % 60).padStart(2, "0");
 
   return (
-    <div className="era-float absolute rounded-2xl border border-era-line bg-era-white/85 p-3 text-era-black shadow-[0_18px_40px_-14px_var(--c-shadow)] backdrop-blur-md" style={{ left: 232, top: 444, width: 330 }}>
+    <div className="era-float absolute left-[232px] min-[992px]:left-[156px] rounded-2xl border border-era-line bg-era-white/85 p-3 text-era-black shadow-[0_18px_40px_-14px_var(--c-shadow)] backdrop-blur-md" style={{ top: 494, width: 330 }}>
       <div className="flex items-center gap-2.5">
         <span className="relative flex h-8 w-8 flex-none items-center justify-center rounded-full bg-era-primary text-era-on-dark">
           <span className="era-ring absolute inset-0 rounded-full border-2 border-era-primary" />
@@ -443,7 +443,7 @@ function BookingChip({ show }: { show: boolean }) {
       className={`absolute flex items-center gap-2.5 rounded-2xl border border-era-line bg-era-white px-3 py-2.5 shadow-[0_18px_40px_-14px_var(--c-shadow)] transition-all duration-500 ${
         show ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-95 opacity-0"
       }`}
-      style={{ left: 624, top: 452, width: 196 }}
+      style={{ left: 624, top: 502, width: 196 }}
       aria-hidden={!show}
     >
       <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-era-success text-era-on-dark">
@@ -463,7 +463,7 @@ export function HeroMockup() {
   const [booking, setBooking] = useState(false);
   const [scene, setScene] = useState(0);
   return (
-    <div ref={ref} className="era-in-rise relative w-full min-w-0 overflow-hidden" style={{ height: H * scale }} aria-hidden>
+    <div ref={ref} className="era-in-rise relative w-full min-w-0 overflow-hidden min-[992px]:overflow-visible" style={{ height: H * scale }} aria-hidden>
       <div style={{ width: W, height: H, transform: `scale(${scale})`, transformOrigin: "top left" }} className="absolute top-0 left-0">
         <Laptop />
         <VoiceCard />
