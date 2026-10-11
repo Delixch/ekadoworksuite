@@ -20,6 +20,7 @@ import {
   Users,
 } from "lucide-react";
 import { siWhatsapp } from "simple-icons";
+import { locales, useLocale } from "@/i18n/useLocale";
 
 /** Tasarım boyutu (px). Gerçek genişliğe göre ölçeklenir. */
 const W = 780;
@@ -38,21 +39,12 @@ function useScale() {
   return { ref, scale };
 }
 
-const menu = [
-  [LayoutGrid, "Genel Bakış", true],
-  [MessageSquare, "Mesajlar"],
-  [Phone, "Aramalar"],
-  [ClipboardList, "Misafir Talepleri"],
-  [Users, "Müşteriler"],
-  [Bell, "Hatırlatmalar"],
-  [Megaphone, "Kampanyalar"],
-  [Sparkles, "Geliştirme"],
-  [Settings, "Ayarlar"],
-] as const;
-
-const tabs = ["Bugün", "7 gün", "30 gün", "Özel"];
+const menuIcons = [LayoutGrid, MessageSquare, Phone, ClipboardList, Users, Bell, Megaphone, Sparkles, Settings];
 
 function Laptop() {
+  const { t, locale } = useLocale();
+  const m = t.mockup;
+  const langName = locales.find((l) => l.code === locale)?.label ?? "";
   return (
     <div className="absolute top-0 right-0" style={{ width: 640, height: 470 }}>
       {/* ekran çerçevesi */}
@@ -67,7 +59,10 @@ function Laptop() {
               <span className="flex h-5 w-5 items-center justify-center rounded-[6px] bg-era-primary text-[11px] font-bold">p</span>
               <span className="text-[11px] font-semibold tracking-wide">unn</span>
             </div>
-            {menu.map(([Icon, label, active]) => (
+            {m.menu.map((label, i) => {
+              const Icon = menuIcons[i];
+              const active = i === 0;
+              return (
               <div
                 key={label}
                 className={`flex items-center gap-1.5 rounded-md px-1.5 py-[5px] text-[8.5px] ${
@@ -77,10 +72,11 @@ function Laptop() {
                 <Icon size={10} />
                 {label}
               </div>
-            ))}
+            );
+            })}
             <div className="mt-auto flex items-center gap-1.5 text-[8px] text-era-on-dark/80">
               <span className="flex h-4 w-4 items-center justify-center rounded-full bg-era-on-dark/20 text-[7px] font-bold">SY</span>
-              Sistem Yöneticisi
+              {m.admin}
               <ChevronDown size={8} />
             </div>
           </aside>
@@ -89,17 +85,17 @@ function Laptop() {
           <div className="flex min-w-0 flex-1 flex-col gap-2.5 bg-era-secondary p-3">
             <div className="flex items-center justify-between text-[9px]">
               <span className="flex items-center gap-1 font-semibold">
-                <LayoutGrid size={10} /> Genel Bakış
+                <LayoutGrid size={10} /> {m.overview}
               </span>
               <span className="flex items-center gap-2 text-[8px]">
                 <span className="flex items-center gap-1">
-                  <i className="block h-1.5 w-1.5 rounded-full bg-era-success" /> AI Açık
+                  <i className="block h-1.5 w-1.5 rounded-full bg-era-success" /> {m.aiOn}
                 </span>
                 <span className="flex h-3.5 w-7 items-center justify-end rounded-full bg-era-success px-0.5">
                   <i className="block h-2.5 w-2.5 rounded-full bg-era-on-dark" />
                 </span>
                 <span className="flex items-center gap-1 rounded-md bg-era-white px-1.5 py-0.5">
-                  <Globe size={8} /> Türkçe
+                  <Globe size={8} /> {langName}
                 </span>
               </span>
             </div>
@@ -113,21 +109,21 @@ function Laptop() {
                   <Building2 size={13} />
                 </span>
                 <div className="leading-tight">
-                  <div className="text-[10px] font-semibold">Otel</div>
-                  <div className="text-[7.5px] text-era-gray">Dijital resepsiyon 7/24 · AI otomatik cevaplama açık</div>
+                  <div className="text-[10px] font-semibold">{m.hotel}</div>
+                  <div className="text-[7.5px] text-era-gray">{m.hotelNote}</div>
                 </div>
               </div>
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="text-[13px] font-bold tracking-tight">İyi geceler</span>
+              <span className="text-[13px] font-bold tracking-tight">{m.greeting}</span>
               <span className="flex items-center gap-1 text-[8px]">
-                {tabs.map((t, i) => (
+                {m.tabs.map((tab, i) => (
                   <span
-                    key={t}
+                    key={tab}
                     className={`rounded-md px-1.5 py-[3px] ${i === 0 ? "bg-era-btn font-semibold text-era-on-btn" : "text-era-gray"}`}
                   >
-                    {t}
+                    {tab}
                   </span>
                 ))}
               </span>
@@ -137,23 +133,23 @@ function Laptop() {
               <div className="flex flex-col justify-between rounded-xl bg-era-primary p-2.5 text-era-on-dark">
                 <div>
                   <div className="mb-1 flex items-center gap-1 text-[7.5px] opacity-90">
-                    <i className="block h-1.5 w-1.5 rounded-full bg-era-success" /> AI otomatik cevaplama açık
+                    <i className="block h-1.5 w-1.5 rounded-full bg-era-success" /> {m.autoReply}
                   </div>
-                  <div className="text-[12.5px] leading-tight font-bold">128 mesaj, 70 arama cevaplandı</div>
+                  <div className="text-[12.5px] leading-tight font-bold">{m.answered}</div>
                 </div>
                 <div className="grid grid-cols-3 gap-1 text-[7px] opacity-90">
-                  <span>Ort. AI yanıt süresi<b className="block text-[9px]">—</b></span>
-                  <span>Onay bekleyen<b className="block text-[9px]">8 dk</b></span>
-                  <span>Misafir memnuniyeti<b className="block text-[9px]">0 dk</b></span>
+                  <span>{m.statResponse}<b className="block text-[9px]">—</b></span>
+                  <span>{m.statApproval}<b className="block text-[9px]">8 {m.minShort}</b></span>
+                  <span>{m.statSatisfaction}<b className="block text-[9px]">0 {m.minShort}</b></span>
                 </div>
               </div>
               <div className="flex flex-col gap-1.5 rounded-xl bg-era-white p-2.5">
-                <div className="text-[8.5px] font-semibold">Dikkatinizi bekleyenler</div>
-                <div className="text-[7px] text-era-gray">Alım talebi bekleyen yer</div>
+                <div className="text-[8.5px] font-semibold">{m.attention}</div>
+                <div className="text-[7px] text-era-gray">{m.pending}</div>
                 <div className="mt-auto flex flex-col items-center gap-0.5 rounded-lg bg-era-secondary py-2 text-center">
                   <Sparkles size={11} className="text-era-primary-ink" />
-                  <span className="text-[8px] font-semibold">Her şey yolunda</span>
-                  <span className="px-1 text-[6.5px] text-era-gray">Ekibinizin ilgilenmesi gereken bir şey yok.</span>
+                  <span className="text-[8px] font-semibold">{m.allGood}</span>
+                  <span className="px-1 text-[6.5px] text-era-gray">{m.nothing}</span>
                 </div>
               </div>
             </div>
@@ -168,6 +164,8 @@ function Laptop() {
 }
 
 function Phone3() {
+  const { t } = useLocale();
+  const m = t.mockup;
   return (
     <div
       className="absolute bottom-0 left-0 overflow-hidden rounded-[30px] border-[7px] border-era-device bg-era-device shadow-[0_30px_60px_-18px_var(--c-shadow)]"
@@ -178,8 +176,8 @@ function Phone3() {
         <div className="flex items-center gap-1.5 bg-era-white px-2 py-1.5">
           <ChevronLeft size={11} />
           <div className="leading-tight">
-            <div className="text-[8.5px] font-semibold">Dijital Resepsiyonist</div>
-            <div className="text-[6.5px] text-era-success">● Çevrimiçi</div>
+            <div className="text-[8.5px] font-semibold">{m.phoneTitle}</div>
+            <div className="text-[6.5px] text-era-success">● {m.online}</div>
           </div>
           <svg viewBox="0 0 24 24" className="ml-auto h-5 w-5 rounded-full bg-era-whatsapp p-[3px]" aria-hidden>
             <path d={siWhatsapp.path} fill="var(--c-on-dark)" />
@@ -187,11 +185,11 @@ function Phone3() {
         </div>
         <div className="flex flex-1 flex-col gap-2 px-2 py-2.5">
           <div className="max-w-[85%] self-start rounded-xl rounded-tl-sm bg-era-white px-2 py-1.5 text-[8px] leading-snug shadow-[0_1px_4px_var(--c-shadow-soft)]">
-            Merhaba, iki kişilik odanız var mı?
+            {m.guestMsg}
             <div className="mt-0.5 text-right text-[6px] text-era-gray">10:24</div>
           </div>
           <div className="max-w-[92%] self-end rounded-xl rounded-tr-sm bg-era-primary px-2 py-1.5 text-[8px] leading-snug text-era-on-dark">
-            Merhaba! Hangi tarihlerde konaklamayı düşünüyorsunuz? Yetişkin sayısı ve varsa çocuk yaşlarını rica edeceğim.
+            {m.botMsg}
             <div className="mt-0.5 flex items-center justify-end gap-0.5 text-[6px] opacity-80">
               10:24 <CheckCheck size={8} />
             </div>
@@ -199,7 +197,7 @@ function Phone3() {
         </div>
         <div className="flex items-center gap-1.5 bg-era-white px-2 py-1.5">
           <Plus size={11} className="text-era-primary-ink" />
-          <span className="flex-1 rounded-full bg-era-secondary px-2 py-1 text-[7px] text-era-gray">Mesaj yazın...</span>
+          <span className="flex-1 rounded-full bg-era-secondary px-2 py-1 text-[7px] text-era-gray">{m.typeMsg}</span>
           <span className="flex h-4 w-4 items-center justify-center rounded-full bg-era-primary text-era-on-dark">
             <Send size={8} />
           </span>
