@@ -4,6 +4,7 @@ import { ArrowRight, Globe, Phone } from "lucide-react";
 import { siInstagram, siMessenger, siWhatsapp } from "simple-icons";
 import { useLocale } from "@/i18n/useLocale";
 import { HeroMockup } from "./HeroMockup";
+import { ClockRow } from "./Clock";
 
 const delay = (s: number) => ({ animationDelay: `${s}s` });
 
@@ -76,6 +77,9 @@ export function Hero() {
               <span className={`${iconBox} text-era-black`} style={delay(1.28)} title={t.hero.webChat}>
                 <Globe size={30} strokeWidth={2} />
               </span>
+            </div>
+            <div className="era-in-up" style={delay(1.4)}>
+              <ClockRow />
             </div>
           </div>
 

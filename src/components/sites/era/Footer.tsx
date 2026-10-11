@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Globe, Mail, Phone } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
+import { Clock } from "./Clock";
 import { Logo } from "./Logo";
 import { linkHrefs, solutionHrefs } from "./nav-links";
 import { Reveal, RollLink } from "./ui";
@@ -77,6 +78,9 @@ export function Footer() {
             {/* çizginin üstünde yavaşça sağa sola kayan küçük kare */}
             <span aria-hidden className="era-slide absolute -top-[4px] left-0 block h-[7px] w-[7px] rounded-[2px] bg-era-accent shadow-[0_0_12px_2px_var(--c-accent)]" />
             <span>{f.rights}</span>
+            <div className="mr-[76px] mob:mr-0">
+              <Clock />
+            </div>
           </div>
         </Reveal>
       </div>

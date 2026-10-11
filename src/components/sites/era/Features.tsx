@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Heading, Reveal, type Variant } from "./ui";
+import { ClockDivider } from "./Clock";
 import { Spot } from "./Spot";
 
 /** Metinler src/i18n içinde; burada sadece ikon ve animasyon yönü var (sıra sözlükle aynı). */
@@ -60,6 +61,8 @@ export function Features() {
               <p className="text-era-gray">{c.lead}</p>
             </Reveal>
           </div>
+
+          <ClockDivider />
 
           <div className="mx-auto grid w-full grid-cols-3 items-stretch gap-6 tab:max-w-[680px] tab:grid-cols-1">
             {c.groups.map((g, gi) => {
