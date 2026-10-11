@@ -341,3 +341,13 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 .era-glowpulse { animation: era-glowpulse 2.8s ease-out infinite; }
 .era-wiggle { animation: era-wiggle 5s ease-in-out infinite; transform-origin: 50% 80%; }
 @media (prefers-reduced-motion: reduce) { .era-orbit, .era-pulse, .era-rise, .era-sweep, .era-glowpulse, .era-wiggle { animation: none; } }
+
+/* ===== Teknoloji: ürün üzerindeki noktaların etiketleri sırayla belirir ===== */
+@keyframes era-hs { 0%, 26% { opacity: 1; transform: translate(0, -50%) scale(1); } 32%, 100% { opacity: 0; transform: translate(6px, -50%) scale(0.96); } }
+.era-hs-label { opacity: 0; animation: era-hs 9s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .era-hs-label { animation: none; opacity: 1; } }
+
+/* ===== Footer çizgisi: sağa sola kayan kare ===== */
+@keyframes era-slide { from { left: 0; } to { left: calc(100% - 7px); } }
+.era-slide { animation: era-slide 14s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .era-slide { animation: none; } }

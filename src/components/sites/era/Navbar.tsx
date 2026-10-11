@@ -5,9 +5,8 @@ import { ChevronDown } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
-import { linkHrefs, solutionHrefs } from "./nav-links";
+import { linkHrefs, solutionHrefs, techHrefs } from "./nav-links";
 import { ThemeToggle } from "./ThemeToggle";
-
 
 /** Açılışta sırayla büyüyerek gelen öğe */
 const pop = (i: number) => ({ animationDelay: `${0.3 + i * 0.07}s` });
@@ -15,6 +14,48 @@ const pop = (i: number) => ({ animationDelay: `${0.3 + i * 0.07}s` });
 const pill =
   "flex h-12 items-center rounded-(--r-s1) px-5 text-[17px] font-medium whitespace-nowrap no-underline transition-all duration-300 hover:-translate-y-0.5";
 const pillSoft = `${pill} bg-era-coolblue/60 text-era-primary-ink hover:bg-era-coolblue`;
+
+/** Açılır menü: üzerine gelince ya da odaklanınca açılır */
+function Dropdown({
+  label,
+  items,
+  hrefs,
+  solid,
+  delay,
+}: {
+  label: string;
+  items: string[];
+  hrefs: string[];
+  solid?: boolean;
+  delay: number;
+}) {
+  return (
+    <div className="era-in-pop group relative" style={pop(delay)}>
+      <button
+        type="button"
+        aria-haspopup="menu"
+        className={`${pill} gap-2 ${solid ? "bg-era-primary text-era-on-dark hover:brightness-110" : "bg-era-coolblue/60 text-era-primary-ink hover:bg-era-coolblue"}`}
+      >
+        {label}
+        <ChevronDown size={18} className="transition-transform duration-300 group-focus-within:rotate-180 group-hover:rotate-180" />
+      </button>
+      <div className="invisible absolute top-full left-0 z-10 w-[300px] pt-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+        <ul className="flex flex-col gap-1 rounded-(--r-x) border border-era-line bg-era-white p-2 shadow-[0_12px_40px_var(--c-shadow)]">
+          {items.map((it, i) => (
+            <li key={hrefs[i]}>
+              <a
+                href={hrefs[i]}
+                className="block rounded-(--r-s1) px-4 py-3 text-[16px] font-medium text-era-black no-underline transition-colors hover:bg-era-secondary"
+              >
+                {it}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 export function Navbar() {
   const { t } = useLocale();
@@ -50,35 +91,16 @@ export function Navbar() {
 
           {/* masaüstü menü */}
           <nav className="flex items-center gap-3 tab:hidden" aria-label="Ana menü">
-            <div className="era-in-pop group relative" style={pop(1)}>
-              <button
-                type="button"
-                aria-haspopup="menu"
-                className={`${pill} gap-2 bg-era-primary text-era-on-dark hover:brightness-110`}
-              >
-                {t.nav.solutions}
-                <ChevronDown size={18} className="transition-transform duration-300 group-focus-within:rotate-180 group-hover:rotate-180" />
-              </button>
-              <div className="invisible absolute top-full left-0 z-10 w-[300px] pt-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                <ul className="flex flex-col gap-1 rounded-(--r-x) border border-era-line bg-era-white p-2 shadow-[0_12px_40px_var(--c-shadow)]">
-                  {t.nav.solutionItems.map((label, i) => (
-                    <li key={solutionHrefs[i]}>
-                      <a
-                        href={solutionHrefs[i]}
-                        className="block rounded-(--r-s1) px-4 py-3 text-[16px] font-medium text-era-black no-underline transition-colors hover:bg-era-secondary"
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            {t.nav.links.map((label, i) => (
-              <a key={linkHrefs[i]} href={linkHrefs[i]} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
-                {label}
-              </a>
-            ))}
+            <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} solid delay={1} />
+            {t.nav.links.map((label, i) =>
+              i === 1 ? (
+                <Dropdown key={linkHrefs[i]} label={label} items={t.nav.techItems} hrefs={techHrefs} delay={i + 2} />
+              ) : (
+                <a key={linkHrefs[i]} href={linkHrefs[i]} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
+                  {label}
+                </a>
+              )
+            )}
           </nav>
 
           <div className="flex items-center gap-2.5">
@@ -124,12 +146,20 @@ export function Navbar() {
                 {label}
               </a>
             ))}
-            <div className="my-2 h-px bg-era-line" />
-            {t.nav.links.map((label, i) => (
-              <a key={linkHrefs[i]} href={linkHrefs[i]} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
+            <div className="mt-2 px-3 pb-1 text-[13px] font-semibold tracking-wide text-era-gray uppercase">{t.nav.links[1]}</div>
+            {t.nav.techItems.map((label, i) => (
+              <a key={techHrefs[i]} href={techHrefs[i]} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
                 {label}
               </a>
             ))}
+            <div className="my-2 h-px bg-era-line" />
+            {t.nav.links.map((label, i) =>
+              i === 1 ? null : (
+                <a key={linkHrefs[i]} href={linkHrefs[i]} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
+                  {label}
+                </a>
+              )
+            )}
             <a href="#demo" onClick={() => setOpen(false)} className="mt-3 flex h-12 items-center justify-center rounded-(--r-s1) bg-era-primary text-[17px] font-medium text-era-on-dark no-underline">
               {t.nav.demo}
             </a>

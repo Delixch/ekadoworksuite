@@ -15,12 +15,8 @@ export const tr = {
   },
   nav: {
     solutions: "Çözümlerimiz",
-    solutionItems: [
-      "Dijital Resepsiyon",
-      "Yapay Zekâ Telefon Asistanı",
-      "PMS / Otel Yönetim Sistemi",
-      "Akıllı Kapı / Kilit Sistemleri",
-    ],
+    solutionItems: ["Dijital Resepsiyon", "Yapay Zekâ Telefon Asistanı", "PMS / Otel Yönetim Sistemi"],
+    techItems: ["Akıllı Kilit Sistemleri"],
     links: ["Test Et", "Teknolojimiz", "Müşterilerimiz", "Bize Ulaşın", "Blog"],
     demo: "Demo Talep Et",
   },
@@ -131,7 +127,7 @@ export const tr = {
     },
     "solutions": {
       "eyebrow": "Çözümlerimiz",
-      "heading": "Oteliniz için dört çözüm.",
+      "heading": "Oteliniz için üç çözüm.",
       "lead": "Misafir iletişiminden otel yönetimine, ihtiyacınıza uygun olanı seçin.",
       "more": "Detaylar",
       "cards": [
@@ -146,10 +142,6 @@ export const tr = {
         {
           "title": "PMS / Otel Yönetim Sistemi",
           "text": "Otel programınızla bağlanır; oda durumunu görür, bilgi verir ve rezervasyon oluşturur."
-        },
-        {
-          "title": "Akıllı Kapı / Kilit Sistemleri",
-          "text": "Misafir girişini kolaylaştıran akıllı kapı ve kilit çözümleri."
         }
       ]
     },
@@ -251,6 +243,50 @@ export const tr = {
       "menu": "Menü",
       "contact": "İletişim",
       "rights": "© 2026 Punn Digital. Tüm hakları saklıdır."
+    },
+    "technology": {
+      "eyebrow": "Teknolojimiz",
+      "sub": "Akıllı Kilit Sistemleri",
+      "heading": "Anahtar taşımaya son!",
+      "lead": "Unutulan anahtarlar, kaybolan kartlar ya da kapıda kalma derdi tarihe karışıyor. Modern tasarımı ve güçlü güvenlik teknolojisiyle bu 5’i 1 arada akıllı kapı kilidi, otel odaları ve iş yerleri için kusursuz bir giriş çözümü sunar.",
+      "featuresTitle": "Öne çıkan özellikler",
+      "features": [
+        {
+          "title": "5 farklı giriş seçeneği",
+          "text": "Parmak izi, akıllı telefon, şifre, IC akıllı kart ya da geleneksel anahtar: seçim tamamen sizin."
+        },
+        {
+          "title": "Tuya ve TTLock uygulama desteği",
+          "text": "Dünyanın neresinde olursanız olun kapınızı mobil uygulamadan kontrol edin."
+        },
+        {
+          "title": "Akıllı güvenlik şifresi",
+          "text": "Gerçek şifrenizin önüne ve arkasına rastgele rakamlar ekleyerek meraklı gözlerden korunun."
+        },
+        {
+          "title": "Misafirler için geçici şifre",
+          "text": "Yokken bile misafir, temizlik personeli ya da kiracılar için telefondan anında tek kullanımlık veya süreli şifre oluşturun."
+        },
+        {
+          "title": "Şık ve dayanıklı tasarım",
+          "text": "Siyah cam yüzey ve sağlam fırçalanmış metal gövde, kapınıza modern ve estetik bir görünüm katar."
+        }
+      ],
+      "hotspots": [
+        "Şifre ekranı",
+        "Parmak izi",
+        "Yedek anahtar"
+      ],
+      "appCaption": "Tuya ve TTLock uygulama desteği",
+      "boxTitle": "Paket içeriği",
+      "box": [
+        "1 adet akıllı kapı kolu ve kilit mekanizması",
+        "IC erişim kartları",
+        "Yedek mekanik anahtarlar",
+        "Kurulum ve montaj aksesuarları"
+      ],
+      "videoTitle": "Videoyu izleyin",
+      "videoSoon": "Video hazırlanıyor"
     },
   features: {
     eyebrow: "Neler yapar?",

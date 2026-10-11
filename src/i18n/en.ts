@@ -16,12 +16,8 @@ export const en: Dict = {
   },
   nav: {
     solutions: "Solutions",
-    solutionItems: [
-      "Digital Reception",
-      "AI Phone Assistant",
-      "PMS / Hotel Management System",
-      "Smart Door / Lock Systems",
-    ],
+    solutionItems: ["Digital Reception", "AI Phone Assistant", "PMS / Hotel Management System"],
+    techItems: ["Smart Lock Systems"],
     links: ["Try It", "Technology", "Customers", "Contact Us", "Blog"],
     demo: "Request a Demo",
   },
@@ -131,7 +127,7 @@ export const en: Dict = {
     },
     "solutions": {
       "eyebrow": "Our solutions",
-      "heading": "Four solutions for your hotel.",
+      "heading": "Three solutions for your hotel.",
       "lead": "From guest communication to hotel management, choose what fits your needs.",
       "more": "Details",
       "cards": [
@@ -146,10 +142,6 @@ export const en: Dict = {
         {
           "title": "PMS / Hotel Management System",
           "text": "Connects to your hotel software; sees room status, gives information and creates reservations."
-        },
-        {
-          "title": "Smart Door / Lock Systems",
-          "text": "Smart door and lock solutions that make guest entry easier."
         }
       ]
     },
@@ -251,6 +243,50 @@ export const en: Dict = {
       "menu": "Menu",
       "contact": "Contact",
       "rights": "© 2026 Punn Digital. All rights reserved."
+    },
+    "technology": {
+      "eyebrow": "Technology",
+      "sub": "Smart Lock Systems",
+      "heading": "No more carrying keys!",
+      "lead": "Forgotten keys, lost cards and guests stuck at the door are history. With its modern design and strong security technology, this 5-in-1 smart door lock offers a flawless entry solution for hotel rooms and workplaces.",
+      "featuresTitle": "Key features",
+      "features": [
+        {
+          "title": "5 different ways in",
+          "text": "Fingerprint, smartphone, passcode, IC smart card or a traditional key: the choice is yours."
+        },
+        {
+          "title": "Tuya & TTLock app support",
+          "text": "Control your door from the mobile app, wherever you are in the world."
+        },
+        {
+          "title": "Smart anti-peeping passcode",
+          "text": "Add random digits before and after your real code to stay safe from prying eyes."
+        },
+        {
+          "title": "Temporary passcodes for guests",
+          "text": "Even when you are away, create a one-time or timed passcode from your phone for guests, cleaning staff or tenants."
+        },
+        {
+          "title": "Sleek, durable design",
+          "text": "A black glass surface and a sturdy brushed-metal body give your door a modern, elegant look."
+        }
+      ],
+      "hotspots": [
+        "Passcode screen",
+        "Fingerprint",
+        "Backup key"
+      ],
+      "appCaption": "Tuya & TTLock app support",
+      "boxTitle": "What's in the box",
+      "box": [
+        "1 smart door handle and lock mechanism",
+        "IC access cards",
+        "Spare mechanical keys",
+        "Installation and mounting accessories"
+      ],
+      "videoTitle": "Watch the video",
+      "videoSoon": "Video coming soon"
     },
   features: {
     eyebrow: "What it does",

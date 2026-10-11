@@ -3,7 +3,7 @@
 import { Globe, Mail, Phone } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Logo } from "./Logo";
-import { linkHrefs, solutionHrefs } from "./nav-links";
+import { linkHrefs, solutionHrefs, techHrefs } from "./nav-links";
 import { Reveal, RollLink } from "./ui";
 
 /** İletişim bilgileri (PDF sayfa 4) */
@@ -43,6 +43,11 @@ export function Footer() {
                 {label}
               </RollLink>
             ))}
+            {t.nav.techItems.map((label, i) => (
+              <RollLink key={techHrefs[i]} href={techHrefs[i]} height={22} textClass="text-era-on-dark/85">
+                {label}
+              </RollLink>
+            ))}
           </Reveal>
 
           <Reveal variant="up" delay={240} className="flex flex-col gap-5">
@@ -72,7 +77,9 @@ export function Footer() {
         </div>
 
         <Reveal variant="fade" delay={300}>
-          <div className="mt-14 flex items-center justify-between gap-4 border-t border-era-on-dark/15 pt-6 text-[14px] text-era-on-dark/65 mob:flex-col mob:items-start">
+          <div className="relative mt-14 flex items-center justify-between gap-4 border-t border-era-on-dark/15 pt-6 text-[14px] text-era-on-dark/65 mob:flex-col mob:items-start">
+            {/* çizginin üstünde yavaşça sağa sola kayan küçük kare */}
+            <span aria-hidden className="era-slide absolute -top-[4px] left-0 block h-[7px] w-[7px] rounded-[2px] bg-era-accent shadow-[0_0_12px_2px_var(--c-accent)]" />
             <span>{f.rights}</span>
           </div>
         </Reveal>

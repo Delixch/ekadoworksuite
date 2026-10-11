@@ -17,12 +17,8 @@ export const de: Dict = {
   },
   nav: {
     solutions: "Lösungen",
-    solutionItems: [
-      "Digitale Rezeption",
-      "KI-Telefonassistent",
-      "PMS / Hotelmanagementsystem",
-      "Smarte Türen / Schließsysteme",
-    ],
+    solutionItems: ["Digitale Rezeption", "KI-Telefonassistent", "PMS / Hotelmanagementsystem"],
+    techItems: ["Smarte Schließsysteme"],
     links: ["Testen", "Technologie", "Kunden", "Kontakt", "Blog"],
     demo: "Demo anfragen",
   },
@@ -133,7 +129,7 @@ export const de: Dict = {
     },
     "solutions": {
       "eyebrow": "Unsere Lösungen",
-      "heading": "Vier Lösungen für Ihr Hotel.",
+      "heading": "Drei Lösungen für Ihr Hotel.",
       "lead": "Von der Gästekommunikation bis zur Hotelverwaltung: wählen Sie, was zu Ihnen passt.",
       "more": "Details",
       "cards": [
@@ -148,10 +144,6 @@ export const de: Dict = {
         {
           "title": "PMS / Hotelmanagementsystem",
           "text": "Verbindet sich mit Ihrer Hotelsoftware, sieht den Zimmerstatus, gibt Auskunft und legt Reservierungen an."
-        },
-        {
-          "title": "Smarte Türen / Schließsysteme",
-          "text": "Smarte Tür- und Schließlösungen, die den Gästezugang erleichtern."
         }
       ]
     },
@@ -253,6 +245,50 @@ export const de: Dict = {
       "menu": "Menü",
       "contact": "Kontakt",
       "rights": "© 2026 Punn Digital. Alle Rechte vorbehalten."
+    },
+    "technology": {
+      "eyebrow": "Technologie",
+      "sub": "Smarte Schließsysteme",
+      "heading": "Schluss mit dem Schlüsselbund!",
+      "lead": "Vergessene Schlüssel, verlorene Karten und Gäste vor verschlossener Tür gehören der Vergangenheit an. Mit modernem Design und starker Sicherheitstechnik bietet dieses smarte 5-in-1-Türschloss eine makellose Zutrittslösung für Hotelzimmer und Arbeitsplätze.",
+      "featuresTitle": "Highlights",
+      "features": [
+        {
+          "title": "5 verschiedene Zugangsarten",
+          "text": "Fingerabdruck, Smartphone, Passcode, IC-Chipkarte oder klassischer Schlüssel: Sie haben die Wahl."
+        },
+        {
+          "title": "Tuya- und TTLock-App",
+          "text": "Steuern Sie Ihre Tür per Mobil-App, wo auch immer Sie auf der Welt sind."
+        },
+        {
+          "title": "Intelligenter Spähschutz-Code",
+          "text": "Setzen Sie vor und hinter Ihren echten Code zufällige Ziffern und schützen Sie ihn vor neugierigen Blicken."
+        },
+        {
+          "title": "Temporäre Codes für Gäste",
+          "text": "Erstellen Sie auch unterwegs per Handy sofort einen Einmal- oder Zeitcode für Gäste, Reinigungskräfte oder Mieter."
+        },
+        {
+          "title": "Elegant und robust",
+          "text": "Schwarze Glasfläche und stabiles, gebürstetes Metall verleihen Ihrer Tür einen modernen, edlen Look."
+        }
+      ],
+      "hotspots": [
+        "Code-Display",
+        "Fingerabdruck",
+        "Notschlüssel"
+      ],
+      "appCaption": "Tuya- und TTLock-App",
+      "boxTitle": "Lieferumfang",
+      "box": [
+        "1 smarter Türgriff mit Schließmechanismus",
+        "IC-Zutrittskarten",
+        "Mechanische Ersatzschlüssel",
+        "Montage- und Zubehörteile"
+      ],
+      "videoTitle": "Video ansehen",
+      "videoSoon": "Video folgt in Kürze"
     },
   features: {
     eyebrow: "Was es kann",
