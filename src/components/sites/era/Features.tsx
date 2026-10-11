@@ -31,6 +31,31 @@ const groupMeta: { variant: Variant; icons: LucideIcon[] }[] = [
 ];
 const extraIcons: LucideIcon[] = [Settings, MessageCircle, ShieldCheck];
 
+/** Metnin arkasında logo renginde, çok saydam, fırça darbesi gibi kenarları pürüzlü leke (kare/panel değil). */
+function BrushStroke({ flip }: { flip?: boolean }) {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 300 80"
+      preserveAspectRatio="none"
+      className={`pointer-events-none absolute -inset-x-3 -inset-y-3 -z-10 h-[calc(100%+24px)] w-[calc(100%+24px)] ${flip ? "-scale-x-100" : ""}`}
+    >
+      <defs>
+        <filter id="brush-rough" x="-10%" y="-30%" width="120%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015 0.35" numOctaves="2" seed="7" result="n" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+      <path
+        filter="url(#brush-rough)"
+        fill="var(--c-logo-from)"
+        fillOpacity="0.16"
+        d="M10 44 C24 18 80 14 150 18 C220 14 276 20 290 38 C294 52 266 62 200 63 C130 66 52 64 22 58 C10 55 7 50 10 44Z"
+      />
+    </svg>
+  );
+}
+
 function IconBox({ icon: Icon, featured }: { icon: LucideIcon; featured?: boolean }) {
   return (
     <span
@@ -152,7 +177,8 @@ export function Features() {
                 {c.extras.map((e, ei) => {
                   const EIcon = extraIcons[ei];
                   return (
-                  <div key={e.title} className="group/item flex items-center gap-4">
+                  <div key={e.title} className="group/item relative flex items-center gap-4">
+                    <BrushStroke flip={ei % 2 === 1} />
                     <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-era-secondary text-era-primary-ink ring-1 ring-era-line transition-transform duration-500 group-hover/item:scale-110">
                       <EIcon size={21} strokeWidth={1.8} />
                     </span>
