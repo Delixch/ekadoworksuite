@@ -3,15 +3,10 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Check } from "lucide-react";
 import { useLocale, type Locale } from "@/i18n/useLocale";
+import { prices } from "@/lib/prices";
 import { Spot } from "./Spot";
 import { Heading, Reveal, type Variant } from "./ui";
 
-/** Fiyatlar (PDF sayfa 4). Metinler src/i18n içinde. KDV hariç, euro. */
-const prices = [
-  { m: 65, y: 550, off: 30 },
-  { m: 85, y: 750, off: 27 },
-  { m: 150, y: 1350, off: 25 },
-];
 const variants: Variant[] = ["left", "up", "right"];
 const FEATURED = 1;
 

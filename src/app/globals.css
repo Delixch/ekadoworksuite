@@ -607,3 +607,20 @@ p { text-wrap: pretty; }
   .lobby-glow { opacity: 0.25; }
   .lobby-dust { display: none; }
 }
+
+/* ===== Dashboard robotu ===== */
+@keyframes era-robot-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes era-robot-blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
+@keyframes era-robot-led { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+@keyframes era-robot-bar { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.45); } }
+@keyframes era-robot-slide { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(200%); } }
+.era-robot-bob { animation: era-robot-bob 3.6s ease-in-out infinite; }
+.era-robot-blink { animation: era-robot-blink 5s infinite; }
+.era-robot-led-a { animation: era-robot-led 1.6s ease-in-out infinite; }
+.era-robot-led-b { animation: era-robot-led 2.3s ease-in-out .4s infinite; }
+.era-robot-led-c { animation: era-robot-led 1.9s ease-in-out .9s infinite; }
+.era-robot-bar { transform-origin: bottom; animation: era-robot-bar 1.8s ease-in-out infinite; }
+.era-robot-slide { animation: era-robot-slide 3.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .era-robot-bob, .era-robot-blink, .era-robot-led-a, .era-robot-led-b, .era-robot-led-c, .era-robot-bar, .era-robot-slide { animation: none; }
+}

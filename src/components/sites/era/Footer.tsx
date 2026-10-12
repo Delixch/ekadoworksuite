@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Globe, Mail, Phone } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
+import { legal } from "@/i18n/legal";
 import { Clock } from "./Clock";
 import { Logo } from "./Logo";
 import { linkHrefs, solutionHrefs } from "./nav-links";
@@ -16,8 +17,9 @@ const contact = [
 ];
 
 export function Footer() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const f = t.footer;
+  const lg = legal[locale].links;
   const heading = "text-[18px] font-semibold text-era-on-dark";
 
   return (
@@ -77,7 +79,15 @@ export function Footer() {
           <div className="relative mt-14 flex items-center justify-between gap-4 border-t border-era-on-dark/15 pt-6 text-[14px] text-era-on-dark/65 mob:flex-col mob:items-start">
             {/* çizginin üstünde yavaşça sağa sola kayan küçük kare */}
             <span aria-hidden className="era-slide absolute -top-[4px] left-0 block h-[7px] w-[7px] rounded-[2px] bg-era-accent shadow-[0_0_12px_2px_var(--c-accent)]" />
-            <span>{f.rights}</span>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+              <span>{f.rights}</span>
+              <Link href="/impressum" className="text-era-on-dark/65 no-underline transition-colors hover:text-era-on-dark">
+                {lg.imprint}
+              </Link>
+              <Link href="/datenschutz" className="text-era-on-dark/65 no-underline transition-colors hover:text-era-on-dark">
+                {lg.privacy}
+              </Link>
+            </div>
             <div className="mr-[76px] mob:mr-0">
               <Clock />
             </div>
