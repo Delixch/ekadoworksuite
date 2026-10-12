@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Check } from "lucide-react";
 import { useLocale, type Locale } from "@/i18n/useLocale";
 import { Spot } from "./Spot";
@@ -116,8 +116,12 @@ export function Pricing() {
                   className={`relative h-full ${featured ? "min-[992px]:-my-4" : ""}`}
                 >
                   {/* kenar kareleri: solda yukarıdan aşağı, sağda aşağıdan yukarı; sırayla karttan karta geçer */}
-                  <span aria-hidden className="edge-sq edge-sq-down" style={{ animationDelay: `${i * 4}s` }} />
-                  <span aria-hidden className="edge-sq edge-sq-up" style={{ animationDelay: `${i * 4}s` }} />
+                  <span aria-hidden className="edge-track edge-track-l" style={{ "--edge-delay": `${i * 4}s` } as CSSProperties}>
+                    <i className="edge-sq edge-sq-down" />
+                  </span>
+                  <span aria-hidden className="edge-track edge-track-r" style={{ "--edge-delay": `${i * 4}s` } as CSSProperties}>
+                    <i className="edge-sq edge-sq-up" />
+                  </span>
                   <Spot
                     className={`relative flex h-full flex-col gap-6 rounded-(--r-x) px-8 py-9 mob:px-6 ${
                       featured ? "punn-feature text-era-on-dark" : "punn-panel"

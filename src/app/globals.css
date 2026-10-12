@@ -481,56 +481,66 @@ html, * { scrollbar-width: thin; scrollbar-color: var(--c-primary) var(--c-tint)
 p { text-wrap: pretty; }
 .text-center :is(p, h1, h2, h3, h4) { text-wrap: balance; }
 
-/* ===== Fiyat panelleri: kenarlarda gezen iki kare (sol: aşağı, sağ: yukarı), panelden panele sırayla ===== */
-@keyframes edge-sq-down {
-  0% { top: 28px; opacity: 0; }
-  3% { opacity: 1; }
-  30% { opacity: 1; }
-  33.3% { top: calc(100% - 35px); opacity: 0; }
-  100% { top: calc(100% - 35px); opacity: 0; }
-}
-@keyframes edge-sq-up {
-  0% { top: calc(100% - 35px); opacity: 0; }
-  3% { opacity: 1; }
-  30% { opacity: 1; }
-  33.3% { top: 28px; opacity: 0; }
-  100% { top: 28px; opacity: 0; }
-}
-.edge-sq {
+/* ===== Fiyat panelleri: kenarlarda gezen iki kare (sol: aşağı, sağ: yukarı) =====
+   Yol tek yerde: .edge-track (köşe yuvarlaklığından kaçınmak için üstten 28px, alttan 35px içeride).
+   Kare yalnızca transform + opacity ile oynar; yolun boyunu 100cqh verir. */
+.edge-track {
   position: absolute;
+  top: 28px;
+  bottom: 35px;
+  width: 7px;
   z-index: 3;
+  pointer-events: none;
+  container-type: size;
+}
+.edge-track-l { left: -3.5px; }
+.edge-track-r { right: -3.5px; }
+.edge-sq {
+  display: block;
   width: 7px;
   height: 7px;
   border-radius: 2px;
   background: var(--c-accent);
   box-shadow: 0 0 12px 3px var(--c-accent);
   opacity: 0;
-  pointer-events: none;
   animation-duration: 12s;
+  animation-delay: var(--edge-delay, 0s);
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-.edge-sq-down { left: -3.5px; animation-name: edge-sq-down; }
-.edge-sq-up { right: -3.5px; animation-name: edge-sq-up; }
+.edge-sq-down { animation-name: edge-sq-down; }
+.edge-sq-up { animation-name: edge-sq-up; }
+/* masaüstü: her panel kendi sırasında, turun ilk üçte birinde */
+@keyframes edge-sq-down {
+  0% { transform: translateY(0); opacity: 0; }
+  3% { opacity: 1; }
+  30% { opacity: 1; }
+  33.3%, 100% { transform: translateY(calc(100cqh - 7px)); opacity: 0; }
+}
+@keyframes edge-sq-up {
+  0% { transform: translateY(calc(100cqh - 7px)); opacity: 0; }
+  3% { opacity: 1; }
+  30% { opacity: 1; }
+  33.3%, 100% { transform: translateY(0); opacity: 0; }
+}
+/* tablet/mobil: paneller alt alta, kareler hepsinde aynı anda ve hep görünür */
+@keyframes edge-sq-down-m {
+  0% { transform: translateY(0); opacity: 0; }
+  6%, 94% { opacity: 1; }
+  100% { transform: translateY(calc(100cqh - 7px)); opacity: 0; }
+}
+@keyframes edge-sq-up-m {
+  0% { transform: translateY(calc(100cqh - 7px)); opacity: 0; }
+  6%, 94% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 0; }
+}
 @media (prefers-reduced-motion: reduce) {
   .edge-sq { animation: none; }
 }
-
-/* Tablet/mobil: paneller alt alta; kareler her panelde aynı anda, hep görünür, sırayla beklemeden döner */
-@keyframes edge-sq-down-m {
-  0% { top: 28px; opacity: 0; }
-  6% { opacity: 1; }
-  94% { opacity: 1; }
-  100% { top: calc(100% - 35px); opacity: 0; }
-}
-@keyframes edge-sq-up-m {
-  0% { top: calc(100% - 35px); opacity: 0; }
-  6% { opacity: 1; }
-  94% { opacity: 1; }
-  100% { top: 28px; opacity: 0; }
-}
-@media (max-width: 991px) and (prefers-reduced-motion: no-preference) {
-  .edge-sq { animation-duration: 6s; animation-delay: 0s !important; }
-  .edge-sq-down { animation-name: edge-sq-down-m; }
-  .edge-sq-up { animation-name: edge-sq-up-m; }
+@media (prefers-reduced-motion: no-preference) {
+  @variant tab {
+    .edge-sq { animation-duration: 6s; animation-delay: 0s; }
+    .edge-sq-down { animation-name: edge-sq-down-m; }
+    .edge-sq-up { animation-name: edge-sq-up-m; }
+  }
 }

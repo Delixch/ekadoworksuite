@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowRight, Lock, LockOpen } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Spot } from "./Spot";
@@ -68,9 +68,34 @@ export function Solutions() {
   const { t } = useLocale();
   const s = t.solutions;
   // Kartların arkasında gezinen tek ışık katmanı: fare bir karttan ötekine geçince kayarak ona gider.
-  const [glow, setGlow] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
+  const [glow, setGlow] = useState<{ x: number; y: number; w: number; h: number; slide: boolean } | null>(null);
   const wasVisible = useRef(false);
-  const moveGlow = (el: HTMLElement) => setGlow({ x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight });
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const hideGlow = () => {
+    clearTimeout(timer.current);
+    wasVisible.current = false;
+    setGlow(null);
+  };
+  // fare: kartın üstündeyken; dokunma: sadece gerçek dokunuşta (kaydırma sayılmaz), birkaç saniye sonra söner
+  const showGlow = (el: HTMLElement, touch: boolean) => {
+    clearTimeout(timer.current);
+    setGlow({ x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight, slide: wasVisible.current });
+    wasVisible.current = true;
+    if (touch) timer.current = setTimeout(hideGlow, 2800);
+  };
+  // yerleşim değişince (döndürme, yeniden boyutlandırma) ölçü eskir: gizle
+  useEffect(() => {
+    const onResize = () => {
+      clearTimeout(timer.current);
+      wasVisible.current = false;
+      setGlow(null);
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      clearTimeout(timer.current);
+    };
+  }, []);
 
   return (
     <section id="cozumler" className="relative bg-era-dark py-[100px] text-era-on-dark tab:py-[60px] mob:py-12 sm2:py-10">
@@ -86,7 +111,7 @@ export function Solutions() {
             </Reveal>
           </div>
 
-          <div className="relative grid grid-cols-4 gap-6 tab:grid-cols-2 mob:grid-cols-1" onPointerLeave={(e) => { if (e.pointerType === "mouse") { wasVisible.current = false; setGlow(null); } }}>
+          <div className="relative grid grid-cols-4 gap-6 tab:grid-cols-2 mob:grid-cols-1" onPointerLeave={(e) => { if (e.pointerType === "mouse") hideGlow(); }}>
             <span
               aria-hidden
               className="pointer-events-none absolute z-0 rounded-[34px] border border-[#4a52e8]/40 bg-[color-mix(in_srgb,#030395_85%,transparent)]"
@@ -96,7 +121,7 @@ export function Solutions() {
                 width: (glow?.w ?? 0) + 24,
                 height: (glow?.h ?? 0) + 24,
                 opacity: glow ? 1 : 0,
-                transition: wasVisible.current
+                transition: glow?.slide
                   ? "left .35s cubic-bezier(.22,1,.36,1), top .35s cubic-bezier(.22,1,.36,1), width .35s cubic-bezier(.22,1,.36,1), height .35s cubic-bezier(.22,1,.36,1), opacity .2s"
                   : "opacity .2s",
               }}
@@ -105,8 +130,8 @@ export function Solutions() {
               <div
                 key={c.title}
                 className="relative z-[1] h-full"
-                onPointerEnter={(e) => { moveGlow(e.currentTarget); wasVisible.current = true; }}
-                onPointerDown={(e) => { moveGlow(e.currentTarget); wasVisible.current = true; }}
+                onPointerEnter={(e) => { if (e.pointerType === "mouse") showGlow(e.currentTarget, false); }}
+                onPointerUp={(e) => { if (e.pointerType !== "mouse") showGlow(e.currentTarget, true); }}
               >
               <Reveal variant="up" delay={i * 110} className="h-full">
                 <Spot className="punn-dark-card flex h-full scroll-mt-28 flex-col gap-5 rounded-(--r-x) p-6">
