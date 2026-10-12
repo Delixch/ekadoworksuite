@@ -264,7 +264,8 @@ export const de: Dict = {
       "solutions": "Unsere Lösungen",
       "menu": "Menü",
       "contact": "Kontakt",
-      "rights": "© 2026 Punn Digital. Alle Rechte vorbehalten."
+      "rights": "© 2026 Punn Digital. Alle Rechte vorbehalten.",
+      "credit": "Design von"
     },
     "technology": {
       "eyebrow": "Unsere Lösungen",

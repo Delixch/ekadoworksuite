@@ -6,6 +6,7 @@ import { useLocale } from "@/i18n/useLocale";
 import { legal } from "@/i18n/legal";
 import { toTopIfHome } from "@/lib/home-click";
 import { Clock } from "./Clock";
+import { EkadoCredit } from "./EkadoCredit";
 import { Logo } from "./Logo";
 import { linkHrefs, solutionHrefs } from "./nav-links";
 import { Reveal, RollLink } from "./ui";
@@ -92,6 +93,9 @@ export function Footer() {
             <div className="mr-[76px] mob:mr-0">
               <Clock />
             </div>
+          </div>
+          <div className="mt-5 flex justify-center">
+            <EkadoCredit label={f.credit} />
           </div>
         </Reveal>
       </div>

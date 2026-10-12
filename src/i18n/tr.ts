@@ -262,7 +262,8 @@ export const tr = {
       "solutions": "Çözümlerimiz",
       "menu": "Menü",
       "contact": "İletişim",
-      "rights": "© 2026 Punn Digital. Tüm hakları saklıdır."
+      "rights": "© 2026 Punn Digital. Tüm hakları saklıdır.",
+      "credit": "Tasarım:"
     },
     "technology": {
       "eyebrow": "Çözümlerimiz",
