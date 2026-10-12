@@ -26,11 +26,20 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
   const cur = lang ?? locale;
 
   // ses ve video aynı yerde dursun
+  // Sert atlama sesi keser (özellikle mobilde): küçük sapma çalma hızıyla, yalnız büyük sapma atlamayla giderilir.
   const sync = useCallback((force = false) => {
     const v = video.current;
     const a = audio.current;
     if (!v || !a) return;
-    if (force || Math.abs(a.currentTime - v.currentTime) > 0.25) a.currentTime = v.currentTime;
+    const drift = a.currentTime - v.currentTime;
+    if (force || Math.abs(drift) > 1) {
+      a.currentTime = v.currentTime;
+      a.playbackRate = 1;
+    } else if (Math.abs(drift) > 0.15) {
+      a.playbackRate = drift > 0 ? 0.95 : 1.05;
+    } else if (a.playbackRate !== 1) {
+      a.playbackRate = 1;
+    }
   }, []);
 
   useEffect(() => {
@@ -38,7 +47,9 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
     const a = audio.current;
     if (!v || !a) return;
     const play = () => {
-      sync(true);
+      // "playing" her takılmadan sonra da gelir; ses zaten doğru yerdeyse dokunma
+      if (a.paused) sync(Math.abs(a.currentTime - v.currentTime) > 0.3);
+      else sync();
       a.play().catch(() => {});
     };
     const pause = () => a.pause();
