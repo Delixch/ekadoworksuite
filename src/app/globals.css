@@ -624,3 +624,47 @@ p { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   .era-robot-bob, .era-robot-blink, .era-robot-led-a, .era-robot-led-b, .era-robot-led-c, .era-robot-bar, .era-robot-slide { animation: none; }
 }
+
+/* ===== Yapım aşamasında sayfaları ===== */
+@keyframes era-cons-spin { to { transform: rotate(360deg); } }
+@keyframes era-cons-spin-r { to { transform: rotate(-360deg); } }
+@keyframes era-cons-tape { to { background-position: 56px 0; } }
+@keyframes era-cons-bar { 0% { transform: scaleX(0); } 85%, 100% { transform: scaleX(1); } }
+@keyframes era-cons-blink { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+@keyframes era-cons-hook { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(46px) rotate(3deg); } }
+@keyframes era-cons-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes era-cons-wobble { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(3deg); } }
+@keyframes era-cons-floor-0 { 0%, 6% { opacity: 0; transform: translateY(-26px); } 12%, 90% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes era-cons-floor-1 { 0%, 21% { opacity: 0; transform: translateY(-26px); } 27%, 90% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes era-cons-floor-2 { 0%, 36% { opacity: 0; transform: translateY(-26px); } 42%, 90% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes era-cons-floor-3 { 0%, 51% { opacity: 0; transform: translateY(-26px); } 57%, 90% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes era-cons-floor-4 { 0%, 66% { opacity: 0; transform: translateY(-26px); } 72%, 90% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes era-cons-line-0 { 0%, 4% { transform: scaleX(0); opacity: 1; } 17%, 90% { transform: scaleX(1); opacity: 1; } 97%, 100% { transform: scaleX(1); opacity: 0; } }
+@keyframes era-cons-line-1 { 0%, 20% { transform: scaleX(0); opacity: 1; } 33%, 90% { transform: scaleX(1); opacity: 1; } 97%, 100% { transform: scaleX(1); opacity: 0; } }
+@keyframes era-cons-line-2 { 0%, 36% { transform: scaleX(0); opacity: 1; } 49%, 90% { transform: scaleX(1); opacity: 1; } 97%, 100% { transform: scaleX(1); opacity: 0; } }
+@keyframes era-cons-line-3 { 0%, 52% { transform: scaleX(0); opacity: 1; } 65%, 90% { transform: scaleX(1); opacity: 1; } 97%, 100% { transform: scaleX(1); opacity: 0; } }
+@keyframes era-cons-line-4 { 0%, 68% { transform: scaleX(0); opacity: 1; } 81%, 90% { transform: scaleX(1); opacity: 1; } 97%, 100% { transform: scaleX(1); opacity: 0; } }
+@keyframes era-cons-pencil { 0% { transform: translate(0px,0px); } 4% { transform: translate(0px,0px); } 17% { transform: translate(100px,0px); } 20% { transform: translate(0px,30px); } 33% { transform: translate(78px,30px); } 36% { transform: translate(0px,60px); } 49% { transform: translate(100px,60px); } 52% { transform: translate(0px,90px); } 65% { transform: translate(56px,90px); } 68% { transform: translate(0px,120px); } 81% { transform: translate(88px,120px); } 90% { transform: translate(88px,120px); } 100% { transform: translate(0px,0px); } }
+
+.era-cons-tape { background: repeating-linear-gradient(-45deg, #f5b301 0 14px, #1b1b1b 14px 28px); background-size: 56px 56px; animation: era-cons-tape 1.2s linear infinite; }
+.era-cons-spin, .era-cons-spin-r, .era-cons-hook, .era-cons-float, .era-cons-wobble, .era-cons-pencil, .era-cons-line, .era-cons-floor, .era-cons-bar { transform-box: view-box; }
+.era-cons-line { transform-box: fill-box; transform-origin: left center; }
+.era-cons-bar { transform-box: fill-box; transform-origin: left center; animation: era-cons-bar 2.8s ease-in-out infinite; }
+.era-cons-hook { animation: era-cons-hook 4s ease-in-out infinite; }
+.era-cons-float { animation: era-cons-float 3s ease-in-out infinite; }
+.era-cons-wobble { animation: era-cons-wobble .5s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+.era-cons-blink { animation: era-cons-blink 1.4s ease-in-out infinite; }
+.era-cons-pencil { animation: era-cons-pencil 9s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .era-cons-tape, .era-cons-spin, .era-cons-spin-r, .era-cons-hook, .era-cons-float, .era-cons-wobble, .era-cons-blink, .era-cons-pencil, .era-cons-bar, .era-cons-line, .era-cons-floor { animation: none !important; }
+}
+.era-cons-floor-0 { animation: era-cons-floor-0 9s ease-out infinite; transform-box: fill-box; }
+.era-cons-line-0 { animation: era-cons-line-0 9s ease-out infinite; }
+.era-cons-floor-1 { animation: era-cons-floor-1 9s ease-out infinite; transform-box: fill-box; }
+.era-cons-line-1 { animation: era-cons-line-1 9s ease-out infinite; }
+.era-cons-floor-2 { animation: era-cons-floor-2 9s ease-out infinite; transform-box: fill-box; }
+.era-cons-line-2 { animation: era-cons-line-2 9s ease-out infinite; }
+.era-cons-floor-3 { animation: era-cons-floor-3 9s ease-out infinite; transform-box: fill-box; }
+.era-cons-line-3 { animation: era-cons-line-3 9s ease-out infinite; }
+.era-cons-floor-4 { animation: era-cons-floor-4 9s ease-out infinite; transform-box: fill-box; }
+.era-cons-line-4 { animation: era-cons-line-4 9s ease-out infinite; }

@@ -1,38 +1,23 @@
-import { a } from "./assets";
-import { Heading, Reveal } from "./ui";
+"use client";
 
-const logos = [
-  "699542-logo-7-.svg",
-  "699542-logo-1-.svg",
-  "699542-logo-2-.svg",
-  "699542-logo-4-.svg",
-  "699542-logo-5-.svg",
-  "699542-logo-6-.svg",
-];
+import { useLocale } from "@/i18n/useLocale";
 
+/** Hero'nun altında sağdan sola kayan özellik şeridi (kayma animasyonu: .era-marquee-list). Müşteri logoları gelince burada logo da gösterilebilir. */
 export function Marquee() {
+  const { t } = useLocale();
   return (
-    <section className="relative overflow-x-clip pt-[76px] pb-[70px] tab:pb-[50px] mob:pb-10 sm2:pb-[35px]">
-      <div className="mx-auto w-full max-w-[1470px] px-[15px]">
-        <div className="flex flex-col items-center gap-8 overflow-x-clip">
-          <Heading as="h4" className="!text-(length:--t-mx) !leading-[148%]">
-            Trusted By WorldWide Company
-          </Heading>
-          <Reveal className="flex w-full items-center gap-[67px] overflow-hidden mob:gap-10 sm2:gap-[35px]">
-            {[0, 1, 2, 3, 4].map((n) => (
-              <div
-                key={n}
-                aria-hidden={n > 0}
-                className="era-marquee-list flex flex-none items-start justify-center gap-[67px] mob:gap-10 sm2:gap-[35px]"
-              >
-                {logos.map((l) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={l} src={a(l)} alt="" className="max-w-none dark:invert sm2:min-w-[100px]" />
-                ))}
-              </div>
+    <section aria-label={t.hero.channelsAria} className="relative overflow-x-clip border-y border-era-line bg-era-white/60 py-6 mob:py-4">
+      <div className="flex w-full items-center gap-[67px] overflow-hidden py-1.5 leading-[1.3] [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] mob:gap-10 sm2:gap-[35px]">
+        {[0, 1, 2, 3].map((n) => (
+          <ul key={n} aria-hidden={n > 0} className="era-marquee-list flex flex-none items-center gap-[67px] mob:gap-10 sm2:gap-[35px]">
+            {t.marquee.map((label) => (
+              <li key={label} className="flex flex-none items-center gap-[67px] text-[26px] font-semibold tracking-tight whitespace-nowrap text-era-black mob:gap-10 mob:text-[20px] sm2:gap-[35px]">
+                {label}
+                <i aria-hidden className="block h-2.5 w-2.5 rotate-45 rounded-[2px] bg-era-primary" />
+              </li>
             ))}
-          </Reveal>
-        </div>
+          </ul>
+        ))}
       </div>
     </section>
   );

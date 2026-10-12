@@ -13,7 +13,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const pop = (i: number) => ({ animationDelay: `${0.3 + i * 0.07}s` });
 
 const pill =
-  "flex h-12 items-center rounded-(--r-s1) px-5 text-[17px] font-medium whitespace-nowrap no-underline transition-all duration-300 hover:-translate-y-0.5";
+  "flex h-12 items-center rounded-(--r-s1) px-5 max-[1439px]:h-11 max-[1439px]:px-3.5 max-[1439px]:text-[15px] text-[17px] font-medium whitespace-nowrap no-underline transition-all duration-300 hover:-translate-y-0.5";
 const pillSoft = `${pill} bg-era-coolblue/60 text-era-primary-ink hover:bg-era-coolblue`;
 
 /** Açılır menü: üzerine gelince ya da odaklanınca açılır */
@@ -94,7 +94,7 @@ export function Navbar() {
           </Link>
 
           {/* masaüstü menü */}
-          <nav className="flex items-center gap-3 tab:hidden" aria-label="Ana menü">
+          <nav className="flex items-center gap-3 max-[1439px]:gap-1.5 max-[1279px]:hidden" aria-label="Ana menü">
             <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} solid delay={1} suppress={hidden && !open} />
             {t.nav.links.map((label, i) => (
               <a key={linkHrefs[i]} href={linkHrefs[i]} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
@@ -112,7 +112,7 @@ export function Navbar() {
             </div>
             <Link
               href="/#demo"
-              className="demo-glow era-in-pop flex h-12 items-center rounded-(--r-s1) bg-era-primary px-6 text-[17px] font-medium whitespace-nowrap text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 tab:hidden"
+              className="demo-glow era-in-pop flex h-12 items-center rounded-(--r-s1) bg-era-primary px-6 text-[17px] font-medium whitespace-nowrap text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 max-[1439px]:h-11 max-[1439px]:px-4 max-[1439px]:text-[15px] max-[1279px]:hidden"
               style={pop(8)}
             >
               {t.nav.demo}
@@ -122,7 +122,7 @@ export function Navbar() {
               aria-label={t.ui.menu}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="era-in-pop hidden h-12 w-10 flex-col items-center justify-center tab:flex"
+              className="era-in-pop hidden h-12 w-10 flex-col items-center justify-center max-[1279px]:flex"
               style={pop(8)}
             >
               <span className={`h-0.5 w-6 bg-era-black transition-transform duration-300 ${open ? "translate-y-[8px] rotate-45" : ""}`} />
@@ -136,7 +136,7 @@ export function Navbar() {
         <nav
           aria-label="Mobil menü"
           className={`absolute inset-x-[15px] top-full z-[15] hidden max-h-[calc(100vh-90px)] overflow-y-auto rounded-(--r-s) border border-era-line bg-era-white p-5 shadow-[0_12px_40px_var(--c-shadow)] ${
-            open ? "tab:block" : ""
+            open ? "max-[1279px]:block" : ""
           }`}
         >
           <div className="flex flex-col gap-1">

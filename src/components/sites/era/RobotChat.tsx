@@ -6,6 +6,9 @@ import { useLocale } from "@/i18n/useLocale";
 import { answerLocal, fallbackText, guessLang } from "@/lib/chat/knowledge";
 import { canSpeak, speak, stopSpeaking } from "@/lib/chat/speak";
 
+/** Modelin kaçırdığı markdown işaretlerini (kalın, başlık, kod) balonda ve sesli okumada göstermemek için temizler. */
+const plain = (t: string) => t.replace(/[*_`#]+/g, "").replace(/^\s*[-•]\s+/gm, "").trim();
+
 type Msg = { role: "user" | "assistant"; content: string };
 
 /** Robotun sohbet paneli: sağ altta açılır. Mesajlar /api/chat'e gider; anahtar yoksa "çok yakında" der. */
@@ -57,21 +60,27 @@ export function RobotChat({ onClose }: { onClose: () => void }) {
     setBusy(true);
     let reply = "";
     let replyLang = locale;
-    try {
-      const r = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ messages: next, lang: locale }),
-      });
-      const d = (await r.json().catch(() => ({}))) as { reply?: string; error?: string };
-      if (r.ok && d.reply) reply = d.reply;
-      else if (d.error === "too_many") reply = c.tooMany;
-    } catch {}
-    // anahtar yoksa ya da yapay zekâ cevap veremediyse sayfanın içeriğinden cevap ver
-    if (!reply) {
-      const local = answerLocal(q, locale);
-      replyLang = local?.lang ?? guessLang(q, locale);
-      reply = local?.text ?? fallbackText(replyLang);
+    // önce sayfanın içeriğinden (anında); bulamazsa yapay zekâya sor
+    const local = answerLocal(q, locale);
+    if (local) {
+      await new Promise((r) => setTimeout(r, 450)); // "yazıyor" noktaları bir an görünsün
+      reply = local.text;
+      replyLang = local.lang;
+    } else {
+      try {
+        const r = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ messages: next, lang: locale }),
+        });
+        const d = (await r.json().catch(() => ({}))) as { reply?: string; error?: string };
+        if (r.ok && d.reply) reply = plain(d.reply);
+        else if (d.error === "too_many") reply = c.tooMany;
+      } catch {}
+      if (!reply) {
+        replyLang = guessLang(q, locale);
+        reply = fallbackText(replyLang);
+      }
     }
     if (voice) speak(reply, replyLang);
     setMsgs((m) => [...m, { role: "assistant", content: reply }]);

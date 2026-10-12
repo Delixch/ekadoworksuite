@@ -22,7 +22,6 @@ export const tr = {
     welcome: "Merhaba! Ben Punn Dijital Resepsiyonist asistanıyım. Otelinizin mesaj ve aramalarını nasıl yönettiğimizi sorabilirsiniz.",
     placeholder: "Mesajınızı yazın…",
     send: "Gönder",
-    soon: "Sohbet asistanı çok yakında burada olacak. Bu arada Demo Talep Et düğmesiyle bize ulaşabilirsiniz.",
     error: "Şu an cevap veremedim, lütfen biraz sonra tekrar deneyin.",
     tooMany: "Çok hızlı yazıyorsunuz, biraz bekleyip tekrar deneyin.",
     fallback: "Bunu tam anlayamadım. Paketleri, kanalları, dilleri, akıllı kapı kilidini ya da kurulumu sorabilirsiniz. Ayrıntı için Demo Talep Et düğmesiyle bize ulaşın.",
@@ -45,6 +44,8 @@ export const tr = {
     phone: "Telefon",
     webChat: "Web chat",
   },
+  /** Ana sayfadaki kayan şerit */
+  marquee: ["7/24 yanıt", "30+ dil", "WhatsApp", "Instagram", "Messenger", "Web chat", "Telefon asistanı", "PMS bağlantısı", "Sanal POS ile ödeme", "Akıllı kapı kilidi", "Raporlama ve CRM"],
   mockup: {
     menu: [
       "Genel Bakış",

@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/sites/era/Navbar";
 import { Hero } from "@/components/sites/era/Hero";
-// import { Marquee } from "@/components/sites/era/Marquee"; // Era şablonundan kalan, Punn içeriği yazılana kadar yayında değil
+import { Marquee } from "@/components/sites/era/Marquee";
 // import { About } from "@/components/sites/era/About"; // Era şablonundan kalan, Punn içeriği yazılana kadar yayında değil
 import { Features } from "@/components/sites/era/Features";
 import { Journey } from "@/components/sites/era/Journey";
@@ -19,7 +19,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        {/* <Marquee /> */}
+        <Marquee />
         {/* <About /> */}
         <Features />
         <Journey />

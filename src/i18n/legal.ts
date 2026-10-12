@@ -75,7 +75,7 @@ export const legal: Record<Locale, Legal> = {
         {
           h: "5. Sohbet asistanı",
           p: [
-            "Sohbet asistanına yazdığınız mesajlar cevap üretmek için işlenir. Yapay zekâ servisi bağlı olduğunda mesajlarınız bu servisin sağlayıcısına (Anthropic, ABD) iletilir. Lütfen sohbette sağlık, kimlik veya ödeme bilgisi paylaşmayın.",
+            "Sohbet asistanına yazdığınız mesajlar cevap üretmek için işlenir. Yapay zekâ servisi bağlı olduğunda mesajlarınız bu servisin sağlayıcısına iletilir. Lütfen sohbette sağlık, kimlik veya ödeme bilgisi paylaşmayın.",
           ],
         },
         {
@@ -154,7 +154,7 @@ export const legal: Record<Locale, Legal> = {
         {
           h: "5. Chat assistant",
           p: [
-            "Messages you write to the chat assistant are processed to produce an answer. When the AI service is connected, your messages are sent to its provider (Anthropic, USA). Please do not share health, identity or payment data in the chat.",
+            "Messages you write to the chat assistant are processed to produce an answer. When the AI service is connected, your messages are sent to its provider. Please do not share health, identity or payment data in the chat.",
           ],
         },
         {
@@ -233,7 +233,7 @@ export const legal: Record<Locale, Legal> = {
         {
           h: "5. Chat-Assistent",
           p: [
-            "Nachrichten an den Chat-Assistenten werden verarbeitet, um eine Antwort zu erzeugen. Ist der KI-Dienst angebunden, werden Ihre Nachrichten an dessen Anbieter (Anthropic, USA) übermittelt. Bitte geben Sie im Chat keine Gesundheits-, Ausweis- oder Zahlungsdaten an.",
+            "Nachrichten an den Chat-Assistenten werden verarbeitet, um eine Antwort zu erzeugen. Ist der KI-Dienst angebunden, werden Ihre Nachrichten an dessen Anbieter übermittelt. Bitte geben Sie im Chat keine Gesundheits-, Ausweis- oder Zahlungsdaten an.",
           ],
         },
         {

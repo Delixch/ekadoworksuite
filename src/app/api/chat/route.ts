@@ -1,17 +1,21 @@
 /**
  * Sohbet robotunun sunucu tarafı. Anahtar tarayıcıya hiç gitmez.
+ * Herhangi bir OpenAI uyumlu servisle çalışır (/chat/completions). Anthropic/Claude API'si bilerek bağlı değil.
  *
- * Müşteriye teslimde yapılacak tek şey: Vercel > Settings > Environment Variables içine
- *   ANTHROPIC_API_KEY = sk-ant-...
- * yazıp yeniden yayınlamak. İsteğe bağlı ayarlar:
- *   CHAT_MODEL         (varsayılan claude-haiku-5-5)
+ * Teslimde müşteri Vercel > Settings > Environment Variables içine kendisi yazar:
+ *   CHAT_API_BASE = https://servis.example/v1   (sonunda /chat/completions olmadan)
+ *   CHAT_API_KEY  = servisin anahtarı
+ *   CHAT_MODEL    = servisteki model adı
+ * İsteğe bağlı:
  *   CHAT_HOTEL_INFO    otele özel bilgi (adres, saatler, hizmetler) serbest metin
  *   CHAT_SYSTEM_PROMPT asistanın tüm talimatını kendi metninle değiştirir
- * Anahtar yoksa 503 "no_key" döner; arayüz bunu "çok yakında" mesajı olarak gösterir.
+ * Ayar yoksa 503 "no_key" döner; arayüz sayfa içeriğinden hazır cevap verir.
  */
 import { pageSummary } from "@/lib/chat/knowledge";
 
-const MODEL = process.env.CHAT_MODEL || "claude-haiku-5-5";
+const API_BASE = process.env.CHAT_API_BASE?.replace(/\/+$/, "");
+const KEY = process.env.CHAT_API_KEY;
+const MODEL = process.env.CHAT_MODEL || "";
 const MAX_MESSAGES = 12;
 const MAX_CHARS = 1000;
 const LIMIT = 20; // aynı kişiden 10 dakikada en fazla bu kadar mesaj
@@ -38,7 +42,7 @@ function systemPrompt(lang: string) {
     "You are the website assistant of Punn Digital, a company that builds a Digital Receptionist for hotels.",
     "The product answers guest messages and phone/WhatsApp calls 24/7 in 30+ languages, with a dashboard, PMS integration and smart door lock systems.",
     `Answer in the language the visitor writes in; if unclear, use ${site}.`,
-    "Be warm, brief (2-4 short sentences) and concrete. Never invent prices, features or promises; if you do not know, say so and suggest the Request a Demo button.",
+    "Reply in plain text only: no markdown, no asterisks, no lists with symbols, no emojis. Be warm, brief (2-4 short sentences) and concrete. Never invent prices, features or promises; if you do not know, say so and suggest the Request a Demo button.",
     "Stay on topic: Punn Digital and hotel guest communication. Politely decline anything else.",
     `Everything you may state as fact comes from this website content:\n${pageSummary(lang === "en" || lang === "de" ? lang : "tr")}`,
     process.env.CHAT_HOTEL_INFO
@@ -71,8 +75,7 @@ function clean(input: unknown): Msg[] | null {
 }
 
 export async function POST(req: Request) {
-  const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) return Response.json({ error: "no_key" }, { status: 503 });
+  if (!API_BASE || !KEY || !MODEL) return Response.json({ error: "no_key" }, { status: 503 });
 
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "local";
@@ -90,40 +93,19 @@ export async function POST(req: Request) {
   const lang = typeof body.lang === "string" ? body.lang : "tr";
 
   try {
-    const r = await fetch("https://api.anthropic.com/v1/messages", {
+    const r = await fetch(`${API_BASE}/chat/completions`, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": key,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 400,
-        system: systemPrompt(lang),
-        messages,
-      }),
-      signal: AbortSignal.timeout(25000),
+      headers: { "content-type": "application/json", authorization: `Bearer ${KEY}` },
+      // düşünen (reasoning) modeller düşünce için de jeton harcar, bu yüzden pay geniş
+      body: JSON.stringify({ model: MODEL, max_tokens: 1500, messages: [{ role: "system", content: systemPrompt(lang) }, ...messages] }),
+      signal: AbortSignal.timeout(40000),
     });
     if (!r.ok) {
-      console.error(
-        "chat: Anthropic",
-        r.status,
-        await r.text().catch(() => ""),
-      );
-      return Response.json(
-        { error: r.status === 401 ? "bad_key" : "upstream" },
-        { status: 502 },
-      );
+      console.error("chat: servis", r.status, await r.text().catch(() => ""));
+      return Response.json({ error: r.status === 401 ? "bad_key" : "upstream" }, { status: 502 });
     }
-    const data = (await r.json()) as {
-      content?: { type: string; text?: string }[];
-    };
-    const reply = (data.content ?? [])
-      .filter((c) => c.type === "text")
-      .map((c) => c.text)
-      .join("")
-      .trim();
+    const data = (await r.json()) as { choices?: { message?: { content?: string } }[] };
+    const reply = (data.choices?.[0]?.message?.content ?? "").trim();
     if (!reply) return Response.json({ error: "upstream" }, { status: 502 });
     return Response.json({ reply });
   } catch (e) {

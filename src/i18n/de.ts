@@ -24,7 +24,6 @@ export const de: Dict = {
     welcome: "Hallo! Ich bin der Assistent der Punn Digital Rezeption. Fragen Sie mich, wie wir die Nachrichten und Anrufe Ihres Hotels bearbeiten.",
     placeholder: "Nachricht eingeben…",
     send: "Senden",
-    soon: "Der Chat-Assistent ist bald hier. In der Zwischenzeit erreichen Sie uns über die Schaltfläche Demo anfragen.",
     error: "Ich konnte gerade nicht antworten, bitte versuchen Sie es gleich noch einmal.",
     tooMany: "Sie schreiben zu schnell, bitte warten Sie einen Moment.",
     fallback: "Das habe ich nicht ganz verstanden. Fragen Sie nach Paketen, Kanälen, Sprachen, dem smarten Türschloss oder der Einrichtung. Für Details erreichen Sie uns über die Schaltfläche Demo anfragen.",
@@ -47,6 +46,8 @@ export const de: Dict = {
     phone: "Telefon",
     webChat: "Web-Chat",
   },
+  /** Ana sayfadaki kayan şerit */
+  marquee: ["Antworten rund um die Uhr", "30+ Sprachen", "WhatsApp", "Instagram", "Messenger", "Web-Chat", "Telefonassistent", "PMS-Anbindung", "Zahlung per virtuellem POS", "Smartes Türschloss", "Reporting & CRM"],
   mockup: {
     menu: [
       "Übersicht",
