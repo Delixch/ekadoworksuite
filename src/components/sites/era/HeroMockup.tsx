@@ -317,7 +317,13 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-era-primary text-[11px] font-bold">p</span>
             <div className="leading-tight">
               <div className="text-[8.5px] font-semibold">Punn Digital</div>
-              <div className="text-[6.5px] opacity-80">{m.online}</div>
+              <div className="mt-0.5 flex w-fit items-center gap-1 rounded-full bg-[#22c55e]/25 px-1.5 py-[1.5px] text-[6.5px] font-semibold text-[#86efac]">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="era-ring absolute inset-0 rounded-full bg-[#4ade80]" />
+                  <span className="relative block h-1.5 w-1.5 rounded-full bg-[#4ade80]" />
+                </span>
+                <span>{m.online}</span>
+              </div>
             </div>
             <span key={sc.code} className="era-bubble ml-auto rounded-md bg-era-on-dark/20 px-1.5 py-0.5 text-[7px] font-bold tracking-wider">
               {sc.code}
@@ -341,12 +347,12 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
               className={`era-bubble max-w-[88%] rounded-xl px-2 py-1.5 text-[8px] leading-snug shadow-[0_1px_4px_var(--c-shadow-soft)] ${
                 msg.from === "guest"
                   ? "self-start rounded-tl-sm bg-era-white"
-                  : "self-end rounded-tr-sm bg-era-primary text-era-on-dark"
+                  : "self-end rounded-tr-sm bg-era-success text-white"
               }`}
             >
               {msg.text}
-              <div className={`mt-0.5 flex items-center justify-end gap-0.5 text-[6px] ${msg.from === "guest" ? "text-era-gray" : "opacity-80"}`}>
-                {msg.time} {msg.from === "bot" && <CheckCheck size={8} />}
+              <div className={`mt-0.5 flex items-center justify-end gap-0.5 text-[6px] ${msg.from === "guest" ? "text-era-gray" : "opacity-90"}`}>
+                {msg.time} {msg.from === "bot" && <CheckCheck size={8} className="text-white" />}
               </div>
             </div>
           ))}
@@ -367,7 +373,7 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
             </div>
           )}
           {typing && (
-            <div className="era-bubble era-dot flex w-fit items-center gap-[3px] self-end rounded-xl rounded-tr-sm bg-era-primary px-2.5 py-2 text-era-on-dark" aria-hidden>
+            <div className="era-bubble era-dot flex w-fit items-center gap-[3px] self-end rounded-xl rounded-tr-sm bg-era-success px-2.5 py-2 text-white" aria-hidden>
               <i />
               <i style={{ animationDelay: "0.15s" }} />
               <i style={{ animationDelay: "0.3s" }} />
@@ -377,9 +383,9 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
         </div>
 
         <div className="flex flex-none items-center gap-1.5 bg-era-white px-2 py-1.5">
-          <Plus size={11} className="text-era-primary-ink" />
+          <Plus size={11} className="text-era-success" />
           <span className="flex-1 rounded-full bg-era-secondary px-2 py-1 text-[7px] text-era-gray">{m.typeMsg}</span>
-          <span className="flex h-4 w-4 items-center justify-center rounded-full bg-era-primary text-era-on-dark">
+          <span className="flex h-4 w-4 items-center justify-center rounded-full bg-era-success text-white">
             <Send size={8} />
           </span>
         </div>
