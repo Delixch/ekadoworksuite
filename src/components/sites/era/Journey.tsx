@@ -3,7 +3,7 @@
 import { CalendarCheck, Check, Star, Sun } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Spot } from "./Spot";
-import { Heading, Reveal } from "./ui";
+import { BrushStroke, Heading, Reveal } from "./ui";
 
 const stageIcons = [CalendarCheck, Sun, Star];
 
@@ -84,7 +84,8 @@ export function Journey() {
             </div>
             <ol className="grid grid-cols-3 gap-8 tab:grid-cols-1 tab:gap-6">
               {j.steps.map((st, i) => (
-                <li key={st.title}>
+                <li key={st.title} className="relative">
+                  <BrushStroke tall flip={i % 2 === 1} />
                   <Reveal variant="up" delay={i * 130} className="flex gap-4">
                     <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-era-secondary text-[20px] font-extrabold text-era-primary-ink ring-1 ring-era-line">
                       {i + 1}

@@ -182,3 +182,28 @@ export function RollLink({
     </a>
   );
 }
+
+/** Metnin arkasında logo renginde, çok saydam, fırça darbesi gibi kenarları pürüzlü leke (kare/panel değil). */
+export function BrushStroke({ flip, tall }: { flip?: boolean; tall?: boolean }) {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 300 80"
+      preserveAspectRatio="none"
+      className={`pointer-events-none absolute -inset-x-3 -inset-y-3 -z-10 h-[calc(100%+24px)] w-[calc(100%+24px)] ${flip ? "-scale-x-100" : ""}`}
+    >
+      <defs>
+        <filter id="brush-rough" x="-10%" y="-30%" width="120%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015 0.35" numOctaves="2" seed="7" result="n" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+      <path
+        filter="url(#brush-rough)"
+        fill="var(--c-logo-from)"
+        fillOpacity={tall ? 0.11 : 0.16}
+        d={tall ? "M8 40 C18 6 80 2 150 5 C222 2 280 8 292 34 C297 56 272 76 200 77 C130 79 50 77 20 70 C6 64 4 48 8 40Z" : "M10 44 C24 18 80 14 150 18 C220 14 276 20 290 38 C294 52 266 62 200 63 C130 66 52 64 22 58 C10 55 7 50 10 44Z"}
+      />
+    </svg>
+  );
+}

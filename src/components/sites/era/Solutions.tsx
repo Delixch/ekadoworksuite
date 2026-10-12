@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { ArrowRight, Lock, LockOpen } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Spot } from "./Spot";
@@ -67,6 +67,10 @@ const visuals: ReactNode[] = [<ChatViz key="c" />, <WaveViz key="w" />, <RoomsVi
 export function Solutions() {
   const { t } = useLocale();
   const s = t.solutions;
+  // Kartların arkasında gezinen tek ışık katmanı: fare bir karttan ötekine geçince kayarak ona gider.
+  const [glow, setGlow] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
+  const wasVisible = useRef(false);
+  const moveGlow = (el: HTMLElement) => setGlow({ x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight });
 
   return (
     <section id="cozumler" className="relative bg-era-dark py-[100px] text-era-on-dark tab:py-[60px] mob:py-12 sm2:py-10">
@@ -82,9 +86,28 @@ export function Solutions() {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-4 gap-6 tab:grid-cols-2 mob:grid-cols-1">
+          <div className="relative grid grid-cols-4 gap-6 tab:grid-cols-2 mob:grid-cols-1" onMouseLeave={() => { wasVisible.current = false; setGlow(null); }}>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute z-0 rounded-[34px] border border-[#4a52e8]/40 bg-[color-mix(in_srgb,#030395_85%,transparent)]"
+              style={{
+                left: (glow?.x ?? 0) - 12,
+                top: (glow?.y ?? 0) - 12,
+                width: (glow?.w ?? 0) + 24,
+                height: (glow?.h ?? 0) + 24,
+                opacity: glow ? 1 : 0,
+                transition: wasVisible.current
+                  ? "left .35s cubic-bezier(.22,1,.36,1), top .35s cubic-bezier(.22,1,.36,1), width .35s cubic-bezier(.22,1,.36,1), height .35s cubic-bezier(.22,1,.36,1), opacity .2s"
+                  : "opacity .2s",
+              }}
+            />
             {s.cards.map((c, i) => (
-              <Reveal key={c.title} variant="up" delay={i * 110} className="h-full">
+              <div
+                key={c.title}
+                className="relative z-[1] h-full"
+                onMouseEnter={(e) => { moveGlow(e.currentTarget); wasVisible.current = true; }}
+              >
+              <Reveal variant="up" delay={i * 110} className="h-full">
                 <Spot className="punn-dark-card flex h-full scroll-mt-28 flex-col gap-5 rounded-(--r-x) p-6">
                   <span id={ids[i]} className="-mt-24 block h-0 pt-24" aria-hidden />
                   <div className="relative z-[1] flex h-[96px] items-center justify-center overflow-hidden rounded-(--r-s1) bg-era-dark/70 ring-1 ring-era-on-dark/10">
@@ -103,6 +126,7 @@ export function Solutions() {
                   </a>
                 </Spot>
               </Reveal>
+              </div>
             ))}
           </div>
         </div>

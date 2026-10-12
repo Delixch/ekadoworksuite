@@ -476,3 +476,42 @@ html, * { scrollbar-width: thin; scrollbar-color: var(--c-primary) var(--c-tint)
 @media (prefers-reduced-motion: reduce) {
   .line-dot { animation: none; }
 }
+
+/* Tek kelimelik yalnız son satır kalmasın: ortalı yazılar dengelenir, diğer paragraflar son satırı doldurur */
+p { text-wrap: pretty; }
+.text-center :is(p, h1, h2, h3, h4) { text-wrap: balance; }
+
+/* ===== Fiyat panelleri: kenarlarda gezen iki kare (sol: aşağı, sağ: yukarı), panelden panele sırayla ===== */
+@keyframes edge-sq-down {
+  0% { top: 28px; opacity: 0; }
+  3% { opacity: 1; }
+  30% { opacity: 1; }
+  33.3% { top: calc(100% - 35px); opacity: 0; }
+  100% { top: calc(100% - 35px); opacity: 0; }
+}
+@keyframes edge-sq-up {
+  0% { top: calc(100% - 35px); opacity: 0; }
+  3% { opacity: 1; }
+  30% { opacity: 1; }
+  33.3% { top: 28px; opacity: 0; }
+  100% { top: 28px; opacity: 0; }
+}
+.edge-sq {
+  position: absolute;
+  z-index: 3;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--c-accent);
+  box-shadow: 0 0 12px 3px var(--c-accent);
+  opacity: 0;
+  pointer-events: none;
+  animation-duration: 12s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.edge-sq-down { left: -3.5px; animation-name: edge-sq-down; }
+.edge-sq-up { right: -3.5px; animation-name: edge-sq-up; }
+@media (prefers-reduced-motion: reduce) {
+  .edge-sq { animation: none; }
+}

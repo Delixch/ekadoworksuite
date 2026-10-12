@@ -78,7 +78,36 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
   }, [cur]);
 
   return (
-    <div className="relative aspect-video overflow-hidden rounded-(--r-x) bg-era-dark ring-1 ring-era-line">
+    <div className="flex flex-col gap-3">
+      {ok && (
+        <div className="flex justify-end">
+        <div className="flex items-center gap-1 rounded-full bg-era-dark p-1">
+          {locales.map((l) => (
+            <button
+              key={l.code}
+              type="button"
+              onClick={() => setLang(l.code)}
+              aria-pressed={cur === l.code}
+              aria-label={l.label}
+              className={`rounded-full px-3 py-1 text-[12px] font-bold tracking-wide uppercase transition-colors ${
+                cur === l.code ? "bg-era-btn text-era-on-btn" : "text-era-on-dark/80 hover:text-era-on-dark"
+              }`}
+            >
+              {l.code}
+            </button>
+          ))}
+          <button
+            type="button"
+            onClick={() => setMuted((m) => !m)}
+            aria-label={muted ? "Sesi aç" : "Sesi kapat"}
+            className="flex h-7 w-7 items-center justify-center rounded-full text-era-on-dark/80 hover:text-era-on-dark"
+          >
+            {muted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+          </button>
+        </div>
+        </div>
+      )}
+      <div className="relative aspect-video overflow-hidden rounded-(--r-x) bg-era-dark ring-1 ring-era-line">
       {ok ? (
         <>
           <video
@@ -93,30 +122,6 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
             onError={() => setOk(false)}
           />
           <audio ref={audio} src={`/videos/ses-${cur}.mp3`} preload="auto" muted={muted} />
-          <div className="absolute top-3 right-3 z-[3] flex items-center gap-1 rounded-full bg-era-dark/70 p-1 backdrop-blur-md mob:top-2 mob:right-2">
-            {locales.map((l) => (
-              <button
-                key={l.code}
-                type="button"
-                onClick={() => setLang(l.code)}
-                aria-pressed={cur === l.code}
-                aria-label={l.label}
-                className={`rounded-full px-3 py-1 text-[12px] font-bold tracking-wide uppercase transition-colors ${
-                  cur === l.code ? "bg-era-btn text-era-on-btn" : "text-era-on-dark/80 hover:text-era-on-dark"
-                }`}
-              >
-                {l.code}
-              </button>
-            ))}
-            <button
-              type="button"
-              onClick={() => setMuted((m) => !m)}
-              aria-label={muted ? "Sesi aç" : "Sesi kapat"}
-              className="flex h-7 w-7 items-center justify-center rounded-full text-era-on-dark/80 hover:text-era-on-dark"
-            >
-              {muted ? <VolumeX size={15} /> : <Volume2 size={15} />}
-            </button>
-          </div>
         </>
       ) : (
         <div className="punn-feature relative flex h-full w-full flex-col items-center justify-center gap-5 text-era-on-dark">
@@ -139,6 +144,7 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
           <span className="text-[15px] font-semibold tracking-wide opacity-85">{soon}</span>
         </div>
       )}
+      </div>
     </div>
   );
 }
@@ -235,8 +241,8 @@ export function Technology() {
             </span>
             <span className="text-[14px] font-semibold tracking-[0.1em] text-era-gray uppercase">{k.sub}</span>
             <Heading>{k.heading}</Heading>
-            <Reveal variant="fade">
-              <p className="text-era-gray">{k.lead}</p>
+            <Reveal variant="fade" className="w-full">
+              <p className="mx-auto w-fit max-w-full border-x-2 border-era-primary px-5 text-era-gray mob:px-4">{k.lead}</p>
             </Reveal>
           </div>
 

@@ -113,17 +113,22 @@ export function Pricing() {
                   key={plan.name}
                   variant={variants[i]}
                   delay={i * 120}
-                  className={`h-full ${featured ? "min-[992px]:-my-4" : ""}`}
+                  className={`relative h-full ${featured ? "min-[992px]:-my-4" : ""}`}
                 >
+                  {/* kenar kareleri: solda yukarıdan aşağı, sağda aşağıdan yukarı; sırayla karttan karta geçer */}
+                  <span aria-hidden className="edge-sq edge-sq-down" style={{ animationDelay: `${i * 4}s` }} />
+                  <span aria-hidden className="edge-sq edge-sq-up" style={{ animationDelay: `${i * 4}s` }} />
                   <Spot
                     className={`relative flex h-full flex-col gap-6 rounded-(--r-x) px-8 py-9 mob:px-6 ${
                       featured ? "punn-feature text-era-on-dark" : "punn-panel"
                     }`}
                   >
                     {featured && (
-                      <span className="absolute -top-3.5 left-1/2 z-[2] -translate-x-1/2 rounded-full bg-era-accent px-4 py-1 text-[12px] font-bold tracking-wide whitespace-nowrap text-era-dark uppercase shadow-[0_6px_16px_var(--c-shadow)]">
-                        {p.popular}
-                      </span>
+                      <div className="absolute inset-x-8 -top-[11px] z-[2] flex h-[22px] items-center">
+                        <span className="h-px flex-1 bg-gradient-to-r from-transparent to-era-accent" />
+                        <span className="bg-[var(--c-page)] px-3 text-[12px] leading-[22px] font-bold tracking-[0.12em] whitespace-nowrap text-era-primary-ink uppercase">{p.popular}</span>
+                        <span className="h-px flex-1 bg-gradient-to-l from-transparent to-era-accent" />
+                      </div>
                     )}
 
                     <div className="relative z-[1] flex flex-col gap-1.5">
