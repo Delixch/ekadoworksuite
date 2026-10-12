@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Play } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
+import { video } from "@/i18n/video";
 import { toTopIfHome } from "@/lib/home-click";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
@@ -25,6 +26,7 @@ function Dropdown({
   solid,
   delay,
   suppress,
+  coverIndex,
 }: {
   label: string;
   items: string[];
@@ -33,7 +35,10 @@ function Dropdown({
   delay: number;
   /** üst çubuk gizliyken menü açık kalmasın */
   suppress?: boolean;
+  /** bu sıradaki öğenin üzerine gelince yanında tanıtım videosunun kapağı açılır */
+  coverIndex?: number;
 }) {
+  const { locale } = useLocale();
   return (
     <div className="era-in-pop group relative" style={pop(delay)}>
       <button
@@ -47,13 +52,31 @@ function Dropdown({
       <div className={`invisible absolute top-full left-0 z-10 w-[300px] pt-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 ${suppress ? "!invisible !opacity-0" : ""}`}>
         <ul className="flex flex-col gap-1 rounded-(--r-x) border border-era-line bg-era-white p-2 shadow-[0_12px_40px_var(--c-shadow)]">
           {items.map((it, i) => (
-            <li key={hrefs[i]}>
+            <li key={hrefs[i]} className="group/cover relative">
               <a
                 href={hrefs[i]}
                 className="block rounded-(--r-s1) px-4 py-3 text-[16px] font-medium text-era-black no-underline transition-colors hover:bg-era-secondary"
               >
                 {it}
               </a>
+              {i === coverIndex && (
+                <div className="invisible absolute top-0 left-full z-10 hidden w-[300px] pl-3 opacity-0 transition-all duration-200 group-focus-within/cover:visible group-focus-within/cover:opacity-100 group-hover/cover:visible group-hover/cover:opacity-100 min-[1024px]:block">
+                  <button
+                    type="button"
+                    onClick={() => window.dispatchEvent(new CustomEvent("punn:video"))}
+                    aria-label={video[locale].watch}
+                    className="group/play relative block aspect-video w-full overflow-hidden rounded-(--r-x) border border-era-line bg-era-dark shadow-[0_12px_40px_var(--c-shadow)]"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`/videos/resepsiyon-${locale}-kapak.jpg`} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover/play:scale-105" />
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/15">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-era-white/90 text-era-primary shadow-lg transition-transform duration-300 group-hover/play:scale-110">
+                        <Play size={20} className="ml-0.5 fill-current" />
+                      </span>
+                    </span>
+                  </button>
+                </div>
+              )}
             </li>
           ))}
         </ul>
@@ -96,7 +119,7 @@ export function Navbar() {
 
           {/* masaüstü menü */}
           <nav className="flex items-center gap-3 max-[1439px]:gap-1.5 max-[1279px]:hidden" aria-label="Ana menü">
-            <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} solid delay={1} suppress={hidden && !open} />
+            <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} coverIndex={0} solid delay={1} suppress={hidden && !open} />
             {t.nav.links.map((label, i) => (
               <a key={linkHrefs[i]} href={linkHrefs[i]} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
                 {label}

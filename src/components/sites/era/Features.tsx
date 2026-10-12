@@ -22,6 +22,7 @@ import { useLocale } from "@/i18n/useLocale";
 import { BrushStroke, Heading, Reveal, type Variant } from "./ui";
 import { ClockDivider, ClockRow } from "./Clock";
 import { Spot } from "./Spot";
+import { VideoButton } from "./VideoModal";
 
 /** Metinler src/i18n içinde; burada sadece ikon ve animasyon yönü var (sıra sözlükle aynı). */
 const groupMeta: { variant: Variant; icons: LucideIcon[] }[] = [
@@ -60,6 +61,9 @@ export function Features() {
             <Heading>{c.heading}</Heading>
             <Reveal variant="fade">
               <p className="text-era-gray">{c.lead}</p>
+            </Reveal>
+            <Reveal variant="up" delay={150}>
+              <VideoButton />
             </Reveal>
           </div>
 

@@ -9,6 +9,7 @@ import { usePT } from "@/i18n/panel/use";
 import { getOverview } from "@/lib/panel/api";
 import type { Channel, Kpi, OverviewData, Room, StatsRange } from "@/lib/panel/types";
 import { AreaChart, Donut, Sparkline } from "./charts";
+import { VideoButton } from "@/components/sites/era/VideoModal";
 import { usePanel } from "./context";
 import { fmtAgo, fmtDate, fmtMoney, fmtNum } from "./format";
 import { Avatar, Card, CardHead, ChannelIcon, Chip, LiveDot, Spinner, useCountUp, type Tone } from "./ui";
@@ -251,7 +252,10 @@ export function Overview() {
             <b className="text-era-black">{hello}!</b> {t.summary.replace("{n}", fmtNum(data.kpis.conversations.value, locale))}
           </span>
         </p>
-        <RangeTabs value={range} onChange={setRange} />
+        <div className="flex flex-wrap items-center gap-3">
+          <VideoButton variant="small" />
+          <RangeTabs value={range} onChange={setRange} />
+        </div>
       </div>
 
       <div className="grid grid-cols-4 gap-5 tab:grid-cols-2 mob:grid-cols-1">

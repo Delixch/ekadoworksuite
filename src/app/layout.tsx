@@ -7,6 +7,7 @@ import { BackToTop } from "@/components/sites/era/BackToTop";
 import { Robot } from "@/components/sites/era/Robot";
 import { CookieNotice } from "@/components/sites/era/CookieNotice";
 import { ContactModal } from "@/components/sites/era/ContactModal";
+import { VideoModal } from "@/components/sites/era/VideoModal";
 import "./globals.css";
 
 /** Link önizlemesi (WhatsApp, LinkedIn, Facebook...). Başlık/açıklama LocaleSync'ten gelir; burada yalnızca paylaşım etiketleri. */
@@ -40,6 +41,7 @@ export default function RootLayout({
         <Robot />
         <CookieNotice />
         <ContactModal />
+        <VideoModal />
       </body>
     </html>
   );
