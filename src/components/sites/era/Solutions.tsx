@@ -86,7 +86,7 @@ export function Solutions() {
             </Reveal>
           </div>
 
-          <div className="relative grid grid-cols-4 gap-6 tab:grid-cols-2 mob:grid-cols-1" onMouseLeave={() => { wasVisible.current = false; setGlow(null); }}>
+          <div className="relative grid grid-cols-4 gap-6 tab:grid-cols-2 mob:grid-cols-1" onPointerLeave={(e) => { if (e.pointerType === "mouse") { wasVisible.current = false; setGlow(null); } }}>
             <span
               aria-hidden
               className="pointer-events-none absolute z-0 rounded-[34px] border border-[#4a52e8]/40 bg-[color-mix(in_srgb,#030395_85%,transparent)]"
@@ -105,7 +105,8 @@ export function Solutions() {
               <div
                 key={c.title}
                 className="relative z-[1] h-full"
-                onMouseEnter={(e) => { moveGlow(e.currentTarget); wasVisible.current = true; }}
+                onPointerEnter={(e) => { moveGlow(e.currentTarget); wasVisible.current = true; }}
+                onPointerDown={(e) => { moveGlow(e.currentTarget); wasVisible.current = true; }}
               >
               <Reveal variant="up" delay={i * 110} className="h-full">
                 <Spot className="punn-dark-card flex h-full scroll-mt-28 flex-col gap-5 rounded-(--r-x) p-6">

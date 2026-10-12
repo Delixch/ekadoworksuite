@@ -515,3 +515,22 @@ p { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   .edge-sq { animation: none; }
 }
+
+/* Tablet/mobil: paneller alt alta; kareler her panelde aynı anda, hep görünür, sırayla beklemeden döner */
+@keyframes edge-sq-down-m {
+  0% { top: 28px; opacity: 0; }
+  6% { opacity: 1; }
+  94% { opacity: 1; }
+  100% { top: calc(100% - 35px); opacity: 0; }
+}
+@keyframes edge-sq-up-m {
+  0% { top: calc(100% - 35px); opacity: 0; }
+  6% { opacity: 1; }
+  94% { opacity: 1; }
+  100% { top: 28px; opacity: 0; }
+}
+@media (max-width: 991px) and (prefers-reduced-motion: no-preference) {
+  .edge-sq { animation-duration: 6s; animation-delay: 0s !important; }
+  .edge-sq-down { animation-name: edge-sq-down-m; }
+  .edge-sq-up { animation-name: edge-sq-up-m; }
+}
