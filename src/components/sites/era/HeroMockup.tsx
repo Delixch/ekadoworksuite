@@ -103,8 +103,7 @@ function Laptop() {
 
             {/* otel kartı */}
             <div className="overflow-hidden rounded-xl bg-era-white shadow-[0_2px_10px_var(--c-shadow-soft)]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/sites/punn/hotel-lobby.jpg" alt="" className="h-[92px] w-full object-cover" />
+              <LiveLobby />
               <div className="flex items-center gap-2 px-2.5 py-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-md bg-era-secondary text-era-primary-ink">
                   <Building2 size={13} />
@@ -458,6 +457,30 @@ function BookingChip({ show }: { show: boolean }) {
 }
 
 /** Hero sağ taraf: laptop paneli, çok dilli telefon sohbeti ve canlı arama kartı (kodla çizilmiş) */
+/** Otel fotoğrafı canlı gibi: ışık dalgası, sıcak ışık nefesi, yavaş kayma, havada uçuşan toz. */
+function LiveLobby() {
+  return (
+    <div className="lobby-live relative h-[92px] w-full overflow-hidden" aria-hidden>
+      <svg width="0" height="0" className="absolute">
+        <filter id="lobby-wave" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="4" result="n">
+            <animate attributeName="baseFrequency" dur="14s" values="0.012 0.03;0.02 0.045;0.012 0.03" repeatCount="indefinite" />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/sites/punn/hotel-lobby.jpg" alt="" className="lobby-img h-full w-full object-cover" />
+      <span className="lobby-glow lobby-glow-a" />
+      <span className="lobby-glow lobby-glow-b" />
+      <span className="lobby-sweep" />
+      {[8, 22, 41, 63, 78, 91].map((x, i) => (
+        <i key={x} className="lobby-dust" style={{ left: `${x}%`, animationDelay: `${-i * 1.3}s`, animationDuration: `${6 + (i % 3) * 1.5}s` }} />
+      ))}
+    </div>
+  );
+}
+
 export function HeroMockup() {
   const { ref, scale } = useScale();
   const [booking, setBooking] = useState(false);
