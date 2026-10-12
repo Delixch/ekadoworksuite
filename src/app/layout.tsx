@@ -5,6 +5,7 @@ import { LocaleSync } from "@/components/sites/era/LocaleSync";
 import { BackToTop } from "@/components/sites/era/BackToTop";
 import { Robot } from "@/components/sites/era/Robot";
 import { CookieNotice } from "@/components/sites/era/CookieNotice";
+import { ContactModal } from "@/components/sites/era/ContactModal";
 import "./globals.css";
 
 /**
@@ -42,6 +43,7 @@ export default function RootLayout({
         <BackToTop />
         <Robot />
         <CookieNotice />
+        <ContactModal />
       </body>
     </html>
   );

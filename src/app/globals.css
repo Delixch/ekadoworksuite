@@ -668,3 +668,26 @@ p { text-wrap: pretty; }
 .era-cons-line-3 { animation: era-cons-line-3 9s ease-out infinite; }
 .era-cons-floor-4 { animation: era-cons-floor-4 9s ease-out infinite; transform-box: fill-box; }
 .era-cons-line-4 { animation: era-cons-line-4 9s ease-out infinite; }
+
+/* ===== İletişim penceresi ===== */
+@keyframes era-contact-bg-in { from { opacity: 0; backdrop-filter: blur(0); } to { opacity: 1; } }
+@keyframes era-contact-bg-out { to { opacity: 0; } }
+@keyframes era-contact-card-in { 0% { opacity: 0; transform: translateY(46px) scale(.9) rotateX(14deg); } 100% { opacity: 1; transform: none; } }
+@keyframes era-contact-card-out { to { opacity: 0; transform: translateY(30px) scale(.94); } }
+@keyframes era-contact-field { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes era-contact-idle { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3px) rotate(-6deg); } }
+@keyframes era-contact-takeoff { 0% { transform: translate(0,0) rotate(0) scale(1); opacity: 1; } 25% { transform: translate(-6px,4px) rotate(8deg) scale(1.05); } 100% { transform: translate(420px,-170px) rotate(-18deg) scale(.45); opacity: 0; } }
+@keyframes era-contact-draw { to { stroke-dashoffset: 0; } }
+.era-contact-bg-in { animation: era-contact-bg-in .35s ease-out both; }
+.era-contact-bg-out { animation: era-contact-bg-out .26s ease-in both; }
+.era-contact-card-in { animation: era-contact-card-in .55s cubic-bezier(.22,1.2,.36,1) both; transform-origin: 50% 100%; }
+.era-contact-card-out { animation: era-contact-card-out .26s ease-in both; }
+.era-contact-field { animation: era-contact-field .5s cubic-bezier(.22,.61,.36,1) both; }
+.era-contact-idle { animation: era-contact-idle 2.6s ease-in-out infinite; }
+.era-contact-takeoff { animation: era-contact-takeoff 1.2s cubic-bezier(.5,0,.75,.4) forwards; }
+.era-contact-ring { stroke-dasharray: 151; stroke-dashoffset: 151; animation: era-contact-draw .6s ease-out .1s forwards; }
+.era-contact-tick { stroke-dasharray: 40; stroke-dashoffset: 40; animation: era-contact-draw .4s ease-out .6s forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .era-contact-bg-in, .era-contact-bg-out, .era-contact-card-in, .era-contact-card-out, .era-contact-field, .era-contact-idle, .era-contact-takeoff { animation: none; }
+  .era-contact-ring, .era-contact-tick { animation: none; stroke-dashoffset: 0; }
+}
