@@ -52,19 +52,35 @@ export function ContactModal() {
   const card = useRef<HTMLDivElement>(null);
   const first = useRef<HTMLInputElement>(null);
 
-  // sayfadaki "Bize Ulaşın" bağlantıları (menü, alt bilgi, SSS...) pencereyi açar
+  // sayfadaki "Bize Ulaşın" bağlantıları (menü, alt bilgi, SSS...) pencereyi açar; data-topic varsa konuyu önceden seçer
+  const topicsRef = useRef(c.topics);
   useEffect(() => {
+    topicsRef.current = c.topics;
+  }, [c.topics]);
+  useEffect(() => {
+    const show = (topicIndex?: number) => {
+      const t = topicIndex !== undefined ? topicsRef.current[topicIndex] : undefined;
+      if (t) setV((o) => ({ ...o, topic: t }));
+      setLeaving(false);
+      setOpen(true);
+    };
     const onClick = (e: MouseEvent) => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
       const a = (e.target as Element | null)?.closest?.("a[href]");
       if (a && (a.getAttribute("href") ?? "").endsWith("#bize-ulasin")) {
         e.preventDefault();
-        setLeaving(false);
-        setOpen(true);
+        const n = Number((a as HTMLElement).dataset.topic);
+        show(Number.isInteger(n) && (a as HTMLElement).dataset.topic !== undefined ? n : undefined);
       }
     };
+    // sohbet robotu gibi kodla açanlar için: window.dispatchEvent(new CustomEvent("punn:contact"))
+    const onEvent = () => show();
     document.addEventListener("click", onClick, true);
-    return () => document.removeEventListener("click", onClick, true);
+    window.addEventListener("punn:contact", onEvent);
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      window.removeEventListener("punn:contact", onEvent);
+    };
   }, []);
 
   const close = useCallback(() => {
@@ -241,7 +257,7 @@ export function ContactModal() {
             </Field>
             <Field label={c.fields.topic} error={err("topic")} delay={300} className="col-span-2 mob:col-span-1">
               <span className="relative block">
-                <select className={`${input} appearance-none pr-10 ${v.topic ? "" : "text-era-gray/70"}`} value={v.topic} onChange={(e) => set("topic", e.target.value)} onBlur={blur("topic")}>
+                <select className={`${input} appearance-none pr-10 [&>option]:bg-era-white [&>option]:text-era-black ${v.topic ? "" : "text-era-gray/70"}`} value={v.topic} onChange={(e) => set("topic", e.target.value)} onBlur={blur("topic")}>
                   <option value="">{c.ph.topic}</option>
                   {c.topics.map((t) => (
                     <option key={t} value={t}>

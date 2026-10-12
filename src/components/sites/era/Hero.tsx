@@ -28,7 +28,7 @@ export function Hero() {
               ))}
             </h1>
 
-            <p className="era-in-up max-w-[640px] text-(length:--hero-lead) leading-[1.45] text-era-gray" style={delay(0.65)}>
+            <p className="era-in-up max-w-[640px] text-(length:--hero-lead) min-[992px]:max-w-[min(640px,calc(100%-110px))] leading-[1.45] text-era-gray" style={delay(0.65)}>
               {t.hero.lead}
             </p>
 

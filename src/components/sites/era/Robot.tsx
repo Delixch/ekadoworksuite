@@ -158,7 +158,7 @@ export function Robot() {
             <span className="era-robot-led-a block h-2.5 w-2.5 rounded-full bg-era-accent shadow-[0_0_10px_var(--c-accent)] mob:h-2 mob:w-2" />
             <span className="block h-2.5 w-[3px] bg-era-cute mob:h-2" />
             {/* kafa */}
-            <div className="relative w-full rounded-[10px] bg-era-dark p-[5px] shadow-[0_10px_24px_var(--c-shadow)] ring-1 ring-era-line mob:rounded-lg mob:p-1">
+            <div className="relative w-full rounded-[10px] bg-era-dark p-[5px] shadow-[0_10px_24px_var(--c-shadow)] ring-1 ring-white/25 mob:rounded-lg mob:p-1">
               <span className="absolute top-1/2 -left-[5px] h-5 w-[5px] -translate-y-1/2 rounded-l-sm bg-era-cute mob:h-4" />
               <span className="absolute top-1/2 -right-[5px] h-5 w-[5px] -translate-y-1/2 rounded-r-sm bg-era-cute mob:h-4" />
               <div className="flex flex-col items-center gap-[7px] rounded-md bg-era-chinese px-2 py-2.5 mob:gap-1.5 mob:py-2">
@@ -169,13 +169,13 @@ export function Robot() {
                       ref={(n) => {
                         eyes.current[i] = n;
                       }}
-                      className="era-robot-blink relative flex h-[22px] w-[22px] items-center justify-center rounded-full bg-era-white mob:h-4 mob:w-4"
+                      className="era-robot-blink relative flex h-[22px] w-[22px] items-center justify-center rounded-full bg-white mob:h-4 mob:w-4"
                     >
                       <span
                         ref={(n) => {
                           pupils.current[i] = n;
                         }}
-                        className="block h-[10px] w-[10px] rounded-full bg-era-dark transition-transform duration-100 ease-out mob:h-[7px] mob:w-[7px]"
+                        className="block h-[10px] w-[10px] rounded-full bg-[#0b1240] transition-transform duration-100 ease-out mob:h-[7px] mob:w-[7px]"
                       />
                     </span>
                   ))}
@@ -193,7 +193,7 @@ export function Robot() {
           </div>
           <span className="block h-1.5 w-4 bg-era-cute" />
           {/* gövde: küçük bir dashboard */}
-          <div className="w-[92%] rounded-[10px] bg-era-dark p-2 shadow-[0_10px_24px_var(--c-shadow)] ring-1 ring-era-line mob:rounded-lg mob:p-1.5">
+          <div className="w-[92%] rounded-[10px] bg-era-dark p-2 shadow-[0_10px_24px_var(--c-shadow)] ring-1 ring-white/25 mob:rounded-lg mob:p-1.5">
             <div className="flex justify-between">
               <span className="block h-3.5 w-3.5 rounded-full bg-era-primary ring-2 ring-era-chinese mob:h-2.5 mob:w-2.5" />
               <span className="era-robot-led-b block h-3.5 w-3.5 rounded-full bg-era-accent ring-2 ring-era-chinese mob:h-2.5 mob:w-2.5" />

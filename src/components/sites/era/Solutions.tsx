@@ -145,6 +145,7 @@ export function Solutions() {
                   </div>
                   <a
                     href={hrefs[i]}
+                    data-topic={hrefs[i] === "#bize-ulasin" ? i : undefined}
                     className="group/more relative z-[1] mt-1 flex w-fit items-center gap-2 text-[15px] font-semibold text-era-on-dark no-underline"
                   >
                     {s.more}

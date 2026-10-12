@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { Send, Volume2, VolumeX, X } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { answerLocal, fallbackText, guessLang } from "@/lib/chat/knowledge";
+import { contact } from "@/i18n/contact";
 import { canSpeak, speak, stopSpeaking } from "@/lib/chat/speak";
 
 /** Modelin kaçırdığı markdown işaretlerini (kalın, başlık, kod) balonda ve sesli okumada göstermemek için temizler. */
 const plain = (t: string) => t.replace(/[*_`#]+/g, "").replace(/^\s*[-•]\s+/gm, "").trim();
 
-type Msg = { role: "user" | "assistant"; content: string };
+type Msg = { role: "user" | "assistant"; content: string; contact?: boolean };
 
 /** Robotun sohbet paneli: sağ altta açılır. Mesajlar /api/chat'e gider; anahtar yoksa "çok yakında" der. */
 export function RobotChat({ onClose }: { onClose: () => void }) {
@@ -60,6 +61,7 @@ export function RobotChat({ onClose }: { onClose: () => void }) {
     setBusy(true);
     let reply = "";
     let replyLang = locale;
+    let offerContact = false;
     // önce sayfanın içeriğinden (anında); bulamazsa yapay zekâya sor
     const local = answerLocal(q, locale);
     if (local) {
@@ -80,10 +82,11 @@ export function RobotChat({ onClose }: { onClose: () => void }) {
       if (!reply) {
         replyLang = guessLang(q, locale);
         reply = fallbackText(replyLang);
+        offerContact = true;
       }
     }
     if (voice) speak(reply, replyLang);
-    setMsgs((m) => [...m, { role: "assistant", content: reply }]);
+    setMsgs((m) => [...m, { role: "assistant", content: reply, contact: offerContact }]);
     setBusy(false);
     input.current?.focus();
   };
@@ -96,8 +99,8 @@ export function RobotChat({ onClose }: { onClose: () => void }) {
     >
       <div className="flex items-center gap-3 bg-era-dark px-4 py-3 text-era-on-dark">
         <span className="relative flex h-9 w-9 flex-none items-center justify-center rounded-[10px] bg-era-chinese">
-          <i className="block h-2 w-2 rounded-full bg-era-white" />
-          <i className="ml-1.5 block h-2 w-2 rounded-full bg-era-white" />
+          <i className="block h-2 w-2 rounded-full bg-white" />
+          <i className="ml-1.5 block h-2 w-2 rounded-full bg-white" />
         </span>
         <div className="min-w-0 flex-1 leading-tight">
           <p className="text-[15px] font-bold">{c.title}</p>
@@ -131,20 +134,31 @@ export function RobotChat({ onClose }: { onClose: () => void }) {
         className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto px-3.5 py-4"
         aria-live="polite"
       >
-        {[{ role: "assistant" as const, content: c.welcome }, ...msgs].map(
-          (m, i) => (
+        {[{ role: "assistant" as const, content: c.welcome, contact: false }, ...msgs].map((m, i) => (
+          <div key={i} className={`flex max-w-[85%] flex-col gap-2 ${m.role === "user" ? "self-end" : "self-start"}`}>
             <p
-              key={i}
-              className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-[14.5px] leading-[1.45] whitespace-pre-wrap ${
+              className={`rounded-2xl px-3.5 py-2 text-[14.5px] leading-[1.45] whitespace-pre-wrap ${
                 m.role === "user"
-                  ? "self-end rounded-br-md bg-era-primary text-era-on-btn"
-                  : "self-start rounded-bl-md bg-era-secondary text-era-black"
+                  ? "rounded-br-md bg-era-primary text-era-on-btn"
+                  : "rounded-bl-md bg-era-secondary text-era-black"
               }`}
             >
               {m.content}
             </p>
-          ),
-        )}
+            {m.contact && (
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("punn:contact"));
+                }}
+                className="w-fit rounded-full bg-era-primary px-4 py-1.5 text-[13.5px] font-semibold text-era-on-btn transition hover:brightness-110 active:scale-95"
+              >
+                {contact[locale].title}
+              </button>
+            )}
+          </div>
+        ))}
         {busy && (
           <span
             className="flex gap-1 self-start rounded-2xl rounded-bl-md bg-era-secondary px-4 py-3"
