@@ -42,6 +42,24 @@ function useScale() {
 
 const menuIcons = [LayoutGrid, MessageSquare, Phone, ClipboardList, Users, Bell, Megaphone, Sparkles, Settings];
 
+/** Metindeki rakamlar sıfırdan asıl değerine sayarak çıkar (dil değişince yeniden başlar). */
+function CountText({ text, ms = 1800 }: { text: string; ms?: number }) {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const dur = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : ms;
+    const t0 = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const x = dur === 0 ? 1 : Math.min(1, (now - t0) / dur);
+      setP(1 - Math.pow(1 - x, 3));
+      if (x < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [text, ms]);
+  return <span className="tabular-nums">{text.split(/(\d+)/).map((part) => (/^\d+$/.test(part) ? String(Math.round(Number(part) * p)) : part))}</span>;
+}
+
 function Laptop() {
   const { t, locale } = useLocale();
   const m = t.mockup;
@@ -135,11 +153,11 @@ function Laptop() {
                   <div className="mb-1 flex items-center gap-1 text-[7.5px] opacity-90">
                     <i className="block h-1.5 w-1.5 rounded-full bg-era-success" /> {m.autoReply}
                   </div>
-                  <div className="text-[12.5px] leading-tight font-bold">{m.answered}</div>
+                  <div className="text-[12.5px] leading-tight font-bold"><CountText text={m.answered} /></div>
                 </div>
                 <div className="grid grid-cols-3 gap-1 text-[7px] opacity-90">
                   <span>{m.statResponse}<b className="block text-[9px]">—</b></span>
-                  <span>{m.statApproval}<b className="block text-[9px]">8 {m.minShort}</b></span>
+                  <span>{m.statApproval}<b className="block text-[9px]"><CountText text={`8 ${m.minShort}`} /></b></span>
                   <span>{m.statSatisfaction}<b className="block text-[9px]">0 {m.minShort}</b></span>
                 </div>
               </div>
@@ -231,7 +249,8 @@ const scenes: Scene[] = [
 
 const STEP = 1700; // iki mesaj arası
 const FIRST = 700; // sahne başlayınca ilk mesaj
-const HOLD = 2800; // son mesajdan sonra bekleme
+const HOLD = 1500; // son mesajdan sonra, yukarı çıkmadan önce bekleme
+const RISE = 3600; // yazılar en yukarı kadar çıkıp kaybolur, sonra sahne aşağıdan yeniden başlar
 
 /** Telefon: sahneler sırayla yazılır, dil rozeti ve çipler değişir */
 function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; onScene: (i: number) => void }) {
@@ -241,6 +260,8 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
   const [shown, setShown] = useState(0);
   const [typing, setTyping] = useState(false);
   const [still, setStill] = useState(false);
+  const [riseY, setRiseY] = useState(0);
+  const area = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setStill(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -259,6 +280,7 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
     const count = cur.messages.length + (cur.confirm ? 1 : 0);
     setShown(0);
     setTyping(false);
+    setRiseY(0);
     for (let k = 0; k < count; k++) {
       const at = FIRST + k * STEP;
       const isBot = cur.messages[k]?.from === "bot";
@@ -270,7 +292,9 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
         }, at)
       );
     }
-    timers.push(setTimeout(() => setScene((x) => (x + 1) % scenes.length), FIRST + count * STEP + HOLD));
+    const riseAt = FIRST + (count - 1) * STEP + HOLD;
+    timers.push(setTimeout(() => setRiseY(area.current?.clientHeight ?? 0), riseAt));
+    timers.push(setTimeout(() => setScene((x) => (x + 1) % scenes.length), riseAt + RISE));
     return () => timers.forEach(clearTimeout);
   }, [scene, still]);
 
@@ -301,7 +325,16 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col justify-end gap-1.5 overflow-hidden px-2 py-2" aria-label={m.chatAria}>
+        <div
+          ref={area}
+          className="flex flex-1 flex-col justify-end overflow-hidden px-2 py-2 [mask-image:linear-gradient(to_bottom,transparent,black_16%)]"
+          aria-label={m.chatAria}
+        >
+          <div
+            key={scene}
+            className="flex flex-col gap-1.5"
+            style={{ transform: riseY ? `translateY(-${riseY}px)` : undefined, transition: riseY ? `transform ${RISE}ms cubic-bezier(.45,.05,.55,.95)` : "none" }}
+          >
           {sc.messages.slice(0, shown).map((msg, k) => (
             <div
               key={`${scene}-${k}`}
@@ -340,6 +373,7 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
               <i style={{ animationDelay: "0.3s" }} />
             </div>
           )}
+          </div>
         </div>
 
         <div className="flex flex-none items-center gap-1.5 bg-era-white px-2 py-1.5">
