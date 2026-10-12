@@ -9,15 +9,15 @@ export const company = {
   /** Firma unvanı, örn. "Punn Digital Ltd. Şti." */
   name: "",
   /** Cadde ve numara */
-  street: "",
+  street: "Folkart Towers A Kule K:26 D:2601, Bayraklı",
   /** Posta kodu ve şehir, örn. "34000 İstanbul" */
-  city: "",
+  city: "İzmir",
   /** Ülke, örn. "Türkiye" */
-  country: "",
+  country: "Türkiye",
   /** Yetkili kişi (müdür / sahibi) */
   representative: "",
   email: "info@punndigital.com",
-  phone: "+90 533 401 90 35",
+  phone: "+90 232 218 25 59",
   website: "https://punndigital.com",
   /** Vergi dairesi ve numarası (TR) ya da USt-IdNr. (DE/CH) */
   taxId: "",

@@ -11,6 +11,7 @@ import { Pricing } from "@/components/sites/era/Pricing";
 // import { Testimonials } from "@/components/sites/era/Testimonials"; // Era şablonundan kalan, Punn içeriği yazılana kadar yayında değil
 import { Faq } from "@/components/sites/era/Faq";
 import { Cta } from "@/components/sites/era/Cta";
+import { Offices } from "@/components/sites/era/Offices";
 import { Footer } from "@/components/sites/era/Footer";
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
         {/* <Testimonials /> */}
         <Faq />
         <Cta />
+        <Offices />
       </main>
       <Footer />
     </div>

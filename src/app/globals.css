@@ -691,3 +691,9 @@ p { text-wrap: pretty; }
   .era-contact-bg-in, .era-contact-bg-out, .era-contact-card-in, .era-contact-card-out, .era-contact-field, .era-contact-idle, .era-contact-takeoff { animation: none; }
   .era-contact-ring, .era-contact-tick { animation: none; stroke-dashoffset: 0; }
 }
+
+/* ===== Iletisim bolumu: harita ignesi nabzi ===== */
+@keyframes era-pin-pulse { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
+.era-pin-pulse { transform-box: fill-box; transform-origin: center; animation: era-pin-pulse 2.4s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) { .era-pin-pulse { animation: none; opacity: .5; } }
+@media (prefers-reduced-motion: reduce) { .era-car { display: none; } }

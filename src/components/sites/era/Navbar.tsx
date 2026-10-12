@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
+import { toTopIfHome } from "@/lib/home-click";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 import { linkHrefs, solutionHrefs } from "./nav-links";
@@ -89,7 +90,7 @@ export function Navbar() {
     >
       <div className="relative mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="flex items-center justify-between gap-3 py-4 tab:py-3">
-          <Link href="/" aria-label={t.ui.homeAria} className="era-in-pop block h-[52px] flex-none tab:h-11" style={pop(0)}>
+          <Link href="/" onClick={toTopIfHome} aria-label={t.ui.homeAria} className="era-in-pop block h-[52px] flex-none tab:h-11" style={pop(0)}>
             <Logo className="h-full w-auto" />
           </Link>
 
