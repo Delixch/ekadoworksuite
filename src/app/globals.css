@@ -214,6 +214,19 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 .era-in-rise { animation: era-in-rise 1.1s cubic-bezier(.22,.61,.36,1) .35s both; }
 @media (prefers-reduced-motion: reduce) { .era-in-up, .era-in-rise { animation: none; } }
 
+/* ===== Hero marka satırı: ince ışık geçişi (girişten sonra başlar, birkaç saniyede bir tekrarlar) ===== */
+@keyframes ekado-shine { 0% { background-position: 130% 0; } 40%, 100% { background-position: -30% 0; } }
+.ekado-shine {
+  color: transparent;
+  background-image: linear-gradient(105deg, var(--c-primary) 36%, color-mix(in oklab, var(--c-primary) 72%, white) 50%, var(--c-primary) 64%);
+  background-size: 260% 100%;
+  background-position: 130% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: ekado-shine 9s ease-in-out 2.2s infinite;
+}
+@media (prefers-reduced-motion: reduce) { .ekado-shine { animation: none; color: var(--c-primary); background-image: none; } }
+
 /* ===== Özellik kartı başlığı (mavi geçiş) ===== */
 .ekado-card-head {
   background:

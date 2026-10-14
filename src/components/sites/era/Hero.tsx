@@ -20,7 +20,7 @@ export function Hero() {
                   className={`era-in-up block ${i === t.hero.accent ? "text-era-primary" : ""}`}
                   style={delay(0.2 + i * 0.15)}
                 >
-                  {line}
+                  {i === t.hero.accent ? <span className="ekado-shine">{line}</span> : line}
                 </span>
               ))}
             </h1>
