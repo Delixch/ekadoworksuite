@@ -86,6 +86,12 @@ export function Features() {
                       featured ? "ekado-feature text-era-on-dark" : "ekado-panel"
                     }`}
                   >
+                    {/* ışık şeridi kartlar arasında akar: önce mavi kartta beyaz, sonra iki yandaki kartta mavi */}
+                    <span
+                      aria-hidden
+                      className={`ekado-flow ${featured ? "ekado-flow-white" : "ekado-flow-blue"}`}
+                      style={{ animationDelay: `${gi * 2.7}s` }}
+                    />
                     <div className="relative z-[1] flex flex-col gap-3">
                       <span
                         className={`flex w-fit items-center gap-2 rounded-full px-3 py-1 text-[13px] font-semibold ${

@@ -119,7 +119,7 @@ export function Pricing() {
                   </span>
                   <Spot
                     className={`relative flex h-full flex-col gap-6 rounded-(--r-x) px-8 py-9 mob:px-6 ${
-                      featured ? "ekado-feature text-era-on-dark" : "ekado-panel"
+                      featured ? "ekado-feature ekado-band text-era-on-dark" : "ekado-panel"
                     }`}
                   >
                     {featured && (
