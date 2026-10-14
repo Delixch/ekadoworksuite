@@ -1,71 +1,25 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { ArrowUpRight, Building2, Mail, MapPin, Phone, Smartphone } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { officeText } from "@/i18n/offices";
 import { contactInfo, mapsUrl, offices, telHref } from "@/lib/offices";
 import { Heading, Reveal } from "./ui";
 
+const MapPlayer = dynamic(() => import("./map/MapPlayer"), { ssr: false });
+
 /**
  * Harita karosu: Google'ın gömülü haritası çerez/takip getirdiği için kullanılmıyor.
- * Çizilmiş sakin bir harita, tıklayınca Google Maps yeni sekmede açılır.
+ * Google Haritalar görünümünde çizilmiş, Remotion ile oynayan harita (src/components/sites/era/map);
+ * tıklayınca Google Maps yeni sekmede açılır.
  */
 function MapTile({ kind, href, label }: { kind: "hq" | "ch"; href: string; label: string }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="group/map relative block h-[170px] overflow-hidden bg-era-secondary mob:h-[150px]">
-      <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice" aria-hidden className="absolute inset-0 h-full w-full transition-transform duration-700 ease-out group-hover/map:scale-105">
-        {kind === "hq" ? (
-          <>
-            {/* körfez */}
-            <path d="M0 0 H150 C120 40 150 70 110 105 C80 135 90 160 60 170 H0 Z" className="fill-era-coolblue" />
-            <path d="M150 0 C120 40 150 70 110 105 C80 135 90 160 60 170" fill="none" className="stroke-era-primary/25" strokeWidth="2" />
-            {/* bloklar */}
-            {[[190, 20], [250, 12], [310, 28], [200, 92], [270, 84], [340, 96], [180, 138], [250, 130]].map(([x, y], i) => (
-              <rect key={i} x={x} y={y} width={i % 2 ? 44 : 52} height={i % 3 ? 34 : 40} rx="6" className="fill-era-white" />
-            ))}
-            {/* caddeler */}
-            <path d="M120 170 L330 0" className="stroke-era-primary/30" strokeWidth="5" strokeLinecap="round" fill="none" />
-            <path d="M160 60 H400 M200 125 H400" className="stroke-era-cute" strokeWidth="3" strokeLinecap="round" fill="none" />
-          </>
-        ) : (
-          <>
-            {/* nehir */}
-            <path d="M-10 118 C80 98 130 150 210 128 C290 106 330 60 410 70" fill="none" className="stroke-era-coolblue" strokeWidth="22" strokeLinecap="round" />
-            {/* ızgara bloklar */}
-            {[[24, 14], [100, 14], [176, 14], [252, 14], [328, 14], [24, 62], [252, 58], [328, 50]].map(([x, y], i) => (
-              <rect key={i} x={x} y={y} width="62" height={i > 4 ? 30 : 36} rx="6" className="fill-era-white" />
-            ))}
-            {[[40, 140], [120, 150], [300, 128], [356, 124]].map(([x, y], i) => (
-              <rect key={`b${i}`} x={x} y={y} width="48" height="22" rx="6" className="fill-era-white" />
-            ))}
-            <path d="M0 52 H400 M92 0 V170 M244 0 V170 M320 0 V170" className="stroke-era-cute" strokeWidth="3" strokeLinecap="round" fill="none" />
-          </>
-        )}
-        {/* hedefsiz dolaşan küçük araba: sokaklarda döner, yönünü yola göre çevirir */}
-        <g className="era-car">
-          <animateMotion
-            dur={kind === "hq" ? "13s" : "15s"}
-            repeatCount="indefinite"
-            rotate="auto"
-            path={kind === "hq" ? "M256 60 H388 Q396 60 396 68 V117 Q396 125 388 125 H176 L256 60 Z" : "M92 52 H244 V150 Q244 160 254 160 H310 Q320 160 320 150 V52 H92 Z"}
-          />
-          <g transform="scale(1.3)">
-          <ellipse cx="0" cy="5.5" rx="10" ry="2.4" fill="#000" opacity=".12" />
-          <rect x="-9.5" y="-4.6" width="19" height="9.2" rx="3.2" className="fill-era-primary" />
-          <rect x="-7.5" y="-3.4" width="4" height="6.8" rx="1.2" fill="#fff" opacity=".35" />
-          <rect x="-0.5" y="-3.4" width="5.2" height="6.8" rx="1.6" fill="#fff" opacity=".8" />
-          <circle cx="8.4" cy="-2.7" r="1.15" fill="#ffd35a" />
-          <circle cx="8.4" cy="2.7" r="1.15" fill="#ffd35a" />
-          </g>
-        </g>
-        {/* iğne ve nabız */}
-        <g transform="translate(236 78)">
-          <circle r="16" className="era-pin-pulse fill-era-primary/25" />
-          <path d="M0 0 C-12 -14 -14 -30 0 -34 C14 -30 12 -14 0 0 Z" transform="translate(0 6)" className="fill-era-primary" />
-          <circle cy="-22" r="5" className="fill-white" />
-        </g>
-      </svg>
-      <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-era-white/70 to-transparent" />
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="group/map relative block h-[170px] overflow-hidden bg-[#f2efe9] mob:h-[150px]">
+      <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover/map:scale-105">
+        <MapPlayer kind={kind} />
+      </div>
     </a>
   );
 }
