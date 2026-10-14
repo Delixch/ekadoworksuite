@@ -7,3 +7,8 @@ dist/
 
 .playwright-mcp/
 tsconfig.tsbuildinfo
+
+.vercel
+.env*
+
+FTP.ICIN_zafer/

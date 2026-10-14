@@ -64,7 +64,7 @@ const tr = {
     no: "Eklenmedi",
     talk: "Konuşma sayısı",
     next: "Gerçek kurulumda neler olur?",
-    cta: "Demo Talep Et",
+    cta: "İletişime Geç",
     again: "Bilgileri düzenle ve yeniden dene",
   },
   info: {
@@ -138,7 +138,7 @@ const en: typeof tr = {
     no: "Not added",
     talk: "Messages exchanged",
     next: "What happens in a real setup?",
-    cta: "Request a demo",
+    cta: "Get in Touch",
     again: "Edit details and try again",
   },
   info: {
@@ -212,7 +212,7 @@ const de: typeof tr = {
     no: "Nicht hinzugefügt",
     talk: "Ausgetauschte Nachrichten",
     next: "Was passiert im echten Betrieb?",
-    cta: "Demo anfragen",
+    cta: "Kontakt aufnehmen",
     again: "Angaben ändern und erneut testen",
   },
   info: {

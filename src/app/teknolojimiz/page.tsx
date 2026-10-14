@@ -1,8 +1,6 @@
-import type { Metadata } from "next";
-import { ConstructionPage } from "@/components/sites/era/ConstructionPage";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "Technology | Punn Digital" };
-
+/** Eski "Teknolojimiz" bağlantısı: yerine Modüler Yapı sayfası geldi */
 export default function Page() {
-  return <ConstructionPage kind="tech" />;
+  redirect("/moduler");
 }

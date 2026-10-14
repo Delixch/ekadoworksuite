@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
-    siteName: "Punn Digital",
+    siteName: "Ekado WorkSuite",
     title: tr.meta.title,
     description: tr.meta.description,
     locale: "tr_TR",

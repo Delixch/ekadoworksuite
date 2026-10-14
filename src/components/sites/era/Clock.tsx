@@ -1,13 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { useLocale, type Locale } from "@/i18n/useLocale";
 
 /** Canlı saat. Alt bilgide koyu zeminli küçük sürüm (Clock), bölümler arasında tema renkli yuvarlak sürüm (ClockDivider). */
-const zones = [
-  { tz: "Europe/Istanbul", name: { tr: "Türkiye", en: "Türkiye", de: "Türkei" } as Record<Locale, string> },
-  { tz: "Europe/Zurich", name: { tr: "Zürih", en: "Zurich", de: "Zürich" } as Record<Locale, string> },
-];
+const zones = [{ tz: "Europe/Zurich", name: { tr: "Zürih", en: "Zurich", de: "Zürich" } as Record<Locale, string> }];
+
+/** İsviçre sözü: saatin çevresinde daire şeklinde yavaşça döner */
+const SAYING = "Zeit ist Geld";
+
+function RingText({ className = "" }: { className?: string }) {
+  const id = useId().replace(/:/g, "");
+  const text = Array.from({ length: 3 }, () => `${SAYING.toUpperCase()} · `).join("");
+  return (
+    <svg viewBox="0 0 200 200" aria-hidden className={`animate-[spin_36s_linear_infinite] ${className}`}>
+      <defs>
+        <path id={id} d="M100 100 m-86 0 a86 86 0 1 1 172 0 a86 86 0 1 1 -172 0" />
+      </defs>
+      <text fill="currentColor" fontSize="15" fontWeight="600" style={{ fontFamily: "var(--font-main)" }}>
+        <textPath href={`#${id}`} textLength="535" lengthAdjust="spacing">
+          {text}
+        </textPath>
+      </text>
+    </svg>
+  );
+}
 
 function parts(date: Date, tz: string) {
   const f = new Intl.DateTimeFormat("en-GB", { timeZone: tz, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
@@ -77,12 +94,13 @@ export function Clock() {
             </div>
           );
         })}
+        <span className="text-[11px] tracking-[0.14em] text-era-on-dark/55 uppercase">{SAYING}</span>
       </div>
     </div>
   );
 }
 
-/** Bölüm içinde: iki ince çizgi ortasında iki yuvarlak saat, Türkiye ve Zürih (tema renklerine uyar, mobilde de yan yana) */
+/** Bölüm içinde: iki ince çizgi ortasında yuvarlak Zürih saati, çevresinde dönen "Zeit ist Geld" yazısı (tema renklerine uyar) */
 export function ClockDivider() {
   const { locale } = useLocale();
   const now = useNow();
@@ -94,17 +112,12 @@ export function ClockDivider() {
           const p = now ? parts(now, z.tz) : null;
           return (
             <div key={z.tz} role="timer" aria-label={`${z.name[locale]} ${p ? `${two(p.h)}:${two(p.m)}` : ""}`} className="flex flex-col items-center gap-2.5">
-              <div className="relative flex h-[132px] w-[132px] items-center justify-center rounded-full bg-era-white shadow-[0_18px_44px_var(--c-shadow)] ring-1 ring-era-lightgray mob:h-[112px] mob:w-[112px]">
-                <span aria-hidden className="era-ring absolute inset-0 rounded-full bg-era-primary/20" style={{ animationDelay: `${i * 1.2}s` }} />
-                <Face now={now} tz={z.tz} className="relative h-[112px] w-[112px] mob:h-[94px] mob:w-[94px]" ink="var(--c-ink)" line="var(--c-line-strong)" tickStrong={0.85} tickSoft={0.4} />
-              </div>
-              <div className="flex flex-col items-center leading-tight">
-                <span className="text-[13px] font-semibold tracking-[0.14em] text-era-gray uppercase">{z.name[locale]}</span>
-                <span className="text-[20px] font-bold text-era-black tabular-nums">
-                  {p ? two(p.h) : "--"}
-                  <span className="mx-px animate-pulse text-era-accent">:</span>
-                  {p ? two(p.m) : "--"}
-                </span>
+              <div className="relative flex h-[184px] w-[184px] items-center justify-center mob:h-[156px] mob:w-[156px]">
+                <RingText className="absolute inset-0 h-full w-full text-era-gray" />
+                <div className="relative flex h-[116px] w-[116px] items-center justify-center rounded-full bg-era-white shadow-[0_18px_44px_var(--c-shadow)] ring-1 ring-era-lightgray mob:h-[98px] mob:w-[98px]">
+                  <span aria-hidden className="era-ring absolute inset-0 rounded-full bg-era-primary/20" style={{ animationDelay: `${i * 1.2}s` }} />
+                  <Face now={now} tz={z.tz} className="relative h-[96px] w-[96px] mob:h-[82px] mob:w-[82px]" ink="var(--c-ink)" line="var(--c-line-strong)" tickStrong={0.85} tickSoft={0.4} />
+                </div>
               </div>
             </div>
           );
@@ -115,7 +128,7 @@ export function ClockDivider() {
   );
 }
 
-/** Hero'da kanal ikonlarının altında: küçük iki yuvarlak saat (Türkiye, Zürih). Yalnızca masaüstünde; mobilde bölüm arasındaki saatler görünür. */
+/** Özellikler bölümünün solunda: Zürih saati ve çevresinde dönen "Zeit ist Geld". Yalnızca masaüstünde; mobilde bölüm arasındaki saat görünür. */
 export function ClockRow({ className = "" }: { className?: string }) {
   const { locale } = useLocale();
   const now = useNow();
@@ -125,17 +138,12 @@ export function ClockRow({ className = "" }: { className?: string }) {
         const p = now ? parts(now, z.tz) : null;
         return (
           <div key={z.tz} role="timer" aria-label={`${z.name[locale]} ${p ? `${two(p.h)}:${two(p.m)}` : ""}`} className="flex items-center gap-3">
-            <div className="relative flex h-[68px] w-[68px] flex-none items-center justify-center rounded-full bg-era-white shadow-[0_10px_26px_var(--c-shadow)] ring-1 ring-era-lightgray">
-              <span aria-hidden className="era-ring absolute inset-0 rounded-full bg-era-primary/15" style={{ animationDelay: `${i * 1.2}s` }} />
-              <Face now={now} tz={z.tz} className="relative h-[58px] w-[58px]" ink="var(--c-ink)" line="var(--c-line-strong)" tickStrong={0.85} tickSoft={0.4} />
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="text-[11px] font-semibold tracking-[0.14em] text-era-gray uppercase">{z.name[locale]}</span>
-              <span className="text-[19px] font-bold text-era-black tabular-nums">
-                {p ? two(p.h) : "--"}
-                <span className="mx-px animate-pulse text-era-accent">:</span>
-                {p ? two(p.m) : "--"}
-              </span>
+            <div className="relative flex h-[132px] w-[132px] flex-none items-center justify-center">
+              <RingText className="absolute inset-0 h-full w-full text-era-gray" />
+              <div className="relative flex h-[76px] w-[76px] items-center justify-center rounded-full bg-era-white shadow-[0_10px_26px_var(--c-shadow)] ring-1 ring-era-lightgray">
+                <span aria-hidden className="era-ring absolute inset-0 rounded-full bg-era-primary/15" style={{ animationDelay: `${i * 1.2}s` }} />
+                <Face now={now} tz={z.tz} className="relative h-[64px] w-[64px]" ink="var(--c-ink)" line="var(--c-line-strong)" tickStrong={0.85} tickSoft={0.4} />
+              </div>
             </div>
           </div>
         );

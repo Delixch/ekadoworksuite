@@ -8,33 +8,29 @@ import { video } from "@/i18n/video";
 import { toTopIfHome } from "@/lib/home-click";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
-import { linkHrefs, solutionHrefs } from "./nav-links";
+import { DEMO_URL, linkHrefs, solutionHrefs } from "./nav-links";
 import { ThemeToggle } from "./ThemeToggle";
 
 /** Açılışta sırayla büyüyerek gelen öğe */
 const pop = (i: number) => ({ animationDelay: `${0.3 + i * 0.07}s` });
 
+/** Şeritteki düz menü öğesi: kutu yok, üzerine gelince renk değişir. Şerit küçülünce yükseklik de küçülür (header'daki group/h). */
 const pill =
-  "flex h-12 items-center rounded-(--r-s1) px-5 max-[1439px]:h-11 max-[1439px]:px-3.5 max-[1439px]:text-[15px] text-[17px] font-medium whitespace-nowrap no-underline transition-all duration-300 hover:-translate-y-0.5";
-const pillSoft = `${pill} bg-era-coolblue/60 text-era-primary-ink hover:bg-era-coolblue`;
+  "flex h-12 items-center px-4 max-[1439px]:px-3 max-[1439px]:text-[15px] text-[17px] font-medium whitespace-nowrap no-underline transition-all duration-300 group-data-[scrolled=true]/h:h-10 text-era-black hover:text-era-primary";
+const pillSoft = pill;
 
 /** Açılır menü: üzerine gelince ya da odaklanınca açılır */
 function Dropdown({
   label,
   items,
   hrefs,
-  solid,
   delay,
-  suppress,
   coverIndex,
 }: {
   label: string;
   items: string[];
   hrefs: string[];
-  solid?: boolean;
   delay: number;
-  /** üst çubuk gizliyken menü açık kalmasın */
-  suppress?: boolean;
   /** bu sıradaki öğenin üzerine gelince yanında tanıtım videosunun kapağı açılır */
   coverIndex?: number;
 }) {
@@ -44,12 +40,12 @@ function Dropdown({
       <button
         type="button"
         aria-haspopup="menu"
-        className={`${pill} gap-2 ${solid ? "bg-era-primary text-era-on-dark hover:brightness-110" : "bg-era-coolblue/60 text-era-primary-ink hover:bg-era-coolblue"}`}
+        className={`${pill} gap-2`}
       >
         {label}
         <ChevronDown size={18} className="transition-transform duration-300 group-focus-within:rotate-180 group-hover:rotate-180" />
       </button>
-      <div className={`invisible absolute top-full left-0 z-10 w-[300px] pt-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 ${suppress ? "!invisible !opacity-0" : ""}`}>
+      <div className={`invisible absolute top-full left-0 z-10 w-[300px] pt-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100`}>
         <ul className="flex flex-col gap-1 rounded-(--r-x) border border-era-line bg-era-white p-2 shadow-[0_12px_40px_var(--c-shadow)]">
           {items.map((it, i) => (
             <li key={hrefs[i]} className="group/cover relative">
@@ -88,40 +84,32 @@ function Dropdown({
 export function Navbar() {
   const { t } = useLocale();
   const [open, setOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Aşağı kaydırınca gizlen, yukarı kaydırınca geri gel
+  // Şerit sabit kalır; kaydırınca küçülür
   useEffect(() => {
-    let last = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 10);
-      if (y > last && y > 100) setHidden(true);
-      else if (y < last) setHidden(false);
-      last = y;
-    };
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-[100] w-full border-b transition-[transform,background-color,border-color] duration-500 ease-out ${
-        hidden && !open ? "-translate-y-full" : "translate-y-0"
-      } ${scrolled ? "border-era-line bg-era-nav backdrop-blur-md" : "border-transparent bg-transparent"}`}
+      data-scrolled={scrolled}
+      className="group/h fixed inset-x-0 top-0 z-[100] w-full border-b border-era-line bg-era-nav backdrop-blur-md"
     >
       <div className="relative mx-auto w-full max-w-[1470px] px-[15px]">
-        <div className="flex items-center justify-between gap-3 py-4 tab:py-3">
-          <Link href="/" onClick={toTopIfHome} aria-label={t.ui.homeAria} className="era-in-pop block h-[52px] flex-none tab:h-11" style={pop(0)}>
+        <div className="flex items-center justify-between gap-3 py-3 transition-[padding] duration-300 group-data-[scrolled=true]/h:py-1.5 tab:py-2.5">
+          <Link href="/" onClick={toTopIfHome} aria-label={t.ui.homeAria} className="era-in-pop block h-[30px] flex-none transition-[height] duration-300 group-data-[scrolled=true]/h:h-6 tab:h-6" style={pop(0)}>
             <Logo className="h-full w-auto" />
           </Link>
 
           {/* masaüstü menü */}
           <nav className="flex items-center gap-3 max-[1439px]:gap-1.5 max-[1279px]:hidden" aria-label="Ana menü">
-            <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} coverIndex={0} solid delay={1} suppress={hidden && !open} />
+            <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} delay={1} />
             {t.nav.links.map((label, i) => (
-              <a key={linkHrefs[i]} href={linkHrefs[i]} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
+              <a key={linkHrefs[i]} href={linkHrefs[i]} {...(linkHrefs[i] === DEMO_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
                 {label}
               </a>
             ))}
@@ -136,7 +124,7 @@ export function Navbar() {
             </div>
             <Link
               href="/#demo"
-              className="demo-glow era-in-pop flex h-12 items-center rounded-(--r-s1) bg-era-primary px-6 text-[17px] font-medium whitespace-nowrap text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 max-[1439px]:h-11 max-[1439px]:px-4 max-[1439px]:text-[15px] max-[1279px]:hidden"
+              className="demo-glow era-in-pop flex h-12 items-center group-data-[scrolled=true]/h:h-10 rounded-(--r-s1) bg-era-primary px-6 text-[17px] font-medium whitespace-nowrap text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 max-[1439px]:h-11 max-[1439px]:px-4 max-[1439px]:text-[15px] max-[1279px]:hidden"
               style={pop(8)}
             >
               {t.nav.demo}
@@ -172,7 +160,7 @@ export function Navbar() {
             ))}
             <div className="my-2 h-px bg-era-line" />
             {t.nav.links.map((label, i) => (
-              <a key={linkHrefs[i]} href={linkHrefs[i]} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
+              <a key={linkHrefs[i]} href={linkHrefs[i]} {...(linkHrefs[i] === DEMO_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
                 {label}
               </a>
             ))}

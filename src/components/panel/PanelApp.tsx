@@ -150,7 +150,7 @@ export function PanelApp() {
           <span aria-hidden className="era-aurora pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-era-primary/50 blur-[80px]" />
           <span aria-hidden className="era-aurora pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-era-accent/25 blur-[80px] [animation-delay:-7s]" />
           <Link href="/" aria-label="Punn Digital" className="px-2">
-            <Logo onDark className="h-9 w-auto" />
+            <Logo onDark className="h-6 w-auto" />
           </Link>
 
           <nav className="relative flex flex-col gap-1.5" aria-label="Panel">
@@ -201,7 +201,7 @@ export function PanelApp() {
         <div className="relative z-[1] pl-[264px] tab:pl-0">
           <header className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-era-line bg-era-nav px-8 py-3.5 backdrop-blur-xl tab:px-4 mob:py-2.5">
             <Link href="/" aria-label="Punn Digital" className="hidden flex-none tab:block">
-              <Logo className="h-8 w-auto" />
+              <Logo className="h-6 w-auto" />
             </Link>
             <HotelSwitcher hotels={hotels} current={hotel} onPick={setHotelId} />
             <div className="flex flex-none items-center gap-2">

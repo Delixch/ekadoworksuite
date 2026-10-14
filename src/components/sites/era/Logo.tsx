@@ -1,53 +1,37 @@
 /**
- * Punn Digital logosu (SVG). Renkler tema dosyasından gelir:
- * --c-logo-from / --c-logo-to (yazı), simge kutusu her iki temada marka mavisi.
+ * Ekado logosu (SVG), D:\repos\Ekado_V2\site\assets\mail-logo.svg dosyasından alındı.
+ * Renkler tema dosyasından gelir: --c-logo-ink (koyu çizgiler), --c-logo-accent (mavi çizgiler).
+ * Koyu zeminde onDark ile açık tonlara döner.
  */
-import { useId } from "react";
-
 export function Logo({ className = "", onDark = false }: { className?: string; onDark?: boolean }) {
-  const uid = useId().replace(/:/g, "");
-  const icon = `punn-icon-${uid}`;
-  const word = `punn-word-${uid}`;
+  const ink = { stroke: "var(--c-logo-ink)" };
+  const accent = { stroke: "var(--c-logo-accent)" };
   return (
     <svg
-      viewBox="258 310 1176 336"
+      viewBox="0 -2 484 84"
       role="img"
-      aria-label="Punn Digital"
+      aria-label="Ekado"
       className={`${onDark ? "logo-on-dark" : ""} ${className}`}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <defs>
-        <linearGradient id={icon} x1="0" y1="316" x2="0" y2="631" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#0a0af0" />
-          <stop offset="1" stopColor="#020285" />
-        </linearGradient>
-        <linearGradient id={word} x1="0" y1="328" x2="0" y2="560" gradientUnits="userSpaceOnUse">
-          <stop offset="0" style={{ stopColor: "var(--c-logo-from)" }} />
-          <stop offset="1" style={{ stopColor: "var(--c-logo-to)" }} />
-        </linearGradient>
-      </defs>
-      <rect x="264" y="316" width="320" height="315" rx="62" fill={`url(#${icon})`} />
-      <g fill="none" stroke="#ffffff" strokeWidth="24" strokeLinecap="round">
-        <circle cx="425" cy="455" r="71" />
-        <path d="M354 455V578" />
+      <path d="M5 5 H52 L75 28 V75 H5 Z" fill="none" style={ink} strokeWidth="8" />
+      <path d="M52 5 L75 28 H52 Z" style={{ fill: "var(--c-logo-accent)" }} />
+      <g transform="translate(104 0)">
+        <path d="M52 4.5 H9 V75.5 H52 M9 40 H44" fill="none" style={ink} strokeWidth="9" />
+        <g transform="translate(68 0)">
+          <path d="M9 4.5 V75.5 M51 4 L14 40 L51 76" fill="none" style={accent} strokeWidth="9" />
+        </g>
+        <g transform="translate(138 0)">
+          <path d="M5 80 L30 4 L55 80" fill="none" style={accent} strokeWidth="9" />
+          <path d="M30 36 L41 68 H19 Z" style={{ fill: "var(--c-logo-accent)" }} />
+        </g>
+        <g transform="translate(208 0)">
+          <path d="M9 4.5 H26 A33 35.5 0 0 1 26 75.5 H9 Z" fill="none" style={ink} strokeWidth="9" />
+        </g>
+        <g transform="translate(284 0)">
+          <ellipse cx="30" cy="40" rx="24" ry="35.5" fill="none" style={ink} strokeWidth="9" />
+        </g>
       </g>
-      <g fill="none" stroke={`url(#${word})`} strokeWidth="38" strokeLinecap="round">
-        <path d="M641 347V440A100 100 0 0 0 841 440V347" />
-        <path d="M923 538V447A99 99 0 0 1 1121 447V538" />
-        <path d="M1209 538V447A98 98 0 0 1 1405 447V538" />
-      </g>
-      <text
-        x="904"
-        y="640"
-        textLength="524"
-        lengthAdjust="spacing"
-        fontSize="70"
-        fontWeight="700"
-        fill={`url(#${word})`}
-        style={{ fontFamily: "var(--font-main)" }}
-      >
-        DIGITAL
-      </text>
     </svg>
   );
 }

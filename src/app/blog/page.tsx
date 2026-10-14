@@ -1,8 +1,6 @@
-import type { Metadata } from "next";
-import { ConstructionPage } from "@/components/sites/era/ConstructionPage";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "Blog | Punn Digital" };
-
+/** Eski "Blog" bağlantısı: yerine Destek sayfası geldi */
 export default function Page() {
-  return <ConstructionPage kind="blog" />;
+  redirect("/support");
 }

@@ -1,9 +1,9 @@
 /** Türkçe metinler. Yeni metin eklerken en.ts ve de.ts dosyalarına da aynı anahtarı ekle. */
 export const tr = {
   meta: {
-    title: "Punn Digital | Dijital Resepsiyon",
-    description: "Otelinizin mesaj ve aramalarını 7/24, 30’dan fazla dilde cevaplayan Dijital Resepsiyonist.",
-  },
+  "title": "Ekado WorkSuite | Personel, İşletme ve Muhasebe Yazılımı",
+  "description": "Puantaj, vardiya planı, bordro, HACCP, sipariş ve muhasebe tek yazılımda. Restoranlar ve küçük işletmeler için Ekado WorkSuite."
+},
   ui: {
     language: "Dil",
     menu: "Menü",
@@ -11,41 +11,53 @@ export const tr = {
     toDark: "Gece temasına geç",
     lightTitle: "Gündüz teması",
     darkTitle: "Gece teması",
-    homeAria: "Punn Digital ana sayfa",
+    homeAria: "Ekado WorkSuite ana sayfa",
   },
   chat: {
     open: "Sohbeti aç",
     close: "Sohbeti kapat",
-    title: "Punn Asistan",
+    title: "Ekado Asistan",
     status: "Çevrimiçi",
     teaser: "Merhaba! Size yardımcı olabilir miyim?",
-    welcome: "Merhaba! Ben Punn Dijital Resepsiyonist asistanıyım. Otelinizin mesaj ve aramalarını nasıl yönettiğimizi sorabilirsiniz.",
+    welcome: "Merhaba! Ben Ekado WorkSuite asistanıyım. Modülleri, kurulumu ve demoyu sorabilirsiniz.",
     placeholder: "Mesajınızı yazın…",
     send: "Gönder",
     error: "Şu an cevap veremedim, lütfen biraz sonra tekrar deneyin.",
     tooMany: "Çok hızlı yazıyorsunuz, biraz bekleyip tekrar deneyin.",
-    fallback: "Bunu tam anlayamadım. Paketleri, kanalları, dilleri, akıllı kapı kilidini ya da kurulumu sorabilirsiniz. Ayrıntı için Demo Talep Et düğmesiyle bize ulaşın.",
+    fallback: "Bunu tam anlayamadım. Modülleri, kurulumu, dilleri ya da demoyu sorabilirsiniz. Ayrıntı için İletişime Geç düğmesiyle bize ulaşın.",
     voiceOn: "Sesli okumayı kapat",
     voiceOff: "Sesli okumayı aç",
   },
   nav: {
-    solutions: "Çözümlerimiz",
-    solutionItems: ["Dijital Resepsiyon", "Yapay Zekâ Telefon Asistanı", "PMS / Otel Yönetim Sistemi", "Akıllı Kapı / Kilit Sistemleri"],
-    links: ["Test Et", "Teknolojimiz", "Müşterilerimiz", "Bize Ulaşın", "Blog"],
-    demo: "Demo Talep Et",
-  },
+  "solutions": "Modüller",
+  "solutionItems": [
+    "İşletme ve Hijyen",
+    "Satın Alma ve Faturalar",
+    "Personel ve Bordro",
+    "Finans ve Muhasebe"
+  ],
+  "links": [
+    "Hızlı Demo",
+    "Modüler Yapı",
+    "Müşterilerimiz",
+    "Bize Ulaşın",
+    "Destek"
+  ],
+  "demo": "İletişime Geç"
+},
   hero: {
-    lines: ["Otelinizin iletişimini", "Dijital Resepsiyonist", "ile yönetin."],
-    accent: 1,
-    lead: "Misafir mesajlarını ve telefon-whatsapp aramalarını 30’dan fazla dilde, 7/24, insan doğallığında cevaplar.",
-    test: "Test Et",
-    demo: "Demo Talep Et",
-    channelsAria: "Desteklenen kanallar",
+    lines: ["İşletmenizi", "tek yazılımla yönetin:", "Ekado WorkSuite"],
+    accent: 2,
+    lead: "Puantaj, vardiya planı, bordro, HACCP, sipariş ve muhasebe tek yazılımda. Restoranlar ve küçük işletmeler için.",
+    test: "Hızlı Demo",
+    demo: "İletişime Geç",
+    channelsAria: "Öne çıkanlar",
     phone: "Telefon",
     webChat: "Web chat",
+    points: ["Tek giriş, tek uygulama", "İnternet kesilse de çalışır", "Veriler İsviçre'de barındırılır"],
   },
   /** Ana sayfadaki kayan şerit */
-  marquee: ["7/24 yanıt", "30+ dil", "WhatsApp", "Instagram", "Messenger", "Web chat", "Telefon asistanı", "PMS bağlantısı", "Sanal POS ile ödeme", "Akıllı kapı kilidi", "Raporlama ve CRM"],
+  marquee: ["Puantaj (Stempeluhr)", "Vardiya planı", "Görevler", "Sipariş", "Alacak ve borç faturaları", "Kasa", "Banka", "Bordro", "Kaynakta vergi", "Maaş belgesi (Lohnausweis)", "HACCP", "Sadakat kartı", "Muhasebe", "Defter ve raporlar", "Web sitesi"],
   mockup: {
     menu: [
       "Genel Bakış",
@@ -89,82 +101,82 @@ export const tr = {
     bookingNote: "Çift kişilik · 3 gece",
     chatAria: "Çok dilli örnek sohbet",
   },
-    "journey": {
-      "eyebrow": "Misafir yolculuğu",
-      "heading": "Sadece rezervasyona değil, tüm misafir yolculuğuna eşlik eder.",
-      "lead": "Dijital Resepsiyon; rezervasyon öncesinde talebi satışa dönüştürür, konaklama sırasında tatil asistanı gibi iletişime devam eder, konaklama sonrasında ise değerlendirme ve puanlama sürecini destekler.",
-      "stages": [
-        {
-          "when": "Konaklama öncesi",
-          "title": "Talebi satışa dönüştürür",
-          "items": [
-            "Müsaitlik ve fiyat bilgisini anında paylaşır",
-            "Talebi doğrudan rezervasyona taşır",
-            "Sanal POS ile ön provizyon veya ödeme alır"
-          ]
-        },
-        {
-          "when": "Konaklama sırasında",
-          "title": "Tatil asistanı gibi yanınızda",
-          "items": [
-            "Ulaşım, yeme-içme ve gezi sorularını yanıtlar",
-            "Otel içi ihtiyaçlarda iletişime devam eder",
-            "30+ dilde, 7/24 ulaşılabilir"
-          ]
-        },
-        {
-          "when": "Konaklama sonrası",
-          "title": "Değerlendirmeyi destekler",
-          "items": [
-            "Misafirden değerlendirme ister",
-            "Google, Booking ve ETS puanlamasına yönlendirir",
-            "Raporlarla neyin işe yaradığını gösterir"
-          ]
-        }
-      ],
-      "tagline": "Rezervasyon öncesinden tatil sonrasına kadar misafir iletişimini yönetin.",
-      "setupEyebrow": "Kurulum",
-      "setupTitle": "Üç adımda yayında.",
-      "setupLead": "Kurulumu ekibimiz sizinle birlikte yapar. Tüm paketlerde kurulum, eğitim ve yıl boyu teknik destek dahildir.",
-      "steps": [
-        {
-          "title": "Otel bilgilerini ekliyoruz",
-          "text": "Oda tipleri, fiyat politikası, transfer ve sık sorulan soruları sisteme biz tanımlıyoruz."
-        },
-        {
-          "title": "Kanalları bağlıyoruz",
-          "text": "WhatsApp, Instagram, Messenger, Web Chat ve telefon hattınızı tek panelde topluyoruz."
-        },
-        {
-          "title": "Dijital resepsiyon çalışmaya hazır",
-          "text": "Misafirleriniz 7/24 yanıt alır, gereken konuşmalar ekibinize aktarılır."
-        }
+    journey: {
+  "eyebrow": "Bir işletme günü",
+  "heading": "Sabah vardiyadan ay sonu muhasebesine kadar yanınızda.",
+  "lead": "Ekado WorkSuite işinizi tek yerde toplar: sabah damga, gün içinde görev ve siparişler, ay sonunda bordro ve muhasebe.",
+  "stages": [
+    {
+      "when": "Sabah",
+      "title": "Ekip işe başlar",
+      "items": [
+        "Çalışan telefonda veya kioskta damgasını vurur",
+        "Vardiya planı ve izinler tek yerde",
+        "Günlük görev ve hijyen listeleri hazır"
       ]
     },
-    "solutions": {
-      "eyebrow": "Çözümlerimiz",
-      "heading": "Oteliniz için dört çözüm.",
-      "lead": "Misafir iletişiminden otel yönetimine, ihtiyacınıza uygun olanı seçin.",
-      "more": "Detaylar",
-      "cards": [
-        {
-          "title": "Dijital Resepsiyon",
-          "text": "Tüm mesaj ve aramaları 7/24 cevaplar, talebi rezervasyona dönüştürür."
-        },
-        {
-          "title": "Yapay Zekâ Telefon Asistanı",
-          "text": "Gelen aramaları 30+ dilde karşılar, oda ve fiyat bilgisi verir, görüşme özetini ekibinize iletir."
-        },
-        {
-          "title": "PMS / Otel Yönetim Sistemi",
-          "text": "Otel programınızla bağlanır; oda durumunu görür, bilgi verir ve rezervasyon oluşturur."
-        },
-        {
-          "title": "Akıllı Kapı / Kilit Sistemleri",
-          "text": "Parmak izi, uygulama, şifre, kart ya da anahtarla giriş; her misafire özel geçici şifre."
-        }
+    {
+      "when": "Gün boyunca",
+      "title": "İşletme akar",
+      "items": [
+        "Sıcaklık ölçümleri ve HACCP kayıtları",
+        "Siparişler ve tedarikçiler",
+        "Kasa ve gelen faturalar"
       ]
     },
+    {
+      "when": "Ay sonunda",
+      "title": "Bordro ve muhasebe hazır",
+      "items": [
+        "Saatlerden bordro, Lohnausweis ve kaynakta vergi",
+        "Faturalar ve banka hareketleri eşleşir",
+        "Muhasebeciniz için Excel ve CSV"
+      ]
+    }
+  ],
+  "tagline": "Personelden muhasebeye, işletmenizi tek uygulamada yönetin.",
+  "setupEyebrow": "Kurulum",
+  "setupTitle": "Üç adımda yayında.",
+  "setupLead": "Kurulumu ekibimiz sizinle birlikte yapar.",
+  "steps": [
+    {
+      "title": "İşletme bilgilerini giriyoruz",
+      "text": "Firma, çalışanlar, vardiyalar ve hesap planını birlikte tanımlıyoruz."
+    },
+    {
+      "title": "Modülleri seçiyoruz",
+      "text": "İşinize gerekeni açıyoruz: puantaj, bordro, HACCP, sipariş, muhasebe."
+    },
+    {
+      "title": "Ekibiniz kullanmaya başlar",
+      "text": "Çalışanlar davet linkiyle girer, telefonda ve tabletle çalışır."
+    }
+  ]
+},
+    solutions: {
+  "eyebrow": "Modüller",
+  "heading": "Dört alan, tek uygulama.",
+  "lead": "İşletmenizin ihtiyacına göre modülleri seçin.",
+  "more": "Bilgi al",
+  "cards": [
+    {
+      "title": "İşletme ve Hijyen",
+      "text": "Görevler, HACCP sıcaklık kayıtları, kontrol listeleri ve duyuru panosu."
+    },
+    {
+      "title": "Satın Alma ve Faturalar",
+      "text": "Siparişler, tedarikçiler, gelen ve giden faturalar. Yapay zekâ faturayı okur."
+    },
+    {
+      "title": "Personel ve Bordro",
+      "text": "Puantaj, vardiya planı, izinler, bordro, Lohnausweis ve kaynakta vergi."
+    },
+    {
+      "title": "Finans ve Muhasebe",
+      "text": "Kasa, banka, finans özeti ve ay kapanışı. Muhasebeciniz için Excel ve CSV."
+    }
+  ]
+},
     "pricing": {
       "eyebrow": "Paketler",
       "heading": "Otelinize uygun paketi seçin.",
@@ -221,50 +233,50 @@ export const tr = {
         }
       ]
     },
-    "faq": {
-      "eyebrow": "Sık sorulan sorular",
-      "heading": "Başlamadan önce merak edilenler.",
-      "stillTitle": "Aklınıza takılan başka bir şey mi var?",
-      "stillText": "Ekibimiz sorularınızı yanıtlamaktan memnuniyet duyar.",
-      "stillCta": "Bize Ulaşın",
-      "items": [
-        {
-          "q": "Dijital Resepsiyonist hangi kanallarda çalışır?",
-          "a": "WhatsApp, Instagram DM, Messenger ve Web Chat üzerinden gelen mesajları tek panelde yönetir. Premium pakette telefon aramaları da asistan tarafından karşılanır."
-        },
-        {
-          "q": "Asistan yanlış cevap verirse ne olur?",
-          "a": "Sistem yalnızca sizin tanımladığınız bilgilerle çalışır. Gerekli durumlarda konuşma ekibinize aktarılır ve asistanın davranışı otelinize göre düzenlenebilir."
-        },
-        {
-          "q": "Kurulum ne kadar sürer?",
-          "a": "Otel bilgileriniz hazırsa temel kurulum kısa sürede tamamlanır. Demo sürecinde kullanım senaryoları birlikte netleştirilir."
-        },
-        {
-          "q": "Hangi dillerde yanıt veriyor?",
-          "a": "30'dan fazla dilde yanıt verir. Misafir hangi dilde yazarsa aynı dilde, doğal ve profesyonel bir üslupla cevap alır."
-        },
-        {
-          "q": "Demo sürecinde teknik destek var mı?",
-          "a": "Evet. Kurulum, temel eğitim ve teknik destek demo sürecine dahildir."
-        }
-      ]
+    faq: {
+  "eyebrow": "Sık sorulan sorular",
+  "heading": "Başlamadan önce merak edilenler.",
+  "stillTitle": "Aklınıza takılan başka bir şey mi var?",
+  "stillText": "Ekibimiz sorularınızı yanıtlamaktan memnuniyet duyar.",
+  "stillCta": "Bize Ulaşın",
+  "items": [
+    {
+      "q": "Ekado WorkSuite kimler için?",
+      "a": "Restoran, kafe ve küçük işletmeler için. Gastronomi için geliştirildi, ihtiyacınız olan modülleri seçersiniz."
     },
-    "cta": {
-      "badge": "Ücretsiz demo",
-      "title": "Otelinizin dijital resepsiyonunu bugün başlatın.",
-      "text": "Hemen deneyin, farkı görün. Ücretsiz demo ile Dijital Resepsiyonist'i kendi misafir iletişim süreçlerinizde deneyin.",
-      "primary": "Ücretsiz Demo Talep Et",
-      "secondary": "Bize Ulaşın"
+    {
+      "q": "İnternet kesilirse ne olur?",
+      "a": "Uygulama verinin izin verilen kısmını cihazda tutar. İnternet kesilse de çalışır, bağlantı gelince kendiliğinden eşitler."
     },
-    "footer": {
-      "tagline": "Rezervasyon öncesinden tatil sonrasına kadar misafir iletişimini yönetin.",
-      "solutions": "Çözümlerimiz",
-      "menu": "Menü",
-      "contact": "İletişim",
-      "rights": "© 2026 Punn Digital. Tüm hakları saklıdır.",
-      "credit": "Tasarım:"
+    {
+      "q": "Verilerim nerede tutuluyor?",
+      "a": "İsviçre'de barındırılan sunucuda. Her kullanıcı yalnızca yetkisi olan bilgiyi görür; örneğin çalışan sadece kendi maaşını görür."
     },
+    {
+      "q": "Hangi dillerde kullanılır?",
+      "a": "Almanca, Türkçe, İngilizce, Fransızca ve İtalyanca."
+    },
+    {
+      "q": "Muhasebecim verileri nasıl alır?",
+      "a": "Muhasebeciniz için Excel ve CSV (Buchungssatz) dışa aktarımı var. Kapanan ay değiştirilemez."
+    }
+  ]
+},
+    cta: {
+  "badge": "Canlı demo",
+  "title": "Ekado WorkSuite'i bugün deneyin.",
+  "text": "Canlı demoyu açın, uygulamayı çalışan ve işletme sahibi olarak gezin. Sorularınız için bize yazın.",
+  "primary": "Demo erişimi iste",
+  "secondary": "Bize Ulaşın"
+},
+    footer: {
+  "tagline": "Personelden muhasebeye, işletmenizi tek uygulamada yönetin.",
+  "solutions": "Modüller",
+  "menu": "Menü",
+  "contact": "İletişim",
+  "rights": "© 2026 Ekado. Tüm hakları saklıdır.",
+  "credit": "Tasarım:"
+},
     "technology": {
       "eyebrow": "Çözümlerimiz",
       "sub": "Akıllı Kapı / Kilit Sistemleri",
@@ -311,78 +323,93 @@ export const tr = {
       "videoSoon": "Video hazırlanıyor"
     },
   features: {
-    eyebrow: "Neler yapar?",
-    heading: "Resepsiyon yükünü azaltır, satış fırsatlarını artırır.",
-    lead: "Tekrar eden sorular asistanda kalır. Ekibiniz misafirle yüz yüze ilgilenmeye vakit bulur, fırsatlar raporlarda görünür.",
-    groups: [
-      {
-        kicker: "Her kanalda, her dilde",
-        title: "Misafirle iletişim",
-        items: [
-          {
-            title: "Tüm kanallarda 7/24 yanıt",
-            text: "WhatsApp, Instagram, Facebook, web sitesi canlı sohbeti ve telefon aramalarına anında yanıt verir.",
-          },
-          {
-            title: "Telefon asistanı",
-            text: "30+ dilde aramaları yanıtlar, oda ve fiyat bilgisi verir, görüşme özetini yetkiliye gönderir.",
-          },
-          { title: "30+ dilde iletişim", text: "Misafir hangi dilde yazarsa o dilde, doğal bir üslupla cevap verir." },
-          {
-            title: "Tatil asistanı",
-            text: "Misafir otele geldikten sonra da ulaşım, yeme-içme, gezi ve otel içi ihtiyaçlarda yanında olur.",
-          },
-        ],
-      },
-      {
-        kicker: "Talebi gelire çevirir",
-        title: "Satış ve rezervasyon",
-        items: [
-          {
-            title: "Rezervasyona dönüştürme",
-            text: "Müsaitlik sunar, yönlendirir ve talebi doğrudan rezervasyona taşır.",
-          },
-          { title: "Sanal POS ile ödeme", text: "Ödeme linki göndererek ön provizyon veya peşin ödeme alır." },
-          {
-            title: "PMS bağlantısı",
-            text: "Otel programınızdaki oda durumunu görür, bilgi verir ve rezervasyon oluşturur.",
-          },
-          {
-            title: "Google, Booking ve ETS puanlama",
-            text: "Konaklama sonrası misafirden değerlendirme ister, puanlama sayfasına yönlendirir.",
-          },
-        ],
-      },
-      {
-        kicker: "Her şey kontrolünüzde",
-        title: "Yönetim",
-        items: [
-          {
-            title: "Raporlama ve analiz",
-            text: "Kanal bazlı görüşme, rezervasyon, satış ve performans verilerini görün.",
-          },
-          {
-            title: "CRM yönetimi",
-            text: "Potansiyel misafirleri, talepleri ve dönüşüm sürecini tek panelde izleyin.",
-          },
-          {
-            title: "E-posta bildirimleri",
-            text: "Önemli gelişmeler ve rezervasyon detayları anında e-postanıza gelir.",
-          },
-          {
-            title: "Kolay eğitim, açma-kapama",
-            text: "Asistanı kolayca eğitin, istediğiniz saatlerde açıp kapatın.",
-          },
-        ],
-      },
-    ],
-    extrasTitle: "Ek avantajlar",
-    extras: [
-      { title: "Kolay kurulum", text: "Hızlı ve zahmetsiz kurulum süreci." },
-      { title: "Doğal iletişim", text: "İnsan gibi sıcak ve profesyonel iletişim." },
-      { title: "Güvenli altyapı", text: "Verilerinizi koruyan güvenli sistem yapısı." },
-    ],
-  },
+  "eyebrow": "Neler yapar?",
+  "heading": "Kâğıt işini azaltır, işletmeyi toparlar.",
+  "lead": "Vardiya, bordro, hijyen kayıtları, sipariş ve muhasebe aynı uygulamada. Ekibiniz işine, siz işletmenize bakarsınız.",
+  "groups": [
+    {
+      "kicker": "Ekip ve zaman",
+      "title": "Personel",
+      "items": [
+        {
+          "title": "Telefonla puantaj",
+          "text": "Kioskta 30 saniyede değişen QR kodu okutarak damga vurulur. İstenirse konum ve selfie."
+        },
+        {
+          "title": "Vardiya planı",
+          "text": "Vardiya değişimi teklif, kabul ve yönetici onayıyla olur. 11 saat dinlenme, izin ve çakışma kontrolü yapılır."
+        },
+        {
+          "title": "Bordro",
+          "text": "Saatlerden aylık bordro, kaynakta vergi, çocuk parası ve resmi Lohnausweis PDF'i."
+        },
+        {
+          "title": "Aylık saat onayı",
+          "text": "Çalışan aylık saatlerini onaylar. Onay silinemez, saat sonradan değişirse işaretlenir."
+        }
+      ]
+    },
+    {
+      "kicker": "Günlük işletme",
+      "title": "Mutfak ve satın alma",
+      "items": [
+        {
+          "title": "HACCP ve sıcaklık kayıtları",
+          "text": "Soğutucu ölçümleri sabah ve akşam, sapmalar ve kontrol listeleri tek yerde."
+        },
+        {
+          "title": "Görevler",
+          "text": "Görevi tek kişi alır, geciken görev hatırlatılır, fotoğrafla kanıtlanır."
+        },
+        {
+          "title": "Sipariş ve tedarikçi",
+          "text": "Tedarikçilere siparişler, tedarikçi listesi ve sipariş takibi."
+        },
+        {
+          "title": "Sadakat kartı",
+          "text": "QR kartla damga ve ödül. Günlük sınır ve kayıp kart koruması var."
+        }
+      ]
+    },
+    {
+      "kicker": "Rakamlar yerinde",
+      "title": "Finans ve muhasebe",
+      "items": [
+        {
+          "title": "Faturayı yapay zekâ okur",
+          "text": "İsviçre QR faturası ve fotoğraf okunur. IBAN, referans ve çift fatura kontrolü yapılır."
+        },
+        {
+          "title": "Kasa ve banka",
+          "text": "Kasa, banka hareketleri ve faturaların otomatik eşleşmesi."
+        },
+        {
+          "title": "Finans özeti",
+          "text": "Gelir, gider ve KDV (MWST) özeti, aylık Erfolgsrechnung."
+        },
+        {
+          "title": "Muhasebeci için dışa aktarım",
+          "text": "Excel ve Buchungssatz-CSV. Kapanan ay değiştirilemez."
+        }
+      ]
+    }
+  ],
+  "extrasTitle": "Ek avantajlar",
+  "extras": [
+    {
+      "title": "Modül seçimi",
+      "text": "İhtiyacınız olan modülleri açın, gerisini kapalı tutun."
+    },
+    {
+      "title": "5 dil",
+      "text": "Almanca, Türkçe, İngilizce, Fransızca ve İtalyanca."
+    },
+    {
+      "title": "Güvenli altyapı",
+      "text": "Her kullanıcı yalnızca yetkisi olan veriyi görür."
+    }
+  ]
+},
 };
 
 export type Dict = typeof tr;

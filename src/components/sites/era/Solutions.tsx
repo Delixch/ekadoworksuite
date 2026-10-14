@@ -1,67 +1,26 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowRight, Lock, LockOpen } from "lucide-react";
+import { ArrowRight, Clock, Landmark, ShoppingCart, Thermometer, type LucideIcon } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { Spot } from "./Spot";
 import { Heading, Reveal } from "./ui";
 
-/** Kart başına bağlantı: ilk kart özellikler bölümüne, diğerleri ileride açılacak sayfalara gider */
-const ids = [undefined, "telefon-asistani", "pms", undefined];
-const hrefs = ["#dijital-resepsiyon", "#bize-ulasin", "#bize-ulasin", "#akilli-kilit"];
+/** Kart başına bağlantı: menüdeki modül bağlantıları kartlara iner, "Bilgi al" iletişim penceresini konuyla açar */
+const ids = ["isletme", "satinalma", "personel", "finans"];
+const hrefs = ["#bize-ulasin", "#bize-ulasin", "#bize-ulasin", "#bize-ulasin"];
 
-/* ---- mini canlı görseller ---- */
-function ChatViz() {
-  return (
-    <div className="flex w-full flex-col gap-2 px-5">
-      <span className="h-5 w-28 rounded-xl rounded-tl-sm bg-era-on-dark/15" />
-      <span className="era-dot flex h-5 w-fit items-center gap-1 self-end rounded-xl rounded-tr-sm bg-era-primary px-3 text-era-on-dark">
-        <i />
-        <i style={{ animationDelay: "0.15s" }} />
-        <i style={{ animationDelay: "0.3s" }} />
-      </span>
-    </div>
-  );
-}
-
-function WaveViz() {
-  return (
-    <div className="era-wave flex h-10 items-center gap-[3px] text-era-on-dark/80" aria-hidden>
-      {Array.from({ length: 30 }).map((_, k) => (
-        <i
-          key={k}
-          style={{
-            animationDuration: `${0.7 + ((k * 37) % 7) / 10}s`,
-            animationDelay: `-${((k * 53) % 10) / 10}s`,
-            opacity: 0.5 + ((k * 29) % 10) / 20,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function RoomsViz() {
-  return (
-    <div className="grid grid-cols-6 gap-1.5" aria-hidden>
-      {Array.from({ length: 12 }).map((_, k) => (
-        <i key={k} className="era-room block h-3.5 w-3.5 rounded-[4px]" style={{ animationDelay: `-${(k * 0.43) % 5}s` }} />
-      ))}
-    </div>
-  );
-}
-
-function LockViz() {
+/* ---- mini canlı görsel: modül ikonu, halka nabız atar ---- */
+function IconViz({ icon: Icon }: { icon: LucideIcon }) {
   return (
     <div className="relative flex h-14 w-14 items-center justify-center text-era-on-dark" aria-hidden>
       <span className="era-ring absolute inset-0 rounded-full bg-era-primary/40" />
-      <Lock size={30} strokeWidth={1.8} className="era-lock-a absolute" />
-      <LockOpen size={30} strokeWidth={1.8} className="era-lock-b absolute text-era-accent" />
+      <Icon size={30} strokeWidth={1.8} className="relative" />
     </div>
   );
 }
 
-const visuals: ReactNode[] = [<ChatViz key="c" />, <WaveViz key="w" />, <RoomsViz key="r" />, <LockViz key="l" />];
+const visuals: ReactNode[] = [Thermometer, ShoppingCart, Clock, Landmark].map((Icon, i) => <IconViz key={i} icon={Icon} />);
 
 /** Çözümlerimiz (menü ağacındaki 4 çözüm). Bölüm iki temada da koyu kalır. */
 export function Solutions() {
@@ -114,7 +73,7 @@ export function Solutions() {
           <div className="relative grid grid-cols-4 gap-6 tab:grid-cols-2 mob:grid-cols-1" onPointerLeave={(e) => { if (e.pointerType === "mouse") hideGlow(); }}>
             <span
               aria-hidden
-              className="pointer-events-none absolute z-0 rounded-[34px] border border-[#4a52e8]/40 bg-[color-mix(in_srgb,#030395_85%,transparent)]"
+              className="pointer-events-none absolute z-0 rounded-[34px] border border-era-on-dark/25 bg-era-on-dark/10"
               style={{
                 left: (glow?.x ?? 0) - 12,
                 top: (glow?.y ?? 0) - 12,

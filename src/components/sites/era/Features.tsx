@@ -1,36 +1,34 @@
 "use client";
 
 import {
-  CalendarCheck,
-  ChartColumn,
-  CreditCard,
-  Inbox,
+  CalendarClock,
+  Clock,
+  FileSpreadsheet,
+  FileText,
+  Gift,
+  Landmark,
   Languages,
-  Link2,
-  Mail,
-  MessageCircle,
-  Phone,
+  ListChecks,
+  ScanLine,
   Settings,
   ShieldCheck,
-  SlidersHorizontal,
-  Star,
-  Sun,
-  Users,
+  ShoppingCart,
+  Thermometer,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { BrushStroke, Heading, Reveal, type Variant } from "./ui";
 import { ClockDivider, ClockRow } from "./Clock";
 import { Spot } from "./Spot";
-import { VideoButton } from "./VideoModal";
 
 /** Metinler src/i18n içinde; burada sadece ikon ve animasyon yönü var (sıra sözlükle aynı). */
 const groupMeta: { variant: Variant; icons: LucideIcon[] }[] = [
-  { variant: "left", icons: [Inbox, Phone, Languages, Sun] },
-  { variant: "up", icons: [CalendarCheck, CreditCard, Link2, Star] },
-  { variant: "right", icons: [ChartColumn, Users, Mail, SlidersHorizontal] },
+  { variant: "left", icons: [Clock, CalendarClock, Wallet, FileText] },
+  { variant: "up", icons: [Thermometer, ListChecks, ShoppingCart, Gift] },
+  { variant: "right", icons: [ScanLine, Landmark, FileSpreadsheet, FileText] },
 ];
-const extraIcons: LucideIcon[] = [Settings, MessageCircle, ShieldCheck];
+const extraIcons: LucideIcon[] = [Settings, Languages, ShieldCheck];
 
 function IconBox({ icon: Icon, featured }: { icon: LucideIcon; featured?: boolean }) {
   return (
@@ -50,7 +48,7 @@ export function Features() {
   const { t } = useLocale();
   const c = t.features;
   return (
-    <section id="dijital-resepsiyon" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
+    <section id="moduller" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="flex flex-col gap-14 mob:gap-9">
           <div className="relative mx-auto flex w-full max-w-[820px] flex-col items-center gap-4 text-center">
@@ -62,19 +60,27 @@ export function Features() {
             <Reveal variant="fade">
               <p className="text-era-gray">{c.lead}</p>
             </Reveal>
-            <Reveal variant="up" delay={150}>
-              <VideoButton />
-            </Reveal>
           </div>
 
           <ClockDivider />
 
-          <div className="mx-auto grid w-full grid-cols-3 items-stretch gap-6 tab:max-w-[680px] tab:grid-cols-1">
+          <div className="mx-auto mt-6 grid w-full grid-cols-3 items-stretch gap-x-6 gap-y-14 tab:max-w-[680px] tab:grid-cols-1">
             {c.groups.map((g, gi) => {
               const featured = gi === 0;
               const meta = groupMeta[gi];
               return (
                 <Reveal key={g.title} variant={meta.variant} delay={gi * 120} className="h-full">
+                  <div className="relative h-full">
+                  {/* Karteireiter: kartın üst kenarına oturan sekme */}
+                  <h3
+                    className={`absolute bottom-full left-7 z-[2] -mb-px rounded-t-[16px] px-6 pt-3 pb-3.5 text-[19px] leading-none font-extrabold tracking-[-0.015em] mob:left-5 mob:px-5 mob:text-[17px] ${
+                      featured
+                        ? "bg-era-primary text-era-on-dark"
+                        : "border-[1.5px] border-b-0 border-(--c-panel-border) bg-(--c-panel) text-era-black"
+                    }`}
+                  >
+                    {g.title}
+                  </h3>
                   <Spot
                     className={`flex h-full flex-col rounded-(--r-x) px-8 py-9 mob:px-6 mob:py-7 ${
                       featured ? "punn-feature text-era-on-dark" : "punn-panel"
@@ -89,13 +95,6 @@ export function Features() {
                         <i className={`block h-1.5 w-1.5 rounded-full ${featured ? "bg-era-on-dark" : "bg-era-accent"}`} />
                         {g.kicker}
                       </span>
-                      <h3
-                        className={`text-[30px] leading-[1.1] font-extrabold tracking-[-0.025em] mob:text-[26px] ${
-                          featured ? "" : "text-era-black"
-                        }`}
-                      >
-                        {g.title}
-                      </h3>
                     </div>
 
                     <ul className="relative z-[1] mt-7 flex flex-col">
@@ -140,6 +139,7 @@ export function Features() {
                       ))}
                     </ul>
                   </Spot>
+                  </div>
                 </Reveal>
               );
             })}

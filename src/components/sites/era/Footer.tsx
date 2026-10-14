@@ -1,21 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { Globe, Mail, Phone } from "lucide-react";
+import { Globe, Mail } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { legal } from "@/i18n/legal";
 import { toTopIfHome } from "@/lib/home-click";
-import { Clock } from "./Clock";
-import { EkadoCredit } from "./EkadoCredit";
 import { Logo } from "./Logo";
 import { linkHrefs, solutionHrefs } from "./nav-links";
 import { Reveal, RollLink } from "./ui";
 
 /** İletişim bilgileri (PDF sayfa 4) */
 const contact = [
-  { icon: Globe, label: "punndigital.com", href: "https://punndigital.com" },
-  { icon: Mail, label: "info@punndigital.com", href: "mailto:info@punndigital.com" },
-  { icon: Phone, label: "+90 533 401 90 35", href: "tel:+905334019035" },
+  { icon: Globe, label: "ekado.ch", href: "https://www.ekado.ch" },
+  { icon: Mail, label: "info@ekado.ch", href: "mailto:info@ekado.ch" },
 ];
 
 export function Footer() {
@@ -36,7 +33,7 @@ export function Footer() {
       <div className="relative z-[1] mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="grid grid-cols-[1.3fr_1fr_1fr_1.1fr] gap-12 tab:grid-cols-2 tab:gap-10 sm2:grid-cols-1">
           <Reveal variant="up" className="flex flex-col gap-5">
-            <Link href="/" onClick={toTopIfHome} aria-label={t.ui.homeAria} className="block h-[52px] w-fit">
+            <Link href="/" onClick={toTopIfHome} aria-label={t.ui.homeAria} className="block h-[34px] w-fit">
               <Logo onDark className="h-full w-auto" />
             </Link>
             <p className="max-w-[320px] text-[16px] leading-[1.55] text-era-on-dark/75">{f.tagline}</p>
@@ -90,12 +87,6 @@ export function Footer() {
                 {lg.privacy}
               </Link>
             </div>
-            <div className="mr-[76px] mob:mr-0">
-              <Clock />
-            </div>
-          </div>
-          <div className="mt-5 flex justify-center">
-            <EkadoCredit label={f.credit} />
           </div>
         </Reveal>
       </div>

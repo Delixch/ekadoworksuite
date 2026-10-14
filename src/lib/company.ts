@@ -6,19 +6,19 @@
  * alanı "-" yapabilirsin, "-" yazılan alan sayfada hiç gösterilmez.
  */
 export const company = {
-  /** Firma unvanı, örn. "Punn Digital Ltd. Şti." */
-  name: "",
+  /** Firma unvanı */
+  name: "EKADO GmbH",
   /** Cadde ve numara */
-  street: "Folkart Towers A Kule K:26 D:2601, Bayraklı",
+  street: "Langstrasse 120",
   /** Posta kodu ve şehir, örn. "34000 İstanbul" */
-  city: "İzmir",
+  city: "8055 Zürich",
   /** Ülke, örn. "Türkiye" */
-  country: "Türkiye",
+  country: "Schweiz",
   /** Yetkili kişi (müdür / sahibi) */
-  representative: "",
-  email: "info@punndigital.com",
-  phone: "+90 232 218 25 59",
-  website: "https://punndigital.com",
+  representative: "Adnan Aydin",
+  email: "info@ekado.ch",
+  phone: "",
+  website: "https://www.ekado.ch",
   /** Vergi dairesi ve numarası (TR) ya da USt-IdNr. (DE/CH) */
   taxId: "",
   /** Ticaret sicil no ve sicil müdürlüğü / MERSİS no */

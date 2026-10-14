@@ -2,10 +2,9 @@ import type { Dict } from "./tr";
 
 export const de: Dict = {
   meta: {
-    title: "Punn Digital | Digitale Rezeption",
-    description:
-      "Eine Digitale Rezeption, die Nachrichten und Anrufe Ihres Hotels rund um die Uhr in über 30 Sprachen beantwortet.",
-  },
+  "title": "Ekado WorkSuite | Software für Personal, Betrieb und Buchhaltung",
+  "description": "Stempeluhr, Dienstplan, Lohnabrechnung, HACCP, Bestellungen und Buchhaltung in einer Software. Ekado WorkSuite für Gastronomie und kleine Betriebe."
+},
   ui: {
     language: "Sprache",
     menu: "Menü",
@@ -13,41 +12,53 @@ export const de: Dict = {
     toDark: "Zum dunklen Design wechseln",
     lightTitle: "Helles Design",
     darkTitle: "Dunkles Design",
-    homeAria: "Punn Digital Startseite",
+    homeAria: "Ekado WorkSuite Startseite",
   },
   chat: {
     open: "Chat öffnen",
     close: "Chat schließen",
-    title: "Punn Assistent",
+    title: "Ekado Assistent",
     status: "Online",
     teaser: "Hallo! Kann ich Ihnen helfen?",
-    welcome: "Hallo! Ich bin der Assistent der Punn Digital Rezeption. Fragen Sie mich, wie wir die Nachrichten und Anrufe Ihres Hotels bearbeiten.",
+    welcome: "Hallo! Ich bin der Assistent von Ekado WorkSuite. Fragen Sie mich zu Modulen, Einrichtung oder Demo.",
     placeholder: "Nachricht eingeben…",
     send: "Senden",
     error: "Ich konnte gerade nicht antworten, bitte versuchen Sie es gleich noch einmal.",
     tooMany: "Sie schreiben zu schnell, bitte warten Sie einen Moment.",
-    fallback: "Das habe ich nicht ganz verstanden. Fragen Sie nach Paketen, Kanälen, Sprachen, dem smarten Türschloss oder der Einrichtung. Für Details erreichen Sie uns über die Schaltfläche Demo anfragen.",
+    fallback: "Das habe ich nicht ganz verstanden. Fragen Sie zu Modulen, Einrichtung, Sprachen oder zur Demo. Für Details erreichen Sie uns über den Button Kontakt aufnehmen.",
     voiceOn: "Vorlesen ausschalten",
     voiceOff: "Vorlesen einschalten",
   },
   nav: {
-    solutions: "Lösungen",
-    solutionItems: ["Digitale Rezeption", "KI-Telefonassistent", "PMS / Hotelmanagementsystem", "Smarte Tür- / Schließsysteme"],
-    links: ["Testen", "Technologie", "Kunden", "Kontakt", "Blog"],
-    demo: "Demo anfragen",
-  },
+  "solutions": "Module",
+  "solutionItems": [
+    "Betrieb & Hygiene",
+    "Einkauf & Rechnungen",
+    "Personal & Lohn",
+    "Finanzen & Buchhaltung"
+  ],
+  "links": [
+    "Schnell-Demo",
+    "Modulares System",
+    "Kunden",
+    "Kontakt",
+    "Support"
+  ],
+  "demo": "Kontakt aufnehmen"
+},
   hero: {
-    lines: ["Hotelkommunikation", "steuern Sie mit der", "Digitalen Rezeption"],
+    lines: ["Führen Sie Ihren", "Betrieb mit", "Ekado WorkSuite"],
     accent: 2,
-    lead: "Beantwortet Gästenachrichten sowie Telefon- und WhatsApp-Anrufe in über 30 Sprachen, rund um die Uhr, so natürlich wie ein Mensch.",
-    test: "Jetzt testen",
-    demo: "Demo anfragen",
-    channelsAria: "Unterstützte Kanäle",
+    lead: "Stempeluhr, Dienstplan, Lohnabrechnung, HACCP, Bestellungen und Buchhaltung in einer Software. Für Gastronomie und kleine Betriebe.",
+    test: "Schnell-Demo",
+    demo: "Kontakt aufnehmen",
+    channelsAria: "Highlights",
     phone: "Telefon",
     webChat: "Web-Chat",
+    points: ["Ein Login, eine App", "Funktioniert auch offline", "Daten in der Schweiz gehostet"],
   },
   /** Ana sayfadaki kayan şerit */
-  marquee: ["Antworten rund um die Uhr", "30+ Sprachen", "WhatsApp", "Instagram", "Messenger", "Web-Chat", "Telefonassistent", "PMS-Anbindung", "Zahlung per virtuellem POS", "Smartes Türschloss", "Reporting & CRM"],
+  marquee: ["Stempeluhr", "Dienstplan", "Aufgaben", "Bestellung", "Kreditoren & Debitoren", "Kasse", "Bank", "Lohnabrechnung", "Quellensteuer", "Lohnausweis", "HACCP", "Treuekarte", "Buchhaltung", "Journal & Berichte", "Webseite"],
   mockup: {
     menu: [
       "Übersicht",
@@ -91,82 +102,82 @@ export const de: Dict = {
     bookingNote: "Doppelzimmer · 3 Nächte",
     chatAria: "Mehrsprachiger Beispiel-Chat",
   },
-    "journey": {
-      "eyebrow": "Gästereise",
-      "heading": "Nicht nur die Buchung: begleitet die gesamte Gästereise.",
-      "lead": "Die Digitale Rezeption macht vor dem Aufenthalt aus Anfragen Umsatz, bleibt während des Aufenthalts wie ein Urlaubsassistent in Kontakt und unterstützt danach Bewertungen.",
-      "stages": [
-        {
-          "when": "Vor dem Aufenthalt",
-          "title": "Macht aus Anfragen Umsatz",
-          "items": [
-            "Teilt Verfügbarkeit und Preise sofort mit",
-            "Überführt die Anfrage direkt in eine Reservierung",
-            "Nimmt Vorautorisierung oder Zahlung per virtuellem POS an"
-          ]
-        },
-        {
-          "when": "Während des Aufenthalts",
-          "title": "Wie ein Urlaubsassistent an der Seite",
-          "items": [
-            "Beantwortet Fragen zu Transfer, Gastronomie und Ausflügen",
-            "Hilft weiter bei Bedürfnissen im Hotel",
-            "In über 30 Sprachen rund um die Uhr erreichbar"
-          ]
-        },
-        {
-          "when": "Nach dem Aufenthalt",
-          "title": "Unterstützt die Bewertung",
-          "items": [
-            "Bittet den Gast um eine Bewertung",
-            "Leitet zu Google-, Booking- und ETS-Bewertungen",
-            "Zeigt in Berichten, was funktioniert"
-          ]
-        }
-      ],
-      "tagline": "Steuern Sie die Gästekommunikation von vor der Buchung bis nach dem Urlaub.",
-      "setupEyebrow": "Einrichtung",
-      "setupTitle": "In drei Schritten live.",
-      "setupLead": "Unser Team richtet alles gemeinsam mit Ihnen ein. Einrichtung, Schulung und ganzjähriger technischer Support sind in allen Paketen enthalten.",
-      "steps": [
-        {
-          "title": "Wir erfassen Ihre Hoteldaten",
-          "text": "Zimmertypen, Preispolitik, Transfers und häufige Fragen hinterlegen wir im System."
-        },
-        {
-          "title": "Wir verbinden Ihre Kanäle",
-          "text": "WhatsApp, Instagram, Messenger, Web-Chat und Ihre Telefonleitung in einem Panel."
-        },
-        {
-          "title": "Ihre Digitale Rezeption ist startklar",
-          "text": "Gäste erhalten rund um die Uhr Antworten, relevante Gespräche gehen an Ihr Team."
-        }
+    journey: {
+  "eyebrow": "Ein Tag im Betrieb",
+  "heading": "Von der Frühschicht bis zum Monatsabschluss.",
+  "lead": "Ekado WorkSuite bündelt Ihre Arbeit: das Einstempeln am Morgen, Aufgaben und Bestellungen tagsüber, Lohn und Buchhaltung am Monatsende.",
+  "stages": [
+    {
+      "when": "Morgens",
+      "title": "Das Team startet",
+      "items": [
+        "Mitarbeitende stempeln am Handy oder am Kiosk ein",
+        "Dienstplan und Abwesenheiten an einem Ort",
+        "Tägliche Aufgaben- und Hygienelisten sind bereit"
       ]
     },
-    "solutions": {
-      "eyebrow": "Unsere Lösungen",
-      "heading": "Vier Lösungen für Ihr Hotel.",
-      "lead": "Von der Gästekommunikation bis zur Hotelverwaltung: wählen Sie, was zu Ihnen passt.",
-      "more": "Details",
-      "cards": [
-        {
-          "title": "Digitale Rezeption",
-          "text": "Beantwortet alle Nachrichten und Anrufe rund um die Uhr und macht aus Anfragen Reservierungen."
-        },
-        {
-          "title": "KI-Telefonassistent",
-          "text": "Nimmt Anrufe in über 30 Sprachen an, nennt Zimmer- und Preisinfos und sendet die Zusammenfassung an Ihr Team."
-        },
-        {
-          "title": "PMS / Hotelmanagementsystem",
-          "text": "Verbindet sich mit Ihrer Hotelsoftware, sieht den Zimmerstatus, gibt Auskunft und legt Reservierungen an."
-        },
-        {
-          "title": "Smarte Tür- / Schließsysteme",
-          "text": "Zutritt per Fingerabdruck, App, Code, Karte oder Schlüssel, mit einem temporären Code für jeden Gast."
-        }
+    {
+      "when": "Tagsüber",
+      "title": "Der Betrieb läuft",
+      "items": [
+        "Temperaturmessungen und HACCP-Protokolle",
+        "Bestellungen und Lieferanten",
+        "Kasse und eingehende Rechnungen"
       ]
     },
+    {
+      "when": "Am Monatsende",
+      "title": "Lohn und Buchhaltung sind bereit",
+      "items": [
+        "Lohnabrechnung aus den Stunden, Lohnausweis und Quellensteuer",
+        "Rechnungen und Bankbewegungen werden zugeordnet",
+        "Excel und CSV für Ihre Treuhand"
+      ]
+    }
+  ],
+  "tagline": "Vom Personal bis zur Buchhaltung: Ihr Betrieb in einer App.",
+  "setupEyebrow": "Einrichtung",
+  "setupTitle": "In drei Schritten startklar.",
+  "setupLead": "Unser Team richtet alles gemeinsam mit Ihnen ein.",
+  "steps": [
+    {
+      "title": "Wir erfassen Ihre Betriebsdaten",
+      "text": "Firma, Mitarbeitende, Schichten und Kontenplan richten wir gemeinsam ein."
+    },
+    {
+      "title": "Wir wählen die Module",
+      "text": "Wir schalten ein, was Sie brauchen: Stempeluhr, Lohn, HACCP, Bestellungen, Buchhaltung."
+    },
+    {
+      "title": "Ihr Team legt los",
+      "text": "Mitarbeitende kommen per Einladungslink und arbeiten am Handy und Tablet."
+    }
+  ]
+},
+    solutions: {
+  "eyebrow": "Module",
+  "heading": "Vier Bereiche, eine App.",
+  "lead": "Wählen Sie die Module, die Ihr Betrieb braucht.",
+  "more": "Mehr erfahren",
+  "cards": [
+    {
+      "title": "Betrieb & Hygiene",
+      "text": "Aufgaben, HACCP-Temperaturprotokolle, Checklisten und Schwarzes Brett."
+    },
+    {
+      "title": "Einkauf & Rechnungen",
+      "text": "Bestellungen, Lieferanten, Ein- und Ausgangsrechnungen. Die KI liest die Rechnung."
+    },
+    {
+      "title": "Personal & Lohn",
+      "text": "Stempeluhr, Dienstplan, Abwesenheiten, Lohnabrechnung, Lohnausweis und Quellensteuer."
+    },
+    {
+      "title": "Finanzen & Buchhaltung",
+      "text": "Kasse, Bank, Finanzübersicht und Monatsabschluss. Excel und CSV für Ihre Treuhand."
+    }
+  ]
+},
     "pricing": {
       "eyebrow": "Pakete",
       "heading": "Wählen Sie das passende Paket für Ihr Hotel.",
@@ -223,50 +234,50 @@ export const de: Dict = {
         }
       ]
     },
-    "faq": {
-      "eyebrow": "Häufige Fragen",
-      "heading": "Was man vor dem Start wissen möchte.",
-      "stillTitle": "Noch etwas offen?",
-      "stillText": "Unser Team beantwortet Ihre Fragen gerne.",
-      "stillCta": "Kontakt aufnehmen",
-      "items": [
-        {
-          "q": "Auf welchen Kanälen arbeitet die Digitale Rezeption?",
-          "a": "Sie verwaltet Nachrichten von WhatsApp, Instagram DM, Messenger und Web-Chat in einem Panel. Im Premium-Paket nimmt der Assistent auch Telefonanrufe an."
-        },
-        {
-          "q": "Was passiert, wenn der Assistent falsch antwortet?",
-          "a": "Das System arbeitet nur mit den Informationen, die Sie festlegen. Bei Bedarf wird das Gespräch an Ihr Team übergeben, und das Verhalten des Assistenten lässt sich auf Ihr Hotel abstimmen."
-        },
-        {
-          "q": "Wie lange dauert die Einrichtung?",
-          "a": "Liegen Ihre Hoteldaten vor, ist die Grundeinrichtung schnell erledigt. Die Anwendungsfälle klären wir gemeinsam in der Demo."
-        },
-        {
-          "q": "In welchen Sprachen antwortet sie?",
-          "a": "Sie antwortet in über 30 Sprachen. Gäste erhalten die Antwort in der Sprache, in der sie schreiben, natürlich und professionell."
-        },
-        {
-          "q": "Gibt es technischen Support während der Demo?",
-          "a": "Ja. Einrichtung, Grundschulung und technischer Support sind in der Demo enthalten."
-        }
-      ]
+    faq: {
+  "eyebrow": "Häufige Fragen",
+  "heading": "Was man vor dem Start wissen möchte.",
+  "stillTitle": "Noch eine Frage?",
+  "stillText": "Unser Team beantwortet Ihre Fragen gerne.",
+  "stillCta": "Kontakt aufnehmen",
+  "items": [
+    {
+      "q": "Für wen ist Ekado WorkSuite?",
+      "a": "Für Restaurants, Cafés und kleine Betriebe. Es wurde für die Gastronomie entwickelt, die Module wählen Sie nach Bedarf."
     },
-    "cta": {
-      "badge": "Kostenlose Demo",
-      "title": "Starten Sie die Digitale Rezeption Ihres Hotels noch heute.",
-      "text": "Jetzt ausprobieren und den Unterschied sehen. Testen Sie die Digitale Rezeption mit der kostenlosen Demo in Ihrer eigenen Gästekommunikation.",
-      "primary": "Kostenlose Demo anfragen",
-      "secondary": "Kontakt aufnehmen"
+    {
+      "q": "Was passiert, wenn das Internet ausfällt?",
+      "a": "Die App hält den erlaubten Teil der Daten auf dem Gerät. Sie funktioniert auch offline und gleicht von selbst ab, sobald die Verbindung zurück ist."
     },
-    "footer": {
-      "tagline": "Steuern Sie die Gästekommunikation von vor der Buchung bis nach dem Urlaub.",
-      "solutions": "Unsere Lösungen",
-      "menu": "Menü",
-      "contact": "Kontakt",
-      "rights": "© 2026 Punn Digital. Alle Rechte vorbehalten.",
-      "credit": "Design von"
+    {
+      "q": "Wo werden meine Daten gespeichert?",
+      "a": "Auf einem Server in der Schweiz. Jede Person sieht nur, was sie sehen darf. Mitarbeitende sehen zum Beispiel nur ihren eigenen Lohn."
     },
+    {
+      "q": "In welchen Sprachen ist die App verfügbar?",
+      "a": "Deutsch, Türkisch, Englisch, Französisch und Italienisch."
+    },
+    {
+      "q": "Wie kommt meine Treuhand an die Daten?",
+      "a": "Für Ihre Treuhand gibt es einen Export als Excel und Buchungssatz-CSV. Ein abgeschlossener Monat lässt sich nicht mehr ändern."
+    }
+  ]
+},
+    cta: {
+  "badge": "Live-Demo",
+  "title": "Testen Sie Ekado WorkSuite noch heute.",
+  "text": "Öffnen Sie die Live-Demo und erkunden Sie die App als Mitarbeitende und als Inhaber. Bei Fragen schreiben Sie uns.",
+  "primary": "Demo-Zugang anfordern",
+  "secondary": "Kontakt aufnehmen"
+},
+    footer: {
+  "tagline": "Vom Personal bis zur Buchhaltung: Ihr Betrieb in einer App.",
+  "solutions": "Module",
+  "menu": "Menü",
+  "contact": "Kontakt",
+  "rights": "© 2026 Ekado. Alle Rechte vorbehalten.",
+  "credit": "Design:"
+},
     "technology": {
       "eyebrow": "Unsere Lösungen",
       "sub": "Smarte Tür- / Schließsysteme",
@@ -313,76 +324,91 @@ export const de: Dict = {
       "videoSoon": "Video folgt in Kürze"
     },
   features: {
-    eyebrow: "Was es kann",
-    heading: "Entlastet die Rezeption, steigert Ihre Verkaufschancen.",
-    lead: "Wiederkehrende Fragen übernimmt der Assistent. Ihr Team hat Zeit für den persönlichen Kontakt, Chancen zeigen sich in den Berichten.",
-    groups: [
-      {
-        kicker: "Jeder Kanal, jede Sprache",
-        title: "Gästekommunikation",
-        items: [
-          {
-            title: "Rund um die Uhr auf allen Kanälen",
-            text: "Antwortet sofort auf WhatsApp, Instagram, Facebook, Website-Live-Chat und Anrufe.",
-          },
-          {
-            title: "Telefonassistent",
-            text: "Beantwortet Anrufe in über 30 Sprachen, nennt Zimmer- und Preisinfos und sendet die Gesprächszusammenfassung an Ihr Team.",
-          },
-          { title: "Über 30 Sprachen", text: "Antwortet in der Sprache des Gastes, in natürlichem Ton." },
-          {
-            title: "Urlaubsassistent",
-            text: "Begleitet Gäste nach der Anreise: Transfer, Gastronomie, Ausflüge und Bedürfnisse im Hotel.",
-          },
-        ],
-      },
-      {
-        kicker: "Aus Anfragen wird Umsatz",
-        title: "Verkauf & Reservierung",
-        items: [
-          {
-            title: "Anfragen werden Buchungen",
-            text: "Zeigt Verfügbarkeit, führt den Gast und überführt die Anfrage direkt in eine Reservierung.",
-          },
-          { title: "Zahlung per virtuellem POS", text: "Sendet einen Zahlungslink für Vorautorisierung oder Vorauszahlung." },
-          {
-            title: "PMS-Anbindung",
-            text: "Sieht den Zimmerstatus in Ihrer Hotelsoftware, gibt Auskunft und legt Reservierungen an.",
-          },
-          {
-            title: "Google-, Booking- und ETS-Bewertungen",
-            text: "Bittet Gäste nach dem Aufenthalt um eine Bewertung und leitet sie zur Bewertungsseite.",
-          },
-        ],
-      },
-      {
-        kicker: "Alles unter Kontrolle",
-        title: "Verwaltung",
-        items: [
-          {
-            title: "Berichte & Analyse",
-            text: "Gespräche, Reservierungen, Umsatz und Leistung nach Kanal im Blick.",
-          },
-          {
-            title: "CRM-Verwaltung",
-            text: "Interessenten, Anfragen und den Weg zur Buchung in einem Panel verfolgen.",
-          },
-          {
-            title: "E-Mail-Benachrichtigungen",
-            text: "Wichtige Neuigkeiten und Reservierungsdetails landen sofort in Ihrem Postfach.",
-          },
-          {
-            title: "Einfaches Training, Ein/Aus",
-            text: "Den Assistenten leicht trainieren und zu Ihren Zeiten ein- und ausschalten.",
-          },
-        ],
-      },
-    ],
-    extrasTitle: "Weitere Vorteile",
-    extras: [
-      { title: "Einfache Einrichtung", text: "Schnelle, unkomplizierte Einrichtung." },
-      { title: "Natürliche Kommunikation", text: "Herzlich und professionell wie ein Mensch." },
-      { title: "Sichere Infrastruktur", text: "Ein sicheres System, das Ihre Daten schützt." },
-    ],
-  },
+  "eyebrow": "Was es kann",
+  "heading": "Weniger Papierkram, ein Betrieb in Ordnung.",
+  "lead": "Schichten, Lohn, Hygieneprotokolle, Bestellungen und Buchhaltung in derselben App. Ihr Team kümmert sich um die Arbeit, Sie sich um den Betrieb.",
+  "groups": [
+    {
+      "kicker": "Team und Zeit",
+      "title": "Personal",
+      "items": [
+        {
+          "title": "Stempeln per Handy",
+          "text": "Am Kiosk den QR-Code scannen, der alle 30 Sekunden wechselt. Auf Wunsch mit Standort und Selfie."
+        },
+        {
+          "title": "Dienstplan",
+          "text": "Schichttausch per Angebot, Zusage und Chef-Freigabe, mit Prüfung auf 11 Stunden Ruhezeit, Abwesenheiten und Überschneidungen."
+        },
+        {
+          "title": "Lohnabrechnung",
+          "text": "Monatliche Abrechnung aus den Stunden, Quellensteuer, Kinderzulagen und der offizielle Lohnausweis als PDF."
+        },
+        {
+          "title": "Monatsbestätigung der Stunden",
+          "text": "Mitarbeitende bestätigen ihre Monatsstunden. Eine Bestätigung lässt sich nicht löschen, spätere Änderungen werden markiert."
+        }
+      ]
+    },
+    {
+      "kicker": "Tagesgeschäft",
+      "title": "Küche und Einkauf",
+      "items": [
+        {
+          "title": "HACCP und Temperaturprotokolle",
+          "text": "Kühlgeräte morgens und abends messen, Abweichungen und Checklisten an einem Ort."
+        },
+        {
+          "title": "Aufgaben",
+          "text": "Eine Person übernimmt die Aufgabe, überfällige werden erinnert, Nachweis per Foto."
+        },
+        {
+          "title": "Bestellungen und Lieferanten",
+          "text": "Bestellungen an Lieferanten, Lieferantenliste und Bestellverfolgung."
+        },
+        {
+          "title": "Treuekarte",
+          "text": "Stempel und Prämien per QR-Karte, mit Tageslimit und Schutz bei verlorener Karte."
+        }
+      ]
+    },
+    {
+      "kicker": "Zahlen im Griff",
+      "title": "Finanzen und Buchhaltung",
+      "items": [
+        {
+          "title": "Die KI liest die Rechnung",
+          "text": "Schweizer QR-Rechnungen und Fotos werden gelesen, mit Prüfung von IBAN, Referenz und Doppelrechnungen."
+        },
+        {
+          "title": "Kasse und Bank",
+          "text": "Kasse, Bankbewegungen und automatische Zuordnung zu Rechnungen."
+        },
+        {
+          "title": "Finanzübersicht",
+          "text": "Einnahmen, Ausgaben und MWST im Überblick, dazu die monatliche Erfolgsrechnung."
+        },
+        {
+          "title": "Export für die Treuhand",
+          "text": "Excel und Buchungssatz-CSV. Ein abgeschlossener Monat lässt sich nicht mehr ändern."
+        }
+      ]
+    }
+  ],
+  "extrasTitle": "Zusätzlich",
+  "extras": [
+    {
+      "title": "Modulauswahl",
+      "text": "Schalten Sie die Module ein, die Sie brauchen, den Rest lassen Sie aus."
+    },
+    {
+      "title": "5 Sprachen",
+      "text": "Deutsch, Türkisch, Englisch, Französisch und Italienisch."
+    },
+    {
+      "title": "Sichere Grundlage",
+      "text": "Jede Person sieht nur die Daten, die sie sehen darf."
+    }
+  ]
+},
 };

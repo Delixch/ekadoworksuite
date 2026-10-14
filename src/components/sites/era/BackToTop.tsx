@@ -2,20 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { KeyRound, Lock, LockOpen } from "lucide-react";
+import { Check } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 
 const label = { tr: "Yukarı çık", en: "Back to top", de: "Nach oben" } as const;
 
 /**
- * Sayfanın sağ altında yukarı çıkma düğmesi: kilit, üzerine gelince açılır; tıklayınca anahtar döner ve sayfa başa kayar.
- * Halka, sayfanın ne kadarının okunduğunu gösterir. Panelde görünmez (alt menüyle çakışmasın).
+ * Sayfanın sağ altında yukarı çıkma düğmesi, bir "kapanış sayacı" gibi çalışır: ortadaki rakam sayfanın yüzde kaçının
+ * "kayda geçtiğini" gösterir, halka bunu çizer, sayfa sonuna varınca madeni para "Abschluss" onayına döner (ay kapanışı gibi).
+ * Tıklayınca sayfa başa kayar ve sayaç sıfıra iner. Panelde görünmez (alt menüyle çakışmasın).
  */
 export function BackToTop() {
   const { locale } = useLocale();
   const path = usePathname();
   const [progress, setProgress] = useState(0);
-  const [turning, setTurning] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,11 +37,12 @@ export function BackToTop() {
   const R = 24;
   const C = 2 * Math.PI * R;
 
+  const pct = Math.round(progress * 100);
+  const closed = progress >= 0.985;
+
   const go = () => {
-    setTurning(true);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.setTimeout(() => window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }), 380);
-    window.setTimeout(() => setTurning(false), 1400);
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   };
 
   return (
@@ -55,18 +56,25 @@ export function BackToTop() {
         show ? "translate-y-0 scale-100 opacity-100" : "pointer-events-none translate-y-6 scale-75 opacity-0"
       }`}
     >
+      {/* madeni para kenarı: yavaş dönen kesik halka */}
+      <svg viewBox="0 0 56 56" className="pointer-events-none absolute inset-0 h-full w-full animate-[spin_24s_linear_infinite] opacity-60" aria-hidden>
+        <circle cx="28" cy="28" r="19" fill="none" stroke="var(--c-on-dark)" strokeWidth="1" strokeDasharray="2 3.2" />
+      </svg>
       {/* okuma ilerlemesi halkası */}
       <svg viewBox="0 0 56 56" className="pointer-events-none absolute inset-0 h-full w-full -rotate-90" aria-hidden>
         <circle cx="28" cy="28" r={R} fill="none" stroke="var(--c-glow)" strokeWidth="3" />
         <circle cx="28" cy="28" r={R} fill="none" stroke="var(--c-accent)" strokeWidth="3" strokeLinecap="round" strokeDasharray={C} strokeDashoffset={C * (1 - progress)} />
       </svg>
-      <span className="relative flex h-6 w-6 items-center justify-center">
-        {turning ? (
-          <KeyRound size={24} strokeWidth={2} className="[animation:era-wiggle_.6s_both] -translate-y-0.5 -rotate-90 transition-transform duration-500" />
+      <span className="relative flex h-7 w-7 flex-col items-center justify-center leading-none tabular-nums">
+        {closed ? (
+          <>
+            <Check size={15} strokeWidth={3.4} className="era-pop-in" />
+            <span className="mt-0.5 text-[6.5px] font-bold tracking-[0.12em] uppercase">Abschl.</span>
+          </>
         ) : (
           <>
-            <Lock size={24} strokeWidth={2} className="absolute transition-all duration-300 group-hover:scale-50 group-hover:opacity-0" />
-            <LockOpen size={24} strokeWidth={2} className="absolute scale-50 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100" />
+            <span className="text-[15px] font-bold tracking-tight">{pct}</span>
+            <span className="mt-0.5 text-[7px] font-semibold opacity-80">%</span>
           </>
         )}
       </span>

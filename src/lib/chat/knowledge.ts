@@ -1,7 +1,6 @@
 import { tr, type Dict } from "@/i18n/tr";
 import { en } from "@/i18n/en";
 import { de } from "@/i18n/de";
-import { prices } from "@/lib/prices";
 
 export type ChatLang = "tr" | "en" | "de";
 
@@ -12,35 +11,33 @@ const dicts: Record<ChatLang, Dict> = { tr, en, de };
 /** Konu başına arama kelimeleri: sayfa metninde geçmeyen ama insanların yazdığı sözcükler (fiyat, kurulum, iletişim...). */
 const alias: Record<ChatLang, Record<"pricing" | "contact" | "lock" | "langs" | "channels" | "setup" | "pms", string>> = {
   tr: {
-    pricing: "fiyat fiyatlar ücret ücretler paket paketler maliyet kaç para ne kadar euro aylık yıllık abonelik",
+    pricing: "fiyat fiyatlar ücret ücretler paket paketler maliyet kaç para ne kadar frank aylık yıllık abonelik teklif",
     contact: "iletişim ulaş ulaşmak demo talep randevu görüşmek arayın telefon mail eposta",
-    lock: "kilit kapı anahtar parmak izi şifre kart akıllı kapı",
-    langs: "dil diller dilde konuşuyor konuşur konuşuyorsun çok dilli türkçe ingilizce almanca rusça",
-    channels: "kanal kanallar whatsapp instagram facebook messenger telefon web chat sohbet",
+    lock: "modül modüller seçim",
+    langs: "dil diller dilde dilleri çok dilli türkçe ingilizce almanca fransızca italyanca",
+    channels: "telefon mobil tablet çevrimdışı internet offline kiosk",
     setup: "kurulum kurulur kurmak süre ne kadar sürer eğitim destek",
-    pms: "pms otel programı entegrasyon bağlantı opera elektra",
+    pms: "muhasebeci treuhand excel csv dışa aktarım",
   },
   en: {
-    pricing: "price prices pricing cost costs plan plans package packages how much euro monthly yearly subscription",
+    pricing: "price prices pricing cost costs plan plans package packages how much franc monthly yearly subscription quote",
     contact: "contact reach demo request appointment call phone mail email talk",
-    lock: "lock door key fingerprint password card smart door",
-    langs: "language languages speak speaks talk multilingual turkish english german russian",
-    channels: "channel channels whatsapp instagram facebook messenger phone web chat",
+    lock: "module modules choose selection",
+    langs: "language languages multilingual turkish english german french italian",
+    channels: "phone mobile tablet offline internet kiosk",
     setup: "setup install installation how long training support",
-    pms: "pms hotel software integration connect opera",
+    pms: "accountant treuhand excel csv export",
   },
   de: {
-    pricing: "preis preise kosten paket pakete wie viel euro monatlich jährlich abo abonnement tarif",
+    pricing: "preis preise kosten paket pakete wie viel franken monatlich jährlich abo abonnement tarif offerte",
     contact: "kontakt erreichen demo anfrage termin anrufen telefon mail email sprechen",
-    lock: "schloss tür schlüssel fingerabdruck passwort karte smart türschloss",
-    langs: "sprache sprachen sprechen sprichst spricht mehrsprachig türkisch englisch deutsch russisch",
-    channels: "kanal kanäle whatsapp instagram facebook messenger telefon web chat",
+    lock: "modul module auswahl",
+    langs: "sprache sprachen mehrsprachig türkisch englisch deutsch französisch italienisch",
+    channels: "telefon handy tablet offline internet kiosk",
     setup: "einrichtung installation installieren wie lange dauer schulung support",
-    pms: "pms hotelsoftware integration verbindung anbindung opera",
+    pms: "treuhand treuhänder excel csv export",
   },
 };
-
-const money = (n: number, lang: ChatLang) => (lang === "en" ? `€${n}` : `${n} €`);
 
 function entriesFor(lang: ChatLang): Entry[] {
   const t = dicts[lang];
@@ -61,31 +58,15 @@ function entriesFor(lang: ChatLang): Entry[] {
     add(`${s.when} ${s.title} ${s.items.join(" ")}`, `${s.when} – ${s.title}: ${s.items.join("; ")}.`);
   }
 
-  const p = t.pricing;
-  add(
-    `${p.heading} ${p.lead}`,
-    `${p.lead} ${p.plans.map((pl, i) => `${pl.name}: ${money(prices[i].m, lang)} ${p.perMonth}`).join(", ")}. ${p.vat}`,
-    a.pricing,
-  );
-  p.plans.forEach((plan, i) => {
-    const pr = prices[i];
-    const price = `${money(pr.m, lang)} ${p.perMonth}, ${p.yearlyHint.toLowerCase()} ${money(pr.y, lang)} ${p.perYear} (${pr.off}% ${p.off})`;
-    add(
-      `${plan.name} ${plan.sub} ${plan.features.join(" ")}`,
-      `${plan.name} – ${plan.sub}. ${price}. ${plan.features.join("; ")}. ${plan.note} ${p.vat}`.replace(/\s+/g, " "),
-      a.pricing,
-    );
-  });
-  const k = t.technology;
-  for (const f of k.features) add(`${f.title} ${f.text}`, `${f.title}: ${f.text}`, a.lock);
-  add(`${k.sub} ${k.heading} ${k.lead}`, `${k.sub}: ${k.lead}`, a.lock);
-  add(`${k.boxTitle} ${k.box.join(" ")}`, `${k.boxTitle}: ${k.box.join("; ")}.`, a.lock);
-
+  const priceAnswer: Record<ChatLang, string> = {
+    tr: "Fiyat, seçtiğiniz modüllere ve işletmenize göre hazırlanır. İletişime Geç düğmesiyle bize yazın, size teklif hazırlayalım.",
+    en: "Pricing depends on the modules you choose and your business. Use the Get in Touch button and we will prepare a quote.",
+    de: "Der Preis richtet sich nach den gewählten Modulen und Ihrem Betrieb. Über den Button Kontakt aufnehmen erstellen wir Ihnen gern eine Offerte.",
+  };
+  add(a.pricing, priceAnswer[lang], a.pricing);
   add(`${t.hero.lines.join(" ")} ${t.hero.lead}`, `${t.hero.lines.join(" ")} ${t.hero.lead}`, `${a.channels} ${a.langs}`);
   add(`${t.cta.title} ${t.cta.text}`, `${t.cta.text} (${t.cta.primary})`, a.contact);
-  add(a.setup, t.faq.items[2]?.a ?? "", a.setup);
-  const pms = t.features.groups[1].items[2];
-  add(a.pms, `${pms.title}: ${pms.text}`, a.pms);
+  add(a.setup, `${t.journey.setupTitle} ${t.journey.setupLead} ${t.journey.steps.map((st) => st.title).join(", ")}.`, a.setup);
   return out;
 }
 
@@ -121,19 +102,19 @@ const SMALL_TALK: Record<ChatLang, { hi: RegExp; thanks: RegExp; hiA: string; th
   tr: {
     hi: /^(merhaba|selam|iyi (gunler|aksamlar|sabahlar)|hey|hi|hello)\b/,
     thanks: /tesekkur|sag ol|eyvallah/,
-    hiA: "Merhaba! Dijital Resepsiyonist, paketler, kanallar, akıllı kapı kilidi ya da kurulum hakkında soru sorabilirsiniz.",
+    hiA: "Merhaba! Ekado WorkSuite modülleri, kurulum, diller ya da demo hakkında soru sorabilirsiniz.",
     thanksA: "Rica ederim! Başka bir sorunuz olursa buradayım.",
   },
   en: {
     hi: /^(hello|hi|hey|good (morning|afternoon|evening))\b/,
     thanks: /thank|thx/,
-    hiA: "Hi! Ask me about the Digital Receptionist, plans, channels, the smart door lock or setup.",
+    hiA: "Hi! Ask me about Ekado WorkSuite modules, setup, languages or the demo.",
     thanksA: "You're welcome! I'm here if you have more questions.",
   },
   de: {
     hi: /^(hallo|hi|guten (tag|morgen|abend)|servus|moin)\b/,
     thanks: /danke|vielen dank/,
-    hiA: "Hallo! Fragen Sie mich zur Digitalen Rezeption, zu Paketen, Kanälen, dem smarten Türschloss oder zur Einrichtung.",
+    hiA: "Hallo! Fragen Sie mich zu den Modulen von Ekado WorkSuite, zur Einrichtung, zu Sprachen oder zur Demo.",
     thanksA: "Gern geschehen! Bei weiteren Fragen bin ich da.",
   },
 };

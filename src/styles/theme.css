@@ -7,51 +7,55 @@
  */
 
 :root {
-  /* ===== Marka renkleri (Punn Digital) ===== */
-  --c-primary: #0044f0;        /* ana mavi: buton, vurgulu başlık, bağlantı */
-  --c-primary-soft: #d2e2fb;   /* açık mavi: hap, seçili kart zemini */
-  --c-primary-ink: #0044f0;    /* açık mavi zemin üstündeki mavi yazı (menü hapları) */
-  --c-logo-from: #0a17ff;      /* logo geçişi başlangıç */
-  --c-logo-to: #00086b;        /* logo geçişi bitiş */
-  --c-logo-dark-from: #ffffff; /* koyu zeminde logo yazısı (footer) başlangıç */
-  --c-logo-dark-to: #b7c3ff;   /* koyu zeminde logo yazısı bitiş */
+  /* ===== Marka renkleri (Ekado, logo renklerinden) ===== */
+  --c-primary: #2b5ab0;        /* ana mavi: buton, vurgulu başlık, bağlantı */
+  --c-primary-soft: #dbe5f5;   /* açık mavi: hap, seçili kart zemini */
+  --c-primary-ink: #2b5ab0;    /* açık mavi zemin üstündeki mavi yazı (menü hapları) */
+  --c-logo-from: #2b5ab0;      /* logo geçişi başlangıç */
+  --c-logo-to: #1c2b3a;        /* logo geçişi bitiş */
+  --c-logo-dark-from: #7aa7ff; /* koyu zeminde logo yazısı (footer) başlangıç */
+  --c-logo-ink: #1c2b3a;        /* Ekado logosu: koyu çizgiler */
+  --c-logo-accent: #2b5ab0;     /* Ekado logosu: mavi çizgiler */
+  --c-logo-dark-ink: #e6ebf5;   /* koyu zeminde logo koyu çizgiler yerine */
+  --c-logo-dark-accent: #7aa7ff;/* koyu zeminde logo mavi çizgiler */
+  --c-logo-dark-to: #e6ebf5;   /* koyu zeminde logo yazısı bitiş */
 
   /* ===== Koyu tonlar ===== */
-  --c-ink: #0b1033;            /* ana metin, koyu buton */
-  --c-dark: #0f1857;           /* koyu bölüm zemini (hizmetler, footer) */
-  --c-dark-card: #18236e;      /* koyu bölüm içindeki kart */
+  --c-ink: #1c2b3a;            /* ana metin, koyu buton */
+  --c-dark: #1c2b3a;           /* koyu bölüm zemini (hizmetler, footer) */
+  --c-dark-card: #283b4f;      /* koyu bölüm içindeki kart */
 
   /* ===== Metin ===== */
-  --c-muted: #5b6185;          /* yardımcı metin, açıklama */
-  --c-muted-light: #afb4d2;    /* koyu zeminde yardımcı metin */
-  --c-muted-soft: #7b82aa;     /* en sessiz metin, alt yazı */
+  --c-muted: #5f6875;          /* yardımcı metin, açıklama */
+  --c-muted-light: #aab4c2;    /* koyu zeminde yardımcı metin */
+  --c-muted-soft: #8a93a0;     /* en sessiz metin, alt yazı */
 
   /* ===== Zeminler ===== */
-  --c-white: #ffffff;
-  --c-bg: #fafbfd;             /* sayfa zemini */
-  --c-sky: #e4f0fc;            /* hero zemini */
-  --c-tint: #eef0ff;           /* kart ve çerçeve zemini */
-  --c-bright: #fdfdff;         /* kart içi çok açık zemin */
-  --c-line: #d5d8f0;           /* ince çizgi, kart kenarı */
-  --c-line-strong: #b4b9d6;    /* belirgin çizgi, dropdown kenarı */
-  --c-line-soft: #e9ecf8;      /* en hafif kenar */
-  --c-panel: #f4f6ff;          /* panel/kart gövde zemini (beyaz sayfadan ayrışır) */
-  --c-panel-border: #c3cdf0;   /* panel/kart kenar çizgisi */
+  --c-white: #fbf8f2;
+  --c-bg: #f4efe6;             /* sayfa zemini */
+  --c-sky: #e2eaf5;            /* hero zemini */
+  --c-tint: #efe8dc;           /* kart ve çerçeve zemini */
+  --c-bright: #fbf8f2;         /* kart içi çok açık zemin */
+  --c-line: #e4dacb;           /* ince çizgi, kart kenarı */
+  --c-line-strong: #d3c6b3;    /* belirgin çizgi, dropdown kenarı */
+  --c-line-soft: #ede5d8;      /* en hafif kenar */
+  --c-panel: #fbf8f2;          /* panel/kart gövde zemini (beyaz sayfadan ayrışır) */
+  --c-panel-border: #d9ccb9;   /* panel/kart kenar çizgisi */
 
   /* ===== Vurgu ===== */
-  --c-accent: #02bdbf;         /* turkuaz: aktif menü çizgisi, küçük vurgular */
-  --c-success: #12a150;        /* onay */
-  --c-danger: #d92d20;         /* hata */
+  --c-accent: #3b7470;         /* turkuaz: aktif menü çizgisi, küçük vurgular */
+  --c-success: #587a4f;        /* onay */
+  --c-danger: #b0473a;         /* hata */
 
   /* ===== Roller (gece temasında değişen yüzeyler ve butonlar) ===== */
-  --c-page: #ffffff;           /* sayfa zemini */
-  --c-surface: #ffffff;        /* kart, kutu, hap zemini */
-  --c-on-dark: #ffffff;        /* koyu bölüm ve mavi buton üstündeki yazı (iki temada da beyaz) */
-  --c-btn: #0b1033;            /* koyu buton zemini */
-  --c-on-btn: #ffffff;         /* koyu buton yazısı */
+  --c-page: #f4efe6;           /* sayfa zemini */
+  --c-surface: #fbf8f2;        /* kart, kutu, hap zemini */
+  --c-on-dark: #fbf8f2;        /* koyu bölüm ve mavi buton üstündeki yazı (iki temada da beyaz) */
+  --c-btn: #1c2b3a;            /* koyu buton zemini */
+  --c-on-btn: #fbf8f2;         /* koyu buton yazısı */
 
   /* ===== Cihaz ve marka ikonları (üçüncü taraf marka renkleri) ===== */
-  --c-device: #0b1033;         /* laptop ve telefon çerçevesi */
+  --c-device: #1c2b3a;         /* laptop ve telefon çerçevesi */
   --c-whatsapp: #25d366;
   --c-messenger: #0a7cff;
   --c-ig-1: #feda75;
@@ -59,9 +63,9 @@
   --c-ig-3: #4f5bd5;
 
   /* ===== Yüzeyler ===== */
-  --c-nav: rgb(255 255 255 / 0.72);       /* kaydırınca menü zemini */
-  --c-shadow: rgb(46 58 140 / 0.14);      /* kart gölgesi */
-  --c-shadow-soft: rgb(46 58 140 / 0.1);  /* hafif gölge */
+  --c-nav: rgb(244 239 230);       /* kaydırınca menü zemini */
+  --c-shadow: rgb(28 43 58 / 0.14);      /* kart gölgesi */
+  --c-shadow-soft: rgb(28 43 58 / 0.1);  /* hafif gölge */
   --c-glow: rgb(255 255 255 / 0.2);       /* koyu/mavi yüzeylerde parlama */
   --c-glow-soft: rgb(255 255 255 / 0.12); /* daha hafif parlama */
 
@@ -73,41 +77,43 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --c-primary: #3d6bff;
-  --c-primary-soft: #1a2870;
-  --c-primary-ink: #a9bdff;
-  --c-logo-from: #7d98ff;
-  --c-logo-to: #3d56e6;
-  --c-device: #2a3380;
+  --c-primary: #3f6fc4;
+  --c-primary-soft: #1f2d47;
+  --c-primary-ink: #9dbcff;
+  --c-logo-from: #7aa7ff;
+  --c-logo-ink: #e6ebf5;
+  --c-logo-accent: #7aa7ff;
+  --c-logo-to: #e6ebf5;
+  --c-device: #2f3744;
 
-  --c-ink: #eef1ff;
-  --c-dark: #0b1240;
-  --c-dark-card: #141d58;
+  --c-ink: #e6ebf5;
+  --c-dark: #0d1117;
+  --c-dark-card: #1b2028;
 
-  --c-muted: #a6aed9;
-  --c-muted-light: #8e97c8;
-  --c-muted-soft: #8088bc;
+  --c-muted: #a2acba;
+  --c-muted-light: #a2acba;
+  --c-muted-soft: #7f8a99;
 
-  --c-page: #070b24;
-  --c-surface: #0e1438;
-  --c-bg: #070b24;
-  --c-sky: #0c1550;
-  --c-tint: #141c55;
-  --c-bright: #0e1438;
-  --c-line: #262f6e;
-  --c-line-strong: #34408a;
-  --c-line-soft: #1b2362;
-  --c-panel: #0e1438;
-  --c-panel-border: #2f3a85;
+  --c-page: #14181e;
+  --c-surface: #1b2028;
+  --c-bg: #14181e;
+  --c-sky: #172236;
+  --c-tint: #222831;
+  --c-bright: #1b2028;
+  --c-line: #2f3744;
+  --c-line-strong: #3d4757;
+  --c-line-soft: #242b36;
+  --c-panel: #1b2028;
+  --c-panel-border: #36404f;
 
-  --c-accent: #2ad1d3;
-  --c-success: #34c77b;
-  --c-danger: #f97066;
+  --c-accent: #6fb7b1;
+  --c-success: #8db573;
+  --c-danger: #e58470;
 
-  --c-btn: #eef1ff;
-  --c-on-btn: #0b1033;
+  --c-btn: #e6ebf5;
+  --c-on-btn: #1c2b3a;
 
-  --c-nav: rgb(7 11 36 / 0.72);
+  --c-nav: rgb(20 24 30);
   --c-shadow: rgb(0 0 0 / 0.45);
   --c-shadow-soft: rgb(0 0 0 / 0.3);
 }

@@ -2,9 +2,9 @@ import type { Dict } from "./tr";
 
 export const en: Dict = {
   meta: {
-    title: "Punn Digital | Digital Reception",
-    description: "A Digital Receptionist that answers your hotel's messages and calls 24/7 in 30+ languages.",
-  },
+  "title": "Ekado WorkSuite | Staff, Operations and Accounting Software",
+  "description": "Time clock, shift planning, payroll, HACCP, ordering and accounting in one software. Ekado WorkSuite for restaurants and small businesses."
+},
   ui: {
     language: "Language",
     menu: "Menu",
@@ -12,41 +12,53 @@ export const en: Dict = {
     toDark: "Switch to dark theme",
     lightTitle: "Light theme",
     darkTitle: "Dark theme",
-    homeAria: "Punn Digital home",
+    homeAria: "Ekado WorkSuite home",
   },
   chat: {
     open: "Open chat",
     close: "Close chat",
-    title: "Punn Assistant",
+    title: "Ekado Assistant",
     status: "Online",
     teaser: "Hi! Can I help you?",
-    welcome: "Hi! I'm the Punn Digital Receptionist assistant. Ask me how we handle your hotel's messages and calls.",
+    welcome: "Hi! I'm the Ekado WorkSuite assistant. Ask me about modules, setup or the demo.",
     placeholder: "Type your message…",
     send: "Send",
     error: "I couldn't answer just now, please try again in a moment.",
     tooMany: "You're typing too fast, please wait a moment and try again.",
-    fallback: "I didn't quite get that. You can ask about plans, channels, languages, the smart door lock or setup. For details, reach us with the Request a Demo button.",
+    fallback: "I didn't quite get that. You can ask about modules, setup, languages or the demo. For details, reach us with the Get in Touch button.",
     voiceOn: "Turn off read-aloud",
     voiceOff: "Turn on read-aloud",
   },
   nav: {
-    solutions: "Solutions",
-    solutionItems: ["Digital Reception", "AI Phone Assistant", "PMS / Hotel Management System", "Smart Door / Lock Systems"],
-    links: ["Try It", "Technology", "Customers", "Contact Us", "Blog"],
-    demo: "Request a Demo",
-  },
+  "solutions": "Modules",
+  "solutionItems": [
+    "Operations & Hygiene",
+    "Purchasing & Invoices",
+    "Staff & Payroll",
+    "Finance & Accounting"
+  ],
+  "links": [
+    "Quick Demo",
+    "Modular Build",
+    "Customers",
+    "Contact Us",
+    "Support"
+  ],
+  "demo": "Get in Touch"
+},
   hero: {
-    lines: ["Run your hotel's", "communication with a", "Digital Receptionist"],
+    lines: ["Run your business", "with one software:", "Ekado WorkSuite"],
     accent: 2,
-    lead: "Answers guest messages and phone and WhatsApp calls in 30+ languages, 24/7, with human-like naturalness.",
-    test: "Try It",
-    demo: "Request a Demo",
-    channelsAria: "Supported channels",
+    lead: "Time clock, shift planning, payroll, HACCP, ordering and accounting in one software. For restaurants and small businesses.",
+    test: "Quick Demo",
+    demo: "Get in Touch",
+    channelsAria: "Highlights",
     phone: "Phone",
     webChat: "Web chat",
+    points: ["One login, one app", "Works offline", "Data hosted in Switzerland"],
   },
   /** Ana sayfadaki kayan şerit */
-  marquee: ["24/7 replies", "30+ languages", "WhatsApp", "Instagram", "Messenger", "Web chat", "Phone assistant", "PMS integration", "Virtual POS payments", "Smart door lock", "Reporting & CRM"],
+  marquee: ["Time clock", "Shift planning", "Tasks", "Ordering", "Payables & receivables", "Cash register", "Bank", "Payroll", "Withholding tax", "Salary certificate", "HACCP", "Loyalty card", "Accounting", "Journal & reports", "Website"],
   mockup: {
     menu: [
       "Overview",
@@ -89,82 +101,82 @@ export const en: Dict = {
     bookingNote: "Double room · 3 nights",
     chatAria: "Multilingual sample chat",
   },
-    "journey": {
-      "eyebrow": "Guest journey",
-      "heading": "Not just the booking: it accompanies the whole guest journey.",
-      "lead": "Digital Reception turns requests into sales before the stay, keeps in touch like a holiday assistant during the stay, and supports reviews and ratings afterwards.",
-      "stages": [
-        {
-          "when": "Before the stay",
-          "title": "Turns requests into sales",
-          "items": [
-            "Shares availability and prices instantly",
-            "Carries the request straight into a reservation",
-            "Takes a pre-authorization or payment by virtual POS"
-          ]
-        },
-        {
-          "when": "During the stay",
-          "title": "A holiday assistant by their side",
-          "items": [
-            "Answers questions on transport, dining and sightseeing",
-            "Keeps helping with needs inside the hotel",
-            "Available in 30+ languages, 24/7"
-          ]
-        },
-        {
-          "when": "After the stay",
-          "title": "Supports the review",
-          "items": [
-            "Asks the guest for a review",
-            "Guides them to Google, Booking and ETS ratings",
-            "Shows what works through reports"
-          ]
-        }
-      ],
-      "tagline": "Manage guest communication from before the booking to after the holiday.",
-      "setupEyebrow": "Setup",
-      "setupTitle": "Live in three steps.",
-      "setupLead": "Our team does the setup with you. Setup, training and year-round technical support are included in every package.",
-      "steps": [
-        {
-          "title": "We add your hotel information",
-          "text": "We enter room types, pricing policy, transfers and frequently asked questions into the system."
-        },
-        {
-          "title": "We connect your channels",
-          "text": "WhatsApp, Instagram, Messenger, web chat and your phone line, all in a single panel."
-        },
-        {
-          "title": "Your digital reception is ready",
-          "text": "Guests get answers 24/7 and conversations that need your team are handed over."
-        }
+    journey: {
+  "eyebrow": "A day in the business",
+  "heading": "From the morning shift to month-end accounting.",
+  "lead": "Ekado WorkSuite brings your work together: the clock-in in the morning, tasks and orders during the day, payroll and accounting at month-end.",
+  "stages": [
+    {
+      "when": "Morning",
+      "title": "The team starts",
+      "items": [
+        "Staff clock in on their phone or at the kiosk",
+        "Shift plan and leave in one place",
+        "Daily task and hygiene lists are ready"
       ]
     },
-    "solutions": {
-      "eyebrow": "Our solutions",
-      "heading": "Four solutions for your hotel.",
-      "lead": "From guest communication to hotel management, choose what fits your needs.",
-      "more": "Details",
-      "cards": [
-        {
-          "title": "Digital Reception",
-          "text": "Answers every message and call 24/7 and turns requests into reservations."
-        },
-        {
-          "title": "AI Phone Assistant",
-          "text": "Answers incoming calls in 30+ languages, shares room and price info and sends the call summary to your team."
-        },
-        {
-          "title": "PMS / Hotel Management System",
-          "text": "Connects to your hotel software; sees room status, gives information and creates reservations."
-        },
-        {
-          "title": "Smart Door / Lock Systems",
-          "text": "Entry by fingerprint, app, passcode, card or key, with a temporary passcode for each guest."
-        }
+    {
+      "when": "During the day",
+      "title": "The business runs",
+      "items": [
+        "Temperature readings and HACCP records",
+        "Orders and suppliers",
+        "Cash register and incoming invoices"
       ]
     },
+    {
+      "when": "At month-end",
+      "title": "Payroll and accounting are ready",
+      "items": [
+        "Payroll from the hours, salary certificate and withholding tax",
+        "Invoices and bank transactions are matched",
+        "Excel and CSV for your accountant"
+      ]
+    }
+  ],
+  "tagline": "From staff to accounting, run your business in one app.",
+  "setupEyebrow": "Setup",
+  "setupTitle": "Live in three steps.",
+  "setupLead": "Our team sets it up together with you.",
+  "steps": [
+    {
+      "title": "We enter your business details",
+      "text": "Company, employees, shifts and chart of accounts are set up together."
+    },
+    {
+      "title": "We choose the modules",
+      "text": "We switch on what you need: time clock, payroll, HACCP, ordering, accounting."
+    },
+    {
+      "title": "Your team starts using it",
+      "text": "Employees join with an invitation link and work on phone and tablet."
+    }
+  ]
+},
+    solutions: {
+  "eyebrow": "Modules",
+  "heading": "Four areas, one app.",
+  "lead": "Choose the modules your business needs.",
+  "more": "Get info",
+  "cards": [
+    {
+      "title": "Operations & Hygiene",
+      "text": "Tasks, HACCP temperature records, checklists and a notice board."
+    },
+    {
+      "title": "Purchasing & Invoices",
+      "text": "Orders, suppliers, incoming and outgoing invoices. AI reads the invoice."
+    },
+    {
+      "title": "Staff & Payroll",
+      "text": "Time clock, shift planning, leave, payroll, salary certificate and withholding tax."
+    },
+    {
+      "title": "Finance & Accounting",
+      "text": "Cash, bank, financial overview and month-end closing. Excel and CSV for your accountant."
+    }
+  ]
+},
     "pricing": {
       "eyebrow": "Packages",
       "heading": "Choose the package that fits your hotel.",
@@ -221,50 +233,50 @@ export const en: Dict = {
         }
       ]
     },
-    "faq": {
-      "eyebrow": "Frequently asked questions",
-      "heading": "What people ask before they start.",
-      "stillTitle": "Anything else on your mind?",
-      "stillText": "Our team is happy to answer your questions.",
-      "stillCta": "Contact Us",
-      "items": [
-        {
-          "q": "Which channels does the Digital Receptionist work on?",
-          "a": "It manages messages from WhatsApp, Instagram DM, Messenger and web chat in a single panel. In the Premium package the assistant also answers phone calls."
-        },
-        {
-          "q": "What happens if the assistant gives a wrong answer?",
-          "a": "The system only works with the information you define. When needed, the conversation is handed over to your team, and the assistant's behavior can be tailored to your hotel."
-        },
-        {
-          "q": "How long does setup take?",
-          "a": "If your hotel information is ready, the basic setup is completed quickly. Use cases are clarified together during the demo."
-        },
-        {
-          "q": "Which languages does it reply in?",
-          "a": "It replies in more than 30 languages. Guests get an answer in the language they write in, in a natural and professional tone."
-        },
-        {
-          "q": "Is there technical support during the demo?",
-          "a": "Yes. Setup, basic training and technical support are included in the demo."
-        }
-      ]
+    faq: {
+  "eyebrow": "FAQ",
+  "heading": "What people ask before they start.",
+  "stillTitle": "Anything else on your mind?",
+  "stillText": "Our team is happy to answer your questions.",
+  "stillCta": "Contact Us",
+  "items": [
+    {
+      "q": "Who is Ekado WorkSuite for?",
+      "a": "Restaurants, cafés and small businesses. It was built for hospitality, and you choose the modules you need."
     },
-    "cta": {
-      "badge": "Free demo",
-      "title": "Start your hotel's digital reception today.",
-      "text": "Try it and see the difference. With the free demo, test the Digital Receptionist in your own guest communication.",
-      "primary": "Request a Free Demo",
-      "secondary": "Contact Us"
+    {
+      "q": "What happens when the internet drops?",
+      "a": "The app keeps the permitted part of your data on the device. It keeps working offline and syncs by itself when the connection returns."
     },
-    "footer": {
-      "tagline": "Manage guest communication from before the booking to after the holiday.",
-      "solutions": "Our solutions",
-      "menu": "Menu",
-      "contact": "Contact",
-      "rights": "© 2026 Punn Digital. All rights reserved.",
-      "credit": "Design by"
+    {
+      "q": "Where is my data stored?",
+      "a": "On a server hosted in Switzerland. Each user only sees what they are allowed to see; an employee, for example, only sees their own pay."
     },
+    {
+      "q": "Which languages does it support?",
+      "a": "German, Turkish, English, French and Italian."
+    },
+    {
+      "q": "How does my accountant get the data?",
+      "a": "There is an Excel and CSV (booking record) export for your accountant. A closed month cannot be changed."
+    }
+  ]
+},
+    cta: {
+  "badge": "Live demo",
+  "title": "Try Ekado WorkSuite today.",
+  "text": "Open the live demo and explore the app as an employee and as the owner. Write to us with any questions.",
+  "primary": "Request demo access",
+  "secondary": "Contact Us"
+},
+    footer: {
+  "tagline": "From staff to accounting, run your business in one app.",
+  "solutions": "Modules",
+  "menu": "Menu",
+  "contact": "Contact",
+  "rights": "© 2026 Ekado. All rights reserved.",
+  "credit": "Design by"
+},
     "technology": {
       "eyebrow": "Our solutions",
       "sub": "Smart Door / Lock Systems",
@@ -311,76 +323,91 @@ export const en: Dict = {
       "videoSoon": "Video coming soon"
     },
   features: {
-    eyebrow: "What it does",
-    heading: "Reduces front-desk workload, grows sales opportunities.",
-    lead: "Repetitive questions stay with the assistant. Your team has time for guests in person, and opportunities show up in reports.",
-    groups: [
-      {
-        kicker: "Every channel, every language",
-        title: "Guest communication",
-        items: [
-          {
-            title: "24/7 replies on every channel",
-            text: "Instantly answers WhatsApp, Instagram, Facebook, website live chat and phone calls.",
-          },
-          {
-            title: "Phone assistant",
-            text: "Answers calls in 30+ languages, shares room and price info, sends the call summary to your staff.",
-          },
-          { title: "30+ languages", text: "Replies in whatever language the guest writes, in a natural tone." },
-          {
-            title: "Holiday assistant",
-            text: "Stays with guests after arrival: transport, dining, sightseeing and in-hotel needs.",
-          },
-        ],
-      },
-      {
-        kicker: "Turns demand into revenue",
-        title: "Sales & reservations",
-        items: [
-          {
-            title: "Turns requests into bookings",
-            text: "Shows availability, guides the guest and carries the request straight into a reservation.",
-          },
-          { title: "Virtual POS payments", text: "Sends a payment link to take a pre-authorization or full prepayment." },
-          {
-            title: "PMS connection",
-            text: "Sees room status in your hotel software, gives information and creates reservations.",
-          },
-          {
-            title: "Google, Booking & ETS ratings",
-            text: "Asks guests for a review after their stay and guides them to the rating page.",
-          },
-        ],
-      },
-      {
-        kicker: "Everything under control",
-        title: "Management",
-        items: [
-          {
-            title: "Reporting & analytics",
-            text: "See conversations, reservations, sales and performance by channel.",
-          },
-          {
-            title: "CRM management",
-            text: "Track prospects, requests and the conversion process in one panel.",
-          },
-          {
-            title: "Email notifications",
-            text: "Important updates and reservation details reach your inbox instantly.",
-          },
-          {
-            title: "Easy training, on/off",
-            text: "Train the assistant easily and switch it on or off at the hours you choose.",
-          },
-        ],
-      },
-    ],
-    extrasTitle: "Extra benefits",
-    extras: [
-      { title: "Easy setup", text: "Quick, hassle-free setup." },
-      { title: "Natural communication", text: "Warm and professional, like a human." },
-      { title: "Secure infrastructure", text: "A secure system that protects your data." },
-    ],
-  },
+  "eyebrow": "What it does",
+  "heading": "Less paperwork, a business that stays in order.",
+  "lead": "Shifts, payroll, hygiene records, ordering and accounting in the same app. Your team focuses on the work, you focus on the business.",
+  "groups": [
+    {
+      "kicker": "Team and time",
+      "title": "Staff",
+      "items": [
+        {
+          "title": "Clock in by phone",
+          "text": "Scan a QR code that changes every 30 seconds at the kiosk. Location and selfie if you want them."
+        },
+        {
+          "title": "Shift planning",
+          "text": "Shift swaps go through offer, acceptance and manager approval, with checks for 11-hour rest, leave and overlaps."
+        },
+        {
+          "title": "Payroll",
+          "text": "Monthly payroll from the hours, withholding tax, child allowance and the official salary certificate PDF."
+        },
+        {
+          "title": "Monthly hours sign-off",
+          "text": "Employees confirm their monthly hours. A confirmation cannot be deleted, and later changes are flagged."
+        }
+      ]
+    },
+    {
+      "kicker": "Daily operations",
+      "title": "Kitchen and purchasing",
+      "items": [
+        {
+          "title": "HACCP and temperature records",
+          "text": "Fridge readings morning and evening, deviations and checklists in one place."
+        },
+        {
+          "title": "Tasks",
+          "text": "One person takes a task, overdue tasks are reminded, proof by photo."
+        },
+        {
+          "title": "Orders and suppliers",
+          "text": "Orders to suppliers, a supplier list and order tracking."
+        },
+        {
+          "title": "Loyalty card",
+          "text": "Stamps and rewards with a QR card, with a daily limit and lost-card protection."
+        }
+      ]
+    },
+    {
+      "kicker": "Numbers in order",
+      "title": "Finance and accounting",
+      "items": [
+        {
+          "title": "AI reads the invoice",
+          "text": "Swiss QR-bills and photos are read, with checks for IBAN, reference and duplicate invoices."
+        },
+        {
+          "title": "Cash and bank",
+          "text": "Cash, bank transactions and automatic matching with invoices."
+        },
+        {
+          "title": "Financial overview",
+          "text": "Income, expenses and VAT (MWST) summary, plus a monthly profit and loss statement."
+        },
+        {
+          "title": "Export for your accountant",
+          "text": "Excel and booking-record CSV. A closed month cannot be changed."
+        }
+      ]
+    }
+  ],
+  "extrasTitle": "Extras",
+  "extras": [
+    {
+      "title": "Module selection",
+      "text": "Switch on the modules you need and keep the rest off."
+    },
+    {
+      "title": "5 languages",
+      "text": "German, Turkish, English, French and Italian."
+    },
+    {
+      "title": "Secure foundation",
+      "text": "Each user only sees the data they are allowed to see."
+    }
+  ]
+},
 };

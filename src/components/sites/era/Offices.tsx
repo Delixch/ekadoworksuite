@@ -77,7 +77,7 @@ export function Offices() {
     { Icon: Mail, label: o.email, value: contactInfo.email, href: `mailto:${contactInfo.email}` },
     { Icon: Phone, label: o.phone, value: contactInfo.phone, href: telHref(contactInfo.phone) },
     { Icon: Smartphone, label: o.mobile, value: contactInfo.mobile, href: telHref(contactInfo.mobile) },
-  ];
+  ].filter((c) => c.value);
   const names = { hq: [o.hq, o.hqCountry], ch: [o.ch, o.chCountry] } as const;
 
   return (
@@ -90,7 +90,7 @@ export function Offices() {
           <Heading as="h2">{o.heading}</Heading>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 tab:grid-cols-1">
+        <div className={`mx-auto grid gap-4 tab:grid-cols-1 ${chips.length === 1 ? "max-w-[540px] grid-cols-1" : "grid-cols-3"}`}>
           {chips.map((c, i) => (
             <Reveal key={c.label} variant="up" delay={i * 90}>
               <a href={c.href} className="punn-panel group/c flex h-full items-center gap-4 rounded-(--r-x) px-5 py-4 no-underline">
@@ -106,7 +106,7 @@ export function Offices() {
           ))}
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-4 tab:grid-cols-1">
+        <div className={`mx-auto mt-4 grid gap-4 tab:grid-cols-1 ${offices.length === 1 ? "max-w-[540px] grid-cols-1" : "grid-cols-2"}`}>
           {offices.map((off, i) => (
             <Reveal key={off.id} variant="up" delay={i * 120}>
               <article className="punn-panel flex h-full flex-col overflow-hidden rounded-(--r-x)">
@@ -128,12 +128,14 @@ export function Offices() {
                       <MapPin size={17} strokeWidth={1.8} className="mt-0.5 flex-none text-era-primary-ink" />
                       <span>{off.address}</span>
                     </li>
-                    <li className="flex items-center gap-3">
-                      <Phone size={17} strokeWidth={1.8} className="flex-none text-era-primary-ink" />
-                      <a href={telHref(off.phone)} className="text-era-gray no-underline hover:text-era-black">
-                        {off.phone}
-                      </a>
-                    </li>
+                    {off.phone && (
+                      <li className="flex items-center gap-3">
+                        <Phone size={17} strokeWidth={1.8} className="flex-none text-era-primary-ink" />
+                        <a href={telHref(off.phone)} className="text-era-gray no-underline hover:text-era-black">
+                          {off.phone}
+                        </a>
+                      </li>
+                    )}
                   </ul>
                 </div>
                 <div className="mt-auto">
