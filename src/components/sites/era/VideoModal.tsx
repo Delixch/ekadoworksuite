@@ -7,7 +7,7 @@ import { video } from "@/i18n/video";
 
 /**
  * Tanıtım videosu penceresi (buzlu cam, Bize Ulaşın ile aynı animasyon).
- * Açmak için: window.dispatchEvent(new CustomEvent("punn:video")) ya da <VideoButton />.
+ * Açmak için: window.dispatchEvent(new CustomEvent("ekado:video")) ya da <VideoButton />.
  * Seçili dile göre /videos/resepsiyon-{dil}.mp4 oynar; kapanınca durur, yalnız açılınca indirilir.
  */
 export function VideoModal() {
@@ -24,8 +24,8 @@ export function VideoModal() {
       setLeaving(false);
       setOpen(true);
     };
-    window.addEventListener("punn:video", show);
-    return () => window.removeEventListener("punn:video", show);
+    window.addEventListener("ekado:video", show);
+    return () => window.removeEventListener("ekado:video", show);
   }, []);
 
   const close = useCallback(() => {
@@ -101,7 +101,7 @@ export function VideoModal() {
 export function VideoButton({ variant = "pill", className = "" }: { variant?: "pill" | "small"; className?: string }) {
   const { locale } = useLocale();
   const c = video[locale];
-  const open = () => window.dispatchEvent(new CustomEvent("punn:video"));
+  const open = () => window.dispatchEvent(new CustomEvent("ekado:video"));
   if (variant === "small") {
     return (
       <button

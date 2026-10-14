@@ -199,10 +199,10 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   .era-letter { opacity: 1; transform: none; transition: none; }
 }
 
-/* ===== Punn hero ===== */
+/* ===== Ekado hero ===== */
 :root { --hero-title: clamp(1.8rem, 4.2vw, 5.2rem); --hero-lead: clamp(1.05rem, 1.6vw, 1.55rem); }
 @media (max-width: 991px) { :root { --hero-title: clamp(1.8rem, 7vw, 3.6rem); } }
-.punn-hero-bg {
+.ekado-hero-bg {
   background:
     radial-gradient(60% 55% at 82% 38%, var(--c-sky) 0%, transparent 70%),
     radial-gradient(45% 40% at 8% 90%, var(--c-tint) 0%, transparent 70%),
@@ -215,14 +215,14 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 @media (prefers-reduced-motion: reduce) { .era-in-up, .era-in-rise { animation: none; } }
 
 /* ===== Özellik kartı başlığı (mavi geçiş) ===== */
-.punn-card-head {
+.ekado-card-head {
   background:
     radial-gradient(70% 120% at 100% 0%, var(--c-glow) 0%, transparent 60%),
     linear-gradient(135deg, var(--c-primary) 0%, var(--c-dark) 100%);
 }
 
 /* ===== Panel / kart: iki temada da sayfadan ayrışır (renkler theme.css) ===== */
-.punn-panel {
+.ekado-panel {
   position: relative;
   background:
     radial-gradient(70% 45% at 100% 0%, color-mix(in oklab, var(--c-primary) 9%, transparent) 0%, transparent 70%),
@@ -231,7 +231,7 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   box-shadow: 0 10px 32px var(--c-shadow-soft);
 }
 /* üst kenarda ince ışıklı çizgi */
-.punn-panel::before {
+.ekado-panel::before {
   content: "";
   position: absolute;
   top: -1.5px;
@@ -243,7 +243,7 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   opacity: 0.85;
 }
 /* öne çıkan kart: mavi geçiş */
-.punn-feature {
+.ekado-feature {
   position: relative;
   background:
     radial-gradient(80% 50% at 100% 0%, var(--c-glow) 0%, transparent 65%),
@@ -251,9 +251,9 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   box-shadow: 0 18px 44px var(--c-shadow);
 }
 /* imleç ışığı + yükselme */
-.punn-spot { isolation: isolate; transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s; }
-.punn-spot:hover { transform: translateY(-6px); }
-.punn-spot::after {
+.ekado-spot { isolation: isolate; transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s; }
+.ekado-spot:hover { transform: translateY(-6px); }
+.ekado-spot::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -263,11 +263,11 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   transition: opacity 0.4s;
   background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--c-primary) 14%, transparent), transparent 65%);
 }
-.punn-feature.punn-spot::after {
+.ekado-feature.ekado-spot::after {
   background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), var(--c-glow-soft), transparent 65%);
 }
-.punn-spot:hover::after { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .punn-spot:hover { transform: none; } }
+.ekado-spot:hover::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .ekado-spot:hover { transform: none; } }
 
 /* ===== Hero mockup: canlı arama, sohbet, yüzen kartlar ===== */
 @keyframes era-wave { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
@@ -300,8 +300,8 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 .era-room { animation: era-room 5s ease-in-out infinite; }
 .era-lock-a { animation: era-lock-a 5s ease-in-out infinite; }
 .era-lock-b { animation: era-lock-b 5s ease-in-out infinite; }
-.punn-dark-card { background: var(--c-dark-card); border: 1px solid var(--c-glow-soft); }
-.punn-dark-card.punn-spot::after { background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), var(--c-glow-soft), transparent 65%); }
+.ekado-dark-card { background: var(--c-dark-card); border: 1px solid var(--c-glow-soft); }
+.ekado-dark-card.ekado-spot::after { background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), var(--c-glow-soft), transparent 65%); }
 @media (prefers-reduced-motion: reduce) { .era-travel, .era-room, .era-lock-a, .era-lock-b { animation: none; } .era-lock-b { opacity: 0; } }
 
 .logo-on-dark { --c-logo-from: var(--c-logo-dark-from); --c-logo-to: var(--c-logo-dark-to); --c-logo-ink: var(--c-logo-dark-ink); --c-logo-accent: var(--c-logo-dark-accent); }
@@ -370,18 +370,18 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
 /* ===== Panel: ana sitedeki efekt dili (giriş, imleç ışığı, sürüklenen ışıklar) ===== */
 @keyframes panel-rise { from { opacity: 0; transform: translateY(28px) scale(0.985); } to { opacity: 1; transform: none; } }
 @keyframes panel-bar { 0% { transform: scaleX(0); opacity: 1; } 70% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
-.panel-root .punn-panel,
-.panel-root .punn-feature {
+.panel-root .ekado-panel,
+.panel-root .ekado-feature {
   animation: panel-rise 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
   transition: box-shadow 0.5s, border-color 0.4s;
 }
-.panel-root .punn-panel:nth-child(2), .panel-root .punn-feature:nth-child(2) { animation-delay: 0.09s; }
-.panel-root .punn-panel:nth-child(3), .panel-root .punn-feature:nth-child(3) { animation-delay: 0.18s; }
-.panel-root .punn-panel:nth-child(4), .panel-root .punn-feature:nth-child(4) { animation-delay: 0.27s; }
-.panel-root .punn-panel:nth-child(5), .panel-root .punn-feature:nth-child(5) { animation-delay: 0.36s; }
-.panel-root .punn-panel:nth-child(n+6) { animation-delay: 0.45s; }
+.panel-root .ekado-panel:nth-child(2), .panel-root .ekado-feature:nth-child(2) { animation-delay: 0.09s; }
+.panel-root .ekado-panel:nth-child(3), .panel-root .ekado-feature:nth-child(3) { animation-delay: 0.18s; }
+.panel-root .ekado-panel:nth-child(4), .panel-root .ekado-feature:nth-child(4) { animation-delay: 0.27s; }
+.panel-root .ekado-panel:nth-child(5), .panel-root .ekado-feature:nth-child(5) { animation-delay: 0.36s; }
+.panel-root .ekado-panel:nth-child(n+6) { animation-delay: 0.45s; }
 /* imleç üstünde yumuşak ışık ve belirginleşen kenar */
-.panel-root .punn-panel::after {
+.panel-root .ekado-panel::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -391,12 +391,12 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   transition: opacity 0.4s;
   background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--c-primary) 13%, transparent), transparent 65%);
 }
-.panel-root .punn-panel:hover::after { opacity: 1; }
-.panel-root .punn-panel:hover {
+.panel-root .ekado-panel:hover::after { opacity: 1; }
+.panel-root .ekado-panel:hover {
   border-color: color-mix(in oklab, var(--c-primary) 50%, var(--c-panel-border));
   box-shadow: 0 20px 50px var(--c-shadow);
 }
-.panel-root .punn-feature::after {
+.panel-root .ekado-feature::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -406,10 +406,10 @@ body.era { font-family: var(--font-main); font-size: var(--t-r); line-height: 14
   transition: opacity 0.4s;
   background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--c-glow-soft), transparent 65%);
 }
-.panel-root .punn-feature:hover::after { opacity: 1; }
+.panel-root .ekado-feature:hover::after { opacity: 1; }
 .panel-bar { transform-origin: left; animation: panel-bar 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
 @media (prefers-reduced-motion: reduce) {
-  .panel-root .punn-panel, .panel-root .punn-feature { animation: none; }
+  .panel-root .ekado-panel, .panel-root .ekado-feature { animation: none; }
   .panel-bar { animation: none; opacity: 0; }
 }
 

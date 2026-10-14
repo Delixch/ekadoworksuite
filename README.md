@@ -1,6 +1,6 @@
-# Zafer
+# Ekado WorkSuite
 
-Zafer turizm sitesi. Next.js 16 (App Router, React 19, TypeScript), Tailwind CSS v4, shadcn/ui. Diller: Türkçe, İngilizce, Almanca.
+Ekado WorkSuite tanıtım sitesi. Next.js 16 (App Router, React 19, TypeScript), Tailwind CSS v4, shadcn/ui. Diller: Türkçe, İngilizce, Almanca.
 
 ## Geliştirme
 
@@ -25,7 +25,7 @@ Hiçbiri zorunlu değildir; yoksa ilgili özellik devre dışı kalır, site yin
 
 ## Yayın
 
-Site `output: "standalone"` olarak derlenir ve Node.js destekli hostinge yüklenir (punndigital.com, Güzel Hosting, cPanel Node.js uygulaması). Kurulum, klasör düzeni ve dikkat edilecekler: [`YAYIN-DURUMU.md`](YAYIN-DURUMU.md).
+Site `output: "standalone"` olarak derlenir ve Node.js destekli hostinge yüklenir (Vercel ya da Node.js destekli hosting). Kurulum, klasör düzeni ve dikkat edilecekler: [`YAYIN-DURUMU.md`](YAYIN-DURUMU.md).
 
 ## Klasörler
 

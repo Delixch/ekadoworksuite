@@ -135,7 +135,7 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
           <audio ref={audio} src={`/videos/ses-${cur}.mp3`} preload="auto" muted={muted} />
         </>
       ) : (
-        <div className="punn-feature relative flex h-full w-full flex-col items-center justify-center gap-5 text-era-on-dark">
+        <div className="ekado-feature relative flex h-full w-full flex-col items-center justify-center gap-5 text-era-on-dark">
           <span className="relative flex h-20 w-20 items-center justify-center rounded-full bg-era-on-dark/15">
             <span className="era-ring absolute inset-0 rounded-full border-2 border-era-on-dark/50" />
             <Play size={32} fill="currentColor" className="ml-1" />
@@ -161,13 +161,13 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
 }
 
 /** Galeri: ürünün dört görseli (küçük, ileri-geri). Noktalar yalnızca ilk görselde. */
-const slides = ["/sites/punn/lock-product.jpg", "/sites/punn/lock-options.jpg", "/sites/punn/lock-security.jpg", "/sites/punn/lock-app.jpg"];
+const slides = ["/sites/ekado/lock-product.jpg", "/sites/ekado/lock-options.jpg", "/sites/ekado/lock-security.jpg", "/sites/ekado/lock-app.jpg"];
 
 function Gallery({ captions, hotspotLabels, alt }: { captions: string[]; hotspotLabels: string[]; alt: string }) {
   const [idx, setIdx] = useState(0);
   const go = useCallback((d: number) => setIdx((v) => (v + d + slides.length) % slides.length), []);
   return (
-    <div className="punn-panel flex flex-col gap-3 rounded-(--r-x) p-3">
+    <div className="ekado-panel flex flex-col gap-3 rounded-(--r-x) p-3">
       <div className="relative overflow-hidden rounded-[18px] bg-era-on-dark">
         <div className="flex transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)]" style={{ transform: `translateX(-${idx * 100}%)` }}>
           {slides.map((src, n) => (
@@ -274,7 +274,7 @@ export function Technology() {
                 const Icon = featureIcons[i];
                 return (
                   <Reveal key={f.title} variant="up" delay={i * 90}>
-                    <Spot className="punn-panel group/f flex gap-3.5 rounded-(--r-r) px-4 py-3">
+                    <Spot className="ekado-panel group/f flex gap-3.5 rounded-(--r-r) px-4 py-3">
                       <Chaser run={active === i} onDone={next} />
                       <span className="relative z-[1] flex h-10 w-10 flex-none items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line transition-transform duration-500 group-hover/f:scale-110">
                         <Icon size={19} strokeWidth={1.8} />
@@ -292,7 +292,7 @@ export function Technology() {
 
           {/* paket içeriği: ince şerit */}
           <Reveal variant="up" className="mx-auto w-full max-w-[1060px]">
-            <div className="punn-panel flex flex-wrap items-center gap-x-8 gap-y-3 rounded-(--r-r) px-5 py-4 mob:flex-col mob:items-start">
+            <div className="ekado-panel flex flex-wrap items-center gap-x-8 gap-y-3 rounded-(--r-r) px-5 py-4 mob:flex-col mob:items-start">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line">
                   <Package size={19} strokeWidth={1.8} />

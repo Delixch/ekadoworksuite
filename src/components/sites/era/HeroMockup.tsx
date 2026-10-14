@@ -316,7 +316,7 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
             <ChevronLeft size={11} />
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-era-primary text-[11px] font-bold">p</span>
             <div className="leading-tight">
-              <div className="text-[8.5px] font-semibold">Punn Digital</div>
+              <div className="text-[8.5px] font-semibold">Ekado WorkSuite</div>
               <div className="mt-0.5 flex w-fit items-center gap-1 rounded-full bg-[#22c55e]/25 px-1.5 py-[1.5px] text-[6.5px] font-semibold text-[#86efac]">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="era-ring absolute inset-0 rounded-full bg-[#4ade80]" />
@@ -510,7 +510,7 @@ function LiveLobby() {
         </filter>
       </svg>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/sites/punn/hotel-lobby.jpg" alt="" className="lobby-img h-full w-full object-cover" />
+      <img src="/sites/ekado/hotel-lobby.jpg" alt="" className="lobby-img h-full w-full object-cover" />
       <span className="lobby-glow lobby-glow-a" />
       <span className="lobby-glow lobby-glow-b" />
       <span className="lobby-sweep" />

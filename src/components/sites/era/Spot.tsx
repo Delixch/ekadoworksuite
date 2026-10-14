@@ -10,7 +10,7 @@ export function Spot({ children, className = "" }: { children: ReactNode; classN
     e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
   };
   return (
-    <article onPointerMove={move} className={`punn-spot ${className}`}>
+    <article onPointerMove={move} className={`ekado-spot ${className}`}>
       {children}
     </article>
   );

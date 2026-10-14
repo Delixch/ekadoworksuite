@@ -59,7 +59,7 @@ function Dropdown({
                 <div className="invisible absolute top-0 left-full z-10 hidden w-[300px] pl-3 opacity-0 transition-all duration-200 group-focus-within/cover:visible group-focus-within/cover:opacity-100 group-hover/cover:visible group-hover/cover:opacity-100 min-[1024px]:block">
                   <button
                     type="button"
-                    onClick={() => window.dispatchEvent(new CustomEvent("punn:video"))}
+                    onClick={() => window.dispatchEvent(new CustomEvent("ekado:video"))}
                     aria-label={video[locale].watch}
                     className="group/play relative block aspect-video w-full overflow-hidden rounded-(--r-x) border border-era-line bg-era-dark shadow-[0_12px_40px_var(--c-shadow)]"
                   >

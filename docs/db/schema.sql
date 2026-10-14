@@ -1,5 +1,5 @@
 -- ============================================================================
--- Punn Digital · Dijital Resepsiyonist paneli · Veritabanı şeması
+-- Ekado WorkSuite · Dijital Resepsiyonist paneli · Veritabanı şeması
 -- MySQL 8 / MariaDB 10.4+ (phpMyAdmin > İçe Aktar ile çalıştırılır)
 -- Alan adları src/lib/panel/types.ts içindeki tiplerle birebir eşleşir (camelCase <-> snake_case).
 -- Zamanlar UTC saklanır; ekran otelin saat dilimine çevirir.

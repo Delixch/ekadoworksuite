@@ -14,7 +14,7 @@ const LED = [
 ];
 
 /**
- * Sağ kenarda duran dashboard robotu: dikdörtgen kafa, düğmeli gövde, fareyi (telefonda parmağı) izleyen gözler.
+ * Sağ kenarda duran dashboard robotu: dikdörtgen kafa, eski bir mekanik kasa şeklinde gövde, fareyi (telefonda parmağı) izleyen gözler.
  * Sayfa kaydıkça sağ kenarda aşağı yukarı süzülür. Yapay zeka sonra buraya bağlanacak (şimdilik süs).
  * Tıklamayı engellemez; yeri belli olunca yalnızca layout.tsx'teki yeri değişir.
  */
@@ -192,24 +192,44 @@ export function Robot() {
             </div>
           </div>
           <span className="block h-1.5 w-4 bg-era-cute" />
-          {/* gövde: küçük bir dashboard */}
-          <div className="w-[92%] rounded-[10px] bg-era-dark p-2 shadow-[0_10px_24px_var(--c-shadow)] ring-1 ring-white/25 mob:rounded-lg mob:p-1.5">
-            <div className="flex justify-between">
-              <span className="block h-3.5 w-3.5 rounded-full bg-era-primary ring-2 ring-era-chinese mob:h-2.5 mob:w-2.5" />
-              <span className="era-robot-led-b block h-3.5 w-3.5 rounded-full bg-era-accent ring-2 ring-era-chinese mob:h-2.5 mob:w-2.5" />
-              <span className="block h-3.5 w-3.5 rounded-full bg-era-success ring-2 ring-era-chinese mob:h-2.5 mob:w-2.5" />
+          {/* gövde: eski bir mekanik kasa (fiş penceresi, sayı tuşları, kol ve para çekmecesi) */}
+          <div className="relative flex w-[96%] flex-col items-center">
+            {/* üst pencere: tutar göstergesi */}
+            <div className="relative z-10 -mb-px w-[78%] rounded-t-[8px] bg-era-dark px-1.5 pt-1.5 pb-1 ring-1 ring-white/25 mob:px-1 mob:pt-1">
+              <div className="flex h-[15px] items-center justify-end rounded-[3px] bg-era-chinese px-1 font-mono text-[9px] leading-none font-bold tracking-wider text-era-accent mob:h-[11px] mob:text-[7px]">
+                12.50
+              </div>
             </div>
-            <div className="mt-2 flex h-6 items-end gap-[3px] rounded-[5px] bg-era-chinese px-1.5 pb-1 mob:mt-1.5 mob:h-4">
-              {[40, 75, 55, 90, 65].map((h, i) => (
-                <i
-                  key={i}
-                  className="era-robot-bar block w-full rounded-[1px] bg-era-primary"
-                  style={{ height: `${h}%`, animationDelay: `${i * 0.25}s` }}
-                />
-              ))}
+            {/* gövde: eğimli tuş paneli */}
+            <div className="relative w-full rounded-[10px] bg-era-dark p-2 shadow-[0_10px_24px_var(--c-shadow)] ring-1 ring-white/25 mob:rounded-lg mob:p-1.5">
+              {/* yan kol */}
+              <span className="absolute top-1.5 -right-[6px] h-5 w-[4px] rounded-r-full bg-era-cute mob:h-3.5" />
+              <span className="absolute top-0.5 -right-[8px] block h-2.5 w-2.5 rounded-full bg-era-accent ring-1 ring-era-chinese mob:h-2 mob:w-2" />
+              <div className="grid grid-cols-4 gap-[3px] mob:gap-0.5">
+                {Array.from({ length: 12 }, (_, i) => (
+                  <i
+                    key={i}
+                    className={`block aspect-square rounded-full ring-1 ring-era-chinese ${
+                      i === 3
+                        ? "era-robot-led-b bg-era-accent"
+                        : i === 11
+                          ? "bg-era-success"
+                          : i % 4 === 3
+                            ? "bg-era-primary"
+                            : "bg-era-cute"
+                    }`}
+                  />
+                ))}
+              </div>
+              {/* para çekmecesi */}
+              <div className="mt-2 flex h-[14px] items-center justify-center rounded-[4px] bg-era-chinese mob:mt-1.5 mob:h-[10px]">
+                <span className="era-robot-slide block h-[3px] w-1/3 rounded-full bg-era-accent" />
+              </div>
             </div>
-            <div className="mt-2 h-[3px] rounded-full bg-era-chinese mob:mt-1.5">
-              <span className="era-robot-slide block h-full w-1/3 rounded-full bg-era-accent" />
+            {/* ayaklar */}
+            <div className="flex w-[86%] justify-between">
+              <span className="block h-1 w-3 rounded-b-sm bg-era-cute" />
+              <span className="block h-1 w-3 rounded-b-sm bg-era-cute" />
             </div>
           </div>
         </div>

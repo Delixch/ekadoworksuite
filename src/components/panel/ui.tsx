@@ -8,7 +8,7 @@ import type { Channel } from "@/lib/panel/types";
 /* ------------------------------- Kart ------------------------------- */
 
 export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <section className={`punn-panel rounded-(--r-x) p-5 mob:p-4 ${className}`}>{children}</section>;
+  return <section className={`ekado-panel rounded-(--r-x) p-5 mob:p-4 ${className}`}>{children}</section>;
 }
 
 export function CardHead({ title, hint, right }: { title: string; hint?: string; right?: ReactNode }) {

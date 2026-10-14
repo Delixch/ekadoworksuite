@@ -52,7 +52,7 @@ export function Features() {
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="flex flex-col gap-14 mob:gap-9">
           <div className="relative mx-auto flex w-full max-w-[820px] flex-col items-center gap-4 text-center">
-            <ClockRow className="absolute top-0 right-full mr-12 hidden min-[1280px]:flex" />
+            <ClockRow className="absolute top-5 right-full mr-8 hidden min-[1280px]:flex" />
             <span className="flex items-center gap-2 rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">
               <i className="block h-1.5 w-1.5 rounded-full bg-era-accent" /> {c.eyebrow}
             </span>
@@ -83,7 +83,7 @@ export function Features() {
                   </h3>
                   <Spot
                     className={`flex h-full flex-col rounded-(--r-x) px-8 py-9 mob:px-6 mob:py-7 ${
-                      featured ? "punn-feature text-era-on-dark" : "punn-panel"
+                      featured ? "ekado-feature text-era-on-dark" : "ekado-panel"
                     }`}
                   >
                     <div className="relative z-[1] flex flex-col gap-3">

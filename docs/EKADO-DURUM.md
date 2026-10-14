@@ -1,12 +1,24 @@
 # Ekado WorkSuite tanıtım sitesi: ne yapıyoruz, nerede kaldık
 
-Son güncelleme: 2026-10-14. Bu dosya, Zafer sitesinin Punn Digital (otel dijital resepsiyon) sitesinden **Ekado WorkSuite** (işletme yazılımı) tanıtım sitesine çevrilmesini kayıt altına alır. Şifre ve anahtar içermez.
+Son güncelleme: 2026-10-14. Bu dosya **Ekado WorkSuite** (işletme yazılımı) tanıtım sitesinin güncel durumunu kayıt altına alır. Şifre ve anahtar içermez.
+
+## 0. Adlar (2026-10-14'te değişti)
+
+| Ne | Değer |
+|---|---|
+| GitHub deposu | `Delixch/ekadoworksuite` (herkese açık) |
+| Yerel klasör | `D:epos\ekadoworksuite` |
+| `origin` | `https://github.com/Delixch/ekadoworksuite.git` |
+| Vercel | `ekadoworksuite` (`prj_mw0ab5hvAMQnHCiKTEe3oC6tFVpk`), canlı: https://ekadoworksuite.vercel.app, GitHub `main`'e bağlı, son deploy 83d30c3 READY |
+
+
+Klasör adı değişince Claude hafızası yeni klasörde boş başlamasın diye `C:\Users\xdd\.claude\projects\D--repos-ekadoworksuite\memory` altına kopyalandı.
 
 ## 1. Özet
 
 Site artık, `D:\repos\Gastro apps supi` içindeki **Ekado WorkSuite** programını (vardiya, bordro, HACCP, sipariş, kasa, muhasebe) tanıtıyor ve satıyor. Program restoran, kafe, fırın ve küçük işletmeler içindir. Canlı demosu `https://api.adodesign.ch` adresinde, PHP + MariaDB, Hostpoint (İsviçre).
 
-Site eski Punn şablonunun üzerine kuruldu (Next.js 16, Tailwind v4). Yapı ve animasyonlar korundu, içerik, renkler ve logo Ekado'ya çevrildi.
+Site Next.js 16 ve Tailwind v4 ile yazıldı; içerik, renkler ve logo Ekado'ya göre hazırlandı.
 
 ## 2. Kararlar (Adnan'ın istekleri)
 
@@ -70,7 +82,7 @@ Almadıklarımız: Bank (boş), Lohnläufe (uyarılar dolu), Mitarbeiter (telefo
 7. **Eski otel kalıntıları:** `/test-et`, `/panel`, `HeroMockup.tsx`, `Clock.tsx` içindeki kullanılmayan `Clock` bileşeni, otel metinleri taşıyan `mockup`, `pricing`, `technology` anahtarları (tip uyumu için duruyor).
 8. **Müşterilerimiz sayfası** "yapım aşamasında".
 9. **`NEXT_PUBLIC_SITE_URL`** yeni alan adına ayarlanmalı, yoksa paylaşım önizlemeleri ve sitemap eski adrese bakar.
-10. **Yayında olan eski sürüm:** `punndigital.com` şu an eski Punn içeriğini gösteriyor (bkz. `YAYIN-DURUMU.md`). Yeni içerik Vercel'e ya da hosting'e gönderilene kadar canlıya çıkmaz.
+10. **Yayın:** Site Vercel'de (https://ekadoworksuite.vercel.app); `main`'e push edilince otomatik yayınlanır.
 
 ## 7. Yayın öncesi kontrol listesi
 
@@ -88,3 +100,11 @@ Almadıklarımız: Bank (boş), Lohnläufe (uyarılar dolu), Mitarbeiter (telefo
 - Tarayıcı kontrolleri masaüstü genişlikte gündüz temasında yapıldı. Gece ve telefon çoğu yerde ayrıca bakılmadı.
 - Geliştirme sunucusu bazen CSS değişikliğini kaçırır. Görüntü eski kalırsa dosyaya dokunun (`touch`) ya da sunucuyu yeniden başlatın.
 - Kullanıcı Chrome pencerelerini kapatmayın isteği kalıcı kural (hafıza: `feedback-chrome-penceresi-kapatma`).
+
+## 9. Yeni oturumda nasıl devam edilir
+
+1. Claude'u `D:\repos\ekadoworksuite` klasöründe aç.
+2. Önce bu dosyayı oku (`docs/EKADO-DURUM.md`). `docs/EKSIKLER-VE-YAPILACAKLAR.md` eski, otel döneminden kalma, güncel değil.
+3. Geliştirme sunucusu: `npm run dev`. Port 3000 doluysa 3001'e geçer.
+4. Sıradaki işler (§6 ve §7): yorumlar, fiyat, build, Vercel.
+5. Bekleyen küçük iş: `D:\repos\VideoEditMaster\tools\screenrec\` içinde `npm install`.

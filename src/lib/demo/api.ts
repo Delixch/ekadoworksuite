@@ -16,7 +16,7 @@ export interface DemoInfo {
 }
 
 /** Demo hattı ve WhatsApp numarası. Boş bırakılan numara sayfada "yakında" olarak görünür. */
-export const DEMO_WHATSAPP = "905334019035"; // site alt bilgisindeki Punn WhatsApp numarası
+export const DEMO_WHATSAPP = "905334019035"; // site alt bilgisindeki Ekado WhatsApp numarası
 export const DEMO_PHONE: string = ""; // TODO: yapay zeka tarafı demo arama hattını verince buraya yazılır (örn. "+90 ...")
 
 const wait = <T,>(v: T, ms: number) => new Promise<T>((r) => setTimeout(() => r(v), ms));

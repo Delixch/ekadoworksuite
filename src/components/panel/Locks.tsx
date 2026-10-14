@@ -47,7 +47,7 @@ function StatTile({ icon: Icon, label, value, total, tone }: { icon: LucideIcon;
     success: "bg-[color-mix(in_oklab,var(--c-success)_16%,transparent)] text-era-success",
   }[tone];
   return (
-    <div className="punn-panel flex items-center gap-4 rounded-(--r-r) p-4 mob:gap-3 mob:p-3.5">
+    <div className="ekado-panel flex items-center gap-4 rounded-(--r-r) p-4 mob:gap-3 mob:p-3.5">
       <span className={`flex h-12 w-12 flex-none items-center justify-center rounded-2xl mob:h-10 mob:w-10 ${toneCls}`}>
         <Icon size={22} strokeWidth={1.9} />
       </span>
@@ -75,7 +75,7 @@ function RoomCard({ room, flash, onOpen }: { room: Room; flash: boolean; onOpen:
     <button
       type="button"
       onClick={onOpen}
-      className={`punn-panel punn-spot group/room flex w-full flex-col gap-3 rounded-(--r-r) p-4 text-left transition-shadow duration-500 ${
+      className={`ekado-panel ekado-spot group/room flex w-full flex-col gap-3 rounded-(--r-r) p-4 text-left transition-shadow duration-500 ${
         flash ? "shadow-[0_0_0_4px_color-mix(in_oklab,var(--c-success)_38%,transparent),0_10px_32px_var(--c-shadow-soft)]" : ""
       } ${!lock.online ? "opacity-80" : ""}`}
     >

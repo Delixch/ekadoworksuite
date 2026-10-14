@@ -130,7 +130,7 @@ export function PanelApp() {
       <div
         className="panel-root relative min-h-screen bg-era-cloud/40"
         onPointerMove={(e) => {
-          const el = (e.target as Element).closest<HTMLElement>(".punn-panel, .punn-feature");
+          const el = (e.target as Element).closest<HTMLElement>(".ekado-panel, .ekado-feature");
           if (!el) return;
           const r = el.getBoundingClientRect();
           el.style.setProperty("--mx", `${e.clientX - r.left}px`);
@@ -149,7 +149,7 @@ export function PanelApp() {
         <aside className="fixed inset-y-0 left-0 z-30 flex w-[264px] flex-col gap-6 overflow-hidden bg-era-dark px-4 py-6 text-era-on-dark tab:hidden">
           <span aria-hidden className="era-aurora pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-era-primary/50 blur-[80px]" />
           <span aria-hidden className="era-aurora pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-era-accent/25 blur-[80px] [animation-delay:-7s]" />
-          <Link href="/" aria-label="Punn Digital" className="px-2">
+          <Link href="/" aria-label="Ekado WorkSuite" className="px-2">
             <Logo onDark className="h-6 w-auto" />
           </Link>
 
@@ -200,7 +200,7 @@ export function PanelApp() {
         {/* içerik */}
         <div className="relative z-[1] pl-[264px] tab:pl-0">
           <header className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-era-line bg-era-nav px-8 py-3.5 backdrop-blur-xl tab:px-4 mob:py-2.5">
-            <Link href="/" aria-label="Punn Digital" className="hidden flex-none tab:block">
+            <Link href="/" aria-label="Ekado WorkSuite" className="hidden flex-none tab:block">
               <Logo className="h-6 w-auto" />
             </Link>
             <HotelSwitcher hotels={hotels} current={hotel} onPick={setHotelId} />

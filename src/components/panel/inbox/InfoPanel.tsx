@@ -44,7 +44,7 @@ export function InfoPanel({
   const nights = booking ? Math.max(1, Math.round((new Date(booking.checkOut).getTime() - new Date(booking.checkIn).getTime()) / 86400000)) : 0;
   const closed = conv.status === "closed";
   return (
-    <div className="punn-panel flex min-h-0 flex-col overflow-y-auto rounded-(--r-x) p-5">
+    <div className="ekado-panel flex min-h-0 flex-col overflow-y-auto rounded-(--r-x) p-5">
       {onDismiss && (
         <button type="button" onClick={onDismiss} aria-label={t.closeInfo} className="mb-2 ml-auto flex h-9 w-9 items-center justify-center rounded-full bg-era-secondary text-era-black">
           <X size={17} />

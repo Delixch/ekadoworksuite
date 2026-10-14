@@ -12,7 +12,7 @@ export function Cta() {
     <section id="demo" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
         <Reveal variant="scale">
-          <div className="punn-feature relative overflow-hidden rounded-(--r-mx) px-8 py-16 text-center text-era-on-dark mob:px-5 mob:py-12">
+          <div className="ekado-feature relative overflow-hidden rounded-(--r-mx) px-8 py-16 text-center text-era-on-dark mob:px-5 mob:py-12">
             {/* süzülen dekor halkalar */}
             <span aria-hidden className="era-float pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full border border-era-on-dark/15" />
             <span aria-hidden className="era-float pointer-events-none absolute -right-20 -bottom-28 h-80 w-80 rounded-full border border-era-on-dark/15 [animation-delay:-3s]" />

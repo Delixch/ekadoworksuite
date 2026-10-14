@@ -119,7 +119,7 @@ export function Thread({
   };
 
   return (
-    <div className="punn-panel flex min-h-0 flex-col rounded-(--r-x)">
+    <div className="ekado-panel flex min-h-0 flex-col rounded-(--r-x)">
       {/* başlık */}
       <div className="flex items-center gap-3 border-b border-era-line px-4 py-3">
         <button

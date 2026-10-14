@@ -129,7 +129,7 @@ export function SupportPage() {
                 <Reveal key={r.when} variant="up" delay={i * 130} className="h-full">
                   <div className="flex h-full flex-col gap-5">
                     <span className="relative z-[1] flex h-[54px] w-fit items-center rounded-full bg-era-primary px-6 text-[16px] font-bold text-era-on-dark shadow-[0_10px_28px_var(--c-shadow)]">{r.when}</span>
-                    <div className="punn-panel flex h-full flex-col gap-4 rounded-(--r-x) p-7">
+                    <div className="ekado-panel flex h-full flex-col gap-4 rounded-(--r-x) p-7">
                       <h3 className="text-[22px] leading-tight font-semibold text-era-black">{r.title}</h3>
                       <ul className="flex flex-col gap-3">
                         {r.items.map((it) => (

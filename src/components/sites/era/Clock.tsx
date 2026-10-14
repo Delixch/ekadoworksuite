@@ -138,11 +138,11 @@ export function ClockRow({ className = "" }: { className?: string }) {
         const p = now ? parts(now, z.tz) : null;
         return (
           <div key={z.tz} role="timer" aria-label={`${z.name[locale]} ${p ? `${two(p.h)}:${two(p.m)}` : ""}`} className="flex items-center gap-3">
-            <div className="relative flex h-[132px] w-[132px] flex-none items-center justify-center">
+            <div className="relative flex h-[112px] w-[112px] flex-none items-center justify-center">
               <RingText className="absolute inset-0 h-full w-full text-era-gray" />
-              <div className="relative flex h-[76px] w-[76px] items-center justify-center rounded-full bg-era-white shadow-[0_10px_26px_var(--c-shadow)] ring-1 ring-era-lightgray">
+              <div className="relative flex h-[66px] w-[66px] items-center justify-center rounded-full bg-era-white shadow-[0_10px_26px_var(--c-shadow)] ring-1 ring-era-lightgray">
                 <span aria-hidden className="era-ring absolute inset-0 rounded-full bg-era-primary/15" style={{ animationDelay: `${i * 1.2}s` }} />
-                <Face now={now} tz={z.tz} className="relative h-[64px] w-[64px]" ink="var(--c-ink)" line="var(--c-line-strong)" tickStrong={0.85} tickSoft={0.4} />
+                <Face now={now} tz={z.tz} className="relative h-[55px] w-[55px]" ink="var(--c-ink)" line="var(--c-line-strong)" tickStrong={0.85} tickSoft={0.4} />
               </div>
             </div>
           </div>

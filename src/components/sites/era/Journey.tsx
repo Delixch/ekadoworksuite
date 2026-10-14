@@ -44,7 +44,7 @@ export function Journey() {
                       <Icon size={20} strokeWidth={1.9} />
                     </span>
                     <Reveal variant="up" delay={i * 150} className="h-full">
-                      <Spot className="punn-panel flex h-full flex-col gap-4 rounded-(--r-x) px-7 py-7 mob:px-5">
+                      <Spot className="ekado-panel flex h-full flex-col gap-4 rounded-(--r-x) px-7 py-7 mob:px-5">
                         <span className="w-fit rounded-full bg-era-secondary px-3 py-1 text-[13px] font-semibold text-era-primary-ink">
                           {s.when}
                         </span>

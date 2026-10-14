@@ -58,7 +58,7 @@ function KpiCard({ icon: Icon, label, value, display, kpi, goodWhenDown, feature
   const { locale } = useLocale();
   return (
     <section
-      className={`${featured ? "punn-feature text-era-on-dark" : "punn-panel text-era-black"} punn-spot relative flex flex-col gap-3 overflow-hidden rounded-(--r-x) p-5 mob:p-4 [animation:era-pop-in_.6s_both]`}
+      className={`${featured ? "ekado-feature text-era-on-dark" : "ekado-panel text-era-black"} ekado-spot relative flex flex-col gap-3 overflow-hidden rounded-(--r-x) p-5 mob:p-4 [animation:era-pop-in_.6s_both]`}
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="flex items-center justify-between gap-2">

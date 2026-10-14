@@ -199,7 +199,7 @@ export function Inbox() {
             locale={locale}
           />
         ) : (
-          <div className="punn-panel flex flex-1 flex-col items-center justify-center gap-3 rounded-(--r-x) p-8 text-center">
+          <div className="ekado-panel flex flex-1 flex-col items-center justify-center gap-3 rounded-(--r-x) p-8 text-center">
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-era-coolblue text-era-primary-ink">
               <MessagesSquare size={28} />
             </span>

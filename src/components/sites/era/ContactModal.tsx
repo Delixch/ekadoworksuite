@@ -87,14 +87,14 @@ export function ContactModal() {
         show(Number.isInteger(n) && (a as HTMLElement).dataset.topic !== undefined ? n : undefined);
       }
     };
-    // sohbet robotu gibi kodla açanlar için: window.dispatchEvent(new CustomEvent("punn:contact"))
+    // sohbet robotu gibi kodla açanlar için: window.dispatchEvent(new CustomEvent("ekado:contact"))
     const onEvent = () => show();
     document.addEventListener("click", onClick, true);
-    window.addEventListener("punn:contact", onEvent);
+    window.addEventListener("ekado:contact", onEvent);
     window.addEventListener("ekado:demo", showDemo);
     return () => {
       document.removeEventListener("click", onClick, true);
-      window.removeEventListener("punn:contact", onEvent);
+      window.removeEventListener("ekado:contact", onEvent);
       window.removeEventListener("ekado:demo", showDemo);
     };
   }, []);

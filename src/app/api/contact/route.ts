@@ -4,7 +4,7 @@ import { company } from "@/lib/company";
  * İletişim formunun sunucu tarafı. Anahtar tarayıcıya hiç gitmez. E-posta Resend ile gönderilir.
  * Teslimde müşteri Vercel > Settings > Environment Variables içine kendisi yazar:
  *   RESEND_API_KEY = re_...
- *   CONTACT_FROM   = Punn Digital <noreply@alanadi.com>   (Resend'de doğrulanmış alan adı)
+ *   CONTACT_FROM   = Ekado WorkSuite <noreply@alanadi.com>   (Resend'de doğrulanmış alan adı)
  *   CONTACT_TO     = mesajların gideceği adres            (yoksa src/lib/company.ts içindeki e-posta)
  * Ayar yoksa 503 "no_config" döner; form bunu kullanıcının e-posta uygulamasını açarak karşılar.
  */

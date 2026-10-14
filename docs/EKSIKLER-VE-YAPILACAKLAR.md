@@ -1,7 +1,7 @@
-# Punn Digital sitesi: eksikler ve yapılacaklar
+# Ekado WorkSuite sitesi: eksikler ve yapılacaklar
 
 Son güncelleme: 2026-10-12 (son push: `dada5c9`, her şey GitHub'da). Bu dosya projede **ne var, ne eksik, kimin neyi bağlayacağı** sorularına tek yerden cevap verir.
-Kod: `D:\repos\Zafer` (Next.js 16, Tailwind v4). Çalıştırma: `npm run dev` → http://localhost:3000
+Kod: `D:/repos/ekadoworksuite` (Next.js 16, Tailwind v4). Çalıştırma: `npm run dev` → http://localhost:3000
 
 ---
 
@@ -85,10 +85,10 @@ Menü: **Çözümlerimiz** (Dijital Resepsiyon, Yapay Zekâ Telefon Asistanı, P
 
 ## 4. Ana sayfada kapatılan (yorum satırı) Era şablonu bölümleri
 
-`src/app/page.tsx` içinde yorum satırı: **Marquee** ("Trusted By" kayan yazı), **About** (sayaçlar), **Voice** (kod editörü görseli, İngilizce metinler), **Testimonials** (referanslar). Dosyaları duruyor, tek satırla açılır. Açmadan önce Punn içeriğiyle doldurulmalı:
+`src/app/page.tsx` içinde yorum satırı: **Marquee** ("Trusted By" kayan yazı), **About** (sayaçlar), **Voice** (kod editörü görseli, İngilizce metinler), **Testimonials** (referanslar). Dosyaları duruyor, tek satırla açılır. Açmadan önce Ekado içeriğiyle doldurulmalı:
 - Marquee: gerçek müşteri/ortak logoları ya da kanal/dil/özellik kelimeleri
 - About: gerçek rakamlar (uydurma sayı kullanma)
-- Voice: Punn'a özel içerik ya da kalıcı kaldırma
+- Voice: Ekado'ya özel içerik ya da kalıcı kaldırma
 - Testimonials: **gerçek** müşteri yorumu (isim, otel, izin)
 
 `public/sites/era/` altında ~83 Era görseli var, çoğu artık kullanılmıyor; temizlenebilir.
@@ -113,8 +113,8 @@ Menü: **Çözümlerimiz** (Dijital Resepsiyon, Yapay Zekâ Telefon Asistanı, P
 - **Videodaki yazılar Türkçe** (altyazı, kart başlıkları, telefon mesajı). EN/DE izleyici Türkçe yazı görür; karar: böyle kalsın, ya da 3 sessiz video + 3 ses.
 - **Resimlerdeki İngilizce yazılar** ("5-in-1 Access Options", "Fingerprint", "Anti-Peeping Passcode") olduğu gibi duruyor.
 - Müzik, konuşma sırasında **Türkçe konuşma aralıklarında** kısılıyor; EN/DE'de tam üst üste gelmeyebilir.
-- Sesleri **kulakla dinleyip onaylayan kimse yok**; İngilizce ve Almanca okunuşlar (özellikle "Punn Digital", "TTLock") kontrol edilmeli.
-- Üretim: `D:\repos\VideoEditMaster\projects\punn-akilli-kapi\` (`render.bat` videoyu, `work/make_vo_lang.py` ve `work/make_bed.py` sesleri üretir).
+- Sesleri **kulakla dinleyip onaylayan kimse yok**; İngilizce ve Almanca okunuşlar (özellikle "Ekado WorkSuite", "TTLock") kontrol edilmeli.
+- Üretim: `D:\repos\VideoEditMaster\projects\ekado-akilli-kapi\` (`render.bat` videoyu, `work/make_vo_lang.py` ve `work/make_bed.py` sesleri üretir).
 
 ---
 
@@ -125,7 +125,7 @@ Menü: **Çözümlerimiz** (Dijital Resepsiyon, Yapay Zekâ Telefon Asistanı, P
 3. Videoda ve resimde **QLEUNG, Tuya, TTLock** isim/logolarının gösterilmesine izin var mı? (Şu an Tuya ve TTLock logoları galeri resminde görünüyor.)
 4. Hero'daki kanal ikonlarında **Messenger mı, Facebook mu**?
 5. PDF'teki iki QR kod (Nani Butik Otel, Hotel Kernhof Zürich): canvaqr.com bağlantıları açılıp demo adreslerine bağlanacak mı?
-6. `zafer testler.txt` içindeki `elektraweb.com` ne için (PMS örneği mi)?
+6. `testler.txt` içindeki `elektraweb.com` ne için (PMS örneği mi)?
 7. Gerçek müşteri logoları ve yorumları ne zaman gelecek?
 8. Tedarikçi resimlerinin (kilit fotoğrafları) sitede kullanım izni var mı?
 9. İlk açılışta tema: şu an cihaz ayarına uyuyor (koyu telefon = koyu site). Hep açık mı başlasın?

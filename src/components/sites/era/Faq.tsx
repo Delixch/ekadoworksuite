@@ -23,7 +23,7 @@ export function Faq() {
               <Heading>{f.heading}</Heading>
             </div>
             <Reveal variant="up" className="w-full max-w-[420px]">
-              <div className="punn-panel flex flex-col gap-3 rounded-(--r-x) p-6 text-left">
+              <div className="ekado-panel flex flex-col gap-3 rounded-(--r-x) p-6 text-left">
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line">
                   <MessageCircleQuestion size={21} strokeWidth={1.8} />
                 </span>

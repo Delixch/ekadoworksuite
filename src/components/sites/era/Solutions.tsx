@@ -93,7 +93,7 @@ export function Solutions() {
                 onPointerUp={(e) => { if (e.pointerType !== "mouse") showGlow(e.currentTarget, true); }}
               >
               <Reveal variant="up" delay={i * 110} className="h-full">
-                <Spot className="punn-dark-card flex h-full scroll-mt-28 flex-col gap-5 rounded-(--r-x) p-6">
+                <Spot className="ekado-dark-card flex h-full scroll-mt-28 flex-col gap-5 rounded-(--r-x) p-6">
                   <span id={ids[i]} className="-mt-24 block h-0 pt-24" aria-hidden />
                   <div className="relative z-[1] flex h-[96px] items-center justify-center overflow-hidden rounded-(--r-s1) bg-era-dark/70 ring-1 ring-era-on-dark/10">
                     {visuals[i]}

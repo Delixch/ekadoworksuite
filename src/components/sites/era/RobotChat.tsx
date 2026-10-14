@@ -150,7 +150,7 @@ export function RobotChat({ onClose }: { onClose: () => void }) {
                 type="button"
                 onClick={() => {
                   onClose();
-                  window.dispatchEvent(new CustomEvent("punn:contact"));
+                  window.dispatchEvent(new CustomEvent("ekado:contact"));
                 }}
                 className="w-fit rounded-full bg-era-primary px-4 py-1.5 text-[13.5px] font-semibold text-era-on-btn transition hover:brightness-110 active:scale-95"
               >

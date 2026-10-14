@@ -93,7 +93,7 @@ export function Offices() {
         <div className={`mx-auto grid gap-4 tab:grid-cols-1 ${chips.length === 1 ? "max-w-[540px] grid-cols-1" : "grid-cols-3"}`}>
           {chips.map((c, i) => (
             <Reveal key={c.label} variant="up" delay={i * 90}>
-              <a href={c.href} className="punn-panel group/c flex h-full items-center gap-4 rounded-(--r-x) px-5 py-4 no-underline">
+              <a href={c.href} className="ekado-panel group/c flex h-full items-center gap-4 rounded-(--r-x) px-5 py-4 no-underline">
                 <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-era-secondary text-era-primary-ink transition-transform duration-500 group-hover/c:scale-110">
                   <c.Icon size={20} strokeWidth={1.8} />
                 </span>
@@ -109,7 +109,7 @@ export function Offices() {
         <div className={`mx-auto mt-4 grid gap-4 tab:grid-cols-1 ${offices.length === 1 ? "max-w-[540px] grid-cols-1" : "grid-cols-2"}`}>
           {offices.map((off, i) => (
             <Reveal key={off.id} variant="up" delay={i * 120}>
-              <article className="punn-panel flex h-full flex-col overflow-hidden rounded-(--r-x)">
+              <article className="ekado-panel flex h-full flex-col overflow-hidden rounded-(--r-x)">
                 <div className="flex flex-col gap-4 p-6 mob:p-5">
                   <div className="flex items-start justify-between gap-3">
                     <span className="flex h-11 w-11 items-center justify-center rounded-full bg-era-secondary text-era-primary-ink">

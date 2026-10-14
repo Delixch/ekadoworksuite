@@ -55,7 +55,7 @@ export function ConversationList({
   }, [items, filter, query]);
 
   return (
-    <div className="punn-panel flex min-h-0 flex-col rounded-(--r-x)">
+    <div className="ekado-panel flex min-h-0 flex-col rounded-(--r-x)">
       <div className="flex flex-col gap-3 border-b border-era-line p-4">
         <div className="relative">
           <Search size={16} className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-era-matte" />

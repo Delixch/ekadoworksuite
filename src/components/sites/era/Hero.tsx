@@ -9,7 +9,7 @@ const delay = (s: number) => ({ animationDelay: `${s}s` });
 export function Hero() {
   const { t } = useLocale();
   return (
-    <section className="punn-hero-bg relative overflow-hidden pt-[128px] pb-[72px] tab:pt-[104px] tab:pb-12">
+    <section className="ekado-hero-bg relative overflow-hidden pt-[128px] pb-[72px] tab:pt-[104px] tab:pb-12">
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-12 min-[992px]:grid-cols-[minmax(0,1.02fr)_minmax(0,.98fr)] min-[992px]:gap-8">
           <div className="flex min-w-0 flex-col gap-7">

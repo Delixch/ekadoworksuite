@@ -255,7 +255,7 @@ export function TestPage() {
 
           <div className="grid grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-start gap-6 tab:grid-cols-1">
             {/* sol: form -> hazırlanıyor -> sohbet / sonuç */}
-            <Spot className="punn-panel rounded-(--r-x) p-8 mob:p-5">
+            <Spot className="ekado-panel rounded-(--r-x) p-8 mob:p-5">
               {phase === "form" && (
                 <form onSubmit={submit} noValidate className="flex flex-col gap-5 [animation:era-pop-in_.5s_both]">
                   <div>
@@ -293,7 +293,7 @@ export function TestPage() {
 
             {/* sağ: nasıl test etmek istersiniz + bilgi kartı */}
             <div className="flex flex-col gap-5">
-              <Spot className="punn-panel flex flex-col gap-4 rounded-(--r-x) p-7 mob:p-5">
+              <Spot className="ekado-panel flex flex-col gap-4 rounded-(--r-x) p-7 mob:p-5">
                 <h2 className="text-[26px] leading-tight font-extrabold tracking-tight text-era-black">{t.how.title}</h2>
                 <Option icon={MessageCircle} title={t.how.chat} onClick={() => setMode(mode === "chat" ? null : "chat")} disabled={!ready} active={mode === "chat"} tip={t.how.locked} delay={0} />
                 <Option icon={Phone} title={t.how.call} onClick={() => setMode(mode === "call" ? null : "call")} disabled={!ready} active={mode === "call"} tip={t.how.locked} delay={90} />
@@ -351,7 +351,7 @@ export function TestPage() {
                 </div>
               </Spot>
 
-              <Spot className="punn-feature punn-spot relative overflow-hidden rounded-(--r-x) p-7 text-era-on-dark mob:p-5">
+              <Spot className="ekado-feature ekado-spot relative overflow-hidden rounded-(--r-x) p-7 text-era-on-dark mob:p-5">
                 <span aria-hidden className="era-aurora pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-era-on-dark/20 blur-[60px]" />
                 <div className="mb-3 flex items-center gap-3">
                   <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-era-on-dark text-era-primary-ink">
