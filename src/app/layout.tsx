@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { tr } from "@/i18n/tr";
 import { siteUrl } from "@/lib/site";
 import { appFont } from "@/styles/fonts";
@@ -45,6 +46,8 @@ export default function RootLayout({
         <CookieNotice />
         <ContactModal />
         <VideoModal />
+        {/* Vercel Web Analytics: çerezsiz ziyaret sayımı (çerez şeridindeki "takip çerezi yok" hâlâ doğru) */}
+        <Analytics />
       </body>
     </html>
   );
