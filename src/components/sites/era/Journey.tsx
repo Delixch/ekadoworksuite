@@ -7,7 +7,7 @@ import { BrushStroke, Heading, Reveal } from "./ui";
 
 const stageIcons = [CalendarCheck, Sun, Star];
 
-/** Misafir yolculuğu (PDF sayfa 3) + kurulum adımları (eski site) */
+/** Bir işletme günü (PDF sayfa 3). Kurulum adımları Destek sayfasında (SetupSteps, Adnan 2026-10-15: tekrar etmesin) */
 export function Journey() {
   const { t } = useLocale();
   const j = t.journey;
@@ -48,7 +48,7 @@ export function Journey() {
                         <span className="w-fit rounded-full bg-era-secondary px-3 py-1 text-[13px] font-semibold text-era-primary-ink">
                           {s.when}
                         </span>
-                        <h3 className="text-[24px] leading-[1.15] font-extrabold tracking-[-0.02em] text-era-black">{s.title}</h3>
+                        <h3 className="text-[24px] leading-[1.15] font-semibold tracking-[-0.02em] text-era-black">{s.title}</h3>
                         <ul className="flex flex-col gap-3">
                           {s.items.map((it) => (
                             <li key={it} className="flex gap-3 text-[15px] leading-[1.5] text-era-gray">
@@ -72,33 +72,44 @@ export function Journey() {
               {j.tagline}
             </p>
           </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-          {/* kurulum: sıra gerçek, numaralar bu yüzden var */}
-          <div id="kurulum" className="mx-auto flex w-full max-w-[1100px] scroll-mt-28 flex-col gap-8">
-            <div className="flex flex-col items-center gap-3 text-center">
-              <span className="text-[13px] font-semibold tracking-[0.14em] text-era-gray uppercase">{j.setupEyebrow}</span>
-              <Heading as="h3" className="!text-(length:--h4)">
-                {j.setupTitle}
-              </Heading>
-              <p className="max-w-[640px] text-era-gray">{j.setupLead}</p>
-            </div>
-            <ol className="grid grid-cols-3 gap-8 tab:grid-cols-1 tab:gap-6">
-              {j.steps.map((st, i) => (
-                <li key={st.title} className="relative">
-                  <BrushStroke tall flip={i % 2 === 1} />
-                  <Reveal variant="up" delay={i * 130} className="flex gap-4">
-                    <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-era-secondary text-[20px] font-extrabold text-era-primary-ink ring-1 ring-era-line">
-                      {i + 1}
-                    </span>
-                    <div>
-                      <h4 className="text-[18px] leading-snug font-bold text-era-black">{st.title}</h4>
-                      <p className="mt-1 text-[15px] leading-[1.55] text-era-gray">{st.text}</p>
-                    </div>
-                  </Reveal>
-                </li>
-              ))}
-            </ol>
+/** Kurulum adımları (eski site): Destek sayfasında yol haritasının başında */
+export function SetupSteps() {
+  const { t } = useLocale();
+  const j = t.journey;
+  return (
+    <section className="relative py-[70px] tab:py-[50px] mob:py-10">
+      <div className="mx-auto w-full max-w-[1470px] px-[15px]">
+        {/* kurulum: sıra gerçek, numaralar bu yüzden var */}
+        <div id="kurulum" className="mx-auto flex w-full max-w-[1100px] scroll-mt-28 flex-col gap-8">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <span className="text-[13px] font-semibold tracking-[0.14em] text-era-gray uppercase">{j.setupEyebrow}</span>
+            <Heading as="h3" className="!text-(length:--h4)">
+              {j.setupTitle}
+            </Heading>
+            <p className="max-w-[640px] text-era-gray">{j.setupLead}</p>
           </div>
+          <ol className="grid grid-cols-3 gap-8 tab:grid-cols-1 tab:gap-6">
+            {j.steps.map((st, i) => (
+              <li key={st.title} className="relative">
+                <BrushStroke tall flip={i % 2 === 1} />
+                <Reveal variant="up" delay={i * 130} className="flex gap-4">
+                  <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-era-secondary text-[20px] font-semibold text-era-primary-ink ring-1 ring-era-line">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h4 className="text-[18px] leading-snug font-medium text-era-black">{st.title}</h4>
+                    <p className="mt-1 text-[15px] leading-[1.55] text-era-gray">{st.text}</p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

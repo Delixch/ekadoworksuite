@@ -86,7 +86,7 @@ const tr: BetriebText = {
   chatBot: "Ekado",
   next: "Sonraki bölüm",
   ctaHeading: "Kendi işletmenizde görün",
-  ctaText: "Kısa bir demoda bu bölümleri sizin işinize göre ayarlayıp gösterelim.",
+  ctaText: "Kısa bir görüşmede bu bölümleri sizin işinize göre ayarlayıp gösterelim.",
   ctaButton: "İletişime Geç",
   qa: {
     "eyebrow": "Modül · Genel Bakış ve İşletme",
@@ -380,7 +380,7 @@ const de: BetriebText = {
   chatBot: "Ekado",
   next: "Nächste Folge",
   ctaHeading: "Sehen Sie es in Ihrem Betrieb",
-  ctaText: "In einer kurzen Demo richten wir diese Bereiche nach Ihrem Betrieb ein und zeigen sie Ihnen.",
+  ctaText: "In einem kurzen Gespräch richten wir diese Bereiche nach Ihrem Betrieb ein und zeigen sie Ihnen.",
   ctaButton: "Kontakt aufnehmen",
   qa: {
     "eyebrow": "Modul · Übersicht & Betrieb",
@@ -674,7 +674,7 @@ const en: BetriebText = {
   chatBot: "Ekado",
   next: "Next episode",
   ctaHeading: "See it in your business",
-  ctaText: "In a short demo we set these areas up for your business and show them to you.",
+  ctaText: "In a short call we set these areas up for your business and show them to you.",
   ctaButton: "Get in touch",
   qa: {
     "eyebrow": "Module · Overview & Operations",

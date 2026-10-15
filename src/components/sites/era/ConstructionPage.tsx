@@ -113,12 +113,12 @@ export function ConstructionPage({ kind }: { kind: SoonKind }) {
       <Navbar />
       <main className="relative bg-[radial-gradient(60%_40%_at_50%_0%,var(--c-sky),transparent)] pt-[130px] pb-24 tab:pt-[110px] mob:pb-14">
         <div className="mx-auto flex w-full max-w-[760px] flex-col items-center gap-6 px-[15px] text-center">
-          <span className="flex items-center gap-3 rounded-full bg-era-white px-4 py-1.5 text-[13px] font-bold tracking-[0.12em] text-era-black uppercase ring-1 ring-era-line">
+          <span className="flex items-center gap-3 rounded-full bg-era-white px-4 py-1.5 text-[13px] font-medium tracking-[0.12em] text-era-black uppercase ring-1 ring-era-line">
             <i aria-hidden className="era-cons-tape block h-3 w-10 rounded-sm" />
             {s.badge}
             <i aria-hidden className="era-cons-tape block h-3 w-10 rounded-sm" />
           </span>
-          <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-tight text-era-black mob:text-[36px]">{title}</h1>
+          <h1 className="text-[52px] leading-[1.05] font-semibold tracking-tight text-era-black mob:text-[36px]">{title}</h1>
           <p className="max-w-[520px] text-[18px] leading-[1.55] text-era-gray">{s.lines[kind]}</p>
 
           <div className="relative w-full max-w-[560px] overflow-hidden rounded-[28px] bg-era-secondary p-4 ring-1 ring-era-line">

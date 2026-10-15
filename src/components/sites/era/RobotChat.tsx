@@ -103,7 +103,7 @@ export function RobotChat({ onClose }: { onClose: () => void }) {
           <i className="ml-1.5 block h-2 w-2 rounded-full bg-white" />
         </span>
         <div className="min-w-0 flex-1 leading-tight">
-          <p className="text-[15px] font-bold">{c.title}</p>
+          <p className="text-[15px] font-medium">{c.title}</p>
           <p className="flex items-center gap-1.5 text-[12px] opacity-80">
             <i className="era-robot-led-a block h-1.5 w-1.5 rounded-full bg-era-success" />{" "}
             {c.status}

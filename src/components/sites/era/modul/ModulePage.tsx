@@ -321,7 +321,7 @@ export function ModulePage({ id }: { id: ModuleId }) {
           <div className="mx-auto flex w-full max-w-[1270px] flex-col items-start gap-5 rounded-(--r-mx) bg-era-primary p-12 text-era-on-dark mob:mx-[15px] mob:w-auto mob:p-7">
             <h2 className="text-[clamp(1.8rem,3.4vw,2.8rem)] leading-tight font-semibold tracking-[-0.02em]">{c.ctaHeading}</h2>
             <p className="max-w-[620px] text-[18px] leading-[1.6] opacity-85">{c.ctaText}</p>
-            <Link href="/#demo" className="flex h-12 items-center gap-2 rounded-(--r-s1) bg-era-white px-6 text-[17px] font-semibold text-era-black no-underline transition hover:-translate-y-0.5">
+            <Link href="/#bize-ulasin" className="flex h-12 items-center gap-2 rounded-(--r-s1) bg-era-white px-6 text-[17px] font-semibold text-era-black no-underline transition hover:-translate-y-0.5">
               {c.ctaButton} <ArrowRight size={18} />
             </Link>
           </div>

@@ -8,7 +8,7 @@ import { legal } from "@/i18n/legal";
 
 const KEY = "cookie-notice";
 
-/** Takip çerezi yok; yalnızca dil/tema tercihinin cihazda saklandığını bildiren küçük şerit. Bir kez onaylanınca bir daha çıkmaz. */
+/** Takip çerezi yok; yalnızca dil/tema tercihinin cihazda saklandığını bildiren alt şerit. Bir kez onaylanınca bir daha çıkmaz. */
 export function CookieNotice() {
   const { locale } = useLocale();
   const path = usePathname();
@@ -29,14 +29,20 @@ export function CookieNotice() {
   if (!show || path.startsWith("/panel")) return null;
   const c = legal[locale].cookie;
 
+  // İsviçre sitelerindeki gibi: ekranın altında boydan boya sade şerit (telefonda tam genişlik), kalın yazı yok (Adnan 2026-10-15)
   return (
     <div
       role="region"
       aria-label="Cookies"
-      className="era-pop-in fixed bottom-4 left-4 z-[90] flex max-w-[420px] flex-col gap-3 rounded-2xl bg-era-white p-4 shadow-[0_18px_44px_var(--c-shadow)] ring-1 ring-era-line mob:right-4 mob:bottom-3 mob:left-4 mob:max-w-none"
+      className="era-in-up fixed inset-x-0 bottom-0 z-[90] border-t border-era-line bg-era-white/95 shadow-[0_-12px_32px_var(--c-shadow-soft)] backdrop-blur-md"
     >
-      <p className="text-[14px] leading-[1.5] text-era-black">{c.text}</p>
-      <div className="flex items-center gap-3">
+      <div className="mx-auto flex w-full max-w-[1300px] items-center gap-6 px-6 py-4 mob:flex-col mob:items-stretch mob:gap-3 mob:px-4 mob:pt-4 mob:pb-[max(16px,env(safe-area-inset-bottom))]">
+        <p className="flex-1 text-[14px] leading-[1.55] font-normal text-era-gray">
+          {c.text}{" "}
+          <Link href="/datenschutz" className="whitespace-nowrap text-era-black underline decoration-era-line underline-offset-4 hover:decoration-era-black">
+            {c.more}
+          </Link>
+        </p>
         <button
           type="button"
           onClick={() => {
@@ -45,13 +51,10 @@ export function CookieNotice() {
             } catch {}
             setShow(false);
           }}
-          className="rounded-[8px] bg-era-primary px-5 py-2 text-[14px] font-semibold text-era-on-btn transition hover:brightness-110 active:scale-95"
+          className="flex-none rounded-[8px] bg-era-btn px-6 py-2.5 text-[14px] font-medium text-era-on-btn transition hover:brightness-110 active:scale-[.98] mob:w-full mob:py-3"
         >
           {c.ok}
         </button>
-        <Link href="/datenschutz" className="text-[14px] font-semibold text-era-primary no-underline hover:underline">
-          {c.more}
-        </Link>
       </div>
     </div>
   );

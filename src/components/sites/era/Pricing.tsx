@@ -125,19 +125,19 @@ export function Pricing() {
                     {featured && (
                       <div className="absolute inset-x-8 -top-[11px] z-[2] flex h-[22px] items-center">
                         <span className="h-px flex-1 bg-gradient-to-r from-transparent to-era-accent" />
-                        <span className="bg-[var(--c-page)] px-3 text-[12px] leading-[22px] font-bold tracking-[0.12em] whitespace-nowrap text-era-primary-ink uppercase">{p.popular}</span>
+                        <span className="bg-[var(--c-page)] px-3 text-[12px] leading-[22px] font-medium tracking-[0.12em] whitespace-nowrap text-era-primary-ink uppercase">{p.popular}</span>
                         <span className="h-px flex-1 bg-gradient-to-l from-transparent to-era-accent" />
                       </div>
                     )}
 
                     <div className="relative z-[1] flex flex-col gap-1.5">
-                      <h3 className="text-[26px] leading-tight font-extrabold tracking-[-0.02em]">{plan.name}</h3>
+                      <h3 className="text-[26px] leading-tight font-semibold tracking-[-0.02em]">{plan.name}</h3>
                       <p className={`text-[15px] ${featured ? "text-era-on-dark/75" : "text-era-gray"}`}>{plan.sub}</p>
                     </div>
 
                     <div className="relative z-[1] flex flex-col gap-2">
                       <div className="flex items-end gap-2">
-                        <span className="text-[54px] leading-none font-extrabold tracking-[-0.03em] tabular-nums">
+                        <span className="text-[54px] leading-none font-semibold tracking-[-0.03em] tabular-nums">
                           <Money value={yearly ? pr.y : pr.m} locale={locale} />
                         </span>
                         <span className={`pb-1.5 text-[16px] ${featured ? "text-era-on-dark/75" : "text-era-gray"}`}>

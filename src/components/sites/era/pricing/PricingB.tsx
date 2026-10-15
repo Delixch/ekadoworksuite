@@ -70,7 +70,7 @@ export function PricingB() {
             <div className="flex flex-col gap-8">
               {/* sektör */}
               <div className="flex flex-wrap items-center gap-2">
-                <span className="mr-1 text-[12px] font-bold tracking-[0.12em] text-era-gray uppercase">{lb.packLabel}</span>
+                <span className="mr-1 text-[12px] font-medium tracking-[0.12em] text-era-gray uppercase">{lb.packLabel}</span>
                 {packOrder.map((k) => (
                   <button key={k} type="button" onClick={() => choose(k)} className={`rounded-[8px] px-3.5 py-1.5 text-[14px] font-semibold transition ${pack === k ? "bg-era-primary text-era-on-dark" : "bg-era-secondary text-era-black hover:bg-era-coolblue"}`}>
                     {lb.packs[k]}
@@ -103,7 +103,7 @@ export function PricingB() {
 
               {/* bölümler */}
               <div className="flex flex-col gap-3">
-                <span className="text-[13px] font-bold tracking-[0.12em] text-era-gray uppercase">{p.modsLabel}</span>
+                <span className="text-[13px] font-medium tracking-[0.12em] text-era-gray uppercase">{p.modsLabel}</span>
                 <GlowGrid as="ul" className="grid grid-cols-2 gap-3 mob:grid-cols-1" pad={6} radius={24}>
                   {extraMods.map((m) => {
                     const Icon = modIcon[m];
@@ -147,7 +147,7 @@ export function PricingB() {
             {/* sağ: toplam (sabit) */}
             <aside className="sticky top-[100px] flex flex-col gap-5 rounded-(--r-mx) bg-era-primary p-8 text-era-on-dark shadow-[0_26px_60px_var(--c-shadow)] tab:static">
               <PeriodToggle yearly={yearly} setYearly={setYearly} />
-              <span className="text-[14px] font-bold tracking-[0.12em] uppercase opacity-80">{p.totalLabel}</span>
+              <span className="text-[14px] font-medium tracking-[0.12em] uppercase opacity-80">{p.totalLabel}</span>
               <div className="flex items-baseline gap-2">
                 <span className="text-[16px] font-semibold opacity-80">CHF</span>
                 <span key={shown} className="era-in-up text-[clamp(3.4rem,5vw,4.6rem)] leading-none font-semibold tracking-[-0.03em] tabular-nums" style={{ animationDuration: ".35s" }}>
@@ -181,7 +181,7 @@ export function PricingB() {
                 )}
               </ul>
               <span className="text-[14px] opacity-85">{p.totalNote}</span>
-              <Link href="/#demo" className="flex h-12 items-center justify-center gap-2 rounded-(--r-s1) bg-era-white text-[16px] font-semibold text-era-black no-underline transition hover:-translate-y-0.5">
+              <Link href="/#hizli-demo" className="flex h-12 items-center justify-center gap-2 rounded-(--r-s1) bg-era-white text-[16px] font-semibold text-era-black no-underline transition hover:-translate-y-0.5">
                 {p.ctaTry} <ArrowRight size={16} />
               </Link>
             </aside>

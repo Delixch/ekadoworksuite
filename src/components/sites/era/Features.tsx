@@ -69,7 +69,7 @@ export function Features() {
                   <div className="relative h-full">
                   {/* Karteireiter: kartın üst kenarına oturan sekme */}
                   <h3
-                    className={`absolute bottom-full left-7 z-[2] -mb-px rounded-t-[16px] px-6 pt-3 pb-3.5 text-[19px] leading-none font-extrabold tracking-[-0.015em] mob:left-5 mob:px-5 mob:text-[17px] ${
+                    className={`absolute bottom-full left-7 z-[2] -mb-px rounded-t-[16px] px-6 pt-3 pb-3.5 text-[19px] leading-none font-semibold tracking-[-0.015em] mob:left-5 mob:px-5 mob:text-[17px] ${
                       featured
                         ? "bg-era-primary text-era-on-dark"
                         : "border-[1.5px] border-b-0 border-(--c-panel-border) bg-(--c-panel) text-era-black"

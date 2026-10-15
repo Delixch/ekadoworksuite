@@ -7,6 +7,7 @@ import { useLocale } from "@/i18n/useLocale";
 import { modular, type ShowBusiness } from "@/i18n/modular";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
+import { Features } from "./Features";
 import { ForWhom, ModuleGrid, useBuilder } from "./builder/ModuleBuilder";
 import { landing } from "@/i18n/landing";
 
@@ -274,6 +275,9 @@ export function ModularPage() {
             <ForWhom b={bld} compact onPick={() => document.getElementById("kur")?.scrollIntoView({ behavior: "smooth" })} />
           </div>
         </section>
+
+        {/* "Neler yapar?": ana sayfadan buraya taşındı (Adnan 2026-10-15: tekrar etmesin) */}
+        <Features />
 
         <section className="relative py-[70px] tab:py-[50px] mob:py-10">
           <div className="mx-auto flex w-full max-w-[1240px] flex-col items-start gap-5 px-[15px] text-left">

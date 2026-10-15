@@ -8,6 +8,8 @@ import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 import { Reveal } from "./ui";
 import { BeforeAfter } from "./BeforeAfter";
+import { Faq } from "./Faq";
+import { SetupSteps } from "./Journey";
 
 const CX = 200;
 const R = 118;
@@ -117,6 +119,9 @@ export function SupportPage() {
           </div>
         </section>
 
+        {/* Kurulum adımları: ana sayfadan buraya taşındı (Adnan 2026-10-15) */}
+        <SetupSteps />
+
         {/* Yol haritası */}
         <section className="relative py-[70px] tab:py-[50px] mob:py-10">
           <div className="mx-auto w-full max-w-[1200px] px-[15px]">
@@ -129,7 +134,7 @@ export function SupportPage() {
               {s.roadmap.map((r, i) => (
                 <Reveal key={r.when} variant="up" delay={i * 130} className="h-full">
                   <div className="flex h-full flex-col gap-5">
-                    <span className="relative z-[1] flex h-[54px] w-fit items-center rounded-full bg-era-primary px-6 text-[16px] font-bold text-era-on-dark shadow-[0_10px_28px_var(--c-shadow)]">{r.when}</span>
+                    <span className="relative z-[1] flex h-[54px] w-fit items-center rounded-full bg-era-primary px-6 text-[16px] font-medium text-era-on-dark shadow-[0_10px_28px_var(--c-shadow)]">{r.when}</span>
                     <div className="ekado-panel flex h-full flex-col gap-4 rounded-(--r-x) p-7">
                       <h3 className="text-[22px] leading-tight font-semibold text-era-black">{r.title}</h3>
                       <ul className="flex flex-col gap-3">
@@ -193,7 +198,7 @@ export function SupportPage() {
                 const on = step > i;
                 return (
                   <li key={f} className={`relative flex flex-col items-start gap-3 rounded-(--r-x) p-6 text-left ring-1 transition-all duration-500 ${on ? "bg-era-primary text-era-on-dark ring-era-primary shadow-[0_18px_44px_var(--c-shadow)]" : "bg-era-white text-era-black ring-era-lightgray"}`}>
-                    <span className={`flex h-9 w-9 items-center justify-center rounded-full text-[15px] font-bold transition-colors duration-500 ${on ? "bg-era-on-dark/20 text-era-on-dark" : "bg-era-secondary text-era-primary-ink"}`}>{i + 1}</span>
+                    <span className={`flex h-9 w-9 items-center justify-center rounded-full text-[15px] font-medium transition-colors duration-500 ${on ? "bg-era-on-dark/20 text-era-on-dark" : "bg-era-secondary text-era-primary-ink"}`}>{i + 1}</span>
                     <span className="text-[17px] leading-snug font-semibold">{f}</span>
                     {i < s.flowSteps.length - 1 && <ArrowRight aria-hidden size={20} className="absolute top-1/2 -right-[18px] z-[1] -translate-y-1/2 text-era-primary-ink tab:hidden" />}
                   </li>
@@ -231,9 +236,9 @@ export function SupportPage() {
                     </div>
                     <blockquote className="relative text-[clamp(1.15rem,1.6vw,1.4rem)] leading-[1.55] font-medium text-era-black">{v.quote}</blockquote>
                     <figcaption className="mt-auto flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-era-primary text-[16px] font-bold text-era-on-dark">{v.name[0]}</span>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-era-primary text-[16px] font-medium text-era-on-dark">{v.name[0]}</span>
                       <span className="flex flex-col leading-tight">
-                        <span className="text-[16px] font-bold text-era-black">{v.name}</span>
+                        <span className="text-[16px] font-medium text-era-black">{v.name}</span>
                         <span className="text-[14px] text-era-gray">{v.role}</span>
                       </span>
                     </figcaption>
@@ -243,6 +248,9 @@ export function SupportPage() {
             </div>
           </div>
         </section>
+
+        {/* Sık sorulan sorular: ana sayfadan buraya taşındı (Adnan 2026-10-15) */}
+        <Faq />
 
         {/* Çağrı */}
         <section className="relative py-[90px] tab:py-[60px] mob:py-12">

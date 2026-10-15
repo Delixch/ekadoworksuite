@@ -17,7 +17,7 @@ export function Marquee() {
             {t.marquee.map((label, i) => {
               const Icon = ICONS[i % ICONS.length];
               return (
-                <li key={label} className="flex flex-none items-center gap-3 text-[26px] font-bold tracking-tight whitespace-nowrap text-[#e4efff] mob:text-[20px]">
+                <li key={label} className="flex flex-none items-center gap-3 text-[26px] font-semibold tracking-tight whitespace-nowrap text-[#e4efff] mob:text-[20px]">
                   <Icon aria-hidden strokeWidth={1.9} className="h-[1em] w-[1em] flex-none text-[#bcd6ff]" />
                   {label}
                 </li>

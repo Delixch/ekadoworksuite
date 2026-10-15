@@ -24,7 +24,7 @@ export const tr = {
     send: "Gönder",
     error: "Şu an cevap veremedim, lütfen biraz sonra tekrar deneyin.",
     tooMany: "Çok hızlı yazıyorsunuz, biraz bekleyip tekrar deneyin.",
-    fallback: "Bunu tam anlayamadım. Modülleri, kurulumu, dilleri ya da demoyu sorabilirsiniz. Ayrıntı için İletişime Geç düğmesiyle bize ulaşın.",
+    fallback: "Bunu tam anlayamadım. Modülleri, kurulumu ya da dilleri sorabilirsiniz. Ayrıntı için menüdeki Bize Ulaşın ile bize yazın.",
     voiceOn: "Sesli okumayı kapat",
     voiceOff: "Sesli okumayı aç",
   },
@@ -265,10 +265,10 @@ export const tr = {
   ]
 },
     cta: {
-  "badge": "Canlı demo",
+  "badge": "Ücretsiz deneyin",
   "title": "Ekado WorkSuite'i bugün deneyin.",
-  "text": "Canlı demoyu açın, uygulamayı çalışan ve işletme sahibi olarak gezin. Sorularınız için bize yazın.",
-  "primary": "Demo erişimi iste",
+  "text": "Uygulamayı çalışan ve işletme sahibi gözüyle gezin. Sorularınız için bize yazın.",
+  "primary": "Hızlı Demo",
   "secondary": "Bize Ulaşın"
 },
     footer: {

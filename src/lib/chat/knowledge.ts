@@ -59,9 +59,9 @@ function entriesFor(lang: ChatLang): Entry[] {
   }
 
   const priceAnswer: Record<ChatLang, string> = {
-    tr: "Fiyat, seçtiğiniz modüllere ve işletmenize göre hazırlanır. İletişime Geç düğmesiyle bize yazın, size teklif hazırlayalım.",
-    en: "Pricing depends on the modules you choose and your business. Use the Get in Touch button and we will prepare a quote.",
-    de: "Der Preis richtet sich nach den gewählten Modulen und Ihrem Betrieb. Über den Button Kontakt aufnehmen erstellen wir Ihnen gern eine Offerte.",
+    tr: "Fiyat, seçtiğiniz modüllere ve işletmenize göre hazırlanır. Menüdeki Bize Ulaşın ile bize yazın, size teklif hazırlayalım.",
+    en: "Pricing depends on the modules you choose and your business. Write to us via Contact Us in the menu and we will prepare a quote.",
+    de: "Der Preis richtet sich nach den gewählten Modulen und Ihrem Betrieb. Schreiben Sie uns über Kontakt im Menü, wir erstellen Ihnen gern eine Offerte.",
   };
   add(a.pricing, priceAnswer[lang], a.pricing);
   add(`${t.hero.lines.join(" ")} ${t.hero.lead}`, `${t.hero.lines.join(" ")} ${t.hero.lead}`, `${a.channels} ${a.langs}`);

@@ -52,6 +52,8 @@ export type LandingText = {
     beforeLabel: string;
     afterLabel: string;
     before: [string, string][];
+    /** "Bugün / Ekado ile" sahnesindeki konu adları (before ile aynı sıra) */
+    beforeTopics: string[];
     stepsTitle: string;
     steps: Card[];
     faqTitle: string;
@@ -105,6 +107,7 @@ const tr: LandingText = {
     beforeTitle: "Bugün nasıl, Ekado ile nasıl",
     beforeLabel: "Bugün",
     afterLabel: "Ekado ile",
+    beforeTopics: ["Hijyen kayıtları", "Vardiya planı", "Saat ve maaş", "Faturalar"],
     before: [
       ["Soğutucu ölçümleri kâğıt listede, denetimde aranıyor.", "Telefonda ölçüm; ad ve saat sunucudan, aylık protokol tek tıkla PDF."],
       ["Vardiya planı WhatsApp’ta, değişiklik kayboluyor.", "Plan yayınlanır, herkes kendi vardiyasını görür, değişiklikte bildirim gider."],
@@ -205,6 +208,7 @@ const de: LandingText = {
     beforeTitle: "Wie es heute ist, wie es mit Ekado ist",
     beforeLabel: "Heute",
     afterLabel: "Mit Ekado",
+    beforeTopics: ["Hygiene-Protokolle", "Schichtplan", "Stunden und Lohn", "Rechnungen"],
     before: [
       ["Kühlmessungen auf Papier, bei der Kontrolle wird gesucht.", "Messung am Handy; Name und Zeit vom Server, Monatsprotokoll per Klick als PDF."],
       ["Schichtplan im WhatsApp, Änderungen gehen verloren.", "Der Plan wird veröffentlicht, alle sehen ihre Schichten, Änderungen werden gemeldet."],
@@ -305,6 +309,7 @@ const en: LandingText = {
     beforeTitle: "How it is today, how it is with Ekado",
     beforeLabel: "Today",
     afterLabel: "With Ekado",
+    beforeTopics: ["Hygiene logs", "Shift plan", "Hours and payroll", "Invoices"],
     before: [
       ["Fridge readings on paper, searched for at inspections.", "Readings on the phone; name and time from the server, monthly log as PDF in one click."],
       ["Shift plan on WhatsApp, changes get lost.", "The plan is published, everyone sees their shifts, changes are notified."],

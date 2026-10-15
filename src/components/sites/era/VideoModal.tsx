@@ -63,7 +63,7 @@ export function VideoModal() {
         className={`relative w-full max-w-[920px] rounded-[28px] bg-era-white/70 p-4 shadow-[0_30px_80px_var(--c-shadow)] ring-1 ring-white/50 backdrop-blur-2xl mob:max-w-none mob:rounded-b-none mob:p-3 ${leaving ? "era-contact-card-out" : "era-contact-card-in"}`}
       >
         <div className="flex items-center justify-between gap-3 px-2 pb-3">
-          <h2 className="text-[17px] font-bold text-era-black">{c.title}</h2>
+          <h2 className="text-[17px] font-medium text-era-black">{c.title}</h2>
           <button
             type="button"
             onClick={close}

@@ -25,12 +25,12 @@ export type BranchText = {
 
 const tr: BranchText = {
   title: "Hangi sektördensiniz?",
-  lead: "Seçerseniz demoyu ve programı sizin işinize göre hazırlarız.",
+  lead: "Seçerseniz programı sizin işinize göre hazırlarız.",
   selected: "Sektör",
   clear: "Seçimi kaldır",
   skip: "Seçmeden devam et",
   modTitle: "Hangi bölümlerle ilgileniyorsunuz?",
-  modLead: "Birden fazla seçebilirsiniz. Demoyu bunlara göre hazırlarız.",
+  modLead: "Birden fazla seçebilirsiniz. Size bunlara göre dönüş yaparız.",
   modSelected: "Bölümler",
   change: "Sektörü değiştir",
   areas: [
@@ -54,12 +54,12 @@ const tr: BranchText = {
 
 const de: BranchText = {
   title: "Aus welcher Branche sind Sie?",
-  lead: "Wenn Sie wählen, bereiten wir Demo und Programm passend zu Ihrem Betrieb vor.",
+  lead: "Wenn Sie wählen, richten wir das Programm passend zu Ihrem Betrieb ein.",
   selected: "Branche",
   clear: "Auswahl entfernen",
   skip: "Ohne Auswahl weiter",
   modTitle: "Welche Bereiche interessieren Sie?",
-  modLead: "Mehrfachauswahl möglich. Wir richten die Demo danach aus.",
+  modLead: "Mehrfachauswahl möglich. Wir melden uns passend dazu.",
   modSelected: "Bereiche",
   change: "Branche ändern",
   areas: [
@@ -83,12 +83,12 @@ const de: BranchText = {
 
 const en: BranchText = {
   title: "Which industry are you in?",
-  lead: "If you choose, we prepare the demo and the program for your business.",
+  lead: "If you choose, we set the program up for your business.",
   selected: "Industry",
   clear: "Clear selection",
   skip: "Continue without choosing",
   modTitle: "Which areas interest you?",
-  modLead: "Pick as many as you like. We tailor the demo to them.",
+  modLead: "Pick as many as you like. We get back to you about them.",
   modSelected: "Areas",
   change: "Change industry",
   areas: [

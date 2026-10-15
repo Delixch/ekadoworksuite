@@ -22,7 +22,7 @@ export function Hero() {
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
         <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-12 min-[992px]:grid-cols-[minmax(0,1.02fr)_minmax(0,.98fr)] min-[992px]:gap-8">
           <div className="flex min-w-0 flex-col gap-7">
-            <h1 className="text-(length:--hero-title) leading-[1.04] font-extrabold tracking-[-0.035em] text-era-black">
+            <h1 className="text-(length:--hero-title) leading-[1.04] font-semibold tracking-[-0.035em] text-era-black">
               {t.hero.lines.map((line, i) => (
                 <span
                   key={line}

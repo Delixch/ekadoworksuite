@@ -166,7 +166,7 @@ export function Solutions() {
                   <span id={ids[i]} className="-mt-24 block h-0 pt-24" aria-hidden />
                   <CardVideo part={coverPart[i]} />
                   <div className="relative z-[1] flex flex-1 flex-col gap-2">
-                    <h3 className="text-[21px] leading-[1.2] font-bold tracking-[-0.01em]">{c.title}</h3>
+                    <h3 className="text-[21px] leading-[1.2] font-medium tracking-[-0.01em]">{c.title}</h3>
                     <p className="text-[15px] leading-[1.55] text-era-silver">{c.text}</p>
                   </div>
                   <a

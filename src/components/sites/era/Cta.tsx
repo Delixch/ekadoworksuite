@@ -41,7 +41,7 @@ export function Cta() {
               <span className="flex items-center gap-2 rounded-full bg-era-on-dark/15 px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] uppercase">
                 <Gift size={15} className="era-wiggle" /> {c.badge}
               </span>
-              <h2 className="text-[clamp(1.7rem,3.6vw,3rem)] leading-[1.1] font-extrabold tracking-[-0.03em] text-balance">{c.title}</h2>
+              <h2 className="text-[clamp(1.7rem,3.6vw,3rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance">{c.title}</h2>
               <p className="max-w-[620px] text-[17px] leading-[1.55] text-era-on-dark/80">{c.text}</p>
               <div className="flex flex-wrap items-center justify-center gap-4 sm2:w-full sm2:flex-col">
                 <a

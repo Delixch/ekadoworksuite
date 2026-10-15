@@ -100,7 +100,7 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
               onClick={() => setLang(l.code)}
               aria-pressed={cur === l.code}
               aria-label={l.label}
-              className={`rounded-[8px] px-3 py-1 text-[12px] font-bold tracking-wide uppercase transition-colors ${
+              className={`rounded-[8px] px-3 py-1 text-[12px] font-medium tracking-wide uppercase transition-colors ${
                 cur === l.code ? "bg-era-btn text-era-on-btn" : "text-era-on-dark/80 hover:text-era-on-dark"
               }`}
             >
@@ -280,7 +280,7 @@ export function Technology() {
                         <Icon size={19} strokeWidth={1.8} />
                       </span>
                       <div className="relative z-[1] min-w-0">
-                        <h3 className="text-[15.5px] leading-snug font-bold text-era-black">{f.title}</h3>
+                        <h3 className="text-[15.5px] leading-snug font-medium text-era-black">{f.title}</h3>
                         <p className="mt-0.5 text-[13.5px] leading-[1.5] text-era-gray">{f.text}</p>
                       </div>
                     </Spot>
@@ -297,7 +297,7 @@ export function Technology() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-era-white text-era-primary-ink ring-1 ring-era-line">
                   <Package size={19} strokeWidth={1.8} />
                 </span>
-                <h3 className="text-[17px] font-bold text-era-black">{k.boxTitle}</h3>
+                <h3 className="text-[17px] font-medium text-era-black">{k.boxTitle}</h3>
               </div>
               <ul className="flex flex-1 flex-wrap gap-x-6 gap-y-2 mob:flex-col">
                 {k.box.map((b) => (

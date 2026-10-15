@@ -55,7 +55,7 @@ export function PricingA() {
                 const price = k === "individuell" ? null : PRICE.tiers[k];
                 return (
                   <div key={k} data-glow className="relative z-[1] h-full">
-                    {star && <span className="absolute -top-3.5 left-7 z-[2] rounded-full bg-era-accent px-3 py-1 text-[12px] font-bold tracking-wide text-era-on-dark uppercase">{p.recommended}</span>}
+                    {star && <span className="absolute -top-3.5 left-7 z-[2] rounded-full bg-era-accent px-3 py-1 text-[12px] font-medium tracking-wide text-era-on-dark uppercase">{p.recommended}</span>}
                     <Spot className={`relative flex h-full flex-col gap-5 rounded-(--r-x) p-7 ${star ? "ekado-feature bg-era-primary text-era-on-dark shadow-[0_26px_60px_var(--c-shadow)]" : "bg-era-white text-era-black ring-1 ring-era-lightgray"}`}>
                       <div className="relative z-[1] flex flex-col gap-2">
                         <span className="text-[26px] font-semibold tracking-[-0.02em]">{t.name}</span>
@@ -72,7 +72,7 @@ export function PricingA() {
                         {k === "individuell" ? `> ${PRICE.tierStaff.komplett} ${p.staff}` : `${p.upTo} ${PRICE.tierStaff[k]} ${p.staff}`}
                       </span>
                       <Link
-                        href="/#demo"
+                        href={k === "individuell" ? "/#bize-ulasin" : "/#hizli-demo"}
                         className={`relative z-[1] flex h-12 items-center justify-center gap-2 rounded-(--r-s1) text-[16px] font-semibold no-underline transition hover:-translate-y-0.5 ${star ? "bg-era-white text-era-black" : "bg-era-btn text-era-on-btn"}`}
                       >
                         {k === "individuell" ? p.ctaTalk : p.ctaTry} <ArrowRight size={16} />
@@ -102,7 +102,7 @@ export function PricingA() {
 
             {/* her pakette */}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 rounded-(--r-x) bg-era-secondary/60 px-6 py-4">
-              <span className="text-[13px] font-bold tracking-[0.12em] text-era-gray uppercase">{p.extrasTitle}</span>
+              <span className="text-[13px] font-medium tracking-[0.12em] text-era-gray uppercase">{p.extrasTitle}</span>
               {p.extras.map((x) => (
                 <span key={x} className="flex items-center gap-2 text-[15px] font-semibold text-era-black">
                   <Check size={16} strokeWidth={3} className="text-era-primary" /> {x}
@@ -128,7 +128,7 @@ export function PricingA() {
                 <table className="w-full min-w-[720px] border-collapse text-[15px]">
                   <thead>
                     <tr className="border-b border-era-lightgray">
-                      <th className="px-5 py-4 text-left text-[13px] font-bold tracking-[0.1em] text-era-gray uppercase">{p.compareModules}</th>
+                      <th className="px-5 py-4 text-left text-[13px] font-medium tracking-[0.1em] text-era-gray uppercase">{p.compareModules}</th>
                       {tierOrder.map((k) => (
                         <th key={k} className={`px-4 py-4 text-center text-[16px] font-semibold ${k === "betrieb" ? "text-era-primary-ink" : "text-era-black"}`}>
                           {p.tiers[k].name}

@@ -25,7 +25,7 @@ export const de: Dict = {
     send: "Senden",
     error: "Ich konnte gerade nicht antworten, bitte versuchen Sie es gleich noch einmal.",
     tooMany: "Sie schreiben zu schnell, bitte warten Sie einen Moment.",
-    fallback: "Das habe ich nicht ganz verstanden. Fragen Sie zu Modulen, Einrichtung, Sprachen oder zur Demo. Für Details erreichen Sie uns über den Button Kontakt aufnehmen.",
+    fallback: "Das habe ich nicht ganz verstanden. Fragen Sie zu Modulen, Einrichtung oder Sprachen. Für Details schreiben Sie uns über Kontakt im Menü.",
     voiceOn: "Vorlesen ausschalten",
     voiceOff: "Vorlesen einschalten",
   },
@@ -266,10 +266,10 @@ export const de: Dict = {
   ]
 },
     cta: {
-  "badge": "Live-Demo",
+  "badge": "Kostenlos testen",
   "title": "Testen Sie Ekado WorkSuite noch heute.",
-  "text": "Öffnen Sie die Live-Demo und erkunden Sie die App als Mitarbeitende und als Inhaber. Bei Fragen schreiben Sie uns.",
-  "primary": "Demo-Zugang anfordern",
+  "text": "Erkunden Sie die App aus Sicht der Mitarbeitenden und des Inhabers. Bei Fragen schreiben Sie uns.",
+  "primary": "Schnell-Demo",
   "secondary": "Kontakt aufnehmen"
 },
     footer: {

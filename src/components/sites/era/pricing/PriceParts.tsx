@@ -37,7 +37,7 @@ export function PeriodToggle({ yearly, setYearly }: { yearly: boolean; setYearly
           </button>
         ))}
       </div>
-      <span className="rounded-[6px] bg-era-coolblue px-3 py-1 text-[13px] font-bold text-era-primary-ink">{p.yearlyGift}</span>
+      <span className="rounded-[6px] bg-era-coolblue px-3 py-1 text-[13px] font-medium text-era-primary-ink">{p.yearlyGift}</span>
     </div>
   );
 }

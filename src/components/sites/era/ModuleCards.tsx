@@ -48,7 +48,7 @@ export function ModuleCards() {
                         </span>
                       </span>
                       <span className="flex flex-1 flex-col gap-3 p-6">
-                        <span className="text-[13px] font-bold tracking-[0.12em] text-era-primary-ink tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[13px] font-medium tracking-[0.12em] text-era-primary-ink tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                         <span className="text-[21px] leading-tight font-semibold text-era-black">{card.title}</span>
                         <span className="text-[15px] leading-[1.55] text-era-gray">{card.text}</span>
                         <span className="mt-auto flex items-center gap-2 pt-2 text-[15px] font-semibold text-era-primary-ink">

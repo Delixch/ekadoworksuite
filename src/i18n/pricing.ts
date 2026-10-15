@@ -102,7 +102,7 @@ const tr: PricingText = {
   staff: "çalışan",
   recommended: "Önerilen",
   onRequest: "Teklif alın",
-  ctaTry: "Demo isteyin",
+  ctaTry: "Hızlı Demo",
   ctaTalk: "Görüşelim",
   tiers: {
     start: { name: "Başlangıç", text: "Ekip, vardiya ve giriş-çıkış için." },
@@ -150,7 +150,7 @@ const de: PricingText = {
   staff: "Mitarbeitende",
   recommended: "Empfohlen",
   onRequest: "Auf Anfrage",
-  ctaTry: "Demo anfragen",
+  ctaTry: "Schnell-Demo",
   ctaTalk: "Gespräch vereinbaren",
   tiers: {
     start: { name: "Start", text: "Für Team, Schichtplan und Stempeluhr." },
@@ -198,7 +198,7 @@ const en: PricingText = {
   staff: "employees",
   recommended: "Recommended",
   onRequest: "On request",
-  ctaTry: "Request a demo",
+  ctaTry: "Quick Demo",
   ctaTalk: "Book a call",
   tiers: {
     start: { name: "Start", text: "For team, shift plan and time clock." },

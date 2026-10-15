@@ -53,7 +53,7 @@ export function VideoSlot({ id, className = "", rounded = "rounded-(--r-x)" }: {
                 setLang(l);
                 setPlaying(true);
               }}
-              className={`rounded-[8px] px-3 py-1 text-[12px] font-bold tracking-wider uppercase transition-colors ${v.lang === l ? "bg-era-white text-era-black" : "text-white/85 hover:text-white"}`}
+              className={`rounded-[8px] px-3 py-1 text-[12px] font-medium tracking-wider uppercase transition-colors ${v.lang === l ? "bg-era-white text-era-black" : "text-white/85 hover:text-white"}`}
             >
               {l}
             </button>

@@ -64,7 +64,7 @@ export function LanguageSwitcher({ align = "right" }: { align?: "left" | "right"
                     active ? "font-semibold text-era-primary-ink" : "font-medium text-era-black"
                   }`}
                 >
-                  <span className="flex h-7 w-9 items-center justify-center rounded-md bg-era-secondary text-[12px] font-bold tracking-wider text-era-primary-ink">
+                  <span className="flex h-7 w-9 items-center justify-center rounded-md bg-era-secondary text-[12px] font-medium tracking-wider text-era-primary-ink">
                     {l.code.toUpperCase()}
                   </span>
                   <span className="flex-1">{l.label}</span>

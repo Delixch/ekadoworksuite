@@ -256,7 +256,7 @@ export function ContactModal() {
           <X size={19} />
         </button>
 
-        <h2 className="pr-10 text-[30px] leading-tight font-extrabold tracking-tight text-era-black mob:text-[26px]">{finished ? (demo ? d.sent.title : status === "sent" ? c.sent.title : c.mailto.title) : demo ? d.title : c.title}</h2>
+        <h2 className="pr-10 text-[30px] leading-tight font-semibold tracking-tight text-era-black mob:text-[26px]">{finished ? (demo ? d.sent.title : status === "sent" ? c.sent.title : c.mailto.title) : demo ? d.title : c.title}</h2>
         {!finished && <p className="mt-1 text-[15px] text-era-gray">{demo ? d.lead : c.lead}</p>}
         {!finished && (v.branch || v.modules.length > 0) && (
           <div className="era-in-pop mt-3 flex flex-wrap gap-2">
@@ -411,13 +411,13 @@ export function ContactModal() {
             {face === "branch" ? (
               <>
                 <div className="flex flex-col gap-1 mob:pr-10">
-                  <h3 className="text-[22px] leading-tight font-extrabold tracking-tight text-era-black">{br.title}</h3>
+                  <h3 className="text-[22px] leading-tight font-semibold tracking-tight text-era-black">{br.title}</h3>
                   <p className="text-[14px] leading-snug text-era-gray">{br.lead}</p>
                 </div>
                 <div className="grid grid-cols-2 gap-x-5 gap-y-4 overflow-y-auto pr-1 mob:grid-cols-1" style={{ maxHeight: "min(560px, 64dvh)" }}>
                   {br.groups.map((g) => (
                     <div key={g.name} className="flex flex-col gap-2">
-                      <span className="border-b border-era-primary/20 pb-1 text-[12px] font-bold tracking-[0.1em] text-era-primary-ink uppercase">{g.name}</span>
+                      <span className="border-b border-era-primary/20 pb-1 text-[12px] font-medium tracking-[0.1em] text-era-primary-ink uppercase">{g.name}</span>
                       <div className="flex flex-wrap gap-1.5">
                         {g.items.map((it) => {
                           const on = v.branch === it;
@@ -450,13 +450,13 @@ export function ContactModal() {
                   <button type="button" onClick={() => setFace("branch")} className="mb-1 flex w-fit items-center gap-1.5 text-[13px] font-semibold text-era-primary-ink">
                     ← {v.branch ? `${v.branch} · ${br.change}` : br.change}
                   </button>
-                  <h3 className="text-[22px] leading-tight font-extrabold tracking-tight text-era-black">{br.modTitle}</h3>
+                  <h3 className="text-[22px] leading-tight font-semibold tracking-tight text-era-black">{br.modTitle}</h3>
                   <p className="text-[14px] leading-snug text-era-gray">{br.modLead}</p>
                 </div>
                 <div className="grid grid-cols-2 gap-x-5 gap-y-4 overflow-y-auto pr-1 mob:grid-cols-1" style={{ maxHeight: "min(500px, 56dvh)" }}>
                   {br.areas.map((g) => (
                     <div key={g.name} className="flex flex-col gap-2">
-                      <span className="border-b border-era-primary/20 pb-1 text-[12px] font-bold tracking-[0.1em] text-era-primary-ink uppercase">{g.name}</span>
+                      <span className="border-b border-era-primary/20 pb-1 text-[12px] font-medium tracking-[0.1em] text-era-primary-ink uppercase">{g.name}</span>
                       <div className="flex flex-wrap gap-1.5">
                         {g.items.map((it) => {
                           const on = v.modules.includes(it);

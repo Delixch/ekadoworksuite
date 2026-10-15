@@ -69,11 +69,11 @@ export function BackToTop() {
         {closed ? (
           <>
             <Check size={15} strokeWidth={3.4} className="era-pop-in" />
-            <span className="mt-0.5 text-[6.5px] font-bold tracking-[0.12em] uppercase">Abschl.</span>
+            <span className="mt-0.5 text-[6.5px] font-medium tracking-[0.12em] uppercase">Abschl.</span>
           </>
         ) : (
           <>
-            <span className="text-[15px] font-bold tracking-tight">{pct}</span>
+            <span className="text-[15px] font-medium tracking-tight">{pct}</span>
             <span className="mt-0.5 text-[7px] font-semibold opacity-80">%</span>
           </>
         )}

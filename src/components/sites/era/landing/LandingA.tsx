@@ -81,7 +81,7 @@ export function LandingA() {
               {a.steps.map((s, i) => (
                 <Reveal key={s.title} variant="up" delay={i * 120}>
                   <li className="flex flex-col gap-5">
-                    <span className="relative z-[1] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-era-primary text-[22px] font-bold text-era-on-dark shadow-[0_10px_28px_var(--c-shadow)]">{i + 1}</span>
+                    <span className="relative z-[1] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-era-primary text-[22px] font-medium text-era-on-dark shadow-[0_10px_28px_var(--c-shadow)]">{i + 1}</span>
                     <span className="flex flex-col gap-2 rounded-(--r-x) bg-era-white p-7 ring-1 ring-era-lightgray">
                       <span className="text-[22px] leading-tight font-semibold text-era-black">{s.title}</span>
                       <span className="text-[16px] leading-[1.6] text-era-gray">{s.text}</span>

@@ -75,7 +75,7 @@ function Laptop() {
           {/* kenar çubuğu */}
           <aside className="flex w-[118px] flex-none flex-col gap-1.5 bg-era-dark py-3 pr-2.5 pl-[22px] text-era-on-dark">
             <div className="mb-2 flex items-center gap-1.5">
-              <span className="flex h-5 w-5 items-center justify-center rounded-[6px] bg-era-primary text-[11px] font-bold">p</span>
+              <span className="flex h-5 w-5 items-center justify-center rounded-[6px] bg-era-primary text-[11px] font-medium">p</span>
               <span className="text-[11px] font-semibold tracking-wide">unn</span>
             </div>
             {m.menu.map((label, i) => {
@@ -94,7 +94,7 @@ function Laptop() {
             );
             })}
             <div className="mt-auto flex items-center gap-1.5 text-[8px] text-era-on-dark/80">
-              <span className="flex h-4 w-4 items-center justify-center rounded-full bg-era-on-dark/20 text-[7px] font-bold">SY</span>
+              <span className="flex h-4 w-4 items-center justify-center rounded-full bg-era-on-dark/20 text-[7px] font-medium">SY</span>
               {m.admin}
               <ChevronDown size={8} />
             </div>
@@ -134,7 +134,7 @@ function Laptop() {
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="text-[13px] font-bold tracking-tight">{m.greeting}</span>
+              <span className="text-[13px] font-medium tracking-tight">{m.greeting}</span>
               <span className="flex items-center gap-1 text-[8px]">
                 {m.tabs.map((tab, i) => (
                   <span
@@ -153,7 +153,7 @@ function Laptop() {
                   <div className="mb-1 flex items-center gap-1 text-[7.5px] opacity-90">
                     <i className="block h-1.5 w-1.5 rounded-full bg-era-success" /> {m.autoReply}
                   </div>
-                  <div className="text-[12.5px] leading-tight font-bold"><CountText text={m.answered} /></div>
+                  <div className="text-[12.5px] leading-tight font-medium"><CountText text={m.answered} /></div>
                 </div>
                 <div className="grid grid-cols-3 gap-1 text-[7px] opacity-90">
                   <span>{m.statResponse}<b className="block text-[9px]">—</b></span>
@@ -314,7 +314,7 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
           <div className="mx-auto mb-1 h-2.5 w-14 rounded-full bg-era-device" />
           <div className="flex items-center gap-1.5">
             <ChevronLeft size={11} />
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-era-primary text-[11px] font-bold">p</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-era-primary text-[11px] font-medium">p</span>
             <div className="leading-tight">
               <div className="text-[8.5px] font-semibold">Ekado WorkSuite</div>
               <div className="mt-0.5 flex w-fit items-center gap-1 rounded-full bg-[#22c55e]/25 px-1.5 py-[1.5px] text-[6.5px] font-semibold text-[#86efac]">
@@ -325,7 +325,7 @@ function PhoneChat({ onBooking, onScene }: { onBooking: (v: boolean) => void; on
                 <span>{m.online}</span>
               </div>
             </div>
-            <span key={sc.code} className="era-bubble ml-auto rounded-md bg-era-on-dark/20 px-1.5 py-0.5 text-[7px] font-bold tracking-wider">
+            <span key={sc.code} className="era-bubble ml-auto rounded-md bg-era-on-dark/20 px-1.5 py-0.5 text-[7px] font-medium tracking-wider">
               {sc.code}
             </span>
           </div>

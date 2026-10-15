@@ -29,7 +29,7 @@ export function V5Stack() {
           return (
             <li key={it.key} className="sticky" style={{ top: `${126 + i * 14}px` }}>
               <article className={`relative grid min-h-[min(560px,78vh)] grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-center gap-10 overflow-hidden rounded-(--r-mx) p-10 shadow-[0_-12px_40px_var(--c-shadow-soft)] tab:grid-cols-1 tab:gap-6 tab:p-7 mob:p-5 ${t.card}`}>
-                <span aria-hidden className={`pointer-events-none absolute -top-6 -right-2 text-[clamp(8rem,18vw,15rem)] leading-none font-bold tracking-[-0.06em] select-none tabular-nums ${t.num}`}>
+                <span aria-hidden className={`pointer-events-none absolute -top-6 -right-2 text-[clamp(8rem,18vw,15rem)] leading-none font-medium tracking-[-0.06em] select-none tabular-nums ${t.num}`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="relative flex flex-col gap-4">

@@ -196,7 +196,7 @@ export function Robot() {
           <div className="relative flex w-[96%] flex-col items-center">
             {/* üst pencere: tutar göstergesi */}
             <div className="relative z-10 -mb-px w-[78%] rounded-t-[8px] bg-era-dark px-1.5 pt-1.5 pb-1 ring-1 ring-white/25 mob:px-1 mob:pt-1">
-              <div className="flex h-[15px] items-center justify-end rounded-[3px] bg-era-chinese px-1 font-mono text-[9px] leading-none font-bold tracking-wider text-era-accent mob:h-[11px] mob:text-[7px]">
+              <div className="flex h-[15px] items-center justify-end rounded-[3px] bg-era-chinese px-1 font-mono text-[9px] leading-none font-medium tracking-wider text-era-accent mob:h-[11px] mob:text-[7px]">
                 12.50
               </div>
             </div>

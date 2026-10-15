@@ -30,7 +30,7 @@ export function LegalPage({ kind }: { kind: "imprint" | "privacy" }) {
           <Link href="/" className="text-[14px] font-semibold text-era-primary no-underline hover:underline">
             ← {l.back}
           </Link>
-          <h1 className="mt-4 text-[44px] leading-[1.1] font-extrabold tracking-tight mob:text-[32px]">{page.title}</h1>
+          <h1 className="mt-4 text-[44px] leading-[1.1] font-semibold tracking-tight mob:text-[32px]">{page.title}</h1>
           {kind === "privacy" && <p className="mt-2 text-[14px] text-era-gray">{legal[locale].privacy.updated}</p>}
 
           {kind === "imprint" && (
@@ -55,7 +55,7 @@ export function LegalPage({ kind }: { kind: "imprint" | "privacy" }) {
           <div className="mt-8 flex flex-col gap-6">
             {page.blocks.map((b) => (
               <section key={b.h}>
-                <h2 className="text-[22px] font-bold">{b.h}</h2>
+                <h2 className="text-[22px] font-medium">{b.h}</h2>
                 {b.p.map((t) => (
                   <p key={t} className="mt-2 leading-[1.65] text-era-gray">
                     {t}

@@ -72,7 +72,7 @@ export function V4Episodes() {
                       <Icon size={30} strokeWidth={1.6} />
                     </span>
                   )}
-                  <span className="absolute bottom-2 left-2 rounded-full bg-black/55 px-2 py-0.5 text-[11px] font-bold text-white tabular-nums backdrop-blur-sm">
+                  <span className="absolute bottom-2 left-2 rounded-full bg-black/55 px-2 py-0.5 text-[11px] font-medium text-white tabular-nums backdrop-blur-sm">
                     {String(i + 1).padStart(2, "0")}/{total}
                   </span>
                   {ready && (

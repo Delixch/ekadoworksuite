@@ -74,7 +74,7 @@ export function ModuleGrid({ b, compact = false }: { b: Builder; compact?: boole
   return (
     <div className={`flex flex-col rounded-(--r-mx) bg-era-white ring-1 ring-era-lightgray ${compact ? "gap-4 p-5 shadow-[0_20px_50px_var(--c-shadow-soft)]" : "gap-5 p-6 shadow-[0_30px_80px_var(--c-shadow)] mob:p-4"}`}>
       <div className="flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-[12px] font-bold tracking-[0.12em] text-era-gray uppercase">{t.packLabel}</span>
+        <span className="mr-1 text-[12px] font-medium tracking-[0.12em] text-era-gray uppercase">{t.packLabel}</span>
         {packOrder.map((p) => (
           <button
             key={p}

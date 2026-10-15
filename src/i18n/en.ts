@@ -25,7 +25,7 @@ export const en: Dict = {
     send: "Send",
     error: "I couldn't answer just now, please try again in a moment.",
     tooMany: "You're typing too fast, please wait a moment and try again.",
-    fallback: "I didn't quite get that. You can ask about modules, setup, languages or the demo. For details, reach us with the Get in Touch button.",
+    fallback: "I didn't quite get that. You can ask about modules, setup or languages. For details, write to us via Contact Us in the menu.",
     voiceOn: "Turn off read-aloud",
     voiceOff: "Turn on read-aloud",
   },
@@ -265,10 +265,10 @@ export const en: Dict = {
   ]
 },
     cta: {
-  "badge": "Live demo",
+  "badge": "Try it free",
   "title": "Try Ekado WorkSuite today.",
-  "text": "Open the live demo and explore the app as an employee and as the owner. Write to us with any questions.",
-  "primary": "Request demo access",
+  "text": "Explore the app through the eyes of an employee and of the owner. Write to us with any questions.",
+  "primary": "Quick Demo",
   "secondary": "Contact Us"
 },
     footer: {

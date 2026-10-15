@@ -52,7 +52,7 @@ export const moduleCommon: Record<Locale, ModuleCommon> = {
     noVideo: "Bu konuların videosu hazırlanıyor; cevaplar programın bugünkü hâlini anlatıyor.",
     others: "Diğer modüller",
     ctaHeading: "Kendi işletmenizde görün",
-    ctaText: "Kısa bir demoda bu bölümleri sizin işinize göre ayarlayıp gösterelim.",
+    ctaText: "Kısa bir görüşmede bu bölümleri sizin işinize göre ayarlayıp gösterelim.",
     ctaButton: "İletişime Geç",
   },
   de: {
@@ -69,7 +69,7 @@ export const moduleCommon: Record<Locale, ModuleCommon> = {
     noVideo: "Das Video zu diesen Themen ist in Arbeit; die Antworten beschreiben das Programm, wie es heute ist.",
     others: "Weitere Module",
     ctaHeading: "Sehen Sie es in Ihrem Betrieb",
-    ctaText: "In einer kurzen Demo richten wir diese Bereiche nach Ihrem Betrieb ein und zeigen sie Ihnen.",
+    ctaText: "In einem kurzen Gespräch richten wir diese Bereiche nach Ihrem Betrieb ein und zeigen sie Ihnen.",
     ctaButton: "Kontakt aufnehmen",
   },
   en: {
@@ -86,7 +86,7 @@ export const moduleCommon: Record<Locale, ModuleCommon> = {
     noVideo: "The video for these topics is in the works; the answers describe the program as it is today.",
     others: "Other modules",
     ctaHeading: "See it in your business",
-    ctaText: "In a short demo we set these areas up for your business and show them to you.",
+    ctaText: "In a short call we set these areas up for your business and show them to you.",
     ctaButton: "Get in touch",
   },
 };

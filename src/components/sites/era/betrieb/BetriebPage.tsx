@@ -53,7 +53,7 @@ export function BetriebPage() {
         {/* taslak: tasarımlar arası atlama */}
         <div className="sticky top-[60px] z-[50] tab:top-[52px] border-y border-era-lightgray bg-era-nav/95 backdrop-blur-md">
           <div className="mx-auto flex w-full max-w-[1300px] items-center gap-3 overflow-x-auto px-[15px] py-2.5">
-            <span className="flex-none text-[12px] font-bold tracking-[0.12em] text-era-gray uppercase">{c.draftLabel}</span>
+            <span className="flex-none text-[12px] font-medium tracking-[0.12em] text-era-gray uppercase">{c.draftLabel}</span>
             {c.variants.map((v, i) => (
               <a key={v.name} href={`#taslak-${i + 1}`} className="flex flex-none items-center gap-2 rounded-[8px] bg-era-white px-3.5 py-1.5 text-[14px] font-semibold text-era-black no-underline ring-1 ring-era-lightgray transition hover:bg-era-primary hover:text-era-on-dark">
                 <span className="tabular-nums">{i + 1}</span> {v.name}
@@ -67,7 +67,7 @@ export function BetriebPage() {
           return (
             <section key={v.name} id={`taslak-${i + 1}`} className={`scroll-mt-[120px] py-20 tab:py-14 ${i % 2 ? "bg-era-secondary/40" : ""}`}>
               <div className="mx-auto mb-10 flex w-full max-w-[1300px] items-end gap-5 px-[15px]">
-                <span className="text-[clamp(4rem,8vw,6.5rem)] leading-[0.8] font-bold tracking-[-0.06em] text-era-coolblue tabular-nums">{i + 1}</span>
+                <span className="text-[clamp(4rem,8vw,6.5rem)] leading-[0.8] font-medium tracking-[-0.06em] text-era-coolblue tabular-nums">{i + 1}</span>
                 <div className="flex flex-col gap-1 pb-1">
                   <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] leading-tight font-semibold tracking-[-0.02em] text-era-black">{v.name}</h2>
                   <p className="text-[16px] text-era-gray">{v.idea}</p>
@@ -83,7 +83,7 @@ export function BetriebPage() {
           <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start gap-5 rounded-(--r-mx) bg-era-primary p-12 text-era-on-dark mob:p-7">
             <h2 className="text-[clamp(1.8rem,3.4vw,2.8rem)] leading-tight font-semibold tracking-[-0.02em]">{c.ctaHeading}</h2>
             <p className="max-w-[620px] text-[18px] leading-[1.6] opacity-85">{c.ctaText}</p>
-            <Link href="/#demo" className="flex h-12 items-center gap-2 rounded-(--r-s1) bg-era-white px-6 text-[17px] font-semibold text-era-black no-underline transition hover:-translate-y-0.5">
+            <Link href="/#bize-ulasin" className="flex h-12 items-center gap-2 rounded-(--r-s1) bg-era-white px-6 text-[17px] font-semibold text-era-black no-underline transition hover:-translate-y-0.5">
               {c.ctaButton} <ArrowRight size={18} />
             </Link>
             <p className="pt-2 text-[14px] opacity-70">{c.draftNote}</p>
