@@ -41,7 +41,7 @@ export const support: Record<Locale, SupportText> = {
     heading: "Programı çözene kadar yanınızdayız.",
     lead: "İlk 3 ay destek ücretsiz. İşletmenizde, yerinde, telefonda ya da e-postayla: aklınıza takılan her şey için buradayız.",
     ring: { big: "3", label: "ay ücretsiz destek", months: ["1. ay", "2. ay", "3. ay"] },
-    channels: ["Yerinde (Vor Ort)", "Telefon ve e-posta", "Canlı demo"],
+    channels: ["Yerinde (Vor Ort)", "Telefon ve e-posta", "Hızlı Demo"],
     roadmapEyebrow: "Yol haritası",
     roadmapHeading: "İlk üç ay nasıl geçer?",
     roadmap: [
@@ -80,7 +80,7 @@ export const support: Record<Locale, SupportText> = {
     heading: "We are with you until the software clicks.",
     lead: "Support is free for the first 3 months. On site, by phone or by email: we are here for anything on your mind.",
     ring: { big: "3", label: "months of free support", months: ["Month 1", "Month 2", "Month 3"] },
-    channels: ["On site (Vor Ort)", "Phone and email", "Live demo"],
+    channels: ["On site (Vor Ort)", "Phone and email", "Quick Demo"],
     roadmapEyebrow: "Roadmap",
     roadmapHeading: "How the first three months go.",
     roadmap: [
@@ -119,7 +119,7 @@ export const support: Record<Locale, SupportText> = {
     heading: "Wir sind da, bis Sie das Programm im Griff haben.",
     lead: "Die ersten 3 Monate ist der Support kostenlos. Vor Ort, telefonisch oder per E-Mail: Wir sind für alles da, was Sie beschäftigt.",
     ring: { big: "3", label: "Monate kostenloser Support", months: ["Monat 1", "Monat 2", "Monat 3"] },
-    channels: ["Vor Ort", "Telefon und E-Mail", "Live-Demo"],
+    channels: ["Vor Ort", "Telefon und E-Mail", "Schnell-Demo"],
     roadmapEyebrow: "Fahrplan",
     roadmapHeading: "So verlaufen die ersten drei Monate.",
     roadmap: [

@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, Mail, MapPin, Phone, Quote, Sparkles, Star, Users, Wrench } from "lucide-react";
+import { MapPin, Phone, Quote, Sparkles, Star } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { support } from "@/i18n/support";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 import { Reveal } from "./ui";
 import { BeforeAfter } from "./BeforeAfter";
-import { Faq } from "./Faq";
-import { SetupSteps } from "./Journey";
+import { SupportCards } from "./support/SupportCards";
 
 const CX = 200;
 const R = 118;
@@ -76,17 +75,10 @@ function Ring() {
 }
 
 const channelIcons = [MapPin, Phone, Sparkles];
-const onsiteIcons = [Wrench, Users, Check];
 
 export function SupportPage() {
   const { locale } = useLocale();
   const s = support[locale];
-  const [step, setStep] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setStep((x) => (x + 1) % (s.flowSteps.length + 1)), 1400);
-    return () => clearInterval(id);
-  }, [s.flowSteps.length]);
 
   return (
     <div className="overflow-hidden">
@@ -119,103 +111,11 @@ export function SupportPage() {
           </div>
         </section>
 
-        {/* Kurulum adımları: ana sayfadan buraya taşındı (Adnan 2026-10-15) */}
-        <SetupSteps />
+        {/* Kartei (öneri C, Adnan 2026-10-15): kurulum, yerinde, ilk 3 ay, fikirden modüle, sorular, iletişim tek ızgarada */}
+        <SupportCards />
 
-        {/* Yol haritası */}
-        <section className="relative py-[70px] tab:py-[50px] mob:py-10">
-          <div className="mx-auto w-full max-w-[1200px] px-[15px]">
-            <div className="mb-14 flex max-w-[760px] flex-col items-start gap-4 text-left">
-              <span className="rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">{s.roadmapEyebrow}</span>
-              <h2 className="text-[clamp(2rem,3.8vw,3.1rem)] leading-[1.1] font-semibold tracking-[-0.02em] text-balance text-era-black">{s.roadmapHeading}</h2>
-            </div>
-            <div className="relative grid grid-cols-3 gap-6 tab:grid-cols-1">
-              <span aria-hidden className="absolute top-[26px] right-[16%] left-[16%] h-[3px] rounded-full bg-gradient-to-r from-era-primary via-era-accent to-era-primary opacity-40 tab:hidden" />
-              {s.roadmap.map((r, i) => (
-                <Reveal key={r.when} variant="up" delay={i * 130} className="h-full">
-                  <div className="flex h-full flex-col gap-5">
-                    <span className="relative z-[1] flex h-[54px] w-fit items-center rounded-full bg-era-primary px-6 text-[16px] font-medium text-era-on-dark shadow-[0_10px_28px_var(--c-shadow)]">{r.when}</span>
-                    <div className="ekado-panel flex h-full flex-col gap-4 rounded-(--r-x) p-7">
-                      <h3 className="text-[22px] leading-tight font-semibold text-era-black">{r.title}</h3>
-                      <ul className="flex flex-col gap-3">
-                        {r.items.map((it) => (
-                          <li key={it} className="flex items-start gap-3 text-[17px] leading-snug text-era-gray">
-                            <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-era-secondary text-era-primary-ink">
-                              <Check size={12} strokeWidth={3} />
-                            </span>
-                            {it}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Yerinde */}
-        <section className="relative bg-era-secondary py-[80px] tab:py-[56px] mob:py-12">
-          <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] items-center gap-14 px-[15px] tab:grid-cols-1 tab:gap-8">
-            <div className="flex flex-col gap-5">
-              <span className="flex w-fit items-center gap-2 rounded-full bg-era-white px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase ring-1 ring-era-lightgray">
-                <MapPin size={14} /> {s.onsiteEyebrow}
-              </span>
-              <h2 className="text-[clamp(2rem,3.8vw,3.1rem)] leading-[1.1] font-semibold tracking-[-0.02em] text-balance text-era-black">{s.onsiteHeading}</h2>
-              <p className="max-w-[460px] text-[19px] leading-[1.6] text-era-gray">{s.onsiteText}</p>
-            </div>
-            <div className="flex flex-col gap-4">
-              {s.onsiteItems.map((it, i) => {
-                const Icon = onsiteIcons[i];
-                return (
-                  <Reveal key={it.title} variant="right" delay={i * 110}>
-                    <div className="flex items-start gap-5 rounded-(--r-x) bg-era-white p-6 shadow-[0_14px_40px_var(--c-shadow-soft)] ring-1 ring-era-lightgray">
-                      <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-era-coolblue text-era-primary-ink">
-                        <Icon size={22} strokeWidth={1.9} />
-                      </span>
-                      <div>
-                        <h3 className="text-[19px] font-semibold text-era-black">{it.title}</h3>
-                        <p className="mt-1 text-[17px] leading-[1.55] text-era-gray">{it.text}</p>
-                      </div>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* İstek -> modül */}
-        <section className="relative py-[80px] tab:py-[56px] mob:py-12">
-          <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start gap-8 px-[15px] text-left">
-            <span className="rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">{s.flowEyebrow}</span>
-            <h2 className="text-[clamp(2rem,3.8vw,3.1rem)] leading-[1.1] font-semibold tracking-[-0.02em] text-balance text-era-black">{s.flowHeading}</h2>
-            <p className="max-w-[720px] text-[19px] leading-[1.6] text-era-gray">{s.flowText}</p>
-
-            <ol className="relative mt-4 grid w-full grid-cols-4 gap-4 tab:grid-cols-2 mob:grid-cols-1">
-              {s.flowSteps.map((f, i) => {
-                const on = step > i;
-                return (
-                  <li key={f} className={`relative flex flex-col items-start gap-3 rounded-(--r-x) p-6 text-left ring-1 transition-all duration-500 ${on ? "bg-era-primary text-era-on-dark ring-era-primary shadow-[0_18px_44px_var(--c-shadow)]" : "bg-era-white text-era-black ring-era-lightgray"}`}>
-                    <span className={`flex h-9 w-9 items-center justify-center rounded-full text-[15px] font-medium transition-colors duration-500 ${on ? "bg-era-on-dark/20 text-era-on-dark" : "bg-era-secondary text-era-primary-ink"}`}>{i + 1}</span>
-                    <span className="text-[17px] leading-snug font-semibold">{f}</span>
-                    {i < s.flowSteps.length - 1 && <ArrowRight aria-hidden size={20} className="absolute top-1/2 -right-[18px] z-[1] -translate-y-1/2 text-era-primary-ink tab:hidden" />}
-                  </li>
-                );
-              })}
-            </ol>
-
-            <div className="flex flex-wrap items-center justify-start gap-3 pt-2">
-              <span className="text-[13px] font-semibold tracking-[0.12em] text-era-gray uppercase">{s.flowExamplesLabel}</span>
-              {s.flowExamples.map((e) => (
-                <span key={e} className="rounded-full border border-dashed border-era-cute px-4 py-1.5 text-[15px] font-semibold text-era-black">
-                  {e}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Bugün nasıl / Ekado ile nasıl */}
+        <BeforeAfter />
 
         {/* Müşteri yorumları (DEMO metin) */}
         <section className="relative bg-era-secondary py-[80px] tab:py-[56px] mob:py-12">
@@ -248,33 +148,6 @@ export function SupportPage() {
             </div>
           </div>
         </section>
-
-        {/* Sık sorulan sorular: ana sayfadan buraya taşındı (Adnan 2026-10-15) */}
-        <Faq />
-
-        {/* Çağrı */}
-        <section className="relative py-[90px] tab:py-[60px] mob:py-12">
-          <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start gap-5 px-[15px] text-left">
-            <h2 className="text-[clamp(2.1rem,4vw,3.3rem)] leading-[1.08] font-semibold tracking-[-0.025em] text-balance text-era-black">{s.ctaHeading}</h2>
-            <p className="max-w-[640px] text-[20px] leading-[1.55] text-era-gray">{s.ctaText}</p>
-            <div className="flex flex-wrap items-center justify-start gap-4 pt-2">
-              <a
-                href="mailto:info@ekado.ch?subject=Support"
-                className="flex h-14 items-center gap-3 rounded-(--r-s1) bg-era-primary px-8 text-[18px] font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
-              >
-                <Mail size={20} /> {s.ctaPrimary}
-              </a>
-              <a
-                href="#hizli-demo"
-                className="flex h-14 items-center gap-3 rounded-(--r-s1) border-2 border-era-black px-8 text-[18px] font-semibold text-era-black no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-era-secondary"
-              >
-                {s.ctaSecondary} <ArrowRight size={20} />
-              </a>
-            </div>
-          </div>
-        </section>
-        {/* Bugün nasıl / Ekado ile nasıl (2026-10-15 eklendi; yeri sonra belirlenecek) */}
-        <BeforeAfter />
       </main>
       <Footer />
     </div>
