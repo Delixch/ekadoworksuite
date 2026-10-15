@@ -19,8 +19,10 @@ export const metadata: Metadata = {
     title: tr.meta.title,
     description: tr.meta.description,
     locale: "tr_TR",
+    // sabit JPEG (public/og.jpg, 1200x630, ~100 KB): WhatsApp büyük önizleme göstersin diye; tasarım kaynağı public/_vorschau/og/og.html (yerel)
+    images: [{ url: "/og.jpg", width: 1200, height: 630, type: "image/jpeg", alt: "Ekado WorkSuite: Personel, işletme ve muhasebe tek yazılımda" }],
   },
-  twitter: { card: "summary_large_image", title: tr.meta.title, description: tr.meta.description },
+  twitter: { card: "summary_large_image", title: tr.meta.title, description: tr.meta.description, images: ["/og.jpg"] },
 };
 
 // Sayfa çizilmeden önce kayıtlı ya da sistem temasını uygular (yanıp sönmeyi önler)
