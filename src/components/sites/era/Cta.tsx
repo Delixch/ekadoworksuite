@@ -51,12 +51,6 @@ export function Cta() {
                   {c.primary}
                   <ArrowRight size={19} className="transition-transform duration-300 group-hover/btn:translate-x-1.5" />
                 </a>
-                <a
-                  href="#bize-ulasin"
-                  className="flex h-14 items-center rounded-(--r-s1) border-2 border-era-on-dark/60 px-8 text-[17px] font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-era-on-dark/10 sm2:w-full sm2:justify-center"
-                >
-                  {c.secondary}
-                </a>
               </div>
             </div>
           </div>

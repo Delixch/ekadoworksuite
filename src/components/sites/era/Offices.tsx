@@ -36,7 +36,7 @@ export function Offices() {
 
   return (
     <section id="iletisim" className="relative py-[70px] tab:py-[50px] mob:py-10 sm2:py-[35px]">
-      {/* iki sütun (Adnan 2026-10-15: tek başına kontakt güzel değil): solda başlık, kısa yazı, e-posta ve iki düğme; sağda büyük harita kartı */}
+      {/* iki sütun (Adnan 2026-10-15: tek başına kontakt güzel değil): solda başlık, kısa yazı, e-posta ve Danışmanlık İste (Hızlı Demo hemen üstteki koyu bantta, tekrar etmesin); sağda büyük harita kartı */}
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)] items-center gap-14 px-[15px] tab:grid-cols-1 tab:gap-10">
         <div className="flex flex-col items-start gap-6">
           <span className="flex w-fit items-center gap-2 rounded-full bg-era-secondary px-4 py-1.5 text-[13px] font-semibold tracking-[0.12em] text-era-primary-ink uppercase">
@@ -62,9 +62,6 @@ export function Offices() {
           <div className="flex flex-wrap gap-3 pt-1">
             <a href="#bize-ulasin" className="flex h-12 items-center gap-2 rounded-(--r-s1) bg-era-primary px-6 text-[16px] font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110">
               {t.hero.demo} <ArrowRight size={18} />
-            </a>
-            <a href="#hizli-demo" className="flex h-12 items-center rounded-(--r-s1) border-2 border-era-black px-6 text-[16px] font-semibold text-era-black no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-era-secondary">
-              {t.hero.test}
             </a>
           </div>
         </div>

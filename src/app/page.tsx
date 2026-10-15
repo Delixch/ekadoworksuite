@@ -2,6 +2,7 @@ import { Navbar } from "@/components/sites/era/Navbar";
 import { Hero } from "@/components/sites/era/Hero";
 import { Marquee } from "@/components/sites/era/Marquee";
 // import { About } from "@/components/sites/era/About"; // Era şablonundan kalan, Ekado içeriği yazılana kadar yayında değil
+import { Features } from "@/components/sites/era/Features";
 import { SwissBand } from "@/components/sites/era/SwissBand";
 import { Journey } from "@/components/sites/era/Journey";
 import { Solutions } from "@/components/sites/era/Solutions";
@@ -21,6 +22,8 @@ export default function Home() {
         <Hero />
         <Marquee />
         {/* <About /> */}
+        {/* "Neler yapar?" büyük paneller: programın ne yaptığını ilk bakışta anlatır (Adnan 2026-10-15 geri istedi) */}
+        <Features />
         {/* İsviçre bandı (2026-10-15 eklendi; yeri sonra belirlenecek) */}
         <SwissBand />
         <Journey />
