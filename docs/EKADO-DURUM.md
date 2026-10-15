@@ -7,7 +7,8 @@ Son güncelleme: 2026-10-14. Bu dosya **Ekado WorkSuite** (işletme yazılımı)
 | Ne | Değer |
 |---|---|
 | GitHub deposu | `Delixch/ekadoworksuite` (herkese açık) |
-| Yerel klasör | `D:epos\ekadoworksuite` |
+| Yerel klasör | `D:
+epos\ekadoworksuite` |
 | `origin` | `https://github.com/Delixch/ekadoworksuite.git` |
 | Vercel | `ekadoworksuite` (`prj_mw0ab5hvAMQnHCiKTEe3oC6tFVpk`), canlı: https://ekadoworksuite.vercel.app, GitHub `main`'e bağlı, son deploy 83d30c3 READY |
 
@@ -25,7 +26,7 @@ Site Next.js 16 ve Tailwind v4 ile yazıldı; içerik, renkler ve logo Ekado'ya 
 | Konu | Karar |
 |---|---|
 | Marka | Ekado. Logo `D:\repos\Ekado_V2\site\assets\mail-logo.svg` (koyu `#1c2b3a`, mavi `#2b5ab0`). |
-| Renk | Krem zemin, logodan gelen lacivert ve mavi. Gündüz ve gece teması. Tüm renkler `src/styles/theme.css` içinde, bileşene renk kodu yazılmaz. |
+| Renk | Paletler harici dosyalar: `src/styles/themes/mavi.css` (eski Ekado mavisi), `sarap.css` (bordo, şampanya, asma yaprağı; 2026-10-15'ten beri etkin). Her dosya gündüz + gece. Etkin palet `src/app/globals.css` içinde tek `@import` satırı. Bileşene renk kodu yazılmaz. |
 | Dil | tr, en, de. Program arayüzü Almanca olduğu için ekran görüntüleri Almanca. |
 | Fiyat | Bilinmiyor, uydurulmadı. Fiyat bölümü ve chatbot fiyat cevabı fiyat gelince yazılır. |
 | Hızlı demo | Canlı demoya doğrudan link yok. Form açılır (ad, soyad, e-posta, "küçük bir göz atmak istediğiniz şey"). Gönder'e basınca "giriş bilgileriniz yolda" yazar. |
@@ -46,14 +47,18 @@ Site Next.js 16 ve Tailwind v4 ile yazıldı; içerik, renkler ve logo Ekado'ya 
 | `/musterilerimiz` | Hâlâ "yapım aşamasında" | `ConstructionPage.tsx` |
 | `/impressum`, `/datenschutz` | Firma verisi `src/lib/company.ts` içinden | `LegalPage.tsx` |
 | `/test-et`, `/panel` | Eski otel ürününden kalan sayfalar, menüde yok, sitemap'te `/test-et` yok | `TestPage.tsx`, `PanelApp.tsx` |
+| `/modul/uebersicht-betrieb`, `/modul/einkauf`, `/modul/personal`, `/modul/finanzen` | Modül sayfaları (2026-10-15): soru-cevap, solda sabit video, "Videoda izle · 1:38" o saniyeye atlar | `modul/ModulePage.tsx`, metin `src/i18n/modules/*.ts`, video `src/lib/module-videos.ts` |
+| `/uebersicht-betrieb` | TASLAK: aynı içerik 5 tasarım. Menüde yok, noindex. Adnan "kalsın" dedi | `betrieb/BetriebPage.tsx`, `V1..V5*.tsx`, `src/i18n/betrieb.ts` |
 
-Menü: Modüller (4 grup), Hızlı Demo, Modüler Yapı, Müşterilerimiz, Bize Ulaşın, Destek. Bağlantılar `nav-links.ts`, metinler `src/i18n/{tr,en,de}.ts` içinde `nav`.
+Menü: Modüller (4 modül sayfası), Hızlı Demo, Modüler Yapı, Müşterilerimiz, Bize Ulaşın, Destek. Bağlantılar `nav-links.ts`, metinler `src/i18n/{tr,en,de}.ts` içinde `nav`. Modüller menüsü 2026-10-15'ten beri ana sayfa bölümlerine değil `/modul/...` sayfalarına gider.
+
+**Modül videoları:** 9 bölümlük tanıtım videosunun parçaları (`D:\repos\VideoEditMaster\projects\ekado-sunum3\renders\teile\`, TR + DE), Cloudinary'de. Link gelince sadece `src/lib/module-videos.ts` → `parts` içine yazılır. Saniyeler `ekado-sunum3/remotion/timeline_{tr,de}.ts` konuşma başlangıcından hesaplandı. Yüklü: 1, 2. Bekleyen: 3, 4, 5, 6, 7, 8, 9. Saha işleri (Einsätze) hiçbir videoda yok. İçerik programın kodundan çıkarıldı; kodda olmayanlar bilerek yazılmadı (her metin dosyasının başında liste var).
 
 ## 4. Nereyi değiştirirsin
 
 | İstek | Dosya |
 |---|---|
-| Renk | `src/styles/theme.css` |
+| Renk / tema | `src/styles/themes/*.css` (palet), etkin palet `src/app/globals.css` 3. satır |
 | Yazı tipi | `src/styles/fonts.ts` (şu an Manrope) |
 | Ana sayfa metinleri | `src/i18n/tr.ts`, `en.ts`, `de.ts` (anahtar ekleyince üçüne de ekle) |
 | Hero laptop ekranları | `HeroPanel.tsx` içindeki `panels` listesi, görseller `public/sites/ekado/panel-*.jpg` |

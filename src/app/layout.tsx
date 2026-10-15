@@ -24,7 +24,8 @@ export const metadata: Metadata = {
 };
 
 // Sayfa çizilmeden önce kayıtlı ya da sistem temasını uygular (yanıp sönmeyi önler)
-const themeInit = `try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){}`;
+// Varsayılan her zaman gündüz teması (Adnan 2026-10-15); ziyaretçi ay düğmesiyle geceyi seçerse o seçim hatırlanır
+const themeInit = `try{var t=localStorage.getItem("theme");if(t!=="dark")t="light";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="light"}`;
 
 export default function RootLayout({
   children,

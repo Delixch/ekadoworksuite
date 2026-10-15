@@ -100,7 +100,7 @@ function PromoVideo({ title, soon }: { title: string; soon: string }) {
               onClick={() => setLang(l.code)}
               aria-pressed={cur === l.code}
               aria-label={l.label}
-              className={`rounded-full px-3 py-1 text-[12px] font-bold tracking-wide uppercase transition-colors ${
+              className={`rounded-[8px] px-3 py-1 text-[12px] font-bold tracking-wide uppercase transition-colors ${
                 cur === l.code ? "bg-era-btn text-era-on-btn" : "text-era-on-dark/80 hover:text-era-on-dark"
               }`}
             >

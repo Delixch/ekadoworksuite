@@ -30,15 +30,17 @@ export const tr = {
   },
   nav: {
   "solutions": "Modüller",
+  "pricing": "Fiyatlar",
+  "pricingItems": ["Seçenek 1 · Paketler", "Seçenek 2 · Kendin hesapla"],
   "solutionItems": [
-    "İşletme ve Hijyen",
+    "Modüler Yapı",
+    "Genel Bakış ve İşletme",
     "Satın Alma ve Faturalar",
     "Personel ve Bordro",
     "Finans ve Muhasebe"
   ],
   "links": [
     "Hızlı Demo",
-    "Modüler Yapı",
     "Müşterilerimiz",
     "Bize Ulaşın",
     "Destek"
@@ -50,7 +52,7 @@ export const tr = {
     accent: 2,
     lead: "Puantaj, vardiya planı, bordro, HACCP, sipariş ve muhasebe tek yazılımda. Restoranlar ve küçük işletmeler için.",
     test: "Hızlı Demo",
-    demo: "İletişime Geç",
+    demo: "Danışmanlık İste",
     channelsAria: "Öne çıkanlar",
     phone: "Telefon",
     webChat: "Web chat",

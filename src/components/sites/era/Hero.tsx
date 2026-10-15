@@ -1,13 +1,22 @@
 "use client";
 
-import { ArrowRight, Check } from "lucide-react";
+import { useRef } from "react";
+import dynamic from "next/dynamic";
+import { ArrowRight, Check, Globe, Phone } from "lucide-react";
+import { siInstagram, siMessenger, siWhatsapp } from "simple-icons";
 import { useLocale } from "@/i18n/useLocale";
 import { HeroPanel } from "./HeroPanel";
 
+/** Açılış damgaları (Remotion): sadece tarayıcıda yüklenir */
+const StampPlayer = dynamic(() => import("./stamp/StampPlayer"), { ssr: false });
+
 const delay = (s: number) => ({ animationDelay: `${s}s` });
+
+const iconBox = "era-in-pop flex h-12 w-12 items-center justify-center";
 
 export function Hero() {
   const { t } = useLocale();
+  const shake = useRef<HTMLDivElement>(null);
   return (
     <section className="ekado-hero-bg relative overflow-hidden pt-[128px] pb-[72px] tab:pt-[104px] tab:pb-12">
       <div className="mx-auto w-full max-w-[1470px] px-[15px]">
@@ -37,11 +46,43 @@ export function Hero() {
                 {t.hero.test} <ArrowRight size={20} />
               </a>
               <a
-                href="#demo"
+                href="#bize-ulasin"
                 className="demo-glow flex h-14 items-center rounded-(--r-s1) border-2 border-era-black px-8 text-[18px] whitespace-nowrap sm2:px-4 font-semibold text-era-black no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-era-secondary sm2:flex-1 sm2:justify-center"
               >
                 {t.hero.demo}
               </a>
+            </div>
+
+            {/* sosyal / iletişim kanalları (14.10'da yanlışlıkla kaldırılmıştı, Adnan 2026-10-15 geri istedi) */}
+            <div className="flex items-center gap-4" aria-label="Telefon, WhatsApp, Instagram, Messenger, Web">
+              <span className={`${iconBox} text-era-primary-ink`} style={delay(0.9)} title={t.hero.phone}>
+                <Phone size={30} strokeWidth={2.2} />
+              </span>
+              <span className={iconBox} style={delay(0.97)} title="WhatsApp">
+                <svg viewBox="0 0 24 24" className="h-9 w-9" aria-label="WhatsApp">
+                  <path d={siWhatsapp.path} fill="var(--c-whatsapp)" />
+                </svg>
+              </span>
+              <span className={iconBox} style={delay(1.04)} title="Instagram">
+                <svg viewBox="0 0 24 24" className="h-9 w-9" aria-label="Instagram">
+                  <defs>
+                    <linearGradient id="ig-grad" x1="0" y1="1" x2="1" y2="0">
+                      <stop offset="0" style={{ stopColor: "var(--c-ig-1)" }} />
+                      <stop offset="0.5" style={{ stopColor: "var(--c-ig-2)" }} />
+                      <stop offset="1" style={{ stopColor: "var(--c-ig-3)" }} />
+                    </linearGradient>
+                  </defs>
+                  <path d={siInstagram.path} fill="url(#ig-grad)" />
+                </svg>
+              </span>
+              <span className={iconBox} style={delay(1.11)} title="Messenger">
+                <svg viewBox="0 0 24 24" className="h-9 w-9" aria-label="Messenger">
+                  <path d={siMessenger.path} fill="var(--c-messenger)" />
+                </svg>
+              </span>
+              <span className={`${iconBox} text-era-black`} style={delay(1.18)} title={t.hero.webChat}>
+                <Globe size={30} strokeWidth={2} />
+              </span>
             </div>
 
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1" aria-label={t.hero.channelsAria}>
@@ -56,8 +97,12 @@ export function Hero() {
             </ul>
           </div>
 
-          <div className="flex min-w-0 flex-col items-center gap-6">
-            <HeroPanel />
+          <div className="relative flex min-w-0 flex-col items-center gap-6">
+            {/* laptop + telefon; açılış damgaları darbede bunu sarsar */}
+            <div ref={shake} className="w-full will-change-transform">
+              <HeroPanel />
+            </div>
+            <StampPlayer shake={shake} />
           </div>
         </div>
       </div>

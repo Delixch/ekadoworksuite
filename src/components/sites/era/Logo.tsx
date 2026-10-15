@@ -11,11 +11,14 @@ export function Logo({ className = "", onDark = false }: { className?: string; o
       viewBox="0 -2 484 84"
       role="img"
       aria-label="Ekado"
-      className={`${onDark ? "logo-on-dark" : ""} ${className}`}
+      className={`overflow-visible ${onDark ? "logo-on-dark" : ""} ${className}`}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M5 5 H52 L75 28 V75 H5 Z" fill="none" style={ink} strokeWidth="8" />
-      <path d="M52 5 L75 28 H52 Z" style={{ fill: "var(--c-logo-accent)" }} />
+      {/* simge adım adım döner (globals.css era-logo-spin) */}
+      <g className="era-logo-spin">
+        <path d="M5 5 H52 L75 28 V75 H5 Z" fill="none" style={ink} strokeWidth="8" />
+        <path d="M52 5 L75 28 H52 Z" style={{ fill: "var(--c-logo-accent)" }} />
+      </g>
       <g transform="translate(104 0)">
         <path d="M52 4.5 H9 V75.5 H52 M9 40 H44" fill="none" style={ink} strokeWidth="9" />
         <g transform="translate(68 0)">

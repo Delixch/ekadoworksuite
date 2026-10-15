@@ -12,3 +12,6 @@ tsconfig.tsbuildinfo
 .env*
 
 FTP.ICIN/
+
+# Modul videolari: Cloudinary'ye yuklenene kadar yerelde (buyuk dosyalar, repoya girmez)
+/public/_videolar/

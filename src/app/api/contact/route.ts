@@ -48,6 +48,9 @@ export async function POST(req: Request) {
   const email = oneLine(str(body.email, 160));
   const phone = oneLine(str(body.phone, 60));
   const hotel = oneLine(str(body.hotel, 160));
+  const branch = oneLine(str(body.branch, 80));
+  const modules = Array.isArray(body.modules) ? body.modules.filter((m): m is string => typeof m === "string").slice(0, 40).map((m) => oneLine(m.slice(0, 60))) : [];
+  const wish = str(body.wish, 600).trim();
   const topic = oneLine(str(body.topic, 120));
   const message = str(body.message, 4000);
   const lang = str(body.lang, 4);
@@ -58,6 +61,9 @@ export async function POST(req: Request) {
   const lines = [`Konu: ${topic}`, `Ad: ${name}`, `E-posta: ${email}`];
   if (phone) lines.push(`Telefon: ${phone}`);
   if (hotel) lines.push(`Otel/firma: ${hotel}`);
+  if (branch) lines.push(`Sektör: ${branch}`);
+  if (modules.length) lines.push(`İlgilenilen bölümler: ${modules.join(", ")}`);
+  if (wish) lines.push(`Yeni modül isteği: ${wish}`);
   lines.push(`Dil: ${lang || "-"}`, "", message);
   const text = lines.join("\n");
 

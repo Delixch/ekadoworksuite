@@ -47,7 +47,7 @@ export const contact: Record<Locale, ContactText> = {
     ph: { name: "Ad Soyad", email: "ornek@firma.com", phone: "+90 5xx xxx xx xx", hotel: "İşletmenizin adı", topic: "Bir konu seçin", message: "Ne yapmak istediğinizi kısaca anlatın…" },
     optional: "isteğe bağlı",
     topics: [
-      "İşletme ve Hijyen",
+      "Genel Bakış ve İşletme",
       "Satın Alma ve Faturalar",
       "Personel ve Bordro",
       "Finans ve Muhasebe",
@@ -89,7 +89,7 @@ export const contact: Record<Locale, ContactText> = {
     ph: { name: "Full name", email: "you@company.com", phone: "+41 xx xxx xx xx", hotel: "Your business name", topic: "Choose a topic", message: "Briefly tell us what you'd like to do…" },
     optional: "optional",
     topics: [
-      "Operations & Hygiene",
+      "Overview & Operations",
       "Purchasing & Invoices",
       "Staff & Payroll",
       "Finance & Accounting",
@@ -131,7 +131,7 @@ export const contact: Record<Locale, ContactText> = {
     ph: { name: "Vor- und Nachname", email: "sie@firma.com", phone: "+41 xx xxx xx xx", hotel: "Name Ihres Betriebs", topic: "Thema wählen", message: "Schildern Sie kurz, was Sie vorhaben…" },
     optional: "optional",
     topics: [
-      "Betrieb & Hygiene",
+      "Übersicht & Betrieb",
       "Einkauf & Rechnungen",
       "Personal & Lohn",
       "Finanzen & Buchhaltung",

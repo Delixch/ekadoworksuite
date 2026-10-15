@@ -45,7 +45,7 @@ export function CookieNotice() {
             } catch {}
             setShow(false);
           }}
-          className="rounded-full bg-era-primary px-5 py-2 text-[14px] font-semibold text-era-on-btn transition hover:brightness-110 active:scale-95"
+          className="rounded-[8px] bg-era-primary px-5 py-2 text-[14px] font-semibold text-era-on-btn transition hover:brightness-110 active:scale-95"
         >
           {c.ok}
         </button>

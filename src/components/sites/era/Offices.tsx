@@ -69,7 +69,7 @@ export function Offices() {
                     <span className="flex h-11 w-11 items-center justify-center rounded-full bg-era-secondary text-era-primary-ink">
                       <Building2 size={20} strokeWidth={1.8} />
                     </span>
-                    <a href={mapsUrl(off.mapQuery)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[13.5px] font-semibold text-era-black no-underline ring-1 ring-era-line transition hover:bg-era-secondary">
+                    <a href={mapsUrl(off.mapQuery)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 rounded-[8px] px-4 py-1.5 text-[13.5px] font-semibold text-era-black no-underline ring-1 ring-era-line transition hover:bg-era-secondary">
                       <span className="text-era-black">{o.openMap}</span> <ArrowUpRight size={15} className="text-era-black" />
                     </a>
                   </div>

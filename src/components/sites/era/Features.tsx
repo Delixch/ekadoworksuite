@@ -7,18 +7,15 @@ import {
   FileText,
   Gift,
   Landmark,
-  Languages,
   ListChecks,
   ScanLine,
-  Settings,
-  ShieldCheck,
   ShoppingCart,
   Thermometer,
   Wallet,
   type LucideIcon,
 } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
-import { BrushStroke, Heading, Reveal, type Variant } from "./ui";
+import { Heading, Reveal, type Variant } from "./ui";
 import { ClockDivider, ClockRow } from "./Clock";
 import { Spot } from "./Spot";
 
@@ -28,7 +25,6 @@ const groupMeta: { variant: Variant; icons: LucideIcon[] }[] = [
   { variant: "up", icons: [Thermometer, ListChecks, ShoppingCart, Gift] },
   { variant: "right", icons: [ScanLine, Landmark, FileSpreadsheet, FileText] },
 ];
-const extraIcons: LucideIcon[] = [Settings, Languages, ShieldCheck];
 
 function IconBox({ icon: Icon, featured }: { icon: LucideIcon; featured?: boolean }) {
   return (
@@ -151,32 +147,6 @@ export function Features() {
             })}
           </div>
 
-          <Reveal variant="up">
-            <div className="mx-auto flex max-w-[1100px] flex-col gap-6">
-              <div className="flex items-center gap-4">
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent to-era-line" />
-                <span className="text-[13px] font-semibold tracking-[0.14em] text-era-gray uppercase">{c.extrasTitle}</span>
-                <span className="h-px flex-1 bg-gradient-to-l from-transparent to-era-line" />
-              </div>
-              <div className="grid grid-cols-3 gap-8 tab:grid-cols-1 tab:gap-6">
-                {c.extras.map((e, ei) => {
-                  const EIcon = extraIcons[ei];
-                  return (
-                  <div key={e.title} className="group/item relative flex items-center gap-4">
-                    <BrushStroke flip={ei % 2 === 1} />
-                    <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-era-secondary text-era-primary-ink ring-1 ring-era-line transition-transform duration-500 group-hover/item:scale-110">
-                      <EIcon size={21} strokeWidth={1.8} />
-                    </span>
-                    <div>
-                      <div className="text-[17px] font-semibold text-era-black">{e.title}</div>
-                      <div className="text-[15px] text-era-gray">{e.text}</div>
-                    </div>
-                  </div>
-                  );
-                })}
-              </div>
-            </div>
-          </Reveal>
         </div>
       </div>
     </section>

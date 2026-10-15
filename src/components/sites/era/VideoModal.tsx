@@ -107,7 +107,7 @@ export function VideoButton({ variant = "pill", className = "" }: { variant?: "p
       <button
         type="button"
         onClick={open}
-        className={`flex h-10 items-center gap-2 rounded-full border border-era-lightgray bg-era-white px-4 text-[13px] font-semibold text-era-black transition hover:-translate-y-0.5 active:scale-[.98] ${className}`}
+        className={`flex h-10 items-center gap-2 rounded-[8px] border border-era-lightgray bg-era-white px-4 text-[13px] font-semibold text-era-black transition hover:-translate-y-0.5 active:scale-[.98] ${className}`}
       >
         <Play size={14} className="fill-era-primary text-era-primary" /> {c.how}
       </button>

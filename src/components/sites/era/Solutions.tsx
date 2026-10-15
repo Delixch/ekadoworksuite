@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowRight, Clock, Landmark, ShoppingCart, Thermometer, type LucideIcon } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Maximize, Play } from "lucide-react";
+import { pickPart, posterOf } from "@/lib/module-videos";
 import { useLocale } from "@/i18n/useLocale";
 import { Spot } from "./Spot";
 import { Heading, Reveal } from "./ui";
@@ -10,17 +11,85 @@ import { Heading, Reveal } from "./ui";
 const ids = ["isletme", "satinalma", "personel", "finans"];
 const hrefs = ["#bize-ulasin", "#bize-ulasin", "#bize-ulasin", "#bize-ulasin"];
 
-/* ---- mini canlı görsel: modül ikonu, halka nabız atar ---- */
-function IconViz({ icon: Icon }: { icon: LucideIcon }) {
+/** Kartın üstündeki video: o alanı anlatan tanıtım parçası (modül sayfalarındaki videolar). Kapak + oynat; basınca kartın içinde oynar. */
+const coverPart = [1, 7, 2, 8];
+/**
+ * Videolarda (1920x1080) uygulama ekranı x 175-1745, y 10-893 arasında; yanlar boş siyah, altta altyazı bandı.
+ * Kartta sadece ekran görünsün: kutu 16:9, video %120 büyütülüp 160 px sola kaydırılır (x 160-1760, y 0-900 kalır).
+ * Tarayıcı denetimleri bu kırpmada kesilirdi; o yüzden yok: videoya tıklamak oynatır/durdurur, dururken oynat düğmesi döner.
+ * Videonun altında, sağda küçük kare tam ekran düğmesi (kendi satırı yok, başlığın hizasında): tam ekranda video kırpılmaz ve tarayıcı denetimleri görünür.
+ */
+const CROP = "absolute top-0 left-[-10%] h-[120%] w-[120%] max-w-none object-cover";
+function CardVideo({ part }: { part: number }) {
+  const { locale } = useLocale();
+  const [started, setStarted] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const video = useRef<HTMLVideoElement>(null);
+  const v = pickPart(part, locale);
+  if (!v) return null;
+  const play = () => {
+    setStarted(true);
+    video.current?.play().catch(() => {});
+  };
+  const full = () => {
+    const el = video.current as (HTMLVideoElement & { webkitEnterFullscreen?: () => void }) | null;
+    if (!el) return;
+    play();
+    if (!el.requestFullscreen) return el.webkitEnterFullscreen?.();
+    el.requestFullscreen()
+      .then(() => {
+        el.controls = true;
+        const off = () => {
+          if (document.fullscreenElement) return;
+          el.controls = false;
+          document.removeEventListener("fullscreenchange", off);
+        };
+        document.addEventListener("fullscreenchange", off);
+      })
+      .catch(() => {});
+  };
   return (
-    <div className="relative flex h-14 w-14 items-center justify-center text-era-on-dark" aria-hidden>
-      <span className="era-ring absolute inset-0 rounded-full bg-era-primary/40" />
-      <Icon size={30} strokeWidth={1.8} className="relative" />
+    <div className="relative z-[1]">
+      <div className="group/v relative aspect-video overflow-hidden rounded-(--r-s1) bg-era-dark ring-1 ring-era-on-dark/10">
+        <video
+          ref={video}
+          src={v.url}
+          poster={posterOf(v.url)}
+          preload="none"
+          playsInline
+          onPlay={(e) => {
+            document.querySelectorAll("video").forEach((o) => o !== e.currentTarget && o.pause());
+            setPlaying(true);
+          }}
+          onPause={() => setPlaying(false)}
+          onEnded={() => setPlaying(false)}
+          onClick={(e) => !e.currentTarget.controls && e.currentTarget.pause()}
+          className={`${CROP} cursor-pointer`}
+        />
+        {!playing && (
+          <button type="button" onClick={play} aria-label="Play" className="absolute inset-0 block h-full w-full overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            {!started && <img src={posterOf(v.url)} alt="" loading="lazy" className={`${CROP} opacity-90 transition duration-700 group-hover/v:scale-105 group-hover/v:opacity-100`} />}
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-era-white/95 text-era-primary shadow-lg transition-transform duration-300 group-hover/v:scale-110">
+                <span aria-hidden className="era-ring absolute inset-0 rounded-full bg-era-white/50" />
+                <Play size={18} className="relative ml-0.5 fill-current" />
+              </span>
+            </span>
+          </button>
+        )}
+      </div>
+      <button
+        type="button"
+        onClick={full}
+        aria-label="Fullscreen"
+        className="absolute top-[calc(100%+10px)] right-0 z-[2] flex h-7 w-7 items-center justify-center rounded-[6px] bg-era-on-dark/10 text-era-on-dark ring-1 ring-era-on-dark/25 transition hover:bg-era-on-dark/20 active:scale-95"
+      >
+        <Maximize size={13} />
+      </button>
     </div>
   );
 }
-
-const visuals: ReactNode[] = [Thermometer, ShoppingCart, Clock, Landmark].map((Icon, i) => <IconViz key={i} icon={Icon} />);
 
 /** Çözümlerimiz (menü ağacındaki 4 çözüm). Bölüm iki temada da koyu kalır. */
 export function Solutions() {
@@ -95,9 +164,7 @@ export function Solutions() {
               <Reveal variant="up" delay={i * 110} className="h-full">
                 <Spot className="ekado-dark-card flex h-full scroll-mt-28 flex-col gap-5 rounded-(--r-x) p-6">
                   <span id={ids[i]} className="-mt-24 block h-0 pt-24" aria-hidden />
-                  <div className="relative z-[1] flex h-[96px] items-center justify-center overflow-hidden rounded-(--r-s1) bg-era-dark/70 ring-1 ring-era-on-dark/10">
-                    {visuals[i]}
-                  </div>
+                  <CardVideo part={coverPart[i]} />
                   <div className="relative z-[1] flex flex-1 flex-col gap-2">
                     <h3 className="text-[21px] leading-[1.2] font-bold tracking-[-0.01em]">{c.title}</h3>
                     <p className="text-[15px] leading-[1.55] text-era-silver">{c.text}</p>

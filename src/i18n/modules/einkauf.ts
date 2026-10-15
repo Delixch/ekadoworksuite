@@ -1,0 +1,238 @@
+import type { Locale } from "../useLocale";
+import type { ModuleText } from "./common";
+
+/**
+ * "Satın Alma ve Faturalar" modül sayfası (/modul/einkauf).
+ * İçerik programın kodundan çıkarıldı (Gastro apps supi: modules/bestellung, modules/kreditoren).
+ * Bilerek yazılmayanlar: tedarikçi kataloğu (sadece demo verisi), pain.001'in bankada test edildiği, KI sağlayıcı adı ve limiti.
+ */
+export const einkauf: Record<Locale, ModuleText> = {
+  tr: {
+    title: "Satın Alma ve Faturalar",
+    heading: "Satın Alma ve Faturalar",
+    lead: "Tedarikçiden siparişe, teslimat kontrolünden faturaya ve ödemeye kadar tek akış. Ekip eksikleri bildirir, şef tek tıkla sepete alır. İşletme sahiplerinin soruları ve programdan cevapları; yanında kısa videolar.",
+    films: [
+      { title: "Siparişten faturaya", text: "Tedarikçi, sepet, sipariş, teslimat kontrolü, eksik miktar, fatura ve kısmi ödeme." },
+      { title: "Ekipten sipariş isteği", text: "Bir şey bitince çalışan katalogdan seçip bildirir; şef sepete alır." },
+      { title: "Depo ve sabit giderler", text: "Hedef stok, sayım, sipariş önerisi; kira ve sigorta gibi düzenli ödemeler." },
+      { title: "Fiyat geçmişi", text: "Tedarikçi zam yaptığında fatura girerken uyarı." },
+    ],
+    items: [
+      {
+        key: "lieferanten",
+        menu: "Satın alma · Tedarikçiler",
+        question: "Tedarikçilerimi ve ürünlerini bir yerde tutabilir miyim?",
+        answer: "Evet. Her tedarikçinin iletişim bilgileri, müşteri numarası, teslim ve sipariş günleri, ödeme vadesi ve iskontosu bir kartta durur. Ürünleri fiyat, KDV oranı ve depo yeriyle girersiniz; fiyat listesini Excel ya da CSV olarak da içeri alabilirsiniz.",
+        features: ["İletişim, müşteri numarası, teslim ve sipariş günleri", "Ödeme vadesi ve iskonto, yeni faturada önerilir", "Ürün: fiyat, KDV 2.6 / 8.1 %, depo yeri, foto", "Fiyat listesi Excel / CSV ile içeri aktarma", "Siparişi ya da faturası olan tedarikçi silinmez, pasif yapılır"],
+      },
+      {
+        key: "bestellen",
+        menu: "Satın alma · Siparişler",
+        question: "Sipariş vermek ne kadar sürer?",
+        answer: "Birkaç tıklama. Ürünleri artı ile sepete eklersiniz; toplam en düşük sipariş tutarının altındaysa program uyarır. Siparişi PDF'li e-posta, WhatsApp ya da sadece kayıt olarak gönderirsiniz. Son siparişi tek tıkla tekrarlamak da mümkün.",
+        features: ["Tedarikçi başına sepet, toplam kendiliğinden", "En düşük sipariş tutarı ve sipariş saati uyarısı", "E-posta (PDF), WhatsApp ya da sadece kayıt", "Son siparişi tekrarla, katalog dışı serbest satır", "Depo sayımından sipariş önerisi"],
+      },
+      {
+        key: "lieferung",
+        menu: "Satın alma · Teslimat kontrolü",
+        question: "Eksik gelen malı nasıl takip ederim?",
+        answer: "Mal gelince \"Teslimatı kontrol et\" ile irsaliyeyle karşılaştırırsınız. On yerine sekiz gelmişse program farkı bulur ve eksik miktarı kendiliğinden yeni bir sipariş taslağı yapar. Depoya sadece gelen miktar girer.",
+        features: ["Gelen miktarlar irsaliyeye göre girilir", "Eksik miktar otomatik yeni sipariş taslağı", "Depoya sadece gelen miktar yazılır", "Sonradan düzeltmede sadece fark işlenir"],
+      },
+      {
+        key: "rechnung",
+        menu: "Borçlar (gelen faturalar)",
+        question: "Faturaları fotoğrafını çekerek girebilir miyim?",
+        answer: "Evet. \"Faturayı tara\" İsviçre QR faturasını okur: tutar, IBAN, referans ve fatura bilgileri doldurulur, tedarikçi IBAN'dan tanınır. QR yoksa yazı tanıma cihazınızda çalışır, resim cihazdan çıkmaz. Fatura siparişe bağlanır; tutar siparişle uyuşmazsa fark gösterilir.",
+        features: ["İsviçre QR faturası okunur, tedarikçi IBAN'dan tanınır", "QR yoksa yazı tanıma, resim cihazda kalır", "Bir faturada birden fazla KDV oranı", "Siparişle karşılaştırma: beklenen tutar ve fark", "Aynı fatura iki kez girilirse uyarı"],
+      },
+      {
+        key: "zahlung",
+        menu: "Borçlar · Ödeme listesi",
+        question: "Faturaları nasıl öderim, sahte faturaya karşı korunur muyum?",
+        answer: "Kontrol edilip onaylanan fatura ödenecekler listesine geçer; kısmi ödeme ve kalanı ödeme mümkün. Ödeme listesinde açık faturaları seçip e-bankacılık dosyası alırsınız, iskonto düşülmüş olur. Yeni ya da değişmiş bir IBAN varsa, tedarikçiyi arayıp doğrulayana kadar o fatura ödeme dosyasına girmez.",
+        features: ["Onay, sonra ödenecek; kısmi ödeme ve kalanı öde", "Ödeme listesi: Excel, PDF ve e-bankacılık dosyası", "İskonto kendiliğinden düşülür", "Yeni / değişmiş IBAN telefonla doğrulanmadan ödenmez", "Vade kartı: gecikmiş, 7 / 14 / 30 gün"],
+      },
+      {
+        key: "wunsch",
+        menu: "Sipariş isteği",
+        question: "Ekibim eksik olanı bana nasıl bildirir?",
+        answer: "Çalışan \"Sipariş isteği\" ile katalogdan ürünü seçer, miktarı yazar; size bildirim gelir. Siparişler sayfasında isteği tek tıkla sepete alır ya da nedeniyle reddedersiniz. Çalışanlar doğrudan sipariş veremez, karar sizde kalır.",
+        features: ["Katalogdan arama ya da serbest yazı, miktar ve not", "Şefe bildirim, menüde sayaç", "Tek tıkla sepete al ya da reddet", "Durum: açık, alındı, reddedildi, geri çekildi"],
+      },
+      {
+        key: "lager",
+        menu: "Satın alma · Depo",
+        question: "Depoda ne eksik, nasıl görürüm?",
+        answer: "Ekip depoyu yerlerine göre sayar; kimin ne zaman saydığı kaydedilir. Hedef miktarın altına düşen ürünler \"Hedefin altında\" listesinde \"n eksik\" diye görünür ve sipariş önerisine dönüşür. Sayım şişe gibi birimle, sipariş kasa gibi birimle yapılır.",
+        features: ["Depo yerine göre sayım listesi", "Hedefin altındakiler ve eksik miktar", "Sayım birimi ve sipariş birimi ayrı (şişe / kasa)", "Kim, ne zaman saydı kaydı", "Sayımdan tek tıkla sipariş önerisi"],
+      },
+      {
+        key: "preise",
+        menu: "Borçlar · Fiyat geçmişi",
+        question: "Bir tedarikçi zam yaptığında fark eder miyim?",
+        answer: "Evet. Kalemleri okunan faturalarda her ürünün fiyatı saklanır; fatura girerken \"n fiyat geçen faturadan yüksek\" uyarısı çıkar. Fiyat geçmişi sayfası artışları en üstte gösterir, yüzde beşin üstü kırmızıdır.",
+        features: ["Ürün ve tedarikçi başına fiyat geçmişi", "Fatura girerken zam uyarısı", "%5 üstü artış kırmızı", "Excel'e aktarma"],
+      },
+      {
+        key: "fixkosten",
+        menu: "Borçlar · Sabit giderler",
+        question: "Kira ve sigorta gibi düzenli ödemeleri unutmam mümkün mü?",
+        answer: "Zor. Sabit giderlerde kira, sigorta ya da leasing aylık, üç aylık veya yıllık tanımlanır; açık fatura vadeden yaklaşık on gün önce kendiliğinden oluşur. Otomatik ödeme talimatıyla ödenenleri program banka hesap özetinde arar ve ödendi, vadesi geldi ya da eksik diye gösterir.",
+        features: ["Aylık, üç aylık, yıllık sabit giderler", "Açık fatura vadeden ~10 gün önce kendiliğinden", "Otomatik talimat: banka özetinde kontrol", "Sözleşme belge yerine geçer"],
+      },
+    ],
+  },
+  de: {
+    title: "Einkauf & Rechnungen",
+    heading: "Einkauf & Rechnungen",
+    lead: "Vom Lieferanten über die Bestellung und die Lieferkontrolle bis zur Rechnung und Zahlung in einem Fluss. Das Team meldet, was fehlt, der Chef übernimmt es mit einem Klick. Fragen von Inhabern und die Antwort aus dem Programm, dazu kurze Videos.",
+    films: [
+      { title: "Von der Bestellung zur Rechnung", text: "Lieferant, Warenkorb, Bestellung, Lieferkontrolle, Fehlmenge, Rechnung und Teilzahlung." },
+      { title: "Bestellwunsch aus dem Team", text: "Geht etwas aus, wählt die Mitarbeiterin den Artikel und meldet ihn; der Chef legt ihn in den Warenkorb." },
+      { title: "Lager und Fixkosten", text: "Soll-Bestand, Zählung, Bestellvorschlag; regelmässige Zahlungen wie Miete und Versicherung." },
+      { title: "Preisverlauf", text: "Hinweis beim Erfassen, wenn ein Lieferant teurer wird." },
+    ],
+    items: [
+      {
+        key: "lieferanten",
+        menu: "Einkauf · Lieferanten",
+        question: "Habe ich meine Lieferanten und ihre Artikel an einem Ort?",
+        answer: "Ja. Pro Lieferant stehen Kontakt, Kundennummer, Liefer- und Bestelltage, Zahlungsfrist und Skonto auf einer Karte. Artikel erfassen Sie mit Preis, MWST-Satz und Lagerort; die Preisliste lässt sich auch als Excel oder CSV importieren.",
+        features: ["Kontakt, Kundennummer, Liefer- und Bestelltage", "Zahlungsfrist und Skonto, bei neuen Rechnungen vorgeschlagen", "Artikel: Preis, MWST 2.6 / 8.1 %, Lagerort, Foto", "Preisliste per Excel / CSV importieren", "Lieferant mit Bestellungen oder Rechnungen wird deaktiviert, nicht gelöscht"],
+      },
+      {
+        key: "bestellen",
+        menu: "Einkauf · Bestellungen",
+        question: "Wie lange dauert eine Bestellung?",
+        answer: "Ein paar Klicks. Mit dem Plus kommen die Artikel in den Warenkorb; liegt die Summe unter dem Mindestbestellwert, warnt das Programm. Die Bestellung geht als E-Mail mit PDF, per WhatsApp oder wird nur gespeichert. Die letzte Bestellung lässt sich mit einem Klick wiederholen.",
+        features: ["Warenkorb pro Lieferant, Summe automatisch", "Hinweis auf Mindestbestellwert und Bestellschluss", "E-Mail (PDF), WhatsApp oder nur speichern", "Letzte Bestellung wiederholen, freie Position", "Bestellvorschlag aus der Lagerzählung"],
+      },
+      {
+        key: "lieferung",
+        menu: "Einkauf · Lieferung prüfen",
+        question: "Wie verfolge ich fehlende Ware?",
+        answer: "Kommt die Ware, vergleichen Sie sie mit «Lieferung prüfen» mit dem Lieferschein. Kamen acht statt zehn, erkennt das Programm die Abweichung und legt die Fehlmenge als neue Bestellung im Entwurf an. Ins Lager wird nur die gelieferte Menge gebucht.",
+        features: ["Gelieferte Mengen nach Lieferschein", "Fehlmenge automatisch als Entwurf Nachlieferung", "Ins Lager nur die gelieferte Menge", "Bei späterer Korrektur nur die Differenz"],
+      },
+      {
+        key: "rechnung",
+        menu: "Kreditoren (Eingangsrechnungen)",
+        question: "Kann ich Rechnungen einfach abfotografieren?",
+        answer: "Ja. «Rechnung scannen» liest die Swiss QR-Rechnung: Betrag, IBAN, Referenz und Rechnungsdaten werden ausgefüllt, der Lieferant wird an der IBAN erkannt. Ohne QR läuft die Texterkennung auf Ihrem Gerät, das Bild verlässt es nicht. Die Rechnung wird der Bestellung zugeordnet; weicht der Betrag ab, wird die Differenz angezeigt.",
+        features: ["Swiss QR-Rechnung, Lieferant an der IBAN erkannt", "Ohne QR Texterkennung, das Bild bleibt auf dem Gerät", "Mehrere MWST-Sätze pro Rechnung", "Vergleich mit der Bestellung: erwartet und Differenz", "Warnung bei doppelten Rechnungen"],
+      },
+      {
+        key: "zahlung",
+        menu: "Kreditoren · Zahlungsliste",
+        question: "Wie bezahle ich Rechnungen, und bin ich vor gefälschten Rechnungen geschützt?",
+        answer: "Nach Prüfung und Freigabe ist die Rechnung offen und zahlbar; Teilzahlung und Restzahlung sind möglich. In der Zahlungsliste wählen Sie offene Rechnungen und laden eine Datei fürs E-Banking herunter, Skonto ist schon abgezogen. Bei neuer oder geänderter IBAN kommt die Rechnung erst in die Datei, wenn Sie die IBAN beim Lieferanten telefonisch bestätigt haben.",
+        features: ["Freigabe, dann offen; Teilzahlung und Rest bezahlen", "Zahlungsliste: Excel, PDF und Datei fürs E-Banking", "Skonto automatisch abgezogen", "Neue / geänderte IBAN erst nach telefonischer Prüfung", "Fälligkeiten: überfällig, 7 / 14 / 30 Tage"],
+      },
+      {
+        key: "wunsch",
+        menu: "Bestellwunsch",
+        question: "Wie meldet mir das Team, was fehlt?",
+        answer: "Mit «Bestellwunsch» wählt die Mitarbeiterin den Artikel aus dem Katalog und schreibt die Menge; Sie bekommen eine Meldung. Unter Bestellungen übernehmen Sie den Wunsch mit einem Klick in den Warenkorb oder lehnen ihn mit Grund ab. Direkt bestellen kann das Team nicht, die Entscheidung bleibt bei Ihnen.",
+        features: ["Suche im Katalog oder freier Text, Menge und Notiz", "Meldung an den Chef, Zähler am Menüpunkt", "Mit einem Klick in den Warenkorb oder ablehnen", "Status: offen, übernommen, abgelehnt, zurückgezogen"],
+      },
+      {
+        key: "lager",
+        menu: "Einkauf · Lager",
+        question: "Wie sehe ich, was im Lager fehlt?",
+        answer: "Das Team zählt das Lager nach Lagerort; wer wann gezählt hat, wird gespeichert. Artikel unter dem Soll stehen in der Liste «Unter Soll» mit «fehlen n» und werden zum Bestellvorschlag. Gezählt wird in Flaschen, bestellt in Harassen.",
+        features: ["Zählliste nach Lagerort", "Unter Soll mit fehlender Menge", "Zähleinheit und Bestelleinheit getrennt (Flasche / Harass)", "Wer hat wann gezählt", "Aus der Zählung mit einem Klick zum Bestellvorschlag"],
+      },
+      {
+        key: "preise",
+        menu: "Kreditoren · Preisverlauf",
+        question: "Merke ich, wenn ein Lieferant teurer wird?",
+        answer: "Ja. Bei Rechnungen mit gelesenen Positionen wird jeder Einzelpreis gespeichert; schon beim Erfassen erscheint «n Preise höher als bei der letzten Rechnung». Der Preisverlauf zeigt Erhöhungen zuerst, ab fünf Prozent rot.",
+        features: ["Preisverlauf je Artikel und Lieferant", "Hinweis auf höhere Preise beim Erfassen", "Rot ab +5 %", "Export nach Excel"],
+      },
+      {
+        key: "fixkosten",
+        menu: "Kreditoren · Fixkosten",
+        question: "Kann ich regelmässige Zahlungen wie Miete und Versicherung vergessen?",
+        answer: "Kaum. Unter Fixkosten legen Sie Miete, Versicherung oder Leasing monatlich, vierteljährlich oder jährlich an; die offene Rechnung entsteht etwa zehn Tage vor Fälligkeit von selbst. Läuft die Zahlung per Dauerauftrag, sucht das Programm sie im Bankauszug und zeigt gebucht, fällig oder fehlt.",
+        features: ["Fixkosten monatlich, vierteljährlich, jährlich", "Offene Rechnung ~10 Tage vor Fälligkeit", "Dauerauftrag: Prüfung im Bankauszug", "Vertrag zählt als Beleg"],
+      },
+    ],
+  },
+  en: {
+    title: "Purchasing & Invoices",
+    heading: "Purchasing & Invoices",
+    lead: "From supplier to order, delivery check, invoice and payment in one flow. The team reports what is missing, the boss adds it in one click. Questions from owners answered from the program, with short videos.",
+    films: [
+      { title: "From order to invoice", text: "Supplier, basket, order, delivery check, short delivery, invoice and part payment." },
+      { title: "Order requests from the team", text: "When something runs out, the employee picks the item and reports it; the boss adds it to the basket." },
+      { title: "Stock and fixed costs", text: "Target stock, counting, order suggestion; regular payments like rent and insurance." },
+      { title: "Price history", text: "A hint while entering invoices when a supplier gets more expensive." },
+    ],
+    items: [
+      {
+        key: "lieferanten",
+        menu: "Purchasing · Suppliers",
+        question: "Can I keep my suppliers and their products in one place?",
+        answer: "Yes. Each supplier card holds contact details, customer number, delivery and order days, payment terms and discount. You enter products with price, VAT rate and storage place; the price list can also be imported from Excel or CSV.",
+        features: ["Contact, customer number, delivery and order days", "Payment terms and discount, suggested on new invoices", "Product: price, VAT 2.6 / 8.1 %, storage place, photo", "Import the price list from Excel / CSV", "A supplier with orders or invoices is deactivated, not deleted"],
+      },
+      {
+        key: "bestellen",
+        menu: "Purchasing · Orders",
+        question: "How long does placing an order take?",
+        answer: "A few clicks. The plus button adds products to the basket; if the total is below the minimum order value, the program warns you. The order goes out as an email with PDF, by WhatsApp, or is just saved. The last order can be repeated in one click.",
+        features: ["Basket per supplier, total automatic", "Minimum order value and order cut-off hints", "Email (PDF), WhatsApp or save only", "Repeat last order, free line item", "Order suggestion from the stock count"],
+      },
+      {
+        key: "lieferung",
+        menu: "Purchasing · Delivery check",
+        question: "How do I keep track of short deliveries?",
+        answer: "When the goods arrive, \"Check delivery\" compares them with the delivery note. If eight came instead of ten, the program spots it and creates the missing quantity as a new draft order. Only the delivered quantity goes into stock.",
+        features: ["Delivered quantities per delivery note", "Short delivery becomes a draft re-order", "Only delivered quantity goes into stock", "Later corrections book only the difference"],
+      },
+      {
+        key: "rechnung",
+        menu: "Creditors (incoming invoices)",
+        question: "Can I enter invoices by taking a photo?",
+        answer: "Yes. \"Scan invoice\" reads the Swiss QR bill: amount, IBAN, reference and invoice details are filled in, and the supplier is recognised by the IBAN. Without a QR code, text recognition runs on your device and the image never leaves it. The invoice is linked to the order; if the amount differs, the difference is shown.",
+        features: ["Swiss QR bill read, supplier recognised by IBAN", "Without QR: text recognition, image stays on the device", "Several VAT rates per invoice", "Compared with the order: expected amount and difference", "Warning on duplicate invoices"],
+      },
+      {
+        key: "zahlung",
+        menu: "Creditors · Payment list",
+        question: "How do I pay invoices, and am I protected against fake ones?",
+        answer: "Once checked and approved, the invoice is open and payable; part payments and paying the rest are possible. In the payment list you pick open invoices and download a file for e-banking, with discounts already deducted. If an IBAN is new or changed, the invoice only goes into the file after you have confirmed the IBAN by phone with the supplier.",
+        features: ["Approve, then open; part payment and pay the rest", "Payment list: Excel, PDF and an e-banking file", "Discount deducted automatically", "New / changed IBAN paid only after a phone check", "Due dates: overdue, 7 / 14 / 30 days"],
+      },
+      {
+        key: "wunsch",
+        menu: "Order request",
+        question: "How does my team tell me what is missing?",
+        answer: "With \"Order request\" the employee picks the product from the catalogue and enters the quantity; you get a notification. On the Orders page you add the request to the basket in one click or decline it with a reason. The team cannot order directly; the decision stays with you.",
+        features: ["Search the catalogue or free text, quantity and note", "Notification to the boss, counter on the menu", "Add to basket in one click or decline", "Status: open, taken over, declined, withdrawn"],
+      },
+      {
+        key: "lager",
+        menu: "Purchasing · Stock",
+        question: "How do I see what is missing in stock?",
+        answer: "The team counts stock by storage place; who counted when is saved. Products below target appear under \"Below target\" with \"n missing\" and turn into an order suggestion. Counting is in bottles, ordering in crates.",
+        features: ["Count list by storage place", "Below target with missing quantity", "Count unit and order unit separate (bottle / crate)", "Who counted when", "From the count to an order suggestion in one click"],
+      },
+      {
+        key: "preise",
+        menu: "Creditors · Price history",
+        question: "Will I notice when a supplier raises prices?",
+        answer: "Yes. For invoices whose line items were read, every unit price is stored; while entering an invoice you already see \"n prices higher than on the last invoice\". The price history lists increases first, red from five percent.",
+        features: ["Price history per product and supplier", "Price increase hint while entering", "Red from +5 %", "Export to Excel"],
+      },
+      {
+        key: "fixkosten",
+        menu: "Creditors · Fixed costs",
+        question: "Could I forget regular payments like rent and insurance?",
+        answer: "Hardly. Under Fixed costs you set up rent, insurance or leasing monthly, quarterly or yearly; the open invoice appears by itself about ten days before it is due. For standing orders, the program looks for the payment in the bank statement and shows booked, due or missing.",
+        features: ["Fixed costs monthly, quarterly, yearly", "Open invoice ~10 days before due", "Standing order: checked in the bank statement", "Contract counts as the document"],
+      },
+    ],
+  },
+};

@@ -80,10 +80,11 @@ export function HeroPanel() {
   return (
     <div className="relative w-full max-w-[760px] pb-24 sm2:pb-16">
       <div
-        className="era-in-pop absolute top-0 left-4 z-[3] flex items-center gap-3 rounded-(--r-s1) border border-era-line bg-era-white px-4 py-2.5 shadow-[0_12px_40px_var(--c-shadow)] sm2:left-2"
+        className="era-in-pop absolute -top-10 left-[calc(8%+8px)] z-[3] flex items-center rounded-[8px] bg-era-white/90 px-3 py-1.5 shadow-[0_8px_20px_var(--c-shadow-soft)] ring-1 ring-era-lightgray backdrop-blur-md"
         style={delay(0.5)}
       >
-        <span className="text-[15px] font-semibold tracking-wide text-era-black">Buchhaltung</span>
+        {/* sağdaki "Sesli izle" düğmesiyle aynı görünüm ve yükseklik (StampPlayer) */}
+        <span className="text-[13px] font-semibold text-era-primary-ink">Buchhaltung</span>
       </div>
 
       <div
@@ -135,7 +136,7 @@ export function HeroPanel() {
         {slides.map((s, i) => (
           <span
             key={s.chip}
-            className={`flex-1 rounded-full px-1 py-1 text-center text-[8px] font-semibold whitespace-nowrap transition-colors duration-300 ${
+            className={`flex-1 rounded-[4px] px-1 py-1 text-center text-[8px] font-semibold whitespace-nowrap transition-colors duration-300 ${
               i === active ? "bg-era-primary text-era-on-dark" : "bg-era-white text-era-gray ring-1 ring-era-line"
             }`}
           >

@@ -31,15 +31,17 @@ export const en: Dict = {
   },
   nav: {
   "solutions": "Modules",
+  "pricing": "Pricing",
+  "pricingItems": ["Option 1 · Plans", "Option 2 · Build your own"],
   "solutionItems": [
-    "Operations & Hygiene",
+    "Modular Build",
+    "Overview & Operations",
     "Purchasing & Invoices",
     "Staff & Payroll",
     "Finance & Accounting"
   ],
   "links": [
     "Quick Demo",
-    "Modular Build",
     "Customers",
     "Contact Us",
     "Support"
@@ -51,7 +53,7 @@ export const en: Dict = {
     accent: 2,
     lead: "Time clock, shift planning, payroll, HACCP, ordering and accounting in one software. For restaurants and small businesses.",
     test: "Quick Demo",
-    demo: "Get in Touch",
+    demo: "Request a Consultation",
     channelsAria: "Highlights",
     phone: "Phone",
     webChat: "Web chat",

@@ -1,9 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { Check, ChevronDown, Send, X } from "lucide-react";
+import { Check, ChevronDown, Plus, Send, X } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { contact } from "@/i18n/contact";
+import { branches } from "@/i18n/branches";
+import { GlowGrid } from "./GlowGrid";
 import { company } from "@/lib/company";
 
 /**
@@ -12,10 +14,10 @@ import { company } from "@/lib/company";
  * Gönderim /api/contact ile (Resend). Ayar yoksa kullanıcının e-posta uygulaması hazır mesajla açılır.
  */
 type Status = "idle" | "sending" | "sent" | "mailto";
-type Values = { name: string; last: string; email: string; phone: string; hotel: string; topic: string; message: string; consent: boolean; hp: string };
+type Values = { name: string; last: string; email: string; phone: string; hotel: string; topic: string; message: string; consent: boolean; hp: string; branch: string; modules: string[]; wish: string };
 type Mode = "contact" | "demo";
 
-const EMPTY: Values = { name: "", last: "", email: "", phone: "", hotel: "", topic: "", message: "", consent: false, hp: "" };
+const EMPTY: Values = { name: "", last: "", email: "", phone: "", hotel: "", topic: "", message: "", consent: false, hp: "", branch: "", modules: [], wish: "" };
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REQUIRED_CONTACT = ["name", "email", "topic", "message", "consent"] as const;
 const REQUIRED_DEMO = ["name", "last", "email", "consent"] as const;
@@ -44,6 +46,11 @@ function Field({ label, optional, error, delay, className = "", children }: { la
 export function ContactModal() {
   const { locale } = useLocale();
   const c = contact[locale];
+  const br = branches[locale];
+  // Yan panelin iki yüzü: önce sektör, seçince dönüp modüller (birden fazla). Telefonda adım adım: sektör → modüller → form
+  const [face, setFace] = useState<"branch" | "modules">("branch");
+  const [mobForm, setMobForm] = useState(false);
+  const [showWish, setShowWish] = useState(false);
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<Mode>("contact");
   const [leaving, setLeaving] = useState(false);
@@ -104,6 +111,9 @@ export function ContactModal() {
     window.setTimeout(() => {
       setOpen(false);
       setLeaving(false);
+      setFace("branch");
+      setMobForm(false);
+      setShowWish(false);
       // gönderilmiş formu bir sonraki açılışta temiz göster
       setStatus((s) => {
         if (s !== "idle") {
@@ -194,6 +204,9 @@ export function ContactModal() {
       const lines = [`${c.fields.name}: ${full}`, `${c.fields.email}: ${v.email}`];
       if (v.phone) lines.push(`${c.fields.phone}: ${v.phone}`);
       if (v.hotel) lines.push(`${c.fields.hotel}: ${v.hotel}`);
+      if (v.branch) lines.push(`${br.selected}: ${v.branch}`);
+      if (v.modules.length) lines.push(`${br.modSelected}: ${v.modules.join(", ")}`);
+      if (v.wish.trim()) lines.push(`${br.wishLabel}: ${v.wish.trim()}`);
       const body = [...lines, "", v.message || d.wishDefault].join("\n");
       window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(`${demo ? d.topic : v.topic} (${full})`)}&body=${encodeURIComponent(body)}`;
     }
@@ -231,7 +244,13 @@ export function ContactModal() {
         aria-modal="true"
         aria-label={c.title}
         onKeyDown={trap}
-        className={`relative w-full max-w-[580px] rounded-[28px] bg-era-white/70 p-6 shadow-[0_30px_80px_var(--c-shadow)] ring-1 ring-white/50 backdrop-blur-2xl mob:max-h-[94dvh] mob:max-w-none mob:overflow-y-auto mob:rounded-b-none mob:p-5 ${leaving ? "era-contact-card-out" : "era-contact-card-in"}`}
+        className={`w-full max-w-[1180px] mob:max-h-[94dvh] mob:overflow-y-auto ${finished ? "max-w-[580px]" : ""} ${leaving ? "era-contact-card-out" : "era-contact-card-in"}`}
+      >
+      {/* iki panel yan yana: form + sektör (kayan çerçeve efekti, kural) */}
+      <GlowGrid className="flex items-stretch gap-4 mob:flex-col mob:gap-0" pad={10} radius={36}>
+      <div
+        data-glow
+        className={`relative z-[1] w-full max-w-[580px] flex-none rounded-[28px] bg-era-white/70 p-6 shadow-[0_30px_80px_var(--c-shadow)] ring-1 ring-white/50 backdrop-blur-2xl mob:max-w-none mob:rounded-b-none mob:p-5 ${!finished && !mobForm ? "mob:hidden" : ""}`}
       >
         <button type="button" onClick={close} aria-label={c.close} className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full text-era-gray transition hover:bg-era-secondary hover:text-era-black">
           <X size={19} />
@@ -239,6 +258,36 @@ export function ContactModal() {
 
         <h2 className="pr-10 text-[30px] leading-tight font-extrabold tracking-tight text-era-black mob:text-[26px]">{finished ? (demo ? d.sent.title : status === "sent" ? c.sent.title : c.mailto.title) : demo ? d.title : c.title}</h2>
         {!finished && <p className="mt-1 text-[15px] text-era-gray">{demo ? d.lead : c.lead}</p>}
+        {!finished && (v.branch || v.modules.length > 0) && (
+          <div className="era-in-pop mt-3 flex flex-wrap gap-2">
+            {v.branch && (
+              <button
+                type="button"
+                onClick={() => {
+                  set("branch", "");
+                  setFace("branch");
+                  setMobForm(false);
+                }}
+                aria-label={br.clear}
+                className="flex w-fit items-center gap-2 rounded-[8px] bg-era-primary px-3 py-1 text-[13px] font-semibold text-era-on-dark"
+              >
+                {br.selected}: {v.branch} <X size={14} />
+              </button>
+            )}
+            {v.modules.length > 0 && (
+              <button
+                type="button"
+                onClick={() => {
+                  setFace("modules");
+                  setMobForm(false);
+                }}
+                className="flex w-fit items-center gap-2 rounded-[8px] bg-era-coolblue px-3 py-1 text-[13px] font-semibold text-era-primary-ink ring-1 ring-era-primary/30"
+              >
+                {br.modSelected}: {v.modules.length}
+              </button>
+            )}
+          </div>
+        )}
 
         {/* uçuş rotası: zorunlu alanlar doldukça uçak ilerler, gönderilince kalkıp gider */}
         <div aria-hidden className="relative mt-5 mb-1 h-9">
@@ -351,6 +400,103 @@ export function ContactModal() {
             </button>
           </form>
         )}
+      </div>
+      {!finished && (
+        <aside data-glow className={`relative z-[1] flex min-w-0 flex-1 flex-col rounded-[28px] bg-era-white/70 p-6 shadow-[0_30px_80px_var(--c-shadow)] ring-1 ring-white/50 backdrop-blur-2xl mob:rounded-b-none mob:p-5 ${mobForm ? "mob:hidden" : ""}`}>
+          <button type="button" onClick={close} aria-label={c.close} className="absolute top-4 right-4 z-[2] hidden h-9 w-9 items-center justify-center rounded-full text-era-gray transition hover:bg-era-secondary hover:text-era-black mob:flex">
+            <X size={19} />
+          </button>
+          {/* yüz değişince kart gibi döner (era-flip, globals.css) */}
+          <div key={face} className="era-flip flex min-h-0 flex-1 flex-col gap-4">
+            {face === "branch" ? (
+              <>
+                <div className="flex flex-col gap-1 mob:pr-10">
+                  <h3 className="text-[22px] leading-tight font-extrabold tracking-tight text-era-black">{br.title}</h3>
+                  <p className="text-[14px] leading-snug text-era-gray">{br.lead}</p>
+                </div>
+                <div className="grid grid-cols-2 gap-x-5 gap-y-4 overflow-y-auto pr-1 mob:grid-cols-1" style={{ maxHeight: "min(560px, 64dvh)" }}>
+                  {br.groups.map((g) => (
+                    <div key={g.name} className="flex flex-col gap-2">
+                      <span className="border-b border-era-primary/20 pb-1 text-[12px] font-bold tracking-[0.1em] text-era-primary-ink uppercase">{g.name}</span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {g.items.map((it) => {
+                          const on = v.branch === it;
+                          return (
+                            <button
+                              key={it}
+                              type="button"
+                              aria-pressed={on}
+                              onClick={() => {
+                                set("branch", it);
+                                setFace("modules");
+                              }}
+                              className={`rounded-[8px] px-3 py-1.5 text-[13px] font-semibold transition-all duration-200 active:scale-95 ${on ? "bg-era-primary text-era-on-dark shadow-[0_6px_16px_var(--c-shadow-soft)]" : "bg-era-white/80 text-era-black ring-1 ring-era-line hover:ring-era-primary"}`}
+                            >
+                              {it}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <button type="button" onClick={() => setFace("modules")} className="w-fit text-[14px] font-semibold text-era-primary-ink">
+                  {br.skip} →
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="flex flex-col gap-1 mob:pr-10">
+                  <button type="button" onClick={() => setFace("branch")} className="mb-1 flex w-fit items-center gap-1.5 text-[13px] font-semibold text-era-primary-ink">
+                    ← {v.branch ? `${v.branch} · ${br.change}` : br.change}
+                  </button>
+                  <h3 className="text-[22px] leading-tight font-extrabold tracking-tight text-era-black">{br.modTitle}</h3>
+                  <p className="text-[14px] leading-snug text-era-gray">{br.modLead}</p>
+                </div>
+                <div className="grid grid-cols-2 gap-x-5 gap-y-4 overflow-y-auto pr-1 mob:grid-cols-1" style={{ maxHeight: "min(500px, 56dvh)" }}>
+                  {br.areas.map((g) => (
+                    <div key={g.name} className="flex flex-col gap-2">
+                      <span className="border-b border-era-primary/20 pb-1 text-[12px] font-bold tracking-[0.1em] text-era-primary-ink uppercase">{g.name}</span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {g.items.map((it) => {
+                          const on = v.modules.includes(it);
+                          return (
+                            <button
+                              key={it}
+                              type="button"
+                              aria-pressed={on}
+                              onClick={() => set("modules", on ? v.modules.filter((m) => m !== it) : [...v.modules, it])}
+                              className={`flex items-center gap-1.5 rounded-[8px] px-3 py-1.5 text-[13px] font-semibold transition-all duration-200 active:scale-95 ${on ? "bg-era-primary text-era-on-dark shadow-[0_6px_16px_var(--c-shadow-soft)]" : "bg-era-white/80 text-era-black ring-1 ring-era-line hover:ring-era-primary"}`}
+                            >
+                              {on && <Check size={13} strokeWidth={3} />}
+                              {it}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* bizde olmayan modül isteği */}
+                {showWish ? (
+                  <label className="flex flex-col gap-1.5">
+                    <span className="text-[13px] font-semibold text-era-black">{br.wishLabel}</span>
+                    <textarea autoFocus value={v.wish} onChange={(e) => set("wish", e.target.value)} placeholder={br.wishPh} maxLength={600} className={`${input} min-h-[72px] resize-y`} />
+                  </label>
+                ) : (
+                  <button type="button" onClick={() => setShowWish(true)} className="flex w-fit items-center gap-2 rounded-[8px] border-2 border-dashed border-era-primary/50 px-3.5 py-2 text-[14px] font-semibold text-era-primary-ink transition hover:border-era-primary hover:bg-era-primary/[0.06]">
+                    <Plus size={16} /> {br.wishBtn}
+                  </button>
+                )}
+                <button type="button" onClick={() => setMobForm(true)} className="hidden h-12 items-center justify-center gap-2 rounded-(--r-s1) bg-era-primary text-[16px] font-semibold text-era-on-dark mob:flex">
+                  {br.next} →
+                </button>
+              </>
+            )}
+          </div>
+        </aside>
+      )}
+      </GlowGrid>
       </div>
     </div>
   );

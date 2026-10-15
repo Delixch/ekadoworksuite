@@ -7,6 +7,8 @@ import { useLocale } from "@/i18n/useLocale";
 import { modular, type ShowBusiness } from "@/i18n/modular";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
+import { ForWhom, ModuleGrid, useBuilder } from "./builder/ModuleBuilder";
+import { landing } from "@/i18n/landing";
 
 type Box = { x: number; y: number; w: number; h: number };
 type Layout = { W: number; H: number; biz: Box[]; core: Box; mods: Box[]; goal: Box; font: number; narrow: boolean };
@@ -240,6 +242,8 @@ function Show() {
 export function ModularPage() {
   const { locale } = useLocale();
   const m = modular[locale];
+  const lb = landing[locale].b;
+  const bld = useBuilder();
 
   return (
     <div className="overflow-hidden">
@@ -254,6 +258,21 @@ export function ModularPage() {
             <p className="max-w-[780px] text-[clamp(1.2rem,1.9vw,1.5rem)] leading-[1.55] text-era-gray">{m.lead}</p>
           </div>
           <Show />
+        </section>
+
+        {/* Programını kur: bölümleri aç/kapa + kimin için (ortak bileşen; ana sayfa taslağı B ile aynı) */}
+        <section id="kur" className="relative scroll-mt-[90px] py-[60px] tab:py-[44px]">
+          <div className="mx-auto grid w-full max-w-[1240px] grid-cols-[minmax(0,.85fr)_minmax(0,1.15fr)] items-center gap-12 px-[15px] tab:grid-cols-1 tab:gap-8">
+            <div className="flex flex-col items-start gap-4 text-left">
+              <h2 className="text-[clamp(1.9rem,3.4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] text-balance text-era-black">{lb.h1}</h2>
+              <p className="max-w-[480px] text-[18px] leading-[1.55] text-era-gray">{lb.lead}</p>
+            </div>
+            <ModuleGrid b={bld} compact />
+          </div>
+          <div className="mx-auto mt-14 flex w-full max-w-[1240px] flex-col gap-6 px-[15px]">
+            <h3 className="text-[clamp(1.6rem,2.6vw,2.2rem)] leading-tight font-semibold tracking-[-0.02em] text-era-black">{lb.forTitle}</h3>
+            <ForWhom b={bld} compact onPick={() => document.getElementById("kur")?.scrollIntoView({ behavior: "smooth" })} />
+          </div>
         </section>
 
         <section className="relative py-[70px] tab:py-[50px] mob:py-10">

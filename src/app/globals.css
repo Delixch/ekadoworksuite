@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* PALET SEÇİMİ (tek satır): harici paletler src/styles/themes/ içinde: mavi.css, sarap.css. Ayrıntı: src/styles/theme.css */
+@import "../styles/themes/sarap.css";
 @import "../styles/theme.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -745,3 +747,39 @@ p { text-wrap: pretty; }
 }
 
 /* ===== Iletisim bolumu: harita ignesi nabzi ===== */
+
+/* ===== İletişim yan paneli: yüz değişince kart gibi döner ===== */
+@keyframes era-flip { from { transform: perspective(1400px) rotateY(-82deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.era-flip { animation: era-flip 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both; transform-origin: left center; }
+@media (prefers-reduced-motion: reduce) { .era-flip { animation: none; } }
+
+/* ===== Logo simgesi (Adnan 2026-10-15 "çamaşır makinesi gibi"): saat gibi adım adım döner (her saniye 30°, hafif yaylanarak), 12 sn'de bir tur ===== */
+@keyframes era-logo-tick {
+  0.000% { transform: rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  2.500% { transform: rotate(30deg); }
+  8.333% { transform: rotate(30deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  10.833% { transform: rotate(60deg); }
+  16.667% { transform: rotate(60deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  19.167% { transform: rotate(90deg); }
+  25.000% { transform: rotate(90deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  27.500% { transform: rotate(120deg); }
+  33.333% { transform: rotate(120deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  35.833% { transform: rotate(150deg); }
+  41.667% { transform: rotate(150deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  44.167% { transform: rotate(180deg); }
+  50.000% { transform: rotate(180deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  52.500% { transform: rotate(210deg); }
+  58.333% { transform: rotate(210deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  60.833% { transform: rotate(240deg); }
+  66.667% { transform: rotate(240deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  69.167% { transform: rotate(270deg); }
+  75.000% { transform: rotate(270deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  77.500% { transform: rotate(300deg); }
+  83.333% { transform: rotate(300deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  85.833% { transform: rotate(330deg); }
+  91.667% { transform: rotate(330deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  94.167% { transform: rotate(360deg); }
+  100% { transform: rotate(360deg); }
+}
+.era-logo-spin { transform-box: fill-box; transform-origin: center; animation: era-logo-tick 12s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .era-logo-spin { animation: none; } }

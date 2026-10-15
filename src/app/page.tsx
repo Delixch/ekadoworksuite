@@ -3,6 +3,7 @@ import { Hero } from "@/components/sites/era/Hero";
 import { Marquee } from "@/components/sites/era/Marquee";
 // import { About } from "@/components/sites/era/About"; // Era şablonundan kalan, Ekado içeriği yazılana kadar yayında değil
 import { Features } from "@/components/sites/era/Features";
+import { SwissBand } from "@/components/sites/era/SwissBand";
 import { Journey } from "@/components/sites/era/Journey";
 import { Solutions } from "@/components/sites/era/Solutions";
 // import { Technology } from "@/components/sites/era/Technology"; // akıllı kapı kilidi (otel ürünü), Ekado WorkSuite için kullanılmıyor
@@ -23,6 +24,8 @@ export default function Home() {
         <Marquee />
         {/* <About /> */}
         <Features />
+        {/* İsviçre bandı (2026-10-15 eklendi; yeri sonra belirlenecek) */}
+        <SwissBand />
         <Journey />
         <Solutions />
         {/* <Voice /> */}

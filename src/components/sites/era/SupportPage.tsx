@@ -7,6 +7,7 @@ import { support } from "@/i18n/support";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 import { Reveal } from "./ui";
+import { BeforeAfter } from "./BeforeAfter";
 
 const CX = 200;
 const R = 118;
@@ -264,6 +265,8 @@ export function SupportPage() {
             </div>
           </div>
         </section>
+        {/* Bugün nasıl / Ekado ile nasıl (2026-10-15 eklendi; yeri sonra belirlenecek) */}
+        <BeforeAfter />
       </main>
       <Footer />
     </div>

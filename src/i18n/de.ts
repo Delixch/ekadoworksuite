@@ -31,15 +31,17 @@ export const de: Dict = {
   },
   nav: {
   "solutions": "Module",
+  "pricing": "Preise",
+  "pricingItems": ["Option 1 · Pakete", "Option 2 · Selbst berechnen"],
   "solutionItems": [
-    "Betrieb & Hygiene",
+    "Modulares System",
+    "Übersicht & Betrieb",
     "Einkauf & Rechnungen",
     "Personal & Lohn",
     "Finanzen & Buchhaltung"
   ],
   "links": [
     "Schnell-Demo",
-    "Modulares System",
     "Kunden",
     "Kontakt",
     "Support"
@@ -51,7 +53,7 @@ export const de: Dict = {
     accent: 2,
     lead: "Stempeluhr, Dienstplan, Lohnabrechnung, HACCP, Bestellungen und Buchhaltung in einer Software. Für Gastronomie und kleine Betriebe.",
     test: "Schnell-Demo",
-    demo: "Kontakt aufnehmen",
+    demo: "Beratung anfragen",
     channelsAria: "Highlights",
     phone: "Telefon",
     webChat: "Web-Chat",

@@ -1,0 +1,115 @@
+/*
+ * PALET: ŞARAP (kırmızı şarap ve yan renkleri) — gündüz + gece.
+ * Bordo ana renk; yanında şampanya/eski altın vurgu, asma yaprağı yeşili onay, gül kurusu açık tonlar, sıcak fildişi zemin.
+ * Harici tema dosyası: sitedeki bütün renkler burada, bileşenlerde renk kodu yazılmaz.
+ * Etkin palet src/styles/theme.css içindeki tek @import satırıyla seçilir. Değişken adları mavi.css ile aynı.
+ */
+
+:root {
+  /* ===== Marka renkleri ===== */
+  --c-primary: #7b2238;        /* bordo: buton, vurgulu başlık, bağlantı */
+  --c-primary-soft: #f2dde2;   /* gül kurusu açık: hap, seçili kart zemini */
+  --c-primary-ink: #7b2238;    /* açık zemin üstündeki bordo yazı (menü hapları) */
+  --c-logo-from: #7b2238;      /* logo geçişi başlangıç */
+  --c-logo-to: #2c1a20;        /* logo geçişi bitiş */
+  --c-logo-dark-from: #e7a3b2; /* koyu zeminde logo yazısı (footer) başlangıç */
+  --c-logo-ink: #2c1a20;        /* Ekado logosu: koyu çizgiler */
+  --c-logo-accent: #7b2238;     /* Ekado logosu: renkli çizgiler */
+  --c-logo-dark-ink: #f3e7ea;   /* koyu zeminde logo koyu çizgiler yerine */
+  --c-logo-dark-accent: #e7a3b2;/* koyu zeminde logo renkli çizgiler */
+  --c-logo-dark-to: #f3e7ea;   /* koyu zeminde logo yazısı bitiş */
+
+  /* ===== Koyu tonlar (patlıcan, şarap tortusu) ===== */
+  --c-ink: #2c1a20;            /* ana metin, koyu buton */
+  --c-dark: #2c1a20;           /* koyu bölüm zemini (hizmetler, footer) */
+  --c-dark-card: #3e2830;      /* koyu bölüm içindeki kart */
+
+  /* ===== Metin ===== */
+  --c-muted: #6c5a5f;          /* yardımcı metin, açıklama */
+  --c-muted-light: #c5afb5;    /* koyu zeminde yardımcı metin */
+  --c-muted-soft: #9a878c;     /* en sessiz metin, alt yazı */
+
+  /* ===== Zeminler (sıcak fildişi) ===== */
+  --c-white: #fcf8f5;
+  --c-bg: #f6efea;             /* sayfa zemini */
+  --c-sky: #f4e3e6;            /* hero zemini (rosé) */
+  --c-tint: #f0e5df;           /* kart ve çerçeve zemini */
+  --c-bright: #fcf8f5;         /* kart içi çok açık zemin */
+  --c-line: #e8d8d2;           /* ince çizgi, kart kenarı */
+  --c-line-strong: #d7c1ba;    /* belirgin çizgi, dropdown kenarı */
+  --c-line-soft: #efe5e0;      /* en hafif kenar */
+  --c-panel: #fcf8f5;          /* panel/kart gövde zemini */
+  --c-panel-border: #dcc6bf;   /* panel/kart kenar çizgisi */
+
+  /* ===== Vurgu (yan renkler) ===== */
+  --c-accent: #a47b2c;         /* şampanya / eski altın: aktif menü çizgisi, küçük vurgular */
+  --c-success: #5d7a45;        /* asma yaprağı yeşili: onay */
+  --c-danger: #b9542b;         /* hata (bordodan ayrışan kiremit) */
+
+  /* ===== Roller ===== */
+  --c-page: #f6efea;           /* sayfa zemini */
+  --c-surface: #fcf8f5;        /* kart, kutu, hap zemini */
+  --c-on-dark: #fcf8f5;        /* koyu bölüm ve bordo buton üstündeki yazı */
+  --c-btn: #2c1a20;            /* koyu buton zemini */
+  --c-on-btn: #fcf8f5;         /* koyu buton yazısı */
+
+  /* ===== Cihaz ve marka ikonları (üçüncü taraf marka renkleri) ===== */
+  --c-device: #2c1a20;         /* laptop ve telefon çerçevesi */
+  --c-whatsapp: #25d366;
+  --c-messenger: #0a7cff;
+  --c-ig-1: #feda75;
+  --c-ig-2: #d62976;
+  --c-ig-3: #4f5bd5;
+
+  /* ===== Yüzeyler ===== */
+  --c-nav: rgb(246 239 234);       /* kaydırınca menü zemini */
+  --c-shadow: rgb(44 26 32 / 0.14);      /* kart gölgesi */
+  --c-shadow-soft: rgb(44 26 32 / 0.1);  /* hafif gölge */
+  --c-glow: rgb(255 255 255 / 0.2);       /* koyu/bordo yüzeylerde parlama */
+  --c-glow-soft: rgb(255 255 255 / 0.12); /* daha hafif parlama */
+}
+
+/* ===== GECE: html[data-theme="dark"] iken bu değerler geçerli olur ===== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --c-primary: #b04660;
+  --c-primary-soft: #3a1d27;
+  --c-primary-ink: #f0a9b9;
+  --c-logo-from: #e7a3b2;
+  --c-logo-ink: #f3e7ea;
+  --c-logo-accent: #e7a3b2;
+  --c-logo-to: #f3e7ea;
+  --c-device: #3b2c31;
+
+  --c-ink: #f3e7ea;
+  --c-dark: #100a0c;
+  --c-dark-card: #22161a;
+
+  --c-muted: #bba6ac;
+  --c-muted-light: #bba6ac;
+  --c-muted-soft: #8e7a80;
+
+  --c-page: #171012;
+  --c-surface: #22171b;
+  --c-bg: #171012;
+  --c-sky: #2a1720;
+  --c-tint: #2a1f23;
+  --c-bright: #22171b;
+  --c-line: #3b2c31;
+  --c-line-strong: #4b3a40;
+  --c-line-soft: #2b2125;
+  --c-panel: #22171b;
+  --c-panel-border: #46363c;
+
+  --c-accent: #d6b064;
+  --c-success: #9dbf80;
+  --c-danger: #ee8b6a;
+
+  --c-btn: #f3e7ea;
+  --c-on-btn: #2c1a20;
+
+  --c-nav: rgb(23 16 18);
+  --c-shadow: rgb(0 0 0 / 0.45);
+  --c-shadow-soft: rgb(0 0 0 / 0.3);
+}

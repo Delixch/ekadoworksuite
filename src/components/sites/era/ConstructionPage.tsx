@@ -7,7 +7,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
 /** Menü başlığının t.nav.links içindeki sırası */
-const NAV_INDEX: Record<SoonKind, number> = { tech: 1, clients: 2, blog: 4 };
+const NAV_INDEX: Record<Exclude<SoonKind, "tech">, number> = { clients: 1, blog: 3 };
 const YELLOW = "#f5b301";
 
 /** Teknolojimiz: birbirini döndüren üç dişli */
@@ -105,7 +105,8 @@ function BlogScene() {
 export function ConstructionPage({ kind }: { kind: SoonKind }) {
   const { locale, t } = useLocale();
   const s = soon[locale];
-  const title = t.nav.links[NAV_INDEX[kind]];
+  // Modüler Yapı 2026-10-15'ten beri Modüller menüsünün ilk öğesi
+  const title = kind === "tech" ? t.nav.solutionItems[0] : t.nav.links[NAV_INDEX[kind]];
 
   return (
     <div className="overflow-hidden">

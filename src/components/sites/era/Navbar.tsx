@@ -8,7 +8,7 @@ import { video } from "@/i18n/video";
 import { toTopIfHome } from "@/lib/home-click";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
-import { DEMO_URL, linkHrefs, solutionHrefs } from "./nav-links";
+import { DEMO_URL, linkHrefs, pricingHrefs, solutionHrefs } from "./nav-links";
 import { ThemeToggle } from "./ThemeToggle";
 
 /** Açılışta sırayla büyüyerek gelen öğe */
@@ -108,6 +108,7 @@ export function Navbar() {
           {/* masaüstü menü */}
           <nav className="flex items-center gap-3 max-[1439px]:gap-1.5 max-[1279px]:hidden" aria-label="Ana menü">
             <Dropdown label={t.nav.solutions} items={t.nav.solutionItems} hrefs={solutionHrefs} delay={1} />
+            <Dropdown label={t.nav.pricing} items={t.nav.pricingItems} hrefs={pricingHrefs} delay={1.5} />
             {t.nav.links.map((label, i) => (
               <a key={linkHrefs[i]} href={linkHrefs[i]} {...(linkHrefs[i] === DEMO_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`era-in-pop ${pillSoft}`} style={pop(i + 2)}>
                 {label}
@@ -122,13 +123,6 @@ export function Navbar() {
             <div className="era-in-pop flex" style={pop(7.5)}>
               <ThemeToggle />
             </div>
-            <Link
-              href="/#demo"
-              className="demo-glow era-in-pop flex h-12 items-center group-data-[scrolled=true]/h:h-10 rounded-(--r-s1) bg-era-primary px-6 text-[17px] font-medium whitespace-nowrap text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 max-[1439px]:h-11 max-[1439px]:px-4 max-[1439px]:text-[15px] max-[1279px]:hidden"
-              style={pop(8)}
-            >
-              {t.nav.demo}
-            </Link>
             <button
               type="button"
               aria-label={t.ui.menu}
@@ -159,14 +153,18 @@ export function Navbar() {
               </a>
             ))}
             <div className="my-2 h-px bg-era-line" />
+            <div className="px-3 pb-1 text-[13px] font-semibold tracking-wide text-era-gray uppercase">{t.nav.pricing}</div>
+            {t.nav.pricingItems.map((label, i) => (
+              <a key={pricingHrefs[i]} href={pricingHrefs[i]} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
+                {label}
+              </a>
+            ))}
+            <div className="my-2 h-px bg-era-line" />
             {t.nav.links.map((label, i) => (
               <a key={linkHrefs[i]} href={linkHrefs[i]} {...(linkHrefs[i] === DEMO_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setOpen(false)} className="rounded-(--r-s1) px-3 py-3 text-[16px] font-medium text-era-black no-underline hover:bg-era-secondary">
                 {label}
               </a>
             ))}
-            <Link href="/#demo" onClick={() => setOpen(false)} className="mt-3 flex h-12 items-center justify-center rounded-(--r-s1) bg-era-primary text-[17px] font-medium text-era-on-dark no-underline">
-              {t.nav.demo}
-            </Link>
           </div>
         </nav>
       </div>

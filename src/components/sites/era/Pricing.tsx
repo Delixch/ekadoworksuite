@@ -65,10 +65,10 @@ export function Pricing() {
 
             {/* aylık / yıllık seçici */}
             <Reveal variant="up" className="mt-2 flex flex-wrap items-center justify-center gap-3">
-              <div role="tablist" className="relative grid grid-cols-2 rounded-full bg-era-secondary p-1 ring-1 ring-era-line">
+              <div role="tablist" className="relative grid grid-cols-2 rounded-[10px] bg-era-secondary p-1 ring-1 ring-era-line">
                 <span
                   aria-hidden
-                  className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-era-primary shadow-[0_6px_16px_var(--c-shadow)] transition-transform duration-500 ease-out"
+                  className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-[8px] bg-era-primary shadow-[0_6px_16px_var(--c-shadow)] transition-transform duration-500 ease-out"
                   style={{ transform: yearly ? "translateX(100%)" : "translateX(0)" }}
                 />
                 {[
@@ -81,7 +81,7 @@ export function Pricing() {
                     role="tab"
                     aria-selected={yearly === val}
                     onClick={() => setYearly(val as boolean)}
-                    className={`relative z-[1] rounded-full px-7 py-2.5 text-[15px] font-semibold transition-colors duration-300 ${
+                    className={`relative z-[1] rounded-[8px] px-7 py-2.5 text-[15px] font-semibold transition-colors duration-300 ${
                       yearly === val ? "text-era-on-dark" : "text-era-gray"
                     }`}
                   >
