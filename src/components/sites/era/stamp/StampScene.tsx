@@ -14,7 +14,8 @@ export const STAMP_FRAMES = 236;
 const FALL = 11; // düşüş süresi (kare)
 const FADE_FROM = 200;
 
-type Props = { words: string[]; brand: string; claim: string; lang: string };
+/** lite: telefon/dokunmatik — mürekkep filtresi yok, gölge küçük, daha az damla (mobilde takılma, Adnan 2026-10-16) */
+type Props = { words: string[]; brand: string; claim: string; lang: string; lite?: boolean; sound?: boolean };
 
 const spots = [
   { x: 29, y: 15, r: -8 },
@@ -23,7 +24,7 @@ const spots = [
   { x: 72, y: 76, r: -6 },
 ];
 
-function Stamp({ at, x, y, rot, big = false, children }: { at: number; x: number; y: number; rot: number; big?: boolean; children: React.ReactNode }) {
+function Stamp({ at, x, y, rot, big = false, lite = false, children }: { at: number; x: number; y: number; rot: number; big?: boolean; lite?: boolean; children: React.ReactNode }) {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const start = at - FALL;
@@ -43,9 +44,10 @@ function Stamp({ at, x, y, rot, big = false, children }: { at: number; x: number
   const splash = k >= 0 && k < 16;
   const ring = interpolate(k, [0, 14], [0.6, 1.9], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const ringOp = interpolate(k, [0, 3, 14], [0, 0.55, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const drops = (big ? 14 : 9) - (lite ? 4 : 0);
 
   return (
-    <div style={{ position: "absolute", left: `${x}%`, top: `${y}%`, transform: `translate(-50%, -50%) translateY(${dy}px)`, opacity: op }}>
+    <div style={{ position: "absolute", left: `${x}%`, top: `${y}%`, transform: `translate(-50%, -50%) translateY(${dy}px)`, opacity: op, willChange: "transform, opacity" }}>
       {splash && (
         <>
           <div
@@ -61,8 +63,8 @@ function Stamp({ at, x, y, rot, big = false, children }: { at: number; x: number
               opacity: ringOp,
             }}
           />
-          {Array.from({ length: big ? 14 : 9 }, (_, i) => {
-            const a = (i / (big ? 14 : 9)) * Math.PI * 2 + rot;
+          {Array.from({ length: drops }, (_, i) => {
+            const a = (i / drops) * Math.PI * 2 + rot;
             const d = interpolate(k, [0, 12], [10, (big ? 230 : 150) + (i % 3) * 24], { extrapolateRight: "clamp" });
             const s = interpolate(k, [0, 12], [10 - (i % 3) * 2, 0], { extrapolateRight: "clamp" });
             return (
@@ -83,10 +85,11 @@ function Stamp({ at, x, y, rot, big = false, children }: { at: number; x: number
           })}
         </>
       )}
+      {/* hareket dış kutuda, filtre + gölge içte sabit: tarayıcı damgayı bir kez çizer, sonra sadece kaydırır */}
+      <div style={{ transform: `rotate(${rot}deg) scale(${sx}, ${sy})`, willChange: "transform" }}>
       <div
         style={{
-          transform: `rotate(${rot}deg) scale(${sx}, ${sy})`,
-          filter: "url(#stamp-ink)",
+          filter: lite ? undefined : "url(#stamp-ink)",
           border: `${big ? 7 : 5}px double var(--c-primary)`,
           borderRadius: 10,
           padding: big ? "18px 44px 20px" : "10px 26px 12px",
@@ -98,16 +101,17 @@ function Stamp({ at, x, y, rot, big = false, children }: { at: number; x: number
           letterSpacing: big ? "0.06em" : "0.08em",
           whiteSpace: "nowrap",
           textAlign: "center",
-          boxShadow: "0 18px 40px var(--c-shadow-soft)",
+          boxShadow: lite ? "0 8px 16px var(--c-shadow-soft)" : "0 18px 40px var(--c-shadow-soft)",
         }}
       >
         {children}
+      </div>
       </div>
     </div>
   );
 }
 
-export function StampScene({ words, brand, claim, lang }: Props) {
+export function StampScene({ words, brand, claim, lang, lite = false, sound = false }: Props) {
   return (
     // lang: büyük harfte Türkçe İ/I doğru çıksın (DE/EN'de normal I)
     <AbsoluteFill lang={lang}>
@@ -121,19 +125,21 @@ export function StampScene({ words, brand, claim, lang }: Props) {
         </filter>
       </svg>
       {words.map((w, i) => (
-        <Stamp key={w} at={IMPACTS[i]} x={spots[i].x} y={spots[i].y} rot={spots[i].r}>
+        <Stamp key={w} at={IMPACTS[i]} x={spots[i].x} y={spots[i].y} rot={spots[i].r} lite={lite}>
           <span style={{ fontSize: 42 }}>{w}</span>
         </Stamp>
       ))}
-      <Stamp at={IMPACTS[4]} x={50} y={48} rot={-4} big>
+      <Stamp at={IMPACTS[4]} x={50} y={48} rot={-4} big lite={lite}>
         <span style={{ display: "block", fontSize: 96, lineHeight: 1 }}>{brand}</span>
         <span style={{ display: "block", marginTop: 8, fontSize: 30, letterSpacing: "0.04em" }}>{claim}</span>
       </Stamp>
-      {IMPACTS.map((at) => (
-        <Sequence key={at} from={at - 1} durationInFrames={20}>
-          <Audio src={staticFile("sounds/stamp.mp3")} volume={0.9} />
-        </Sequence>
-      ))}
+      {/* ses sadece çalınacaksa: sessiz açılışta tarayıcı AudioContext uyarısı vermesin */}
+      {sound &&
+        IMPACTS.map((at) => (
+          <Sequence key={at} from={at - 1} durationInFrames={20}>
+            <Audio src={staticFile("sounds/stamp.mp3")} volume={0.9} />
+          </Sequence>
+        ))}
     </AbsoluteFill>
   );
 }

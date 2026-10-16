@@ -33,16 +33,19 @@ export default function StampPlayer({ shake }: { shake: RefObject<HTMLDivElement
   const player = useRef<PlayerRef>(null);
   // sadece tarayıcıda yüklenir (ssr: false), window var
   const [reduce] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  // telefon/tablet: hafif sahne (mürekkep filtresi her karede yeniden çiziliyordu, mobilde takılıyordu)
+  const [lite] = useState(() => window.matchMedia("(max-width: 991px), (pointer: coarse)").matches);
   // bu ziyarette gösterildiyse kendiliğinden oynamaz
   const [seen] = useState(readSeen);
   const [done, setDone] = useState(seen);
   const [withSound, setWithSound] = useState(false);
+  // ziyaretçi sayfaya daha önce dokunduysa sesli başlar
+  const [active] = useState(() => !!(navigator as Navigator & { userActivation?: { hasBeenActive: boolean } }).userActivation?.hasBeenActive);
 
   useEffect(() => {
     const p = player.current;
     if (!p) return;
     if (!seen) markSeen();
-    const active = (navigator as Navigator & { userActivation?: { hasBeenActive: boolean } }).userActivation?.hasBeenActive;
     if (active) p.unmute();
     const onFrame = (e: { detail: { frame: number } }) => {
       const el = shake.current;
@@ -67,7 +70,7 @@ export default function StampPlayer({ shake }: { shake: RefObject<HTMLDivElement
       p.removeEventListener("frameupdate", onFrame);
       p.removeEventListener("ended", onEnded);
     };
-  }, [shake, reduce, seen]);
+  }, [shake, reduce, seen, active]);
 
   if (reduce) return null;
 
@@ -87,7 +90,7 @@ export default function StampPlayer({ shake }: { shake: RefObject<HTMLDivElement
         <Player
           ref={player}
           component={StampScene}
-          inputProps={{ words: t.words, brand: t.brand, claim: t.claim, lang: locale }}
+          inputProps={{ words: t.words, brand: t.brand, claim: t.claim, lang: locale, lite, sound: active || withSound }}
           compositionWidth={STAMP_W}
           compositionHeight={STAMP_H}
           durationInFrames={STAMP_FRAMES}

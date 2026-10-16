@@ -38,16 +38,17 @@ export function Hero() {
               {t.hero.lead}
             </p>
 
-            <div className="era-in-up flex flex-wrap gap-4" style={delay(0.8)}>
+            {/* iki eşit buton her dilde yan yana (Adnan 2026-10-16); uzun metin (EN) iki satıra iner */}
+            <div className="era-in-up grid w-full max-w-[600px] grid-cols-2 gap-4 sm2:gap-3" style={delay(0.8)}>
               <a
                 href="#hizli-demo"
-                className="flex h-14 items-center gap-3 rounded-(--r-s1) bg-era-primary px-8 text-[18px] whitespace-nowrap sm2:px-4 font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm2:flex-1 sm2:justify-center"
+                className="flex min-h-14 items-center justify-center gap-3 rounded-(--r-s1) bg-era-primary px-4 py-1.5 text-center text-[18px] leading-tight font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm2:gap-2 sm2:px-3 sm2:text-[16px]"
               >
-                {t.hero.test} <ArrowRight size={20} />
+                {t.hero.test} <ArrowRight size={20} className="shrink-0" />
               </a>
               <a
                 href="#bize-ulasin"
-                className="demo-glow flex h-14 items-center rounded-(--r-s1) border-2 border-era-black px-8 text-[18px] whitespace-nowrap sm2:px-4 font-semibold text-era-black no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-era-secondary sm2:flex-1 sm2:justify-center"
+                className="demo-glow flex min-h-14 items-center justify-center rounded-(--r-s1) border-2 border-era-black px-4 py-1.5 text-center text-[18px] leading-tight font-semibold text-era-black no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-era-secondary sm2:px-3 sm2:text-[16px]"
               >
                 {t.hero.demo}
               </a>
