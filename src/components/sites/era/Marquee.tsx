@@ -10,8 +10,8 @@ const ICONS = [Clock, CalendarDays, ListChecks, ShoppingCart, Receipt, Wallet, L
 export function Marquee() {
   const { t } = useLocale();
   return (
-    <section aria-label={t.hero.channelsAria} className="relative overflow-x-clip bg-era-primary py-4 mob:py-2.5">
-      <div className="flex w-full items-center gap-[67px] overflow-hidden py-1 leading-[1.3] [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] mob:gap-10 sm2:gap-[35px]">
+    <section aria-label={t.hero.channelsAria} className="relative overflow-x-clip bg-era-primary py-2.5 mob:py-1.5">
+      <div className="flex w-full items-center gap-[67px] overflow-hidden py-0.5 leading-[1.3] [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] mob:gap-10 sm2:gap-[35px]">
         {[0, 1, 2, 3].map((n) => (
           <ul key={n} aria-hidden={n > 0} className="era-marquee-list flex flex-none items-center gap-[67px] mob:gap-10 sm2:gap-[35px]">
             {t.marquee.map((label, i) => {
