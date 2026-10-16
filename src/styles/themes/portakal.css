@@ -1,0 +1,117 @@
+/*
+ * PALET: PORTAKAL (portakal ve yan renkleri) — gündüz + gece.
+ * Canlı portakal ana renk; yanında bal/altın vurgu, zeytin yeşili onay, şeftali açık tonlar, sıcak krem zemin, koyu kahve yazı.
+ * Harici tema dosyası: sitedeki bütün renkler burada, bileşenlerde renk kodu yazılmaz.
+ * html[data-palette="portakal"] iken geçerlidir (seçim: src/styles/palettes.ts). Değişken adları sarap.css ile aynı.
+ * Seçici :root değil [data-palette]: renk kutucuğu da kendi paletinin rengini gösterebilsin diye.
+ */
+
+[data-palette="portakal"] {
+  /* ===== Marka renkleri ===== */
+  --c-primary: #e8590c;        /* canlı portakal: buton, vurgulu başlık, bağlantı */
+  --c-primary-soft: #ffe1cc;   /* şeftali açık: hap, seçili kart zemini */
+  --c-primary-ink: #c94a05;    /* açık zemin üstündeki portakal yazı (menü hapları) */
+  --c-logo-from: #e8590c;      /* logo geçişi başlangıç */
+  --c-logo-to: #2b1d14;        /* logo geçişi bitiş */
+  --c-logo-dark-from: #ff9a52; /* koyu zeminde logo yazısı (footer) başlangıç */
+  --c-logo-ink: #2b1d14;        /* Ekado logosu: koyu çizgiler */
+  --c-logo-accent: #e8590c;     /* Ekado logosu: renkli çizgiler */
+  --c-logo-dark-ink: #f6ebe2;   /* koyu zeminde logo koyu çizgiler yerine */
+  --c-logo-dark-accent: #ff9a52;/* koyu zeminde logo renkli çizgiler */
+  --c-logo-dark-to: #f6ebe2;   /* koyu zeminde logo yazısı bitiş */
+
+  /* ===== Koyu tonlar (kahve) ===== */
+  --c-ink: #2b1d14;            /* ana metin, koyu buton */
+  --c-dark: #2b1d14;           /* koyu bölüm zemini (hizmetler, footer) */
+  --c-dark-card: #3d2a1e;      /* koyu bölüm içindeki kart */
+
+  /* ===== Metin ===== */
+  --c-muted: #6e5f53;          /* yardımcı metin, açıklama */
+  --c-muted-light: #c9b6a5;    /* koyu zeminde yardımcı metin */
+  --c-muted-soft: #9c8b7d;     /* en sessiz metin, alt yazı */
+
+  /* ===== Zeminler (sıcak krem) ===== */
+  --c-white: #fdf9f3;
+  --c-bg: #f7f0e6;             /* sayfa zemini */
+  --c-sky: #ffe4cf;            /* hero zemini (şeftali) */
+  --c-tint: #f2e8da;           /* kart ve çerçeve zemini */
+  --c-bright: #fdf9f3;         /* kart içi çok açık zemin */
+  --c-line: #e9dccb;           /* ince çizgi, kart kenarı */
+  --c-line-strong: #d8c5ad;    /* belirgin çizgi, dropdown kenarı */
+  --c-line-soft: #f0e6d8;      /* en hafif kenar */
+  --c-panel: #fdf9f3;          /* panel/kart gövde zemini */
+  --c-panel-border: #dfcbb2;   /* panel/kart kenar çizgisi */
+
+  /* ===== Vurgu (yan renkler) ===== */
+  --c-accent: #c98f1a;         /* bal / altın: aktif menü çizgisi, küçük vurgular */
+  --c-success: #5f7d3a;        /* zeytin yeşili: onay */
+  --c-danger: #b3362b;         /* hata (portakaldan ayrışan kırmızı) */
+
+  /* ===== Roller ===== */
+  --c-page: #f7f0e6;           /* sayfa zemini */
+  --c-surface: #fdf9f3;        /* kart, kutu, hap zemini */
+  --c-on-dark: #fdf9f3;        /* koyu bölüm ve portakal buton üstündeki yazı */
+  --c-btn: #2b1d14;            /* koyu buton zemini */
+  --c-on-btn: #fdf9f3;         /* koyu buton yazısı */
+
+  /* ===== Cihaz ve marka ikonları (üçüncü taraf marka renkleri) ===== */
+  --c-device: #2b1d14;         /* laptop ve telefon çerçevesi */
+  --c-whatsapp: #25d366;
+  --c-messenger: #0a7cff;
+  --c-ig-1: #feda75;
+  --c-ig-2: #d62976;
+  --c-ig-3: #4f5bd5;
+
+  /* ===== Yüzeyler ===== */
+  --c-nav: rgb(247 240 230);       /* kaydırınca menü zemini */
+  --c-shadow: rgb(43 29 20 / 0.14);      /* kart gölgesi */
+  --c-shadow-soft: rgb(43 29 20 / 0.1);  /* hafif gölge */
+  --c-glow: rgb(255 255 255 / 0.2);       /* koyu/portakal yüzeylerde parlama */
+  --c-glow-soft: rgb(255 255 255 / 0.12); /* daha hafif parlama */
+}
+
+/* ===== GECE: html[data-theme="dark"] iken bu değerler geçerli olur ===== */
+[data-palette="portakal"][data-theme="dark"],
+[data-theme="dark"] [data-palette="portakal"] {
+  color-scheme: dark;
+
+  --c-primary: #f26a1b;
+  --c-primary-soft: #3d2210;
+  --c-primary-ink: #ffab73;
+  --c-logo-from: #ff9a52;
+  --c-logo-ink: #f6ebe2;
+  --c-logo-accent: #ff9a52;
+  --c-logo-to: #f6ebe2;
+  --c-device: #3b2e25;
+
+  --c-ink: #f6ebe2;
+  --c-dark: #110c08;
+  --c-dark-card: #231912;
+
+  --c-muted: #bfae9f;
+  --c-muted-light: #bfae9f;
+  --c-muted-soft: #8f7f72;
+
+  --c-page: #18120d;
+  --c-surface: #221a14;
+  --c-bg: #18120d;
+  --c-sky: #2c1c12;
+  --c-tint: #2a211a;
+  --c-bright: #221a14;
+  --c-line: #3b2f26;
+  --c-line-strong: #4c3d31;
+  --c-line-soft: #2c231c;
+  --c-panel: #221a14;
+  --c-panel-border: #483a2e;
+
+  --c-accent: #e6b453;
+  --c-success: #a3c07e;
+  --c-danger: #ef8a78;
+
+  --c-btn: #f6ebe2;
+  --c-on-btn: #2b1d14;
+
+  --c-nav: rgb(24 18 13);
+  --c-shadow: rgb(0 0 0 / 0.45);
+  --c-shadow-soft: rgb(0 0 0 / 0.3);
+}

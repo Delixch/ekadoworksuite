@@ -11,6 +11,8 @@ export const tr = {
     toDark: "Gece temasına geç",
     lightTitle: "Gündüz teması",
     darkTitle: "Gece teması",
+    palette: "Renk seçimi",
+    paletteNames: { sarap: "Şarap", mavi: "Mavi", portakal: "Portakal" },
     homeAria: "Ekado WorkSuite ana sayfa",
   },
   chat: {

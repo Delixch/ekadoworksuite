@@ -1,0 +1,7 @@
+/**
+ * Ziyaretçinin seçebileceği renk paletleri. Her ad src/styles/themes/<ad>.css dosyasıdır
+ * ve globals.css içinde import edilir. Varsayılan palet: DEFAULT_PALETTE (tek satır).
+ */
+export const PALETTES = ["sarap", "mavi", "portakal"] as const;
+export type Palette = (typeof PALETTES)[number];
+export const DEFAULT_PALETTE: Palette = "sarap";

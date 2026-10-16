@@ -12,6 +12,8 @@ export const en: Dict = {
     toDark: "Switch to dark theme",
     lightTitle: "Light theme",
     darkTitle: "Dark theme",
+    palette: "Color scheme",
+    paletteNames: { sarap: "Wine", mavi: "Blue", portakal: "Orange" },
     homeAria: "Ekado WorkSuite home",
   },
   chat: {

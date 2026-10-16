@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { tr } from "@/i18n/tr";
 import { siteUrl } from "@/lib/site";
 import { appFont } from "@/styles/fonts";
+import { DEFAULT_PALETTE, PALETTES } from "@/styles/palettes";
 import { LocaleSync } from "@/components/sites/era/LocaleSync";
 import { BackToTop } from "@/components/sites/era/BackToTop";
 import { Robot } from "@/components/sites/era/Robot";
@@ -29,14 +30,16 @@ export const metadata: Metadata = {
 // Sayfa çizilmeden önce kayıtlı ya da sistem temasını uygular (yanıp sönmeyi önler)
 // Varsayılan her zaman gündüz teması (Adnan 2026-10-15); ziyaretçi ay düğmesiyle geceyi seçerse o seçim hatırlanır
 const themeInit = `try{var t=localStorage.getItem("theme");if(t!=="dark")t="light";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="light"}`;
+// Renk paleti: ziyaretçinin kutucuklarla seçtiği palet; yoksa html'deki varsayılan (DEFAULT_PALETTE) kalır
+const paletteInit = `try{var p=localStorage.getItem("palette");if(${JSON.stringify(PALETTES)}.indexOf(p)>=0)document.documentElement.dataset.palette=p}catch(e){}`;
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={appFont.variable} suppressHydrationWarning>
+    <html lang="tr" className={appFont.variable} data-palette={DEFAULT_PALETTE} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <script dangerouslySetInnerHTML={{ __html: themeInit + paletteInit }} />
       </head>
       <body className="era">
         <LocaleSync />

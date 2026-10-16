@@ -9,6 +9,7 @@ import { toTopIfHome } from "@/lib/home-click";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 import { DEMO_URL, linkHrefs, pricingHrefs, solutionHrefs } from "./nav-links";
+import { PaletteSwitcher } from "./PaletteSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 
 /** Açılışta sırayla büyüyerek gelen öğe */
@@ -120,6 +121,10 @@ export function Navbar() {
             <div className="era-in-pop flex" style={pop(7)}>
               <LanguageSwitcher />
             </div>
+            {/* telefonda yer yok: kutucuklar menü panelinin içinde */}
+            <div className="era-in-pop flex mob:hidden" style={pop(7.25)}>
+              <PaletteSwitcher />
+            </div>
             <div className="era-in-pop flex" style={pop(7.5)}>
               <ThemeToggle />
             </div>
@@ -165,6 +170,13 @@ export function Navbar() {
                 {label}
               </a>
             ))}
+            <div className="hidden mob:block">
+              <div className="my-2 h-px bg-era-line" />
+              <div className="flex items-center justify-between px-3 py-2">
+                <span className="text-[13px] font-semibold tracking-wide text-era-gray uppercase">{t.ui.palette}</span>
+                <PaletteSwitcher large />
+              </div>
+            </div>
           </div>
         </nav>
       </div>

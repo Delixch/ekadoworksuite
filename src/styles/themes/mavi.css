@@ -1,11 +1,12 @@
 /*
  * PALET: MAVİ (Ekado logosundan) — gündüz + gece.
  * Harici tema dosyası: sitedeki bütün renkler burada, bileşenlerde renk kodu yazılmaz.
- * Etkin palet src/styles/theme.css içindeki tek @import satırıyla seçilir.
+ * html[data-palette="mavi"] iken geçerlidir (seçim: src/styles/palettes.ts).
  * Değişken adları bütün paletlerde aynıdır; yeni palet = bu dosyanın kopyası, sadece değerler değişir.
+ * Seçici :root değil [data-palette]: renk kutucuğu da kendi paletinin rengini gösterebilsin diye.
  */
 
-:root {
+[data-palette="mavi"] {
   /* ===== Marka renkleri (Ekado, logo renklerinden) ===== */
   --c-primary: #2b5ab0;        /* ana mavi: buton, vurgulu başlık, bağlantı */
   --c-primary-soft: #dbe5f5;   /* açık mavi: hap, seçili kart zemini */
@@ -70,7 +71,8 @@
 }
 
 /* ===== GECE TEMASI: html[data-theme="dark"] iken bu değerler geçerli olur ===== */
-:root[data-theme="dark"] {
+[data-palette="mavi"][data-theme="dark"],
+[data-theme="dark"] [data-palette="mavi"] {
   color-scheme: dark;
 
   --c-primary: #3f6fc4;

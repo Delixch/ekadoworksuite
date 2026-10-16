@@ -1,6 +1,8 @@
 @import "tailwindcss";
-/* PALET SEÇİMİ (tek satır): harici paletler src/styles/themes/ içinde: mavi.css, sarap.css. Ayrıntı: src/styles/theme.css */
+/* PALETLER: hepsi yüklenir, ziyaretçi menüdeki kutucuklarla seçer. Varsayılan: src/styles/palettes.ts. Ayrıntı: src/styles/theme.css */
 @import "../styles/themes/sarap.css";
+@import "../styles/themes/mavi.css";
+@import "../styles/themes/portakal.css";
 @import "../styles/theme.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";

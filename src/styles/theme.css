@@ -2,10 +2,14 @@
  * TEMA KURALI. Renkler harici palet dosyalarında (src/styles/themes/), her dosya gündüz + gece:
  *   - themes/mavi.css   Mavi (Ekado logosundan), 2026-10-15'e kadar sitenin rengi
  *   - themes/sarap.css  Şarap (bordo, şampanya, asma yaprağı)
+ *   - themes/portakal.css  Portakal (yanık portakal, bal, zeytin yeşili)
  *
- * Etkin palet: src/app/globals.css içindeki TEK satır  @import "../styles/themes/<ad>.css";
- * (Satır bilerek globals.css'te: buraya iç içe import konursa Turbopack değişikliği görmüyor, eski renk kalıyor.)
- * Yeni palet: themes/ içindeki bir dosyayı kopyala, sadece değerleri değiştir (değişken adları aynı kalır).
+ * Bütün paletler src/app/globals.css içinde import edilir; geçerli olan html[data-palette="<ad>"] ile seçilir.
+ * Ziyaretçi menüdeki renk kutucuklarıyla değiştirir (PaletteSwitcher), seçim tarayıcıda saklanır.
+ * Varsayılan palet: src/styles/palettes.ts içindeki DEFAULT_PALETTE (tek satır).
+ * (Importlar bilerek globals.css'te: buraya iç içe import konursa Turbopack değişikliği görmüyor, eski renk kalıyor.)
+ * Yeni palet: themes/ içindeki bir dosyayı kopyala, seçicideki adı ve değerleri değiştir,
+ *   globals.css'e import ekle, palettes.ts'teki PALETTES listesine ve i18n paletteNames'e ad ekle.
  * Bileşenlere renk kodu yazılmaz. Yazı tipi: src/styles/fonts.ts.
  */
 :root {
