@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { tr } from "@/i18n/tr";
+import { de } from "@/i18n/de";
 import { siteUrl } from "@/lib/site";
 import { appFont } from "@/styles/fonts";
 import { DEFAULT_PALETTE, PALETTES } from "@/styles/palettes";
@@ -18,13 +18,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Ekado WorkSuite",
-    title: tr.meta.title,
-    description: tr.meta.description,
-    locale: "tr_TR",
+    title: de.meta.title,
+    description: de.meta.description,
+    locale: "de_CH",
     // sabit JPEG (public/og.jpg, 1200x630, ~100 KB): WhatsApp büyük önizleme göstersin diye; tasarım kaynağı public/_vorschau/og/og.html (yerel)
-    images: [{ url: "/og.jpg", width: 1200, height: 630, type: "image/jpeg", alt: "Ekado WorkSuite: Personel, işletme ve muhasebe tek yazılımda" }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, type: "image/jpeg", alt: "Ekado WorkSuite: Personal, Betrieb und Buchhaltung in einer Software" }],
   },
-  twitter: { card: "summary_large_image", title: tr.meta.title, description: tr.meta.description, images: ["/og.jpg"] },
+  twitter: { card: "summary_large_image", title: de.meta.title, description: de.meta.description, images: ["/og.jpg"] },
 };
 
 // Sayfa çizilmeden önce kayıtlı ya da sistem temasını uygular (yanıp sönmeyi önler)
@@ -37,7 +37,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={appFont.variable} data-palette={DEFAULT_PALETTE} suppressHydrationWarning>
+    <html lang="de" className={appFont.variable} data-palette={DEFAULT_PALETTE} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit + paletteInit }} />
       </head>

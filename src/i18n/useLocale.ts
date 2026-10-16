@@ -16,6 +16,8 @@ export const locales: { code: Locale; label: string }[] = [
 
 const dictionaries: Record<Locale, Dict> = { tr, en, de };
 const KEY = "lang";
+/** ilk açılışta herkese Almanca (Adnan 2026-10-16); seçilen dil localStorage'da kalır */
+export const DEFAULT_LOCALE: Locale = "de";
 const listeners = new Set<() => void>();
 
 function read(): Locale {
@@ -23,7 +25,7 @@ function read(): Locale {
     const v = localStorage.getItem(KEY);
     if (v === "tr" || v === "en" || v === "de") return v;
   } catch {}
-  return "tr";
+  return DEFAULT_LOCALE;
 }
 
 function subscribe(cb: () => void) {
@@ -43,8 +45,8 @@ export function setLocale(l: Locale) {
   listeners.forEach((f) => f());
 }
 
-/** Seçili dil + o dildeki metinler (t). Sunucuda ve ilk çizimde Türkçe. */
+/** Seçili dil + o dildeki metinler (t). Sunucuda ve ilk çizimde Almanca (DEFAULT_LOCALE). */
 export function useLocale() {
-  const locale = useSyncExternalStore(subscribe, read, () => "tr" as Locale);
+  const locale = useSyncExternalStore(subscribe, read, () => DEFAULT_LOCALE);
   return { locale, t: dictionaries[locale], setLocale };
 }

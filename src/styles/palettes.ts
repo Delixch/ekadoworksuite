@@ -4,4 +4,5 @@
  */
 export const PALETTES = ["sarap", "mavi", "portakal"] as const;
 export type Palette = (typeof PALETTES)[number];
-export const DEFAULT_PALETTE: Palette = "sarap";
+// ilk açılışta herkese Portakal (Adnan 2026-10-16)
+export const DEFAULT_PALETTE: Palette = "portakal";
