@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ArrowRight, Check, Plus } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { landing, modOrder, packOrder, packages, type ModKey, type PackKey } from "@/i18n/landing";
-import { PRICE, pricing } from "@/i18n/pricing";
+import { PRICE, modGroups, modRequires, pricing } from "@/i18n/pricing";
 import { Footer } from "../Footer";
 import { GlowGrid } from "../GlowGrid";
 import { Navbar } from "../Navbar";
@@ -15,7 +15,19 @@ import { chf, PeriodToggle, SampleNote, yearlyMonthly } from "./PriceParts";
 
 /** Temel pakette hep açık olan bölümler (fiyatı 0) */
 const baseMods = modOrder.filter((m) => PRICE.mod[m] === 0);
-const extraMods = modOrder.filter((m) => PRICE.mod[m] > 0);
+const extraMods = modOrder.filter((m) => PRICE.mod[m] > 0 && !PRICE.onRequest.includes(m));
+
+/** Seçince: ortakları da (programdaki gibi, rekursiv) */
+function withRequires(set: Set<ModKey>, m: ModKey) {
+  if (set.has(m)) return;
+  set.add(m);
+  (modRequires[m] ?? []).forEach((r) => withRequires(set, r));
+}
+/** Kaldırınca: ona bağlı olanları da (rekursiv) */
+function withoutDependents(set: Set<ModKey>, m: ModKey) {
+  set.delete(m);
+  modOrder.filter((x) => set.has(x) && (modRequires[x] ?? []).includes(m)).forEach((x) => withoutDependents(set, x));
+}
 
 /**
  * Fiyat TASLAK B, "Kendin hesapla" (Odoo uygulama ızgarası + hesaplayıcı): temel paket + seçilen bölümler + çalışan sayısı,
@@ -38,8 +50,9 @@ export function PricingB() {
     setPack(null);
     setOn((prev) => {
       const n = new Set(prev);
-      if (n.has(m)) n.delete(m);
-      else n.add(m);
+      if (n.has(m)) withoutDependents(n, m);
+      else withRequires(n, m);
+      baseMods.forEach((b) => n.add(b));
       return n;
     });
   };
@@ -101,34 +114,48 @@ export function PricingB() {
                 </div>
               </div>
 
-              {/* bölümler */}
-              <div className="flex flex-col gap-3">
+              {/* bölümler, gruplu */}
+              <div className="flex flex-col gap-6">
                 <span className="text-[13px] font-medium tracking-[0.12em] text-era-gray uppercase">{p.modsLabel}</span>
-                <GlowGrid as="ul" className="grid grid-cols-2 gap-3 mob:grid-cols-1" pad={6} radius={24}>
-                  {extraMods.map((m) => {
-                    const Icon = modIcon[m];
-                    const lit = on.has(m);
-                    return (
-                      <li key={m} data-glow className="relative z-[1]">
-                        <button
-                          type="button"
-                          onClick={() => toggle(m)}
-                          aria-pressed={lit}
-                          className={`flex w-full items-center gap-3 rounded-(--r-s) p-4 text-left transition-all duration-300 ${lit ? "bg-era-white ring-2 ring-era-primary shadow-[0_10px_24px_var(--c-shadow-soft)]" : "bg-era-white/60 ring-1 ring-era-lightgray"}`}
-                        >
-                          <span className={`flex h-10 w-10 flex-none items-center justify-center rounded-full transition-colors ${lit ? "bg-era-primary text-era-on-dark" : "bg-era-secondary text-era-matte"}`}>
-                            <Icon size={18} />
-                          </span>
-                          <span className={`flex-1 text-[15px] font-semibold ${lit ? "text-era-black" : "text-era-gray"}`}>{lb.mods[m]}</span>
-                          <span className="text-[14px] font-semibold text-era-gray tabular-nums">+{chf(PRICE.mod[m])}</span>
-                          <span className={`flex h-6 w-6 flex-none items-center justify-center rounded-full transition ${lit ? "bg-era-primary text-era-on-dark" : "ring-1 ring-era-cute text-transparent"}`}>
-                            <Check size={14} strokeWidth={3} />
-                          </span>
-                        </button>
-                      </li>
-                    );
-                  })}
-                </GlowGrid>
+                {modGroups.map((g) => (
+                  <div key={g.key} className="flex flex-col gap-3">
+                    <span className="text-[16px] font-semibold text-era-black">{p.groups[g.key]}</span>
+                    <GlowGrid as="ul" className="grid grid-cols-2 gap-3 mob:grid-cols-1" pad={6} radius={24}>
+                      {g.mods.filter((m) => extraMods.includes(m)).map((m) => {
+                        const Icon = modIcon[m];
+                        const lit = on.has(m);
+                        const needs = (modRequires[m] ?? []).filter((r) => extraMods.includes(r));
+                        return (
+                          <li key={m} data-glow className="relative z-[1]">
+                            <button
+                              type="button"
+                              onClick={() => toggle(m)}
+                              aria-pressed={lit}
+                              className={`flex w-full items-center gap-3 rounded-(--r-s) p-4 text-left transition-all duration-300 ${lit ? "bg-era-white ring-2 ring-era-primary shadow-[0_10px_24px_var(--c-shadow-soft)]" : "bg-era-white/60 ring-1 ring-era-lightgray"}`}
+                            >
+                              <span className={`flex h-10 w-10 flex-none items-center justify-center rounded-full transition-colors ${lit ? "bg-era-primary text-era-on-dark" : "bg-era-secondary text-era-matte"}`}>
+                                <Icon size={18} />
+                              </span>
+                              <span className="flex min-w-0 flex-1 flex-col">
+                                <span className={`text-[15px] font-semibold ${lit ? "text-era-black" : "text-era-gray"}`}>{lb.mods[m]}</span>
+                                {needs.length > 0 && (
+                                  <span className="text-[12px] text-era-gray">
+                                    {p.needs.replace("{mods}", needs.map((r) => lb.mods[r]).join(", "))}
+                                  </span>
+                                )}
+                              </span>
+                              <span className="text-[14px] font-semibold text-era-gray tabular-nums">+{chf(PRICE.mod[m])}</span>
+                              <span className={`flex h-6 w-6 flex-none items-center justify-center rounded-full transition ${lit ? "bg-era-primary text-era-on-dark" : "ring-1 ring-era-cute text-transparent"}`}>
+                                <Check size={14} strokeWidth={3} />
+                              </span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </GlowGrid>
+                  </div>
+                ))}
+                <span className="text-[14px] text-era-gray">{p.onRequestNote}</span>
               </div>
 
               {/* çalışan sayısı */}

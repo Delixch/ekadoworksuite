@@ -1,23 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  ArrowRight,
-  Banknote,
-  BookOpenText,
-  CalendarDays,
-  ClipboardList,
-  Coffee,
-  FileText,
-  Globe,
-  LayoutDashboard,
-  ShoppingCart,
-  Store,
-  ThermometerSnowflake,
-  Users,
-  Wrench,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight, Banknote, BookOpenText, CalendarDays, ClipboardList, Coffee, FileText, Globe, LayoutDashboard, ShoppingCart, Store, ThermometerSnowflake, Users, Wallet, Wrench, type LucideIcon } from "lucide-react";
 import { useLocale } from "@/i18n/useLocale";
 import { landing, modOrder, packOrder, packages, type ModKey, type PackKey } from "@/i18n/landing";
 import { Reveal } from "../ui";
@@ -35,6 +19,7 @@ export const modIcon: Record<ModKey, LucideIcon> = {
   kreditoren: FileText,
   finanzen: Banknote,
   personal: Users,
+  lohn: Wallet,
   fibu: BookOpenText,
   zentrale: LayoutDashboard,
   treuekarte: Coffee,

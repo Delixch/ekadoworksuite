@@ -15,7 +15,7 @@ export const PRICE = {
   tiers: { start: 29, betrieb: 79, komplett: 129 },
   /** A: paket başına çalışan sınırı */
   tierStaff: { start: 5, betrieb: 15, komplett: 30 },
-  /** B: temel paket (Genel bakış, giriş-çıkış ve vardiya, görevler) CHF / ay, içinde kaç çalışan */
+  /** B: temel paket (Genel bakış, çalışanlar ve dosyalar, giriş-çıkış ve vardiya, görevler) CHF / ay, içinde kaç çalışan */
   base: 19,
   baseStaff: 5,
   /** B: her ek çalışan CHF / ay */
@@ -23,29 +23,53 @@ export const PRICE = {
   /** B: bölüm başına CHF / ay (temel paketteki bölümler 0) */
   mod: {
     zentrale: 0,
+    personal: 0,
     stempeluhr: 0,
     aufgaben: 0,
     haccp: 9,
     bestellung: 9,
     kreditoren: 9,
     finanzen: 12,
-    personal: 15,
+    lohn: 12,
     fibu: 15,
     treuekarte: 5,
     vitrine: 5,
     webseite: 5,
     einsaetze: 9,
   } satisfies Record<ModKey, number>,
+  /** B: hesaplayıcıda seçilemeyen, sadece "teklif üzerine" (Einsätze: müşteri isteyince yapılacak ek modül, 13.10.2026) */
+  onRequest: ["einsaetze"] as ModKey[],
 };
+
+/**
+ * Programdaki bağımlılıklar (Gastro apps supi: api/_lib/modules.ts → requires). Hesaplayıcı bir bölümü seçince ortaklarını da seçer,
+ * ortağı kaldırınca ona bağlı olanları da kaldırır; lisans da aynı kuralla düzenlenir.
+ */
+export const modRequires: Partial<Record<ModKey, ModKey[]>> = {
+  stempeluhr: ["personal"],
+  lohn: ["personal"],
+  bestellung: ["kreditoren"],
+  fibu: ["kreditoren", "finanzen"],
+  einsaetze: ["stempeluhr"],
+};
+
+/** B: ek bölümlerin grupları (hesaplayıcıda başlık altında) */
+export type ModGroup = "personal" | "finance" | "operations" | "guests";
+export const modGroups: { key: ModGroup; mods: ModKey[] }[] = [
+  { key: "personal", mods: ["lohn"] },
+  { key: "finance", mods: ["kreditoren", "finanzen", "fibu"] },
+  { key: "operations", mods: ["haccp", "bestellung", "vitrine"] },
+  { key: "guests", mods: ["treuekarte", "webseite"] },
+];
 
 export type TierKey = "start" | "betrieb" | "komplett" | "individuell";
 export const tierOrder: TierKey[] = ["start", "betrieb", "komplett", "individuell"];
 /** A: hangi pakette hangi bölüm var */
 export const tierMods: Record<TierKey, ModKey[]> = {
   start: ["zentrale", "stempeluhr", "aufgaben", "personal"],
-  betrieb: ["zentrale", "stempeluhr", "aufgaben", "personal", "haccp", "bestellung", "kreditoren", "finanzen", "fibu", "treuekarte", "webseite"],
-  komplett: ["zentrale", "stempeluhr", "aufgaben", "personal", "haccp", "bestellung", "kreditoren", "finanzen", "fibu", "treuekarte", "webseite", "vitrine", "einsaetze"],
-  individuell: ["zentrale", "stempeluhr", "aufgaben", "personal", "haccp", "bestellung", "kreditoren", "finanzen", "fibu", "treuekarte", "webseite", "vitrine", "einsaetze"],
+  betrieb: ["zentrale", "stempeluhr", "aufgaben", "personal", "lohn", "haccp", "bestellung", "kreditoren", "finanzen", "fibu", "treuekarte", "webseite"],
+  komplett: ["zentrale", "stempeluhr", "aufgaben", "personal", "lohn", "haccp", "bestellung", "kreditoren", "finanzen", "fibu", "treuekarte", "webseite", "vitrine"],
+  individuell: ["zentrale", "stempeluhr", "aufgaben", "personal", "lohn", "haccp", "bestellung", "kreditoren", "finanzen", "fibu", "treuekarte", "webseite", "vitrine", "einsaetze"],
 };
 
 export type PricingText = {
@@ -80,6 +104,10 @@ export type PricingText = {
   baseText: string;
   staffLabel: string;
   modsLabel: string;
+  groups: Record<ModGroup, string>;
+  /** {mods} = gerekli bölümler */
+  needs: string;
+  onRequestNote: string;
   included0: string;
   totalLabel: string;
   totalNote: string;
@@ -105,24 +133,27 @@ const tr: PricingText = {
   ctaTry: "Hızlı Demo",
   ctaTalk: "Görüşelim",
   tiers: {
-    start: { name: "Başlangıç", text: "Ekip, vardiya ve giriş-çıkış için." },
+    start: { name: "Başlangıç", text: "Ekip, personel dosyaları, vardiya ve giriş-çıkış için." },
     betrieb: { name: "İşletme", text: "Restoran ve kafeler için her şey: hijyenden muhasebeye." },
-    komplett: { name: "Tam", text: "Bütün bölümler: vitrin ve saha işleri dahil." },
+    komplett: { name: "Tam", text: "Bütün bölümler, vitrin dahil." },
     individuell: { name: "Size özel", text: "Birden fazla işletme, çok çalışan ya da yeni bölümler." },
   },
   allFrom: "Bir önceki paketteki her şey, ayrıca:",
   included: "Pakette neler var",
   extrasTitle: "Her pakette",
   extras: ["Yerinde kurulum", "İlk 3 ay yerinde destek", "Veriler İsviçre’de", "5 dil", "Güncellemeler"],
-  individualExtras: ["Birden fazla işletme", "İstediğiniz yeni bölümler", "Size özel kurulum ve eğitim"],
+  individualExtras: ["Birden fazla işletme", "Saha işleri (zanaat, servis)", "İstediğiniz yeni bölümler", "Size özel kurulum ve eğitim"],
   compareTitle: "Paketleri karşılaştırın",
   compareModules: "Bölümler",
   calcTitle: "Programınızı kendiniz hesaplayın",
   calcLead: "Temel paket her zaman var; üstüne işinize yarayan bölümleri ekleyin. Toplam anında hesaplanır.",
   baseLabel: "Temel paket",
-  baseText: "Genel bakış, giriş-çıkış ve vardiya, görevler ve duyurular",
+  baseText: "Genel bakış, çalışanlar ve personel dosyaları, giriş-çıkış ve vardiya, görevler ve duyurular",
   staffLabel: "Çalışan sayısı",
   modsLabel: "Bölümler",
+  groups: { personal: "Personel", finance: "Muhasebe ve finans", operations: "İşletme", guests: "Misafirler" },
+  needs: "{mods} ile birlikte",
+  onRequestNote: "Saha işleri (zanaat, servis): teklif üzerine.",
   included0: "dahil",
   totalLabel: "Programınız",
   totalNote: "Yerinde kurulum ve ilk 3 ay destek dahil.",
@@ -153,24 +184,27 @@ const de: PricingText = {
   ctaTry: "Schnell-Demo",
   ctaTalk: "Gespräch vereinbaren",
   tiers: {
-    start: { name: "Start", text: "Für Team, Schichtplan und Stempeluhr." },
+    start: { name: "Start", text: "Für Team, Personalakten, Schichtplan und Stempeluhr." },
     betrieb: { name: "Betrieb", text: "Alles für Restaurant und Café: von der Hygiene bis zur Buchhaltung." },
-    komplett: { name: "Komplett", text: "Alle Bereiche, inklusive Vitrine und Einsätze." },
+    komplett: { name: "Komplett", text: "Alle Bereiche, inklusive Vitrine." },
     individuell: { name: "Individuell", text: "Mehrere Betriebe, viele Mitarbeitende oder neue Bereiche." },
   },
   allFrom: "Alles aus dem Paket davor, dazu:",
   included: "Im Paket enthalten",
   extrasTitle: "In jedem Paket",
   extras: ["Einrichtung vor Ort", "3 Monate Support vor Ort", "Daten in der Schweiz", "5 Sprachen", "Updates"],
-  individualExtras: ["Mehrere Betriebe", "Neue Bereiche nach Wunsch", "Eigene Einrichtung und Schulung"],
+  individualExtras: ["Mehrere Betriebe", "Einsätze (Handwerk, Service vor Ort)", "Neue Bereiche nach Wunsch", "Eigene Einrichtung und Schulung"],
   compareTitle: "Pakete vergleichen",
   compareModules: "Bereiche",
   calcTitle: "Berechnen Sie Ihr Programm selbst",
   calcLead: "Das Grundpaket ist immer dabei; dazu wählen Sie die Bereiche, die Sie brauchen. Die Summe rechnet sich sofort.",
   baseLabel: "Grundpaket",
-  baseText: "Übersicht, Stempeluhr & Schichtplan, Aufgaben & Schwarzes Brett",
+  baseText: "Übersicht, Mitarbeitende & Personalakten, Stempeluhr & Schichtplan, Aufgaben & Schwarzes Brett",
   staffLabel: "Anzahl Mitarbeitende",
   modsLabel: "Bereiche",
+  groups: { personal: "Personal", finance: "Buchhaltung & Finanzen", operations: "Betrieb", guests: "Gäste" },
+  needs: "mit {mods}",
+  onRequestNote: "Einsätze (Handwerk, Service vor Ort): auf Anfrage.",
   included0: "inklusive",
   totalLabel: "Ihr Programm",
   totalNote: "Einrichtung vor Ort und 3 Monate Support inklusive.",
@@ -201,24 +235,27 @@ const en: PricingText = {
   ctaTry: "Quick Demo",
   ctaTalk: "Book a call",
   tiers: {
-    start: { name: "Start", text: "For team, shift plan and time clock." },
+    start: { name: "Start", text: "For team, personnel files, shift plan and time clock." },
     betrieb: { name: "Business", text: "Everything for restaurants and cafés: from hygiene to accounting." },
-    komplett: { name: "Complete", text: "All areas, including display case and field jobs." },
+    komplett: { name: "Complete", text: "All areas, including the display case." },
     individuell: { name: "Custom", text: "Several businesses, many employees or new areas." },
   },
   allFrom: "Everything in the previous plan, plus:",
   included: "Included in the plan",
   extrasTitle: "In every plan",
   extras: ["On-site setup", "3 months on-site support", "Data in Switzerland", "5 languages", "Updates"],
-  individualExtras: ["Several businesses", "New areas on request", "Own setup and training"],
+  individualExtras: ["Several businesses", "Field jobs (trades, on-site service)", "New areas on request", "Own setup and training"],
   compareTitle: "Compare plans",
   compareModules: "Areas",
   calcTitle: "Work out your program yourself",
   calcLead: "The base plan is always included; add the areas you need. The total updates right away.",
   baseLabel: "Base plan",
-  baseText: "Overview, time clock & shifts, tasks & notice board",
+  baseText: "Overview, employees & personnel files, time clock & shifts, tasks & notice board",
   staffLabel: "Number of employees",
   modsLabel: "Areas",
+  groups: { personal: "Staff", finance: "Accounting & finance", operations: "Operations", guests: "Guests" },
+  needs: "with {mods}",
+  onRequestNote: "Field jobs (trades, on-site service): on request.",
   included0: "included",
   totalLabel: "Your program",
   totalNote: "On-site setup and 3 months of support included.",

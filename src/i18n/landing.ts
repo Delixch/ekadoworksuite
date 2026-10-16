@@ -13,6 +13,7 @@ export type ModKey =
   | "kreditoren"
   | "finanzen"
   | "personal"
+  | "lohn"
   | "fibu"
   | "zentrale"
   | "treuekarte"
@@ -24,11 +25,11 @@ export type PackKey = "restaurant" | "baeckerei" | "handwerk" | "buero" | "alle"
 
 /** Programdaki paketler: hangi bölüm açık gelir */
 export const packages: Record<PackKey, ModKey[]> = {
-  restaurant: ["stempeluhr", "aufgaben", "bestellung", "kreditoren", "finanzen", "personal", "treuekarte", "haccp", "fibu", "webseite", "zentrale"],
-  baeckerei: ["stempeluhr", "aufgaben", "bestellung", "kreditoren", "finanzen", "personal", "treuekarte", "haccp", "fibu", "vitrine", "webseite", "zentrale"],
-  handwerk: ["stempeluhr", "aufgaben", "kreditoren", "finanzen", "personal", "einsaetze", "zentrale"],
-  buero: ["stempeluhr", "aufgaben", "kreditoren", "finanzen", "personal", "fibu", "zentrale"],
-  alle: ["stempeluhr", "aufgaben", "haccp", "bestellung", "kreditoren", "finanzen", "personal", "fibu", "zentrale", "treuekarte", "vitrine", "webseite", "einsaetze"],
+  restaurant: ["stempeluhr", "aufgaben", "bestellung", "kreditoren", "finanzen", "personal", "lohn", "treuekarte", "haccp", "fibu", "webseite", "zentrale"],
+  baeckerei: ["stempeluhr", "aufgaben", "bestellung", "kreditoren", "finanzen", "personal", "lohn", "treuekarte", "haccp", "fibu", "vitrine", "webseite", "zentrale"],
+  handwerk: ["stempeluhr", "aufgaben", "kreditoren", "finanzen", "personal", "lohn", "einsaetze", "zentrale"],
+  buero: ["stempeluhr", "aufgaben", "kreditoren", "finanzen", "personal", "lohn", "fibu", "zentrale"],
+  alle: ["stempeluhr", "aufgaben", "haccp", "bestellung", "kreditoren", "finanzen", "personal", "lohn", "fibu", "zentrale", "treuekarte", "vitrine", "webseite", "einsaetze"],
 };
 export const modOrder: ModKey[] = packages.alle;
 export const packOrder: PackKey[] = ["restaurant", "baeckerei", "handwerk", "buero", "alle"];
@@ -144,7 +145,8 @@ const tr: LandingText = {
       bestellung: "Sipariş ve tedarikçi",
       kreditoren: "Faturalar",
       finanzen: "Kasa ve banka",
-      personal: "Personel ve maaş",
+      personal: "Çalışanlar ve dosyalar",
+      lohn: "Maaş",
       fibu: "Muhasebe",
       zentrale: "Genel bakış ve asistan",
       treuekarte: "Sadakat kartı",
@@ -245,7 +247,8 @@ const de: LandingText = {
       bestellung: "Bestellung & Lieferanten",
       kreditoren: "Rechnungen",
       finanzen: "Kasse & Bank",
-      personal: "Personal & Lohn",
+      personal: "Mitarbeitende & Personalakten",
+      lohn: "Lohn",
       fibu: "Buchhaltung",
       zentrale: "Übersicht & Assistent",
       treuekarte: "Treuekarte",
@@ -346,7 +349,8 @@ const en: LandingText = {
       bestellung: "Ordering & suppliers",
       kreditoren: "Invoices",
       finanzen: "Till & bank",
-      personal: "Staff & payroll",
+      personal: "Employees & files",
+      lohn: "Payroll",
       fibu: "Accounting",
       zentrale: "Overview & assistant",
       treuekarte: "Loyalty card",
