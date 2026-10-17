@@ -178,7 +178,7 @@ export function SupportCards() {
                   <a href="mailto:info@ekado.ch?subject=Support" className="flex h-12 items-center gap-2 rounded-(--r-s1) bg-era-primary px-6 text-[16px] font-medium text-era-on-dark no-underline transition hover:-translate-y-0.5 hover:brightness-110">
                     <Mail size={18} /> {s.ctaPrimary}
                   </a>
-                  <a href="#hizli-demo" className="flex h-12 items-center gap-2 rounded-(--r-s1) border-2 border-era-black px-6 text-[16px] font-medium text-era-black no-underline transition hover:-translate-y-0.5 hover:bg-era-secondary">
+                  <a href="/schnell-demo" className="flex h-12 items-center gap-2 rounded-(--r-s1) border-2 border-era-black px-6 text-[16px] font-medium text-era-black no-underline transition hover:-translate-y-0.5 hover:bg-era-secondary">
                     {s.ctaSecondary} <ArrowRight size={18} />
                   </a>
                 </div>

@@ -785,3 +785,9 @@ p { text-wrap: pretty; }
 }
 .era-logo-spin { transform-box: fill-box; transform-origin: center; animation: era-logo-tick 12s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .era-logo-spin { animation: none; } }
+
+/* ===== Schnell-Demo: platform diyagramının tur çizgisi (5 sn'de dolar; alana tıklayınca 1,4 sn) ===== */
+@keyframes era-demo-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.era-demo-bar { animation: era-demo-bar 5s linear forwards; }
+.era-demo-bar-jump { animation: era-demo-bar 1.4s ease-in-out forwards; }
+@media (prefers-reduced-motion: reduce) { .era-demo-bar, .era-demo-bar-jump { animation: none; } }

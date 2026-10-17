@@ -208,7 +208,7 @@ export function PricingB() {
                 )}
               </ul>
               <span className="text-[14px] opacity-85">{p.totalNote}</span>
-              <Link href="/#hizli-demo" className="flex h-12 items-center justify-center gap-2 rounded-(--r-s1) bg-era-white text-[16px] font-semibold text-era-black no-underline transition hover:-translate-y-0.5">
+              <Link href="/schnell-demo" className="flex h-12 items-center justify-center gap-2 rounded-(--r-s1) bg-era-white text-[16px] font-semibold text-era-black no-underline transition hover:-translate-y-0.5">
                 {p.ctaTry} <ArrowRight size={16} />
               </Link>
             </aside>

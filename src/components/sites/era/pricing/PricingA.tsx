@@ -72,7 +72,7 @@ export function PricingA() {
                         {k === "individuell" ? `> ${PRICE.tierStaff.komplett} ${p.staff}` : `${p.upTo} ${PRICE.tierStaff[k]} ${p.staff}`}
                       </span>
                       <Link
-                        href={k === "individuell" ? "/#bize-ulasin" : "/#hizli-demo"}
+                        href={k === "individuell" ? "/#bize-ulasin" : "/schnell-demo"}
                         className={`relative z-[1] flex h-12 items-center justify-center gap-2 rounded-(--r-s1) text-[16px] font-semibold no-underline transition hover:-translate-y-0.5 ${star ? "bg-era-white text-era-black" : "bg-era-btn text-era-on-btn"}`}
                       >
                         {k === "individuell" ? p.ctaTalk : p.ctaTry} <ArrowRight size={16} />

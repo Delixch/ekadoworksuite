@@ -14,19 +14,17 @@ import { company } from "@/lib/company";
  * Gönderim /api/contact ile (Resend). Ayar yoksa kullanıcının e-posta uygulaması hazır mesajla açılır.
  */
 type Status = "idle" | "sending" | "sent" | "mailto";
-type Values = { name: string; last: string; email: string; phone: string; hotel: string; topic: string; message: string; consent: boolean; hp: string; branch: string; modules: string[]; wish: string };
-type Mode = "contact" | "demo";
+type Values = { name: string; email: string; phone: string; hotel: string; topic: string; message: string; consent: boolean; hp: string; branch: string; modules: string[]; wish: string };
 
-const EMPTY: Values = { name: "", last: "", email: "", phone: "", hotel: "", topic: "", message: "", consent: false, hp: "", branch: "", modules: [], wish: "" };
+const EMPTY: Values = { name: "", email: "", phone: "", hotel: "", topic: "", message: "", consent: false, hp: "", branch: "", modules: [], wish: "" };
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const REQUIRED_CONTACT = ["name", "email", "topic", "message", "consent"] as const;
-const REQUIRED_DEMO = ["name", "last", "email", "consent"] as const;
-type Req = "name" | "last" | "email" | "topic" | "message" | "consent";
+const REQUIRED = ["name", "email", "topic", "message", "consent"] as const;
+type Req = (typeof REQUIRED)[number];
 
-const input =
+export const inputClass =
   "w-full rounded-xl bg-era-white/80 px-3.5 py-2.5 text-[16px] text-era-black ring-1 ring-era-line outline-none transition placeholder:text-era-gray/70 focus:bg-era-white focus:ring-2 focus:ring-era-primary";
 
-function Field({ label, optional, error, delay, className = "", children }: { label: string; optional?: string; error?: string; delay: number; className?: string; children: ReactNode }) {
+export function Field({ label, optional, error, delay, className = "", children }: { label: string; optional?: string; error?: string; delay: number; className?: string; children: ReactNode }) {
   return (
     <label className={`era-contact-field flex flex-col gap-1.5 ${className}`} style={{ animationDelay: `${delay}ms` }}>
       <span className="flex items-baseline gap-2 text-[13px] font-semibold text-era-black">
@@ -52,7 +50,6 @@ export function ContactModal() {
   const [mobForm, setMobForm] = useState(false);
   const [showWish, setShowWish] = useState(false);
   const [open, setOpen] = useState(false);
-  const [mode, setMode] = useState<Mode>("contact");
   const [leaving, setLeaving] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [v, setV] = useState<Values>(EMPTY);
@@ -70,24 +67,13 @@ export function ContactModal() {
   useEffect(() => {
     const show = (topicIndex?: number) => {
       const t = topicIndex !== undefined ? topicsRef.current[topicIndex] : undefined;
-      setMode("contact");
       if (t) setV((o) => ({ ...o, topic: t }));
-      setLeaving(false);
-      setOpen(true);
-    };
-    const showDemo = () => {
-      setMode("demo");
       setLeaving(false);
       setOpen(true);
     };
     const onClick = (e: MouseEvent) => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
       const a = (e.target as Element | null)?.closest?.("a[href]");
-      if (a && (a.getAttribute("href") ?? "").endsWith("#hizli-demo")) {
-        e.preventDefault();
-        showDemo();
-        return;
-      }
       if (a && (a.getAttribute("href") ?? "").endsWith("#bize-ulasin")) {
         e.preventDefault();
         const n = Number((a as HTMLElement).dataset.topic);
@@ -98,11 +84,9 @@ export function ContactModal() {
     const onEvent = () => show();
     document.addEventListener("click", onClick, true);
     window.addEventListener("ekado:contact", onEvent);
-    window.addEventListener("ekado:demo", showDemo);
     return () => {
       document.removeEventListener("click", onClick, true);
       window.removeEventListener("ekado:contact", onEvent);
-      window.removeEventListener("ekado:demo", showDemo);
     };
   }, []);
 
@@ -145,12 +129,8 @@ export function ContactModal() {
 
   if (!open) return null;
 
-  const demo = mode === "demo";
-  const d = c.demo;
-  const REQUIRED: readonly Req[] = demo ? REQUIRED_DEMO : REQUIRED_CONTACT;
   const valid: Record<Req, boolean> = {
     name: v.name.trim().length >= 2,
-    last: v.last.trim().length >= 2,
     email: EMAIL.test(v.email.trim()),
     topic: v.topic !== "",
     message: v.message.trim().length >= 5,
@@ -180,11 +160,7 @@ export function ContactModal() {
       const r = await fetch("/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(
-          demo
-            ? { ...v, name: `${v.name.trim()} ${v.last.trim()}`, topic: d.topic, message: v.message.trim() || d.wishDefault, lang: locale }
-            : { ...v, lang: locale },
-        ),
+        body: JSON.stringify({ ...v, lang: locale }),
       });
       if (r.status === 503) result = "mailto";
       else if (!r.ok) result = "error";
@@ -200,15 +176,14 @@ export function ContactModal() {
       return;
     }
     if (result === "mailto") {
-      const full = demo ? `${v.name.trim()} ${v.last.trim()}` : v.name;
-      const lines = [`${c.fields.name}: ${full}`, `${c.fields.email}: ${v.email}`];
+      const lines = [`${c.fields.name}: ${v.name}`, `${c.fields.email}: ${v.email}`];
       if (v.phone) lines.push(`${c.fields.phone}: ${v.phone}`);
       if (v.hotel) lines.push(`${c.fields.hotel}: ${v.hotel}`);
       if (v.branch) lines.push(`${br.selected}: ${v.branch}`);
       if (v.modules.length) lines.push(`${br.modSelected}: ${v.modules.join(", ")}`);
       if (v.wish.trim()) lines.push(`${br.wishLabel}: ${v.wish.trim()}`);
-      const body = [...lines, "", v.message || d.wishDefault].join("\n");
-      window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(`${demo ? d.topic : v.topic} (${full})`)}&body=${encodeURIComponent(body)}`;
+      const body = [...lines, "", v.message].join("\n");
+      window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(`${v.topic} (${v.name})`)}&body=${encodeURIComponent(body)}`;
     }
     setSendError(false);
     setStatus(result);
@@ -256,8 +231,8 @@ export function ContactModal() {
           <X size={19} />
         </button>
 
-        <h2 className="pr-10 text-[30px] leading-tight font-semibold tracking-tight text-era-black mob:text-[26px]">{finished ? (demo ? d.sent.title : status === "sent" ? c.sent.title : c.mailto.title) : demo ? d.title : c.title}</h2>
-        {!finished && <p className="mt-1 text-[15px] text-era-gray">{demo ? d.lead : c.lead}</p>}
+        <h2 className="pr-10 text-[30px] leading-tight font-semibold tracking-tight text-era-black mob:text-[26px]">{finished ? (status === "sent" ? c.sent.title : c.mailto.title) : c.title}</h2>
+        {!finished && <p className="mt-1 text-[15px] text-era-gray">{c.lead}</p>}
         {!finished && (v.branch || v.modules.length > 0) && (
           <div className="era-in-pop mt-3 flex flex-wrap gap-2">
             {v.branch && (
@@ -310,45 +285,28 @@ export function ContactModal() {
               <circle cx="26" cy="26" r="24" fill="none" className="era-contact-ring stroke-era-primary" strokeWidth="3" />
               <path d="M15 27 l8 8 l15 -17" fill="none" className="era-contact-tick stroke-era-primary" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <p className="max-w-[380px] text-[16px] leading-[1.55] text-era-gray">{demo ? d.sent.text : status === "sent" ? c.sent.text : c.mailto.text}</p>
+            <p className="max-w-[380px] text-[16px] leading-[1.55] text-era-gray">{status === "sent" ? c.sent.text : c.mailto.text}</p>
             <button type="button" onClick={close} className="mt-1 flex h-12 items-center rounded-(--r-s1) bg-era-primary px-8 text-[16px] font-medium text-era-on-btn transition hover:-translate-y-0.5 hover:brightness-110">
               {c.sent.again}
             </button>
           </div>
         ) : (
           <form onSubmit={submit} noValidate className={`mt-5 grid grid-cols-2 gap-x-4 gap-y-4 transition-opacity duration-500 mob:grid-cols-1 ${sending ? "pointer-events-none opacity-40" : ""}`}>
-            {demo ? (
-              <>
-                <Field label={d.fields.first} error={err("name")} delay={60}>
-                  <input ref={first} className={input} value={v.name} onChange={(e) => set("name", e.target.value)} onBlur={blur("name")} placeholder={d.ph.first} autoComplete="given-name" maxLength={80} />
-                </Field>
-                <Field label={d.fields.last} error={err("last")} delay={120}>
-                  <input className={input} value={v.last} onChange={(e) => set("last", e.target.value)} onBlur={blur("last")} placeholder={d.ph.last} autoComplete="family-name" maxLength={80} />
-                </Field>
-                <Field label={d.fields.email} error={err("email")} delay={180} className="col-span-2 mob:col-span-1">
-                  <input className={input} type="email" inputMode="email" value={v.email} onChange={(e) => set("email", e.target.value)} onBlur={blur("email")} placeholder={d.ph.email} autoComplete="email" maxLength={160} />
-                </Field>
-                <Field label={d.fields.wish} optional={c.optional} delay={240} className="col-span-2 mob:col-span-1">
-                  <textarea className={`${input} min-h-[96px] resize-y`} value={v.message} onChange={(e) => set("message", e.target.value)} placeholder={d.ph.wish} maxLength={1000} />
-                </Field>
-              </>
-            ) : (
-              <>
             <Field label={c.fields.name} error={err("name")} delay={60}>
-              <input ref={first} className={input} value={v.name} onChange={(e) => set("name", e.target.value)} onBlur={blur("name")} placeholder={c.ph.name} autoComplete="name" maxLength={120} />
+              <input ref={first} className={inputClass} value={v.name} onChange={(e) => set("name", e.target.value)} onBlur={blur("name")} placeholder={c.ph.name} autoComplete="name" maxLength={120} />
             </Field>
             <Field label={c.fields.email} error={err("email")} delay={120}>
-              <input className={input} type="email" inputMode="email" value={v.email} onChange={(e) => set("email", e.target.value)} onBlur={blur("email")} placeholder={c.ph.email} autoComplete="email" maxLength={160} />
+              <input className={inputClass} type="email" inputMode="email" value={v.email} onChange={(e) => set("email", e.target.value)} onBlur={blur("email")} placeholder={c.ph.email} autoComplete="email" maxLength={160} />
             </Field>
             <Field label={c.fields.phone} optional={c.optional} delay={180}>
-              <input className={input} type="tel" inputMode="tel" value={v.phone} onChange={(e) => set("phone", e.target.value)} placeholder={c.ph.phone} autoComplete="tel" maxLength={60} />
+              <input className={inputClass} type="tel" inputMode="tel" value={v.phone} onChange={(e) => set("phone", e.target.value)} placeholder={c.ph.phone} autoComplete="tel" maxLength={60} />
             </Field>
             <Field label={c.fields.hotel} optional={c.optional} delay={240}>
-              <input className={input} value={v.hotel} onChange={(e) => set("hotel", e.target.value)} placeholder={c.ph.hotel} autoComplete="organization" maxLength={160} />
+              <input className={inputClass} value={v.hotel} onChange={(e) => set("hotel", e.target.value)} placeholder={c.ph.hotel} autoComplete="organization" maxLength={160} />
             </Field>
             <Field label={c.fields.topic} error={err("topic")} delay={300} className="col-span-2 mob:col-span-1">
               <span className="relative block">
-                <select className={`${input} appearance-none pr-10 [&>option]:bg-era-white [&>option]:text-era-black ${v.topic ? "" : "text-era-gray/70"}`} value={v.topic} onChange={(e) => set("topic", e.target.value)} onBlur={blur("topic")}>
+                <select className={`${inputClass} appearance-none pr-10 [&>option]:bg-era-white [&>option]:text-era-black ${v.topic ? "" : "text-era-gray/70"}`} value={v.topic} onChange={(e) => set("topic", e.target.value)} onBlur={blur("topic")}>
                   <option value="">{c.ph.topic}</option>
                   {c.topics.map((t) => (
                     <option key={t} value={t}>
@@ -360,10 +318,8 @@ export function ContactModal() {
               </span>
             </Field>
             <Field label={c.fields.message} error={err("message")} delay={360} className="col-span-2 mob:col-span-1">
-              <textarea className={`${input} min-h-[110px] resize-y`} value={v.message} onChange={(e) => set("message", e.target.value)} onBlur={blur("message")} placeholder={c.ph.message} maxLength={4000} />
+              <textarea className={`${inputClass} min-h-[110px] resize-y`} value={v.message} onChange={(e) => set("message", e.target.value)} onBlur={blur("message")} placeholder={c.ph.message} maxLength={4000} />
             </Field>
-              </>
-            )}
 
             {/* bal küpü: insanlar görmez, botlar doldurur */}
             <input tabIndex={-1} autoComplete="off" aria-hidden value={v.hp} onChange={(e) => set("hp", e.target.value)} className="absolute -left-[9999px] h-0 w-0 opacity-0" name="website" />
@@ -395,7 +351,7 @@ export function ContactModal() {
             )}
 
             <button type="submit" disabled={sending} className="era-contact-field col-span-2 mt-1 flex h-13 items-center justify-center gap-2 rounded-(--r-s1) bg-era-primary text-[17px] font-medium text-era-on-btn transition hover:-translate-y-0.5 hover:brightness-110 active:scale-[.98] disabled:opacity-70 mob:col-span-1" style={{ animationDelay: "480ms" }}>
-              {sending ? (demo ? d.sending : c.sending) : demo ? d.send : c.send}
+              {sending ? c.sending : c.send}
               <Send size={18} />
             </button>
           </form>
@@ -481,7 +437,7 @@ export function ContactModal() {
                 {showWish ? (
                   <label className="flex flex-col gap-1.5">
                     <span className="text-[13px] font-semibold text-era-black">{br.wishLabel}</span>
-                    <textarea autoFocus value={v.wish} onChange={(e) => set("wish", e.target.value)} placeholder={br.wishPh} maxLength={600} className={`${input} min-h-[72px] resize-y`} />
+                    <textarea autoFocus value={v.wish} onChange={(e) => set("wish", e.target.value)} placeholder={br.wishPh} maxLength={600} className={`${inputClass} min-h-[72px] resize-y`} />
                   </label>
                 ) : (
                   <button type="button" onClick={() => setShowWish(true)} className="flex w-fit items-center gap-2 rounded-[8px] border-2 border-dashed border-era-primary/50 px-3.5 py-2 text-[14px] font-semibold text-era-primary-ink transition hover:border-era-primary hover:bg-era-primary/[0.06]">

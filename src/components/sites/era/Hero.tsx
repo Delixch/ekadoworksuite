@@ -41,7 +41,7 @@ export function Hero() {
             {/* iki eşit buton her dilde yan yana (Adnan 2026-10-16); uzun metin (EN) iki satıra iner */}
             <div className="era-in-up grid w-full max-w-[600px] grid-cols-2 gap-4 sm2:gap-3" style={delay(0.8)}>
               <a
-                href="#hizli-demo"
+                href="/schnell-demo"
                 className="flex min-h-14 items-center justify-center gap-3 rounded-(--r-s1) bg-era-primary px-4 py-1.5 text-center text-[18px] leading-tight font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm2:gap-2 sm2:px-3 sm2:text-[16px]"
               >
                 {t.hero.test} <ArrowRight size={20} className="shrink-0" />

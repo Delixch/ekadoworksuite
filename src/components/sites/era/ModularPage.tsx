@@ -281,7 +281,7 @@ export function ModularPage() {
             <p className="max-w-[720px] text-[19px] leading-[1.55] text-era-gray">{m.customText}</p>
             <div className="flex flex-wrap items-center justify-start gap-4 pt-2">
               <a
-                href="#hizli-demo"
+                href="/schnell-demo"
                 className="flex h-14 items-center gap-3 rounded-(--r-s1) bg-era-primary px-8 text-[18px] font-semibold text-era-on-dark no-underline transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
               >
                 {m.ctaPrimary} <ArrowRight size={20} />

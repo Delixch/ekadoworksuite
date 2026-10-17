@@ -5,4 +5,4 @@ export const solutionHrefs = ["/moduler", "/modul/uebersicht-betrieb", "/modul/e
 export const pricingHrefs = ["/taslak/preise-a", "/taslak/preise-b"];
 /** Canlı demo (giriş sayfasında demo hesapları yazıyor) */
 export const DEMO_URL = "https://api.adodesign.ch";
-export const linkHrefs = ["/#hizli-demo", "/musterilerimiz", "/#bize-ulasin", "/support"];
+export const linkHrefs = ["/schnell-demo", "/musterilerimiz", "/#bize-ulasin", "/support"];

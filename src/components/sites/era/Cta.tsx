@@ -45,7 +45,7 @@ export function Cta() {
               <p className="max-w-[620px] text-[17px] leading-[1.55] text-era-on-dark/80">{c.text}</p>
               <div className="flex flex-wrap items-center justify-center gap-4 sm2:w-full sm2:flex-col">
                 <a
-                  href="#hizli-demo"
+                  href="/schnell-demo"
                   className="era-glowpulse group/btn flex h-14 items-center gap-3 rounded-(--r-s1) bg-era-on-dark px-8 text-[17px] font-semibold text-era-dark no-underline transition-all duration-300 hover:-translate-y-0.5 sm2:w-full sm2:justify-center"
                 >
                   {c.primary}
